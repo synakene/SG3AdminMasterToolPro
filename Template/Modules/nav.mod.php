@@ -115,19 +115,19 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav" id="SideNav">
             <li class="active">
-                <a href="index.tpl.php"><i class="fa fa-fw fa-flag"></i> Accueil</a>
+                <a href="index.inc.php"><i class="fa fa-fw fa-flag"></i> Accueil</a>
             </li>
             <li>
-                <a href="surgeries.tpl.php"><i class="fa fa-fw fa-scissors"></i> Chirurgies</a>
+                <a href="surgeries.inc.php"><i class="fa fa-fw fa-scissors"></i> Chirurgies</a>
             </li>
             <li>
-                <a href="tables.tpl.php"><i class="fa fa-fw fa-user"></i> Patients</a>
+                <a href="patients.inc.php"><i class="fa fa-fw fa-user"></i> Patients</a>
             </li>
             <li>
-                <a href="forms.tpl.php"><i class="fa fa-fw fa-wrench"></i> Materiel</a>
+                <a href="materials.inc.php"><i class="fa fa-fw fa-wrench"></i> Materiel</a>
             </li>
             <li>
-                <a href="bootstrap-elements.tpl.php"><i class="fa fa-fw fa-question"></i> Questions</a>
+                <a href="question.inc.php"><i class="fa fa-fw fa-question"></i> Questions</a>
             </li>
         </ul>
     </div>
