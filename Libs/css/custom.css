@@ -3,6 +3,25 @@
     margin-bottom: 20px;
 }
 
-.table-hover > tbody > tr:hover {
+.table-hover > tbody > tr:hover
+{
     background-color: #D2D2D2;
+}
+
+#notifications
+{
+    top: 60px;
+    right: 10px;
+    left : 10px;
+    position: fixed;
+    z-index: 3;
+}
+
+#slider-button
+{
+    position: fixed;
+    left: 0px;
+    background: black;
+    color: white;
+    z-index: 3;
 }

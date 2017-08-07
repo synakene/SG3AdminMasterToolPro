@@ -1,5 +1,7 @@
 <?php include("Modules/head.mod.php"); ?>
 
+<?php include("Modules/notify.mod.html"); ?>
+
 <?php include("Modules/nav.mod.php"); ?>
 
 <div id="page-wrapper">
@@ -24,9 +26,11 @@
         </div>
 
         <div class="row">
+
+            <!-- Category handler -->
             <div class="col-xs-12">
                 <div class="list-group">
-                    <a href="#" class="list-group-item active" id="category-slider-main">Catégorie :</a>
+                    <a href="#" class="list-group-item active" id="category-slider-main">Catégorie : Toutes</a>
                     <div id="category-slider">
                         <a href="#" class="list-group-item">Toutes</a>
                         <?php
@@ -51,6 +55,7 @@
                 </div>
             </div>
 
+            <!-- Material list -->
             <div class="col-xs-12">
                 <div class="well">
                     <h3>Liste des matériels :</h3><br>
@@ -60,13 +65,13 @@
                             <th>Catégorie</th>
                             <th>Action</th>
                         </thead>
-                        <tbody>
+                        <tbody id="materials-list">
                             <?php
                             foreach ($materials as $material)
                             {
-                                echo '<tr data-category='. $material->getCategory() .'>';
-                                echo '<td>' . $material->getName() . '</td>';
-                                echo '<td>' . $material->getCategory() . '</td>';
+                                echo '<tr data-id=' . $material->getId() . ' data-category="'. $material->getCategory() .'" tabindex=0>';
+                                echo '<td><span data-id=' . $material->getId() . '>' . $material->getName() . '</span></td>';
+                                echo '<td><span data-id=' . $material->getId() . '>' . $material->getCategory() . '</span></td>';
                                 echo '<td><button type="button" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
                                 echo '<tr>';
                             }
@@ -76,8 +81,9 @@
                 </div>
             </div>
 
+            <!-- Button(s) -->
             <div class="col-xs-12">
-                <button type="button" class="btn btn-lg btn-primary">Ajouter un matériel</button>
+                <button type="button" id="button-add" class="btn btn-lg btn-primary">Ajouter un matériel</button>
             </div>
         </div>
 

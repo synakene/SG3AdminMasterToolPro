@@ -7,6 +7,8 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="/Libs/js/bootstrap.min.js"></script>
 
+<!-- Font Awesome Animations -->
+
 <!-- Morris Charts JavaScript -->
 <script src="/Libs/js/plugins/morris/raphael.min.js"></script>
 <script src="/Libs/js/plugins/morris/morris.min.js"></script>

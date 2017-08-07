@@ -1,5 +1,7 @@
 <?php include("Modules/head.mod.php"); ?>
 
+<?php include("Modules/notify.mod.html"); ?>
+
 <?php include("Modules/nav.mod.php"); ?>
 
     <div id="page-wrapper">

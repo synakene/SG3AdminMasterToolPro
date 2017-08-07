@@ -22,6 +22,7 @@
 
     <!-- Custom Fonts -->
     <link href="/Libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/Libs/font-awesome/css/font-awesome-animation.min.css" rel="stylesheet" type="text/css">
 
     <!-- Noob Custom CSS -->
     <link href="/Libs/css/custom.css" rel="stylesheet" type="text/css">

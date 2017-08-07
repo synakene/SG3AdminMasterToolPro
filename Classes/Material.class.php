@@ -8,19 +8,21 @@
 class Material extends DBA
 {
     private $id;
+    private $idCustomer;
     private $name;
     private $category;
 
-    public function __construct($id = 0, $name = '', $category = '')
+    public function __construct($id = 0, $idCustomer = 0, $name = '', $category = '')
     {
-        if ($id == 0 || $name == '' || $category == '')
+        if ($id === 0 || $idCustomer === 0|| $name === '' || $category === '')
         {
             return;
         }
 
         $this->id = $id;
+        $this->idCustomer = $idCustomer;
         $this->name = $name;
-        $this->category= $category;
+        $this->category = $category;
     }
 
     //<editor-fold desc="Getters and Setters">
@@ -68,6 +70,55 @@ class Material extends DBA
     //</editor-fold>
 
     /**
+     * Check validy for database writing.
+     * Always use this function before writing !
+     * @return bool
+     */
+    public function checkValidity()
+    {
+        if ($this->id === 0 || $this->idCustomer === 0|| $this->name === '' || $this->category === '')
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Save the object to the database
+     * @return boolean
+     */
+    public function save()
+    {
+        if (!$this->checkValidity())
+        {
+            return false;
+        }
+
+        $result = self::query("UPDATE `material` SET `idCustomer` = '$this->idCustomer', `name` = '$this->name', `category` = '$this->category' WHERE `material`.`id` = $this->id;");
+        return $result;
+    }
+
+
+    /**
+     * Fetch a materiel from its id
+     * @param $id
+     * @return bool|Material
+     */
+    public static function getById($id)
+    {
+        $result = self::query("SELECT * FROM `material` WHERE `id` = $id")->fetch_all(MYSQLI_ASSOC);
+        $material = new Material(intval($result[0]['id']), intval(($result[0]['idCustomer'])), $result[0]['name'], $result[0]['category']);
+
+        if ($material->getId() !== null)
+        {
+            return $material;
+        }
+        return false;
+    }
+
+
+    /**
      * Get a list of material by client id.
      * Return false if no material found
      * @param int $id
@@ -86,15 +137,25 @@ class Material extends DBA
 
         foreach ($result as $line)
         {
-            $new_material = new Material(intval($line['id']), $line['name'], $line['category']);
-            array_push($materials, $new_material);
+            $new_material = new Material(intval($line['id']), intval(($line['idCustomer'])), $line['name'], $line['category']);
+            if ($new_material->getId() !== null)
+            {
+                array_push($materials, $new_material);
+            }
         }
 
         return $materials;
     }
 
-    public static function getCategoriesByCustomer($id = 0)
+
+    /**
+     * Return all distincts categories for a client
+     * @param int $idCustomer
+     * @return mixed
+     */
+    public static function getCategoriesByCustomer($idCustomer = 0)
     {
-        return self::query('SELECT DISTINCT category FROM `material` WHERE `idCustomer` = ' . $id)->fetch_all(MYSQLI_ASSOC);
+        return self::query('SELECT DISTINCT category FROM `material` WHERE `idCustomer` = ' . $idCustomer)->fetch_all(MYSQLI_ASSOC);
     }
+
 }

@@ -2,85 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa605fb3-5f6f-4a2e-b10f-33bb8f554c2b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/DBA.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/Material.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/Surgery.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Include/Config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Include/Index.inc.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Include/Initializer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Include/Materials.inc.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Include/Surgeries.inc.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Libs/css/custom.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Libs/js/materials.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Template/materials.tpl.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Classes/Material.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Classes/Surgery.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Classes/Customer.php" afterPath="$PROJECT_DIR$/Classes/Customer.class.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Classes/Patient.php" afterPath="$PROJECT_DIR$/Classes/Patient.class.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Classes/Question.php" afterPath="$PROJECT_DIR$/Classes/Question.class.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/css/bootstrap-rtl.css" afterPath="$PROJECT_DIR$/Libs/css/bootstrap-rtl.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/css/bootstrap-rtl.min.css" afterPath="$PROJECT_DIR$/Libs/css/bootstrap-rtl.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/css/bootstrap.css" afterPath="$PROJECT_DIR$/Libs/css/bootstrap.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/Libs/css/bootstrap.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/css/plugins/morris.css" afterPath="$PROJECT_DIR$/Libs/css/plugins/morris.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/css/sb-admin-rtl.css" afterPath="$PROJECT_DIR$/Libs/css/sb-admin-rtl.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/css/sb-admin.css" afterPath="$PROJECT_DIR$/Libs/css/sb-admin.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/css/font-awesome.css" afterPath="$PROJECT_DIR$/Libs/font-awesome/css/font-awesome.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/css/font-awesome.min.css" afterPath="$PROJECT_DIR$/Libs/font-awesome/css/font-awesome.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/fonts/FontAwesome.otf" afterPath="$PROJECT_DIR$/Libs/font-awesome/fonts/FontAwesome.otf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/fonts/fontawesome-webfont.eot" afterPath="$PROJECT_DIR$/Libs/font-awesome/fonts/fontawesome-webfont.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/fonts/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/Libs/font-awesome/fonts/fontawesome-webfont.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/fonts/fontawesome-webfont.ttf" afterPath="$PROJECT_DIR$/Libs/font-awesome/fonts/fontawesome-webfont.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/fonts/fontawesome-webfont.woff" afterPath="$PROJECT_DIR$/Libs/font-awesome/fonts/fontawesome-webfont.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/less/bordered-pulled.less" afterPath="$PROJECT_DIR$/Libs/font-awesome/less/bordered-pulled.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/less/core.less" afterPath="$PROJECT_DIR$/Libs/font-awesome/less/core.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/less/fixed-width.less" afterPath="$PROJECT_DIR$/Libs/font-awesome/less/fixed-width.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/less/font-awesome.less" afterPath="$PROJECT_DIR$/Libs/font-awesome/less/font-awesome.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/less/icons.less" afterPath="$PROJECT_DIR$/Libs/font-awesome/less/icons.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/less/larger.less" afterPath="$PROJECT_DIR$/Libs/font-awesome/less/larger.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/less/list.less" afterPath="$PROJECT_DIR$/Libs/font-awesome/less/list.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/less/mixins.less" afterPath="$PROJECT_DIR$/Libs/font-awesome/less/mixins.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/less/path.less" afterPath="$PROJECT_DIR$/Libs/font-awesome/less/path.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/less/rotated-flipped.less" afterPath="$PROJECT_DIR$/Libs/font-awesome/less/rotated-flipped.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/less/spinning.less" afterPath="$PROJECT_DIR$/Libs/font-awesome/less/spinning.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/less/stacked.less" afterPath="$PROJECT_DIR$/Libs/font-awesome/less/stacked.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/less/variables.less" afterPath="$PROJECT_DIR$/Libs/font-awesome/less/variables.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/scss/_bordered-pulled.scss" afterPath="$PROJECT_DIR$/Libs/font-awesome/scss/_bordered-pulled.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/scss/_core.scss" afterPath="$PROJECT_DIR$/Libs/font-awesome/scss/_core.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/scss/_fixed-width.scss" afterPath="$PROJECT_DIR$/Libs/font-awesome/scss/_fixed-width.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/scss/_icons.scss" afterPath="$PROJECT_DIR$/Libs/font-awesome/scss/_icons.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/scss/_larger.scss" afterPath="$PROJECT_DIR$/Libs/font-awesome/scss/_larger.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/scss/_list.scss" afterPath="$PROJECT_DIR$/Libs/font-awesome/scss/_list.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/scss/_mixins.scss" afterPath="$PROJECT_DIR$/Libs/font-awesome/scss/_mixins.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/scss/_path.scss" afterPath="$PROJECT_DIR$/Libs/font-awesome/scss/_path.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/scss/_rotated-flipped.scss" afterPath="$PROJECT_DIR$/Libs/font-awesome/scss/_rotated-flipped.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/scss/_spinning.scss" afterPath="$PROJECT_DIR$/Libs/font-awesome/scss/_spinning.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/scss/_stacked.scss" afterPath="$PROJECT_DIR$/Libs/font-awesome/scss/_stacked.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/scss/_variables.scss" afterPath="$PROJECT_DIR$/Libs/font-awesome/scss/_variables.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/font-awesome/scss/font-awesome.scss" afterPath="$PROJECT_DIR$/Libs/font-awesome/scss/font-awesome.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/Libs/fonts/glyphicons-halflings-regular.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/Libs/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/Libs/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/Libs/fonts/glyphicons-halflings-regular.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/Libs/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/js/bootstrap.js" afterPath="$PROJECT_DIR$/Libs/js/bootstrap.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/Libs/js/bootstrap.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/js/jquery.js" afterPath="$PROJECT_DIR$/Libs/js/jquery.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/js/plugins/flot/excanvas.min.js" afterPath="$PROJECT_DIR$/Libs/js/plugins/flot/excanvas.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/js/plugins/flot/flot-data.js" afterPath="$PROJECT_DIR$/Libs/js/plugins/flot/flot-data.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/js/plugins/flot/jquery.flot.js" afterPath="$PROJECT_DIR$/Libs/js/plugins/flot/jquery.flot.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/js/plugins/flot/jquery.flot.pie.js" afterPath="$PROJECT_DIR$/Libs/js/plugins/flot/jquery.flot.pie.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/js/plugins/flot/jquery.flot.resize.js" afterPath="$PROJECT_DIR$/Libs/js/plugins/flot/jquery.flot.resize.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/js/plugins/flot/jquery.flot.tooltip.min.js" afterPath="$PROJECT_DIR$/Libs/js/plugins/flot/jquery.flot.tooltip.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/js/plugins/morris/morris-data.js" afterPath="$PROJECT_DIR$/Libs/js/plugins/morris/morris-data.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/js/plugins/morris/morris.js" afterPath="$PROJECT_DIR$/Libs/js/plugins/morris/morris.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/js/plugins/morris/morris.min.js" afterPath="$PROJECT_DIR$/Libs/js/plugins/morris/morris.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Template/Libs/js/plugins/morris/raphael.min.js" afterPath="$PROJECT_DIR$/Libs/js/plugins/morris/raphael.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Include/Ajax-api.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Libs/font-awesome/css/font-awesome-animation.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Template/Modules/notify.mod.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/Material.class.php" afterPath="$PROJECT_DIR$/Classes/Material.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Libs/css/custom.css" afterPath="$PROJECT_DIR$/Libs/css/custom.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Libs/js/materials.js" afterPath="$PROJECT_DIR$/Libs/js/materials.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Template/Modules/footer.mod.php" afterPath="$PROJECT_DIR$/Template/Modules/footer.mod.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Template/Modules/head.mod.php" afterPath="$PROJECT_DIR$/Template/Modules/head.mod.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Template/Modules/nav.mod.php" afterPath="$PROJECT_DIR$/Template/Modules/nav.mod.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Template/index.tpl.php" afterPath="$PROJECT_DIR$/Template/index.tpl.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Template/materials.tpl.php" afterPath="$PROJECT_DIR$/Template/materials.tpl.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -94,25 +27,38 @@
       <file leaf-file-name="Material.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Classes/Material.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="760">
-              <caret line="97" column="124" lean-forward="false" selection-start-line="97" selection-start-column="124" selection-end-line="97" selection-end-column="124" />
+            <state relative-caret-position="247">
+              <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
               <folding>
                 <element signature="e#6#72#0#PHP" expanded="true" />
-                <element signature="e#246#333#0#PHP" expanded="false" />
-                <element signature="e#436#478#0#PHP" expanded="false" />
-                <marker date="1501686983932" expanded="true" signature="1327:1372" ph="SELECT * FRO... material" />
-                <marker date="1501686983932" expanded="true" signature="1327:1373" ph="SELECT * FRO... material" />
-                <marker date="1501686983932" expanded="true" signature="1850:1912" ph="SELECT DISTI... material" />
+                <element signature="e#288#398#0#PHP" expanded="false" />
+                <element signature="e#543#585#0#PHP" expanded="false" />
+                <element signature="n#getId#0;n#Material#0;n#!!top" expanded="false" />
+                <element signature="e#1199#1321#0#PHP" expanded="false" />
+                <element signature="n#checkValidity#0;n#Material#0;n#!!top" expanded="false" />
+                <element signature="e#1372#1512#0#PHP" expanded="false" />
+                <element signature="e#1546#1619#0#PHP" expanded="false" />
+                <element signature="e#1661#1735#0#PHP" expanded="false" />
+                <element signature="e#2463#2607#0#PHP" expanded="false" />
+                <marker date="1502101326553" expanded="true" signature="1768:1834" ph="UPDATE `mate... " />
+                <marker date="1502101326553" expanded="true" signature="1768:1905" ph="UPDATE `mate... " />
+                <marker date="1502101326553" expanded="true" signature="1768:1906" ph="UPDATE `mate... " />
+                <marker date="1502101326553" expanded="true" signature="2049:2696" ph="..." />
+                <marker date="1502101326553" expanded="true" signature="2127:2165" ph="SELECT * FRO... material" />
+                <marker date="1502101326553" expanded="true" signature="2127:2166" ph="SELECT * FRO... material" />
+                <marker date="1502101326553" expanded="true" signature="2698:2743" ph="SELECT * FRO... material" />
+                <marker date="1502101326553" expanded="true" signature="2698:2744" ph="SELECT * FRO... material" />
+                <marker date="1502101326553" expanded="true" signature="3461:3523" ph="SELECT DISTI... material" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Materials.inc.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Include/Materials.inc.php">
+      <file leaf-file-name="nav.mod.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Template/Modules/nav.mod.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="12" column="47" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="47" />
+            <state relative-caret-position="170">
+              <caret line="43" column="26" lean-forward="false" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -121,16 +67,21 @@
       <file leaf-file-name="materials.tpl.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Template/materials.tpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="37" column="29" lean-forward="true" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+            <state relative-caret-position="763">
+              <caret line="85" column="54" lean-forward="false" selection-start-line="85" selection-start-column="54" selection-end-line="85" selection-end-column="54" />
               <folding>
-                <marker date="1501688562169" expanded="true" signature="2068:2605" ph="..." />
-                <marker date="1501688562169" expanded="true" signature="2103:2605" ph="..." />
-                <marker date="1501688562169" expanded="true" signature="2212:2605" ph="..." />
-                <marker date="1501688562169" expanded="true" signature="2244:2409" ph="..." />
-                <marker date="1501688562169" expanded="true" signature="2441:2605" ph="..." />
-                <marker date="1501688562169" expanded="true" signature="3221:3338" ph="..." />
+                <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notify.mod.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Template/Modules/notify.mod.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" column="6" lean-forward="true" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -138,8 +89,38 @@
       <file leaf-file-name="materials.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Libs/js/materials.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="71" lean-forward="false" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
+            <state relative-caret-position="845">
+              <caret line="136" column="31" lean-forward="false" selection-start-line="136" selection-start-column="31" selection-end-line="136" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Config.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Include/Config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Ajax-api.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Include/Ajax-api.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="777">
+              <caret line="51" column="26" lean-forward="false" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Libs/css/custom.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -150,9 +131,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -160,6 +141,8 @@
     <findStrings>
       <find>jquery</find>
       <find>slider</find>
+      <find>category =</find>
+      <find>cacher</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,7 +155,6 @@
         <option value="$PROJECT_DIR$/Template/index.html" />
         <option value="$PROJECT_DIR$/Template/Modules/footer.tpl.php" />
         <option value="$PROJECT_DIR$/Template/index.tpl.php.html" />
-        <option value="$PROJECT_DIR$/Template/index.tpl.php" />
         <option value="$PROJECT_DIR$/Template/surgeries.tpl.php" />
         <option value="$PROJECT_DIR$/Classes/Surgery.php" />
         <option value="$PROJECT_DIR$/Include/Config.php" />
@@ -182,14 +164,19 @@
         <option value="$PROJECT_DIR$/Include/Index.inc.php" />
         <option value="$PROJECT_DIR$/Include/Surgeries.inc.php" />
         <option value="$PROJECT_DIR$/Classes/Surgery.class.php" />
-        <option value="$PROJECT_DIR$/Template/Modules/nav.mod.php" />
         <option value="$PROJECT_DIR$/Classes/DBA.class.php" />
         <option value="$PROJECT_DIR$/test.php" />
-        <option value="$PROJECT_DIR$/Template/Modules/head.mod.php" />
-        <option value="$PROJECT_DIR$/Libs/css/custom.css" />
-        <option value="$PROJECT_DIR$/Template/Modules/footer.mod.php" />
         <option value="$PROJECT_DIR$/Include/Materials.inc.php" />
         <option value="$PROJECT_DIR$/Classes/Material.class.php" />
+        <option value="$PROJECT_DIR$/Template/Modules/notif-mod.html" />
+        <option value="$PROJECT_DIR$/Template/Modules/notif.mod.html" />
+        <option value="$PROJECT_DIR$/Template/index.tpl.php" />
+        <option value="$PROJECT_DIR$/Template/Modules/footer.mod.php" />
+        <option value="$PROJECT_DIR$/Libs/css/custom.css" />
+        <option value="$PROJECT_DIR$/Template/Modules/head.mod.php" />
+        <option value="$PROJECT_DIR$/Template/Modules/nav.mod.php" />
+        <option value="$PROJECT_DIR$/Include/Ajax-api.php" />
+        <option value="$PROJECT_DIR$/Template/Modules/notify.mod.html" />
         <option value="$PROJECT_DIR$/Template/materials.tpl.php" />
         <option value="$PROJECT_DIR$/Libs/js/materials.js" />
       </list>
@@ -231,7 +218,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -258,6 +244,27 @@
               <item name="SG3AdminMasterToolPro" type="b2602c69:ProjectViewProjectNode" />
               <item name="SG3AdminMasterToolPro" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Libs" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="font-awesome" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="SG3AdminMasterToolPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SG3AdminMasterToolPro" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Libs" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="font-awesome" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="SG3AdminMasterToolPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SG3AdminMasterToolPro" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Libs" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="font-awesome" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="font-awesome.css" type="620a8d5e:NestingTreeNode" />
+            </path>
+            <path>
+              <item name="SG3AdminMasterToolPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SG3AdminMasterToolPro" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Libs" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -275,6 +282,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -313,12 +321,15 @@
       <option name="presentableId" value="Default" />
       <updated>1501590801850</updated>
       <workItem from="1501590806084" duration="9486000" />
-      <workItem from="1501659481878" duration="23861000" />
+      <workItem from="1501659481878" duration="23923000" />
+      <workItem from="1501746412393" duration="1197000" />
+      <workItem from="1501833469937" duration="18814000" />
+      <workItem from="1502096330494" duration="20119000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33347000" />
+    <option name="totallyTimeSpent" value="73539000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -328,6 +339,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -339,7 +351,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -350,10 +361,92 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Include/Materials.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="47" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/materials.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="29" lean-forward="true" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Libs/js/materials.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="71" lean-forward="false" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Classes/Material.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="97" column="124" lean-forward="false" selection-start-line="97" selection-start-column="124" selection-end-line="97" selection-end-column="124" />
+          <folding>
+            <element signature="e#6#72#0#PHP" expanded="true" />
+            <element signature="e#288#398#0#PHP" expanded="false" />
+            <element signature="e#543#585#0#PHP" expanded="false" />
+            <element signature="n#getId#0;n#Material#0;n#!!top" expanded="false" />
+            <element signature="e#1199#1321#0#PHP" expanded="false" />
+            <element signature="n#checkValidity#0;n#Material#0;n#!!top" expanded="false" />
+            <element signature="e#1372#1512#0#PHP" expanded="false" />
+            <element signature="e#1546#1619#0#PHP" expanded="false" />
+            <element signature="e#1661#1735#0#PHP" expanded="false" />
+            <element signature="e#2463#2607#0#PHP" expanded="false" />
+            <marker date="1502101326553" expanded="true" signature="1768:1834" ph="UPDATE `mate... " />
+            <marker date="1502101326553" expanded="true" signature="1768:1905" ph="UPDATE `mate... " />
+            <marker date="1502101326553" expanded="true" signature="1768:1906" ph="UPDATE `mate... " />
+            <marker date="1502101326553" expanded="true" signature="2049:2696" ph="..." />
+            <marker date="1502101326553" expanded="true" signature="2127:2165" ph="SELECT * FRO... material" />
+            <marker date="1502101326553" expanded="true" signature="2127:2166" ph="SELECT * FRO... material" />
+            <marker date="1502101326553" expanded="true" signature="2698:2743" ph="SELECT * FRO... material" />
+            <marker date="1502101326553" expanded="true" signature="2698:2744" ph="SELECT * FRO... material" />
+            <marker date="1502101326553" expanded="true" signature="3461:3523" ph="SELECT DISTI... material" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Materials.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="47" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/materials.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="29" lean-forward="true" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Libs/js/materials.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="71" lean-forward="false" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Template/index.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -390,7 +483,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1501669152962" expanded="true" signature="309:353" ph="SELECT * FRO... surgery" />
+            <marker date="1501669152962" expanded="true" signature="309:354" ph="SELECT * FRO... surgery" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -414,7 +510,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#6#72#0#PHP" expanded="true" />
+            <element signature="e#288#398#0#PHP" expanded="false" />
+            <element signature="e#543#585#0#PHP" expanded="false" />
+            <element signature="n#getId#0;n#Material#0;n#!!top" expanded="false" />
+            <element signature="e#1199#1321#0#PHP" expanded="false" />
+            <element signature="n#checkValidity#0;n#Material#0;n#!!top" expanded="false" />
+            <element signature="e#1372#1512#0#PHP" expanded="false" />
+            <element signature="e#1546#1619#0#PHP" expanded="false" />
+            <element signature="e#1661#1735#0#PHP" expanded="false" />
+            <element signature="e#2463#2607#0#PHP" expanded="false" />
+            <marker date="1502101326553" expanded="true" signature="1768:1834" ph="UPDATE `mate... " />
+            <marker date="1502101326553" expanded="true" signature="1768:1905" ph="UPDATE `mate... " />
+            <marker date="1502101326553" expanded="true" signature="1768:1906" ph="UPDATE `mate... " />
+            <marker date="1502101326553" expanded="true" signature="2049:2696" ph="..." />
+            <marker date="1502101326553" expanded="true" signature="2127:2165" ph="SELECT * FRO... material" />
+            <marker date="1502101326553" expanded="true" signature="2127:2166" ph="SELECT * FRO... material" />
+            <marker date="1502101326553" expanded="true" signature="2698:2743" ph="SELECT * FRO... material" />
+            <marker date="1502101326553" expanded="true" signature="2698:2744" ph="SELECT * FRO... material" />
+            <marker date="1502101326553" expanded="true" signature="3461:3523" ph="SELECT DISTI... material" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -487,13 +603,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Template/Libs/font-awesome/css/font-awesome.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Libs/font-awesome/css/font-awesome.css" />
     <entry file="file://$PROJECT_DIR$/Classes/hkjh.php" />
     <entry file="file://$PROJECT_DIR$/Classes/Customer.class.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -515,22 +625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Include/Config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Template/index.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -570,14 +664,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="10" lean-forward="true" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php" />
     <entry file="file://$PROJECT_DIR$/Include/Initializer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -586,43 +673,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Template/Modules/head.mod.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="22" lean-forward="false" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Libs/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Libs/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="1" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Template/Modules/footer.mod.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Template/Modules/nav.mod.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1168">
-          <caret line="123" column="62" lean-forward="true" selection-start-line="123" selection-start-column="62" selection-end-line="123" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -637,48 +691,128 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Classes/Material.class.php">
+    <entry file="file://$PROJECT_DIR$/Libs/font-awesome/css/font-awesome.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="97" column="124" lean-forward="false" selection-start-line="97" selection-start-column="124" selection-end-line="97" selection-end-column="124" />
-          <folding>
-            <element signature="e#6#72#0#PHP" expanded="true" />
-            <element signature="e#246#333#0#PHP" expanded="false" />
-            <element signature="e#436#478#0#PHP" expanded="false" />
-            <marker date="1501686983932" expanded="true" signature="1327:1372" ph="SELECT * FRO... material" />
-            <marker date="1501686983932" expanded="true" signature="1327:1373" ph="SELECT * FRO... material" />
-            <marker date="1501686983932" expanded="true" signature="1850:1912" ph="SELECT DISTI... material" />
-          </folding>
+        <state relative-caret-position="102">
+          <caret line="3" column="758" lean-forward="false" selection-start-line="3" selection-start-column="758" selection-end-line="3" selection-end-column="758" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Modules/footer.mod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Modules/head.mod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="89" lean-forward="false" selection-start-line="23" selection-start-column="89" selection-end-line="23" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Libs/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Include/Materials.inc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="47" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="47" />
+        <state relative-caret-position="51">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Classes/Material.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#72#0#PHP" expanded="true" />
+            <element signature="e#288#398#0#PHP" expanded="false" />
+            <element signature="e#543#585#0#PHP" expanded="false" />
+            <element signature="n#getId#0;n#Material#0;n#!!top" expanded="false" />
+            <element signature="e#1199#1321#0#PHP" expanded="false" />
+            <element signature="n#checkValidity#0;n#Material#0;n#!!top" expanded="false" />
+            <element signature="e#1372#1512#0#PHP" expanded="false" />
+            <element signature="e#1546#1619#0#PHP" expanded="false" />
+            <element signature="e#1661#1735#0#PHP" expanded="false" />
+            <element signature="e#2463#2607#0#PHP" expanded="false" />
+            <marker date="1502101326553" expanded="true" signature="1768:1834" ph="UPDATE `mate... " />
+            <marker date="1502101326553" expanded="true" signature="1768:1905" ph="UPDATE `mate... " />
+            <marker date="1502101326553" expanded="true" signature="1768:1906" ph="UPDATE `mate... " />
+            <marker date="1502101326553" expanded="true" signature="2049:2696" ph="..." />
+            <marker date="1502101326553" expanded="true" signature="2127:2165" ph="SELECT * FRO... material" />
+            <marker date="1502101326553" expanded="true" signature="2127:2166" ph="SELECT * FRO... material" />
+            <marker date="1502101326553" expanded="true" signature="2698:2743" ph="SELECT * FRO... material" />
+            <marker date="1502101326553" expanded="true" signature="2698:2744" ph="SELECT * FRO... material" />
+            <marker date="1502101326553" expanded="true" signature="3461:3523" ph="SELECT DISTI... material" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Modules/nav.mod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="43" column="26" lean-forward="false" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Modules/notify.mod.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="6" lean-forward="true" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/index.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Ajax-api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="777">
+          <caret line="51" column="26" lean-forward="false" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Template/materials.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="37" column="29" lean-forward="true" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+        <state relative-caret-position="763">
+          <caret line="85" column="54" lean-forward="false" selection-start-line="85" selection-start-column="54" selection-end-line="85" selection-end-column="54" />
           <folding>
-            <marker date="1501688562169" expanded="true" signature="2068:2605" ph="..." />
-            <marker date="1501688562169" expanded="true" signature="2103:2605" ph="..." />
-            <marker date="1501688562169" expanded="true" signature="2212:2605" ph="..." />
-            <marker date="1501688562169" expanded="true" signature="2244:2409" ph="..." />
-            <marker date="1501688562169" expanded="true" signature="2441:2605" ph="..." />
-            <marker date="1501688562169" expanded="true" signature="3221:3338" ph="..." />
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Libs/js/materials.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="71" lean-forward="false" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
+        <state relative-caret-position="845">
+          <caret line="136" column="31" lean-forward="false" selection-start-line="136" selection-start-column="31" selection-end-line="136" selection-end-column="31" />
           <folding />
         </state>
       </provider>
