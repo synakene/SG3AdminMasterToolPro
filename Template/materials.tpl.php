@@ -31,20 +31,22 @@
             <div class="col-xs-12">
                 <div class="list-group">
                     <a href="#" class="list-group-item active" id="category-slider-main">Catégorie : Toutes</a>
-                    <div id="category-slider">
-                        <a href="#" class="list-group-item">Toutes</a>
-                        <?php
-                        foreach ($categories as $category)
-                        {
-                            echo '<a href="#" class="list-group-item">' . $category['category'] . '</a>';
-                        }
-                        ?>
+                    <div id="category-slider-wrapper">
+                        <div id="category-slider">
+                            <a href="#" class="list-group-item">Toutes</a>
+                            <?php
+                            foreach ($fetchedCategories as $category)
+                            {
+                                echo '<a href="#" class="list-group-item">' . $category['category'] . '</a>';
+                            }
+                            ?>
+                        </div>
                         <div>
                             <a href="#" class="list-group-item">
-                                <div class="input-group">
+                                <div id="add-category" class="input-group">
                                     <input class="form-control" placeholder="Ajouter une catégorie">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-primary" type="submit">
+                                        <button class="btn btn-primary">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
@@ -93,5 +95,10 @@
 <!-- /#page-wrapper -->
 
 <?php include("Modules/footer.mod.php"); ?>
+
+<script>
+    var categories = <?php echo $categories; ?>;
+    console.log(categories);
+</script>
 
 <script type="text/javascript" src="/Libs/js/materials.js"></script>

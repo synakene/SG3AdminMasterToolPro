@@ -95,7 +95,7 @@ class Material extends DBA
             return false;
         }
 
-        $result = self::query("UPDATE `material` SET `idCustomer` = '$this->idCustomer', `name` = '$this->name', `category` = '$this->category' WHERE `material`.`id` = $this->id;");
+        $result = self::query("UPDATE `material` SET `idCustomer` = $this->idCustomer, `name` = '$this->name', `category` = '$this->category' WHERE `material`.`id` = $this->id;");
         return $result;
     }
 
@@ -155,7 +155,12 @@ class Material extends DBA
      */
     public static function getCategoriesByCustomer($idCustomer = 0)
     {
-        return self::query('SELECT DISTINCT category FROM `material` WHERE `idCustomer` = ' . $idCustomer)->fetch_all(MYSQLI_ASSOC);
+        return self::query('SELECT `category` FROM `material` WHERE `idCustomer` = ' . $idCustomer)->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public static function getNextId()
+    {
+        return intval(self::query('SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = \'material\'')->fetch_all(MYSQLI_ASSOC)[0]['auto_increment']);
     }
 
 }
