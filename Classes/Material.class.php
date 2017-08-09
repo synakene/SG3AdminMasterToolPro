@@ -69,6 +69,9 @@ class Material extends DBA
 
     //</editor-fold>
 
+
+    //<editor-fold desc="Database writers">
+
     /**
      * Check validy for database writing.
      * Always use this function before writing !
@@ -90,6 +93,12 @@ class Material extends DBA
      */
     public function save()
     {
+        $query = self::query("SELECT * FROM `material` WHERE `id` = $this->id");
+        if ($query === false || $query->num_rows == 0)
+        {
+            return self::query("INSERT INTO `material` (`id`, `idCustomer`, `name`, `category`) VALUES (NULL, $this->idCustomer, '$this->name', '$this->category');");
+        }
+
         if (!$this->checkValidity())
         {
             return false;
@@ -99,6 +108,10 @@ class Material extends DBA
         return $result;
     }
 
+    //</editor-fold>
+
+
+    //<editor-fold desc="Static database fetchers">
 
     /**
      * Fetch a materiel from its id
@@ -108,12 +121,19 @@ class Material extends DBA
     public static function getById($id)
     {
         $result = self::query("SELECT * FROM `material` WHERE `id` = $id")->fetch_all(MYSQLI_ASSOC);
+
+        if (sizeof($result) === 0)
+        {
+            return false;
+        }
+
         $material = new Material(intval($result[0]['id']), intval(($result[0]['idCustomer'])), $result[0]['name'], $result[0]['category']);
 
         if ($material->getId() !== null)
         {
             return $material;
         }
+
         return false;
     }
 
@@ -158,9 +178,15 @@ class Material extends DBA
         return self::query('SELECT `category` FROM `material` WHERE `idCustomer` = ' . $idCustomer)->fetch_all(MYSQLI_ASSOC);
     }
 
+    /**
+     * Get next id used by id sequence
+     * @return int
+     */
     public static function getNextId()
     {
         return intval(self::query('SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = \'material\'')->fetch_all(MYSQLI_ASSOC)[0]['auto_increment']);
     }
+
+    //</editor-fold>
 
 }

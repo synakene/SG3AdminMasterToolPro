@@ -74,7 +74,7 @@
                                 echo '<tr data-id=' . $material->getId() . ' data-category="'. $material->getCategory() .'" tabindex=0>';
                                 echo '<td><span data-id=' . $material->getId() . '>' . $material->getName() . '</span></td>';
                                 echo '<td><span data-id=' . $material->getId() . '>' . $material->getCategory() . '</span></td>';
-                                echo '<td><button type="button" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
+                                echo '<td><button data-id=' . $material->getId() . ' type="button" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
                                 echo '<tr>';
                             }
                             ?>
@@ -101,4 +101,4 @@
     console.log(categories);
 </script>
 
-<script type="text/javascript" src="/Libs/js/materials.js"></script>
+<script type="text/javascript" src="/Libs/js/old_materials.js"></script>

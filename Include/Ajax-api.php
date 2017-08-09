@@ -19,32 +19,45 @@ function saveData($table = '', $data = array())
 
     if ($table === '' || !is_array($data))
     {
-        return array(false, 'Erreur d\'envoi des données, veuillez contacter le webmaster.');
+        return array(0, 'Erreur d\'envoi des données, veuillez contacter le webmaster.');
     }
 
     switch ($table)
     {
         case 'material':
-            $material = Material::getById(intval($data[0]));
-
-            if ($material === false)
+            if (intval($data['id']) === 0)
             {
-                // TODO : créer le truc
-                return array(false, 'Le materiel n\'existe pas');
+                return array(0, 'ID invalide, veuillez contacter le webmaster.');
             }
 
-            $material->setName($data[1]);
-            $material->setCategory($data[2]);
+            $material = Material::getById(intval($data['id']));
+            if ($material === false)
+            {
+                // TODO id customer à custom
+                $material = new Material($data['id'], 1, $data['name'], $data['category']);
+                $win = $material->save();
+                var_dump($win);
+
+                if ($win === true)
+                {
+                    return array(true, 'Materiel crée');
+                }
+
+                return array(0, 'Données non valides, sauvegarde impossible');
+            }
+
+            $material->setName($data['name']);
+            $material->setCategory($data['category']);
 
             if ($material->save() === false)
             {
-                return array(false, 'Données non valides, sauvegarde impossible');
+                return array(0, 'Données non valides, sauvegarde impossible');
             }
 
             return array(true, 'Matériel sauvegardé');
 
         default :
-            return array(false, 'Type de donnée non reconnue, veuillez contactez votre webmaster');
+            return array(0, 'Type de donnée non reconnue, veuillez contactez votre webmaster');
     }
 }
 
@@ -52,7 +65,7 @@ function getData($table = '', $id = 0, $columns = '')
 {
     if ($table == '' || $id == 0 || $columns == '')
     {
-        return array(false, 'Erreur d\'envoi des données, veuillez contacter le webmaster.');
+        return array(0, 'Erreur d\'envoi des données, veuillez contacter le webmaster.');
     }
 
     $data = array();
@@ -64,15 +77,25 @@ function getData($table = '', $id = 0, $columns = '')
 
             if ($material === false)
             {
-                return array(false, 'Le materiel n\'existe pas');
+                return array(0, 'Le materiel n\'existe pas');
             }
             break;
 
         default:
-            return array(false, 'Type de donnée non reconnue, veuillez contactez votre webmaster');
+            return array(0, 'Type de donnée non reconnue, veuillez contactez votre webmaster');
     }
 
     return array(true, $data);
+}
+
+function deleteData($table = '', $id = 0)
+{
+    if ($table == '' || $id == 0)
+    {
+        return array(0, 'Erreur d\'envoi des données, veuillez contacter le webmaster.');
+    }
+
+    
 }
 
 if ($_POST['action'] === 'saveData')
@@ -102,11 +125,17 @@ else if ($_POST['action'] === 'getValidId')
     $id = Material::getNextId();
     if ($id === false)
     {
-        echo id;
+        echo '0';
         die;
     }
-var_dump($id);
+
     echo true . '<br>';
     echo $id;
     die;
+}
+else if ($_POST['action'] === 'deleteData')
+{
+    $table = $_POST['type'];
+    $id = $_POST['data']['id'];
+
 }
