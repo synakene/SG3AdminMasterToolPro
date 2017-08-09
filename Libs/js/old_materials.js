@@ -99,7 +99,7 @@ function changeCategoryHandlerInit() {
         {
             jQuery('#category-slider-main').text('Catégorie : Toutes');
             curCategory = "all";
-            jQuery('#category-slider-wrapper').slideToggle('fasr');
+            jQuery('#category-slider-wrapper').slideToggle('fast');
             updateMatDisplay();
         }
     });

@@ -108,6 +108,11 @@ class Material extends DBA
         return $result;
     }
 
+    public function destroy()
+    {
+        return self::query("DELETE FROM `material` WHERE `material`.`id` = $this->id");
+    }
+
     //</editor-fold>
 
 

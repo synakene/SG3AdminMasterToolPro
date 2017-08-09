@@ -33,13 +33,6 @@
                     <a href="#" class="list-group-item active" id="category-slider-main">Catégorie : Toutes</a>
                     <div id="category-slider-wrapper">
                         <div id="category-slider">
-                            <a href="#" class="list-group-item">Toutes</a>
-                            <?php
-                            foreach ($fetchedCategories as $category)
-                            {
-                                echo '<a href="#" class="list-group-item">' . $category['category'] . '</a>';
-                            }
-                            ?>
                         </div>
                         <div>
                             <a href="#" class="list-group-item">
@@ -72,9 +65,15 @@
                             foreach ($materials as $material)
                             {
                                 echo '<tr data-id=' . $material->getId() . ' data-category="'. $material->getCategory() .'" tabindex=0>';
-                                echo '<td><span data-id=' . $material->getId() . '>' . $material->getName() . '</span></td>';
-                                echo '<td><span data-id=' . $material->getId() . '>' . $material->getCategory() . '</span></td>';
-                                echo '<td><button data-id=' . $material->getId() . ' type="button" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
+                                /*echo '<td><span data-id=' . $material->getId() . '>' . $material->getName() . '</span></td>';
+                                echo '<td><span data-id=' . $material->getId() . '>' . $material->getCategory() . '</span></td>';*/
+                                    echo '<td><span class="material-name">' . $material->getName() . '</span></td>';
+                                    echo '<td><span class="material-category">' . $material->getCategory() . '</span></td>';
+                                    echo '<td>';
+                                        echo '<button class="btn btn-sm btn-primary faa-parent animated-hover modify"><i class="fa fa-wrench faa-wrench"></i></button>';
+                                        echo '<button class="btn btn-sm btn-success faa-parent animated-hover validate" style="display: none"><i class="fa fa-check faa-pulse"></i></button>';
+                                        echo '<button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button>';
+                                    echo '</td>';
                                 echo '<tr>';
                             }
                             ?>
@@ -98,7 +97,6 @@
 
 <script>
     var categories = <?php echo $categories; ?>;
-    console.log(categories);
 </script>
 
-<script type="text/javascript" src="/Libs/js/old_materials.js"></script>
+<script type="text/javascript" src="/Libs/js/materials.js"></script>

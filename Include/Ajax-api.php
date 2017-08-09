@@ -36,7 +36,6 @@ function saveData($table = '', $data = array())
                 // TODO id customer à custom
                 $material = new Material($data['id'], 1, $data['name'], $data['category']);
                 $win = $material->save();
-                var_dump($win);
 
                 if ($win === true)
                 {
@@ -95,7 +94,7 @@ function deleteData($table = '', $id = 0)
         return array(0, 'Erreur d\'envoi des données, veuillez contacter le webmaster.');
     }
 
-    
+
 }
 
 if ($_POST['action'] === 'saveData')
@@ -138,4 +137,17 @@ else if ($_POST['action'] === 'deleteData')
     $table = $_POST['type'];
     $id = $_POST['data']['id'];
 
+    $dummy = new Material($id, 1, ' ', ' ');
+    $win = $dummy->destroy();
+    if ($win === true)
+    {
+        echo 1 . '<br>';
+        echo 'Materiel supprimé';
+    }
+    else
+    {
+        echo -1 . '<br>';
+        echo 'Impossible de supprimer le matériel. Contacter le webmaster.';
+    }
+    die;
 }
