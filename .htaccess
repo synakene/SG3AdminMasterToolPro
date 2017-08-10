@@ -1,0 +1,5 @@
+dfqdsfs
+RewriteEngine On
+
+RewriteRule ^home$ /include/Index.inc.php
+

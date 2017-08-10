@@ -180,7 +180,7 @@ class Material extends DBA
      */
     public static function getCategoriesByCustomer($idCustomer = 0)
     {
-        return self::query('SELECT `category` FROM `material` WHERE `idCustomer` = ' . $idCustomer)->fetch_all(MYSQLI_ASSOC);
+        return self::query('SELECT DISTINCT `category` FROM `material` WHERE `idCustomer` = ' . $idCustomer)->fetch_all(MYSQLI_ASSOC);
     }
 
     /**

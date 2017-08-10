@@ -1,25 +1,29 @@
 curCategory = 'all';
 
-function displayCategories()
+
+function refreshCategoriesInteractions()
 {
-    var html = '<a href="#" class="list-group-item">Toutes</a>';
-
-    categories.forEach(function (category) {
-        if (category !== '')
+    jQuery('#category-slider a').off('click');
+    jQuery('#category-slider a').on('click', function(){
+        var cat = '';
+        if (categories.indexOf(this.text) !== -1)
         {
-            html += '<a href="#" class="list-group-item">' + category + '</a>';
+            cat = this.text;
         }
-        /*else
+        else if (this.text === "Toutes")
         {
-            categories = categories.splice(categories.indexOf(category), 1);
-        }*/
-    });
+            cat = "all"
+        }
+        else
+        {
+            return;
+        }
 
-    jQuery('#category-slider').html(html);
-    jQuery('#category-slider a').each(function(){
-        jQuery(this).on('click', function(){
-            jQuery(this).displayMaterials(jQuery(this).text());
-        })
+        jQuery('#category-slider-main').text('Catégorie : ' + cat);
+        curCategory = cat;
+        jQuery('#category-slider-wrapper').slideToggle('fast');
+        updateMatDisplay();
+        updateMatInteraction();
     });
 }
 
@@ -79,6 +83,37 @@ function createSpan(id)
 }
 
 
+function validate(jQueryTR)
+{
+    var sendData = {'id':jQuery(jQueryTR).attr('data-id'), 'name':jQuery(jQueryTR).find('.material-name').val(), 'category':jQuery(jQueryTR).find('.material-category').val()};
+
+    jQuery.ajax({
+        method: 'POST',
+        url: 'ajax-api.php',
+        data: {
+            action: "saveData",
+            type: "material",
+            data: sendData
+        }
+    })
+        .done(function(data){
+            data = data.split('<br>');
+            if (data[0] === '1')
+            {
+                notify('success', data[1]);
+                createSpan(jQuery(jQueryTR).attr('data-id'));
+                jQuery(jQueryTR).attr('data-category', sendData['category']);
+                jQuery(jQueryTR).find('.modify').show();
+                jQuery(jQueryTR).find('.validate').hide();
+            }
+            else
+            {
+                notify('danger', data[1]);
+            }
+        });
+}
+
+
 function updateMatInteraction()
 {
     jQuery('#materials-list tr[data-category]').each(function(){
@@ -104,39 +139,7 @@ function updateMatInteraction()
             // TODO tout valider
             jQuery(this).find('.validate').off();
             jQuery(this).find('.validate').on('click', function(){
-                var data = {'id':jQuery(that).attr('data-id'), 'name':jQuery(that).find('.material-name').val(), 'category':jQuery(that).find('.material-category').val()};
-                console.log(data);
-
-                if (categories.indexOf(category) === -1)
-                {
-                    // TODO update categories
-                    console.log('new category');
-                    categories.push(category);
-                }
-
-                jQuery.ajax({
-                    method: 'POST',
-                    url: 'ajax-api.php',
-                    data: {
-                        action: "saveData",
-                        type: "material",
-                        data: data
-                    }
-                })
-                    .done(function(data){
-                        data = data.split('<br>');
-                        if (data[0] === '1')
-                        {
-                            notify('success', data[1]);
-                            createSpan(jQuery(that).attr('data-id'));
-                            jQuery(that).find('.modify').show();
-                            jQuery(that).find('.validate').hide();
-                        }
-                        else
-                        {
-                            notify('danger', data[1]);
-                        }
-                    });
+                validate(that)
             });
 
             jQuery(this).find('.delete').off();
@@ -171,7 +174,6 @@ function updateMatInteraction()
 
 function addMaterial()
 {
-    console.log('hi');
     jQuery.ajax({
         method: 'POST',
         url: 'ajax-api.php',
@@ -186,7 +188,6 @@ function addMaterial()
             if (data[0] === '1')
             {
                 var id = data[1];
-                console.log(id);
                 var html = '<tr data-id = ' + id + ' data-category="" tabindex=0>' +
                     '<td><span class="material-name"></span></td>' +
                     '<td><span class="material-category"></span></td>' +
@@ -199,36 +200,35 @@ function addMaterial()
                 jQuery('#materials-list').append(html);
                 updateMatDisplay();
                 updateMatInteraction();
+
+                jQuery('#materials-list tr[data-id=' + id + '] .modify').click()
             }
         });
 }
 
 
-function refreshCategoriesInteractions() {
-    jQuery('#category-slider a').off('click');
-    jQuery('#category-slider a').on('click', function(){
-        var cat = '';
-        if (categories.indexOf(this.text) !== -1)
-        {
-            cat = this.text;
-        }
-        else if (this.text === "Toutes")
-        {
-            cat = "all"
-        }
-        else
-        {
-            return;
-        }
+function displayCategories()
+{
+    var html = '<a href="#" class="list-group-item">Toutes</a>';
 
-        jQuery('#category-slider-main').text('Catégorie : ' + cat);
-        curCategory = cat;
-        jQuery('#category-slider-wrapper').slideToggle('fast');
-        updateMatDisplay();
-        updateMatInteraction();
+    categories.forEach(function (category) {
+        if (category !== '')
+        {
+            html += '<a href="#" class="list-group-item">' + category + '</a>';
+        }
+        /*else
+        {
+            categories = categories.splice(categories.indexOf(category), 1);
+        }*/
+    });
+
+    jQuery('#category-slider').html(html);
+    jQuery('#category-slider a').each(function(){
+        jQuery(this).on('click', function(){
+            jQuery(this).displayMaterials(jQuery(this).text());
+        })
     });
 }
-
 
 // Categories interaction
 displayCategories();
@@ -261,4 +261,12 @@ updateMatInteraction();
 
 
 // Buttons
-jQuery('#button-add').on('click', function(){ addMaterial() });
+jQuery('.button-add').on('click', function(){ addMaterial() });
+jQuery('.button-save-all').on('click', function(){
+    jQuery('#materials-list tr[data-id]').each(function(){
+        if (jQuery(this).find('.modify').css('display') === 'none')
+        {
+            validate(this);
+        }
+    })
+});

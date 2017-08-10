@@ -17,11 +17,15 @@ function __autoload($class_name = '')
 
 include('Config.php');
 
-session_start();
-/*if (isset($_SESSION['mail']) === false)
+if (!isset($_SESSION))
 {
-    header('');
-    die("pas connecté");
-}*/
+    session_start();
+}
 
 DBA::setDba();
+
+if (isset($_SESSION['mail']) === false)
+{
+    header('/login.tpl.php');
+    die("pas connecté");
+}
