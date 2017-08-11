@@ -17,7 +17,7 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-flag"></i>  <a href="index.html">Accueil</a>
+                            <i class="fa fa-flag"></i>  <a href="/accueil">Accueil</a>
                         </li>
                         <li class="active">
                             <i class="fa fa-wrench"></i> Materiel

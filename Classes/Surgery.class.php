@@ -20,7 +20,7 @@ class Surgery extends DBA
 
     public static function getAllByCustomer($customerID)
     {
-        $surgeries = self::query('SELECT * FROM `surgery` WHERE `idCustomer` = ' . $customerID);
+        $surgeries = self::query("SELECT * FROM `surgery` WHERE `idCustomer` =  . $customerID");
 
         if ($surgeries === false)
         {
@@ -29,9 +29,9 @@ class Surgery extends DBA
 
         $surgeries_with_infos = array();
 
-        foreach ($surgeries as $surgery)
+        /*foreach ($surgeries as $surgery)
         {
             $materials = self::query('');
-        }
+        }*/
     }
 }

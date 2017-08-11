@@ -7,6 +7,7 @@
                 <h3 class="panel-title">Connexion requise</h3>
             </div>
             <div class="panel-body">
+                <?php session_start(); if(isset($_SESSION['error'])){ echo '<div class="alert alert-danger">' . $_SESSION['error'] . '</div>'; } ?>
                 <form action="/Include/Connect.php" method="post">
                     <fieldset>
                         <div class="form-group">

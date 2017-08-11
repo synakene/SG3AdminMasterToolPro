@@ -22,19 +22,19 @@ function saveData($table = '', $data = array())
         return array(0, 'Erreur d\'envoi des données, veuillez contacter le webmaster.');
     }
 
+    if (intval($data['id']) === 0)
+    {
+        return array(0, 'ID invalide, veuillez contacter le webmaster.');
+    }
+
     switch ($table)
     {
         case 'material':
-            if (intval($data['id']) === 0)
-            {
-                return array(0, 'ID invalide, veuillez contacter le webmaster.');
-            }
 
             $material = Material::getById(intval($data['id']));
             if ($material === false)
             {
-                // TODO id customer à custom
-                $material = new Material($data['id'], 1, $data['name'], $data['category']);
+                $material = new Material($data['id'], $_SESSION['id'], $data['name'], $data['category']);
                 $win = $material->save();
 
                 if ($win === true)
@@ -42,7 +42,7 @@ function saveData($table = '', $data = array())
                     return array(true, 'Materiel crée');
                 }
 
-                return array(0, 'Données non valides, sauvegarde impossible');
+                return array(0, 'Données non valides, sauvegarde impossible du nouveau matériel');
             }
 
             $material->setName($data['name']);
@@ -54,6 +54,27 @@ function saveData($table = '', $data = array())
             }
 
             return array(true, 'Matériel sauvegardé');
+
+        case 'question':
+            $question = Question::getById($data['id']);
+            if ($question === false)
+            {
+                $question = new Question($data['id'], $_SESSION['id'], $data['name'], $data['answer']);
+                if ($question->save())
+                {
+                    return array(true, 'Question créée');
+                }
+
+                return array(0, 'Données non valides, sauvegarde impossible de la nouvelle question');
+            }
+            $question->setName($data['name']);
+            $question->setAnswer($data['answer']);
+
+            if ($question->save() === false)
+            {
+                return array(0, 'Données non valides, sauvegarde impossible');
+            }
+            return array(true, 'Question sauvegardée');
 
         default :
             return array(0, 'Type de donnée non reconnue, veuillez contactez votre webmaster');
@@ -121,7 +142,16 @@ else if ($_POST['action'] === 'getData')
 }
 else if ($_POST['action'] === 'getValidId')
 {
-    $id = Material::getNextId();
+    switch ($_POST['type'])
+    {
+        case 'material':
+            $id = Material::getNextId();
+            break;
+        case 'question':
+            $id = Question::getNextId();
+            break;
+    }
+
     if ($id === false)
     {
         echo '0';

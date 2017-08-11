@@ -1,5 +1,11 @@
-dfqdsfs
+
 RewriteEngine On
 
-RewriteRule ^home$ /include/Index.inc.php
+RewriteRule ^accueil$ /include/Index.inc.php
+RewriteRule ^chirurgies$ /include/Surgeries.inc.php
+RewriteRule ^patients$ /include/Patients.inc.php
+RewriteRule ^materiel$ /include/Materials.inc.php
+RewriteRule ^questions$ /include/Questions.inc.php
 
+RewriteRule ^login$ /template/login.tpl.php
+RewriteRule ^disconnect$ /include/disconnect.php

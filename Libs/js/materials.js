@@ -89,7 +89,7 @@ function validate(jQueryTR)
 
     jQuery.ajax({
         method: 'POST',
-        url: 'ajax-api.php',
+        url: '/include/ajax-api.php',
         data: {
             action: "saveData",
             type: "material",
@@ -136,7 +136,6 @@ function updateMatInteraction()
             });
 
             // Validate interaction
-            // TODO tout valider
             jQuery(this).find('.validate').off();
             jQuery(this).find('.validate').on('click', function(){
                 validate(that)
@@ -147,7 +146,7 @@ function updateMatInteraction()
                 var data = {'id': jQuery(that).attr('data-id')};
                 jQuery.ajax({
                     method: 'POST',
-                    url: 'ajax-api.php',
+                    url: '/include/ajax-api.php',
                     data: {
                         action: "deleteData",
                         type: "material",
@@ -176,7 +175,7 @@ function addMaterial()
 {
     jQuery.ajax({
         method: 'POST',
-        url: 'ajax-api.php',
+        url: '/include/ajax-api.php',
         data: {
             action: "getValidId",
             type: "material"

@@ -4,6 +4,8 @@
 
 <?php include("Modules/nav.mod.php"); ?>
 
+<div id="wrapper">
+
     <div id="page-wrapper">
 
         <div class="container-fluid">
@@ -271,5 +273,7 @@
 
     </div>
     <!-- /#page-wrapper -->
+
+</div>
 
 <?php include("Modules/footer.mod.php"); ?>

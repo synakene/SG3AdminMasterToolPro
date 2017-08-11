@@ -8,11 +8,6 @@
 
 include('Initializer.php');
 
-$surgeries = Surgery::getAllByCustomer(1);
-foreach ($surgeries as $surgery)
-{
-    var_dump($surgery);
-}
-die;
+$questions = Question::getAllByCustomer($_SESSION['id']);
 
-include ($_SERVER['DOCUMENT_ROOT'] . "/Template/Surgeries.tpl.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/Template/Questions.tpl.php");

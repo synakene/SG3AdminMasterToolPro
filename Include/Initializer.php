@@ -26,6 +26,6 @@ DBA::setDba();
 
 if (isset($_SESSION['mail']) === false)
 {
-    header('/login.tpl.php');
-    die("pas connecté");
+    header('Location:/login');
 }
+$name = $_SESSION['mail'];

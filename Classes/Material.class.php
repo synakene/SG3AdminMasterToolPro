@@ -93,21 +93,25 @@ class Material extends DBA
      */
     public function save()
     {
+        if (!$this->checkValidity())
+        {
+            return false;
+        }
+
         $query = self::query("SELECT * FROM `material` WHERE `id` = $this->id");
         if ($query === false || $query->num_rows == 0)
         {
             return self::query("INSERT INTO `material` (`id`, `idCustomer`, `name`, `category`) VALUES (NULL, $this->idCustomer, '$this->name', '$this->category');");
         }
 
-        if (!$this->checkValidity())
-        {
-            return false;
-        }
-
         $result = self::query("UPDATE `material` SET `idCustomer` = $this->idCustomer, `name` = '$this->name', `category` = '$this->category' WHERE `material`.`id` = $this->id;");
         return $result;
     }
 
+    /**
+     * Destroy
+     * @return mixed
+     */
     public function destroy()
     {
         return self::query("DELETE FROM `material` WHERE `material`.`id` = $this->id");
