@@ -12,7 +12,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a href="index.inc.php" class="navbar-brand" id ="toggle-menu">SG3 Admin Mastertool Pro</a>
+        <a href="/accueil" class="navbar-brand" id ="toggle-menu">SG3 Admin Mastertool Pro</a>
     </div>
 
     <!-- Top Menu Items -->

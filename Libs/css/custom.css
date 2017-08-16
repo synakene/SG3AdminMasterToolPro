@@ -8,6 +8,11 @@
     background-color: #D2D2D2;
 }
 
+.list-well
+{
+    overflow-x: scroll;
+}
+
 #notifications
 {
     top: 60px;

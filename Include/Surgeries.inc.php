@@ -9,10 +9,7 @@
 include('Initializer.php');
 
 $surgeries = Surgery::getAllByCustomer(1);
-foreach ($surgeries as $surgery)
-{
-    var_dump($surgery);
-}
-die;
+$surgeriesJson = json_encode($surgeries, JSON_UNESCAPED_UNICODE);
+
 
 include ($_SERVER['DOCUMENT_ROOT'] . "/Template/Surgeries.tpl.php");

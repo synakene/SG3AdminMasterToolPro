@@ -59,7 +59,7 @@
 
                 <!-- Material list -->
                 <div class="col-xs-12">
-                    <div class="well">
+                    <div class="well list-well">
                         <h3>Liste des matériels :</h3><br>
                         <table class="table table-hover">
                             <thead>

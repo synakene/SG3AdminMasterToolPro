@@ -13,14 +13,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Materiel
+                        Chirurgies
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-flag"></i>  <a href="/accueil">Questions</a>
+                            <i class="fa fa-flag"></i>  <a href="/accueil">Accueil</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-question"></i> Materiel
+                            <i class="fa fa-question"></i> Chirurgies
                         </li>
                     </ol>
                 </div>
@@ -36,7 +36,7 @@
 
                 <!-- Material list -->
                 <div class="col-xs-12">
-                    <div class="well">
+                    <div class="well list-well">
                         <h3>Liste des matériels :</h3><br>
                         <table class="table table-hover">
                             <thead>
