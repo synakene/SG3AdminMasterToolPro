@@ -32,6 +32,11 @@ class DBA
         }
     }
 
+    /**
+     * Used for all connections to database
+     * @param $query
+     * @return mixed
+     */
     public static function query($query)
     {
         return self::$dba->query($query);

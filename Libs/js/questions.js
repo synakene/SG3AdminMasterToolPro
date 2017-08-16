@@ -76,12 +76,13 @@ function updateQuestionsInteraction()
         jQuery(this).find('.delete').off();
         jQuery(this).find('.delete').on('click', function(){
             var data = {'id': jQuery(that).attr('data-id')};
+            console.log(data);
             jQuery.ajax({
                 method: 'POST',
-                url: 'ajax-api.php',
+                url: 'include/ajax-api.php',
                 data: {
                     action: "deleteData",
-                    type: "material",
+                    type: "question",
                     data: data
                 }
             })
@@ -146,10 +147,11 @@ updateQuestionsInteraction();
 // Buttons
 jQuery('.button-add').on('click', function(){ addQuestion() });
 jQuery('.button-save-all').on('click', function(){
-    jQuery('#materials-list tr[data-id]').each(function(){
+    jQuery('#questions-list tr[data-id]').each(function(){
+        var id = jQuery(this).attr('data-id');
         if (jQuery(this).find('.modify').css('display') === 'none')
         {
-            validate(this);
+            validate(id);
         }
     })
 });

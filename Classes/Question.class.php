@@ -97,9 +97,14 @@ class Question extends DBA
      * Always use this function before writing !
      * @return bool
      */
-    public function checkValidity()
+    public function checkValidity($checkId = true)
     {
-        if ($this->id === 0 || $this->idCustomer === 0|| $this->name === '' || $this->answer === '')
+        if ($checkId === true && $this->id === 0)
+        {
+            return false;
+        }
+
+        if ($this->idCustomer === 0|| $this->name === '' || $this->answer === '')
         {
             return false;
         }
@@ -114,17 +119,22 @@ class Question extends DBA
     public function save()
     {
         $query = self::query("SELECT * FROM `questions` WHERE `id` = $this->id");
-        if ($query->num_rows === 0)
-        {
-            $q = self::query("INSERT INTO `questions` (`id`, `idCustomer`, `name`, `answer`) VALUES (NULL, $this->idCustomer, '$this->name', '$this->answer');");
-        }
 
-        if (!$this->checkValidity())
+        $name = str_replace("'", "\'", $this->name);
+        $answer = str_replace("'", "\'", $this->answer);
+
+        if ($query->num_rows === 0 && $this->checkValidity(false))
+        {
+            return self::query("INSERT INTO `questions` (`id`, `idCustomer`, `name`, `answer`) VALUES (NULL, $this->idCustomer, '$name', '$answer');");
+        }
+        else if ($query->num_rows === 1 && $this->checkValidity())
+        {
+            return self::query("UPDATE `questions` SET `idCustomer` = $this->idCustomer, `name` = '$name', `answer` = '$answer' WHERE `questions`.`id` = $this->id;");
+        }
+        else
         {
             return false;
         }
-
-        return self::query("UPDATE `questions` SET `idCustomer` = $this->idCustomer, `name` = '$this->name', `answer` = '$this->answer' WHERE `questions`.`id` = $this->id;");
     }
 
     /**
@@ -133,7 +143,7 @@ class Question extends DBA
      */
     public function destroy()
     {
-        return self::query("DELETE FROM `material` WHERE `material`.`id` = $this->id");
+        return self::query("DELETE FROM `questions` WHERE `questions`.`id` = $this->id");
     }
 
     //</editor-fold>
