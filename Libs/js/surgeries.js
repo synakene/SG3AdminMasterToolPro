@@ -1,41 +1,48 @@
+function initData()
+{
+    var chir_with_index = [];
+    surgeries.forEach(function(surgery){
+        chir_with_index[surgery['id']] = surgery;
+    });
+    surgeries = chir_with_index;
+
+    var mat_with_index = [];
+    materials.forEach(function(material){
+        mat_with_index[material['id']] = material;
+    });
+    materials = mat_with_index;
+}
+
+
 function displaySurgery(id) {
     var select = '#surgeries-list tr[data-id=' + id + ']';
 
     if (jQuery(select).length === 0) {
 
+        var htmlMaterials = '';
+        surgeries[id]['materials'].forEach(function(materialId){
+            htmlMaterials += '<span class="well well-sm">' + materials[materialId]['name'] + '</span>';
+        });
+
         var html =
             '<tr data-id=1>\n' +
-            '<td><span class="surgery-name">' + surgeries[id]['name'] + '</span></td>\n' +
-            '<td><span class="surgery-story">' + surgeries[id]['story'] + '</span></td>\n' +
-            '<td><span class="surgery-materials">' + /*surgeries[id]['materials']*/ + '</span></td>\n' +
-            '<td><span class="surgery-responses">' + /*surgeries[id]['responses']*/ + '</span></td>\n' +
-            '<td><span class="surgery-compatibles">' + /*surgeries[id]['compatibles']*/ + '</span></td>\n' +
-            '<td><span class="surgery-emergency"><input ' + 'disabled' /* TODO condition */ + ' type="checkbox"></span></td>\n' +
+                '<td><span class="surgery-name">' + surgeries[id]['name'] + '</span></td>\n' +
+                '<td><span class="surgery-story">' + surgeries[id]['story'] + '</span></td>\n' +
+                '<td><span class="surgery-materials">' + htmlMaterials + '</span></td>\n' +
+                '<td><span class="surgery-responses">' + surgeries[id]['responses'] + '</span></td>\n' +
+                '<td><span class="surgery-compatibles">' + surgeries[id]['compatibles'] + '</span></td>\n' +
+                '<td><span class="surgery-emergency"><input type="checkbox" disabled ' + (surgeries[id]['emergency'] === true ? 'checked' : '') + '></span></td>\n' +
 
-            '<td>\n' +
-            '<button class="btn btn-sm btn-primary faa-parent animated-hover modify"><i class="fa fa-wrench fa-fw faa-wrench"></i></button>\n' +
-            '<button class="btn btn-sm btn-success faa-parent animated-hover validate" style="display: none"><i class="fa fa-check fa-fw faa-pulse"></i></button>\n' +
-            '<button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times fa-fw faa-flash"></i></button>\n' +
-            '</td>\n' +
+                '<td>\n' +
+                    '<a class="btn btn-sm btn-primary faa-parent animated-hover modify" href="/chirurgies/' + id + '"><i class="fa fa-wrench fa-fw faa-wrench"></i></a>\n' +
+                    '<button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times fa-fw faa-flash"></i></button>\n' +
+                '</td>\n' +
             '<tr>';
 
+        console.log(html);
         jQuery('#surgeries-list').append(html);
 
-        /*// Modify interaction
-        jQuery(select).find('.modify').off();
-        jQuery(select).find('.modify').on('click', function () {
-            jQuery(select).find('.modify').hide();
-            jQuery(select).find('.validate').show();
-            createInput(id);
-        });
-
-        // Validate interaction
-        jQuery(select).find('.validate').off();
-        jQuery(select).find('.validate').on('click', function () {
-            validate(jQuery(select).attr('data-id'));
-        });
-
-        jQuery(this).find('.delete').off();
+        /*jQuery(this).find('.delete').off();
         jQuery(this).find('.delete').on('click', function () {
             var data = {'id': jQuery(select).attr('data-id')};
             console.log(data);
@@ -44,7 +51,7 @@ function displaySurgery(id) {
                 url: 'include/ajax-api.php',
                 data: {
                     action: "deleteData",
-                    type: "question",
+                    type: "surgery",
                     data: data
                 }
             })
@@ -62,12 +69,7 @@ function displaySurgery(id) {
     }
 }
 
-
-var chir_with_index = [];
-surgeries.forEach(function(surgery){
-    chir_with_index[surgery['id']] = surgery;
-});
-surgeries = chir_with_index;
+initData();
 
 surgeries.forEach(function(surgery){
     displaySurgery(surgery['id']);

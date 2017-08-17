@@ -30,3 +30,15 @@
     color: white;
     z-index: 3;
 }
+
+.slider .btn
+{
+    bottom: 3px;
+    top: 3px;
+}
+
+.list-group .btn
+{
+    position: absolute;
+    right: 10px;
+}

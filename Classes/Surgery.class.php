@@ -192,6 +192,8 @@ class Surgery extends DBA implements JsonSerializable
 
     //</editor-fold>
 
+    //<editor-fold desc="Utilities">
+
     /**
      * Specify data which should be serialized to JSON
      * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
@@ -213,14 +215,18 @@ class Surgery extends DBA implements JsonSerializable
         ];
     }
 
+    //</editor-fold>
+
+    //<editor-fold desc="Static database fetchers">
+
     /**
      * Get all surgeries with a defined customer id
      * @param $customerID
      * @return array|bool
      */
-    public static function getAllByCustomer($customerID)
+    public static function getAllByCustomer($customerID = 0)
     {
-        $surgeries = self::query("SELECT * FROM `surgery` WHERE `idCustomer` = $customerID")->fetch_all(MYSQLI_ASSOC);
+        $surgeries = self::query("SELECT `id` FROM `surgery` WHERE `idCustomer` = $customerID")->fetch_all(MYSQLI_ASSOC);
 
         if ($surgeries === false)
         {
@@ -231,40 +237,55 @@ class Surgery extends DBA implements JsonSerializable
 
         foreach ($surgeries as $surgery)
         {
-            $new_surgery = new Surgery();
-            $new_surgery->setId(intval($surgery['id']));
-            $new_surgery->setIdCustomer(intval($surgery['idCustomer']));
-            $new_surgery->setName($surgery['name']);
-            $new_surgery->setEmergency($surgery['emergency'] === '1' ? true : false);
-            $new_surgery->setStory($surgery['story']);
-
-            $materials = self::query("SELECT `idMaterial` FROM `material_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $new_surgery->id")->fetch_all(MYSQLI_ASSOC);
-            $mat_array = array();
-            foreach ($materials as $material)
-            {
-                array_push($mat_array, (int) $material['idMaterial']);
-            }
-            $new_surgery->setMaterials($mat_array);
-
-            $questions = self::query("SELECT `idQuestion` FROM `questions_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $new_surgery->id")->fetch_all(MYSQLI_ASSOC);
-            $questions_array = array();
-            foreach ($questions as $question)
-            {
-                array_push($questions_array, (int) $question['idQuestion']);
-            }
-            $new_surgery->setResponses($questions_array);
-
-            $patients = self::query("SELECT `idPatient` FROM `patient_liaison` WHERE `idSurgery` = 1")->fetch_all(MYSQLI_ASSOC);
-            $patients_array = array();
-            foreach ($patients as $patient)
-            {
-                array_push($patients_array, (int) $patient['idPatient']);
-            }
-            $new_surgery->setCompatibles($patients_array);
-
+            $new_surgery = self::getById($surgery['id']);
             array_push($surgeries_with_infos, $new_surgery);
         }
 
         return $surgeries_with_infos;
     }
+
+    public static function getById($id = 0)
+    {
+        $surgery = self::query("SELECT * FROM `surgery` WHERE `id` = $id")->fetch_array(MYSQLI_ASSOC);
+
+        if ($surgery === null || $surgery === false)
+        {
+            return false;
+        }
+
+        $new_surgery = new Surgery();
+        $new_surgery->setId(intval($surgery['id']));
+        $new_surgery->setIdCustomer(intval($surgery['idCustomer']));
+        $new_surgery->setName($surgery['name']);
+        $new_surgery->setEmergency($surgery['emergency'] === '1' ? true : false);
+        $new_surgery->setStory($surgery['story']);
+
+        $materials = self::query("SELECT `idMaterial` FROM `material_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $new_surgery->id")->fetch_all(MYSQLI_ASSOC);
+        $mat_array = array();
+        foreach ($materials as $material)
+        {
+            array_push($mat_array, (int) $material['idMaterial']);
+        }
+        $new_surgery->setMaterials($mat_array);
+
+        $questions = self::query("SELECT `idQuestion` FROM `questions_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $new_surgery->id")->fetch_all(MYSQLI_ASSOC);
+        $questions_array = array();
+        foreach ($questions as $question)
+        {
+            array_push($questions_array, (int) $question['idQuestion']);
+        }
+        $new_surgery->setResponses($questions_array);
+
+        $patients = self::query("SELECT `idPatient` FROM `patient_liaison` WHERE `idSurgery` = 1")->fetch_all(MYSQLI_ASSOC);
+        $patients_array = array();
+        foreach ($patients as $patient)
+        {
+            array_push($patients_array, (int) $patient['idPatient']);
+        }
+        $new_surgery->setCompatibles($patients_array);
+
+        return $new_surgery;
+    }
+
+    //</editor-fold>
 }

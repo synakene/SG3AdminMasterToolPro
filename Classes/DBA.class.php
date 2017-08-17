@@ -39,6 +39,14 @@ class DBA
      */
     public static function query($query)
     {
+        /*$valid = self::$dba->query($query);
+        if ($valid === false)
+        {
+            echo 'Requête invalide : \n';
+            echo $query;
+            die;
+        }
+        return $valid;*/
         return self::$dba->query($query);
     }
 }

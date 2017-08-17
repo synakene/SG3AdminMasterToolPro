@@ -13,14 +13,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Chirurgies
+                        Questions
                     </h1>
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-flag"></i>  <a href="/accueil">Accueil</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-question"></i> Chirurgies
+                            <i class="fa fa-question"></i> Questions
                         </li>
                     </ol>
                 </div>

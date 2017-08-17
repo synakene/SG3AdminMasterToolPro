@@ -8,8 +8,10 @@
 
 include('Initializer.php');
 
-$surgeries = Surgery::getAllByCustomer(1);
+$surgeries = Surgery::getAllByCustomer($_SESSION['id']);
 $surgeriesJson = json_encode($surgeries, JSON_UNESCAPED_UNICODE);
 
+$materials = Material::getAllByCustomer($_SESSION['id']);
+$materialsJson = json_encode($materials, JSON_UNESCAPED_UNICODE);
 
 include ($_SERVER['DOCUMENT_ROOT'] . "/Template/Surgeries.tpl.php");

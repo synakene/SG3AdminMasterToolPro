@@ -6,7 +6,7 @@
  * Time: 17:45
  */
 
-class Question extends DBA
+class Question extends DBA implements JsonSerializable
 {
     private $id;
     private $idCustomer;
@@ -90,6 +90,28 @@ class Question extends DBA
     //</editor-fold>
 
 
+    //<editor-fold desc="Utilities">
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'idCustomer' => $this->idCustomer,
+            'name' => $this->name,
+            'answer' => $this->answer,
+        ];
+    }
+
+    //</editor-fold>
+
+
     //<editor-fold desc="Database writers">
 
     /**
@@ -149,7 +171,7 @@ class Question extends DBA
     //</editor-fold>
 
 
-    //<editor-fold desc="Fetchers">
+    //<editor-fold desc="Static database fetchers">
 
     /**
      * Return a question by id

@@ -5,7 +5,7 @@
  * Time: 17:45
  */
 
-class Material extends DBA
+class Material extends DBA implements JsonSerializable
 {
     private $id;
     private $idCustomer;
@@ -65,6 +65,28 @@ class Material extends DBA
     public function setCategory($category)
     {
         $this->category = $category;
+    }
+
+    //</editor-fold>
+
+
+    //<editor-fold desc="Utilities">
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'idCustomer' => $this->idCustomer,
+            'name' => $this->name,
+            'category' => $this->category,
+        ];
     }
 
     //</editor-fold>
@@ -197,5 +219,4 @@ class Material extends DBA
     }
 
     //</editor-fold>
-
 }

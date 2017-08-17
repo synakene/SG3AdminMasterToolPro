@@ -2,18 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa605fb3-5f6f-4a2e-b10f-33bb8f554c2b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/php.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Libs/js/surgeries.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Template/index-rtl.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/7ae7a568-f9e0-42a3-a5c9-d98d31537a56.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/7ae7a568-f9e0-42a3-a5c9-d98d31537a56.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Lebreton.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Lebreton.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Include/Surgery.inc.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Libs/js/surgery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Template/surgery.tpl.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.htaccess" afterPath="$PROJECT_DIR$/.htaccess" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/DBA.class.php" afterPath="$PROJECT_DIR$/Classes/DBA.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/Material.class.php" afterPath="$PROJECT_DIR$/Classes/Material.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/Question.class.php" afterPath="$PROJECT_DIR$/Classes/Question.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/Surgery.class.php" afterPath="$PROJECT_DIR$/Classes/Surgery.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Include/Surgeries.inc.php" afterPath="$PROJECT_DIR$/Include/Surgeries.inc.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Libs/css/custom.css" afterPath="$PROJECT_DIR$/Libs/css/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Template/Modules/nav.mod.php" afterPath="$PROJECT_DIR$/Template/Modules/nav.mod.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Template/materials.tpl.php" afterPath="$PROJECT_DIR$/Template/materials.tpl.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Libs/js/surgeries.js" afterPath="$PROJECT_DIR$/Libs/js/surgeries.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Template/questions.tpl.php" afterPath="$PROJECT_DIR$/Template/questions.tpl.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Template/surgeries.tpl.php" afterPath="$PROJECT_DIR$/Template/surgeries.tpl.php" />
     </list>
@@ -47,51 +47,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="surgeries.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="surgeries.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Libs/js/surgeries.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="91" lean-forward="false" selection-start-line="12" selection-start-column="91" selection-end-line="12" selection-end-column="91" />
+            <state relative-caret-position="221">
+              <caret line="13" column="1" lean-forward="false" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
               <folding>
-                <marker date="1502898856743" expanded="true" signature="1078:1091" ph="..." />
-                <marker date="1502898856743" expanded="false" signature="2115:2360" ph="{&quot;method&quot;: 'POST'...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="questions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Libs/js/questions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="99" column="19" lean-forward="true" selection-start-line="75" selection-start-column="8" selection-end-line="99" selection-end-column="19" />
-              <folding>
-                <element signature="n#!!block;n#addQuestion#0" expanded="false" />
-                <marker date="1502875431061" expanded="true" signature="4443:4456" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Surgeries.inc.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Include/Surgeries.inc.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="surgeries.tpl.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Template/surgeries.tpl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-              <folding>
-                <element signature="e#1863#2908#0#PHP" expanded="true" />
-                <element signature="n#style#0;n#button#1;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1502898433819" expanded="true" signature="2564:2577" ph="..." />
+                <marker date="1502982892211" expanded="false" signature="2114:2358" ph="{&quot;method&quot;: 'POST'...}" />
               </folding>
             </state>
           </provider>
@@ -100,23 +62,108 @@
       <file leaf-file-name="Surgery.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Classes/Surgery.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="212" column="10" lean-forward="true" selection-start-line="212" selection-start-column="10" selection-end-line="212" selection-end-column="10" />
+            <state relative-caret-position="349">
+              <caret line="45" column="20" lean-forward="false" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
               <folding>
-                <element signature="e#380#410#0#PHP" expanded="false" />
-                <element signature="e#4071#4186#0#PHP" expanded="false" />
-                <element signature="n#getAllByCustomer#0;n#Surgery#0;n#!!top" expanded="false" />
-                <marker date="1502895743735" expanded="true" signature="4284:4328" ph="SELECT * FRO... surgery" />
-                <marker date="1502895743735" expanded="true" signature="4284:4329" ph="SELECT * FRO... surgery" />
-                <marker date="1502895743735" expanded="true" signature="4284:4342" ph="SELECT * FRO... surgery" />
-                <marker date="1502895743735" expanded="true" signature="4949:5032" ph="SELECT `idMa... material_liaison" />
-                <marker date="1502895743735" expanded="true" signature="4949:5048" ph="SELECT `idMa... material_liaison" />
-                <marker date="1502895743735" expanded="true" signature="4949:5306" ph="SELECT `idMa... material_liaison" />
-                <marker date="1502895743735" expanded="true" signature="5347:5430" ph="SELECT `ques... questions_liaison" />
-                <marker date="1502895743735" expanded="true" signature="5347:5431" ph="SELECT `ques... questions_liaison" />
-                <marker date="1502895743735" expanded="true" signature="5347:5444" ph="SELECT `ques... questions_liaison" />
-                <marker date="1502895743735" expanded="true" signature="5763:5826" ph="SELECT `idPa... patient_liaison" />
+                <element signature="e#3371#3403#0#PHP" expanded="false" />
+                <element signature="e#4184#4299#0#PHP" expanded="false" />
+                <marker date="1502967255026" expanded="true" signature="4401:4408" ph="SELECT * FRO... surgery" />
+                <marker date="1502967255026" expanded="true" signature="4401:4449" ph="SELECT `id` surgery" />
+                <marker date="1502967255026" expanded="true" signature="4401:4450" ph="SELECT `id` surgery" />
+                <marker date="1502967255026" expanded="true" signature="4401:4462" ph="SELECT * FRO... surgery" />
+                <marker date="1502967255026" expanded="true" signature="4921:4958" ph="SELECT * FRO... surgery" />
+                <marker date="1502967255026" expanded="true" signature="5470:5553" ph="SELECT `idMa... material_liaison" />
+                <marker date="1502967255026" expanded="true" signature="5840:5924" ph="SELECT `idQu... questions_liaison" />
+                <marker date="1502967255026" expanded="true" signature="6228:6291" ph="SELECT `idPa... patient_liaison" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Material.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Classes/Material.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="88" column="10" lean-forward="true" selection-start-line="88" selection-start-column="10" selection-end-line="88" selection-end-column="10" />
+              <folding>
+                <element signature="e#316#426#0#PHP" expanded="false" />
+                <element signature="e#571#613#0#PHP" expanded="false" />
+                <element signature="n#getId#0;n#Material#0;n#!!top" expanded="false" />
+                <element signature="e#1818#1857#0#PHP" expanded="false" />
+                <element signature="e#1863#1985#0#PHP" expanded="false" />
+                <element signature="e#2036#2176#0#PHP" expanded="false" />
+                <element signature="e#2210#2283#0#PHP" expanded="false" />
+                <element signature="e#3146#3193#0#PHP" expanded="false" />
+                <element signature="e#3791#3935#0#PHP" expanded="false" />
+                <element signature="n#getAllByCustomer#0;n#Material#0;n#!!top" expanded="false" />
+                <element signature="e#4572#4686#0#PHP" expanded="false" />
+                <element signature="e#4907#4976#0#PHP" expanded="false" />
+                <marker date="1502960838297" expanded="true" signature="2431:2469" ph="SELECT * FRO... material" />
+                <marker date="1502960838297" expanded="true" signature="2579:2709" ph="INSERT INTO `material`... " />
+                <marker date="1502960838297" expanded="true" signature="2756:2820" ph="UPDATE `mate... " />
+                <marker date="1502960838297" expanded="true" signature="2756:2891" ph="UPDATE `mate... " />
+                <marker date="1502960838297" expanded="true" signature="2756:2892" ph="UPDATE `mate... " />
+                <marker date="1502960838297" expanded="true" signature="3052:3099" ph="DELETE FROM " />
+                <marker date="1502960838297" expanded="true" signature="3052:3100" ph="DELETE FROM " />
+                <marker date="1502960838297" expanded="true" signature="3052:3106" ph="DELETE FROM " />
+                <marker date="1502960838297" expanded="true" signature="3371:3409" ph="SELECT * FRO... material" />
+                <marker date="1502960838297" expanded="true" signature="4026:4072" ph="SELECT * FRO... material" />
+                <marker date="1502960838297" expanded="true" signature="4789:4853" ph="SELECT `cate... material" />
+                <marker date="1502960838297" expanded="true" signature="5057:5143" ph="SELECT `auto... TABLES" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Surgery.inc.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Include/Surgery.inc.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="surgery.tpl.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Template/surgery.tpl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="121" column="62" lean-forward="false" selection-start-line="121" selection-start-column="62" selection-end-line="121" selection-end-column="62" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#5;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <marker date="1502984869196" expanded="true" signature="8737:8995" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="materials.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Libs/js/materials.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="820">
+              <caret line="232" column="14" lean-forward="true" selection-start-line="232" selection-start-column="14" selection-end-line="232" selection-end-column="14" />
+              <folding>
+                <element signature="n#!!block;n#refreshCategoriesInteractions#0" expanded="false" />
+                <element signature="n#!!block;n#updateMatDisplay#0" expanded="false" />
+                <element signature="n#!!block;n#createSpan#0" expanded="false" />
+                <element signature="n#!!block;n#validate#0" expanded="false" />
+                <element signature="n#!!block;n#addMaterial#0" expanded="false" />
+                <element signature="e#7641#8132#0" expanded="false" />
+                <marker date="1502459348027" expanded="true" signature="6209:6222" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="surgery.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Libs/js/surgery.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="590">
+              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -155,7 +202,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Template/Modules/head.tpl.php" />
         <option value="$PROJECT_DIR$/Template/index.html" />
         <option value="$PROJECT_DIR$/Template/Modules/footer.tpl.php" />
         <option value="$PROJECT_DIR$/Template/index.tpl.php.html" />
@@ -181,27 +227,32 @@
         <option value="$PROJECT_DIR$/Include/Initializer.php" />
         <option value="$PROJECT_DIR$/Include/Disconnect.php" />
         <option value="$PROJECT_DIR$/Template/index.tpl.php" />
-        <option value="$PROJECT_DIR$/.htaccess" />
-        <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/Classes/Customer.class.php" />
         <option value="$PROJECT_DIR$/Include/Connect.php" />
         <option value="$PROJECT_DIR$/Include/Questions.inc.php" />
-        <option value="$PROJECT_DIR$/Classes/Material.class.php" />
         <option value="$PROJECT_DIR$/Include/Ajax-api.php" />
         <option value="$PROJECT_DIR$/Include/Ajax.inc.php" />
-        <option value="$PROJECT_DIR$/Classes/DBA.class.php" />
-        <option value="$PROJECT_DIR$/Classes/Question.class.php" />
         <option value="$PROJECT_DIR$/Libs/js/materials.js" />
         <option value="$PROJECT_DIR$/Libs/js/questions.js" />
         <option value="$PROJECT_DIR$/Template/Modules/nav.mod.php" />
+        <option value="$PROJECT_DIR$/Template/materials.tpl.php" />
+        <option value="$PROJECT_DIR$/Template/materials.tpl.php" />
         <option value="$PROJECT_DIR$/Template/questions.tpl.php" />
-        <option value="$PROJECT_DIR$/Template/materials.tpl.php" />
-        <option value="$PROJECT_DIR$/Template/materials.tpl.php" />
-        <option value="$PROJECT_DIR$/Libs/css/custom.css" />
-        <option value="$PROJECT_DIR$/Classes/Surgery.class.php" />
+        <option value="$PROJECT_DIR$/Classes/Material.class.php" />
+        <option value="/JQuery-CSS Fragment (surgeries.js:1058).css" />
         <option value="$PROJECT_DIR$/Include/Surgeries.inc.php" />
+        <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/Include/Surgery.php" />
         <option value="$PROJECT_DIR$/Template/surgeries.tpl.php" />
+        <option value="$PROJECT_DIR$/Classes/Surgery.class.php" />
+        <option value="$PROJECT_DIR$/Libs/css/custom.css" />
+        <option value="$PROJECT_DIR$/Classes/DBA.class.php" />
+        <option value="$PROJECT_DIR$/Include/Surgery.inc.php" />
+        <option value="$PROJECT_DIR$/Classes/Question.class.php" />
         <option value="$PROJECT_DIR$/Libs/js/surgeries.js" />
+        <option value="$PROJECT_DIR$/Template/surgery.tpl.php" />
+        <option value="$PROJECT_DIR$/Libs/js/surgery.js" />
       </list>
     </option>
   </component>
@@ -244,7 +295,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -295,6 +345,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -344,18 +395,19 @@
       <workItem from="1502267713862" duration="19695000" />
       <workItem from="1502352628044" duration="13150000" />
       <workItem from="1502439868189" duration="17016000" />
-      <workItem from="1502869744694" duration="18063000" />
+      <workItem from="1502869744694" duration="18537000" />
+      <workItem from="1502957014023" duration="21305000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165204000" />
+    <option name="totallyTimeSpent" value="186983000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -406,73 +458,26 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Include/Index.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Classes/Patient.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Classes/Material.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#288#398#0#PHP" expanded="false" />
-            <element signature="e#543#585#0#PHP" expanded="false" />
-            <element signature="n#getId#0;n#Material#0;n#!!top" expanded="false" />
-            <element signature="e#1245#1367#0#PHP" expanded="false" />
-            <element signature="e#1418#1558#0#PHP" expanded="false" />
-            <element signature="e#1592#1665#0#PHP" expanded="false" />
-            <element signature="e#3173#3317#0#PHP" expanded="false" />
-            <element signature="e#3954#4068#0#PHP" expanded="false" />
-            <element signature="e#4289#4358#0#PHP" expanded="false" />
-            <marker date="1502461504653" expanded="true" signature="1813:1851" ph="SELECT * FRO... material" />
-            <marker date="1502461504653" expanded="true" signature="1961:2091" ph="INSERT INTO `material`... " />
-            <marker date="1502461504653" expanded="true" signature="2138:2202" ph="UPDATE `mate... " />
-            <marker date="1502461504653" expanded="true" signature="2138:2273" ph="UPDATE `mate... " />
-            <marker date="1502461504653" expanded="true" signature="2138:2274" ph="UPDATE `mate... " />
-            <marker date="1502461504653" expanded="true" signature="2434:2481" ph="DELETE FROM " />
-            <marker date="1502461504653" expanded="true" signature="2434:2482" ph="DELETE FROM " />
-            <marker date="1502461504653" expanded="true" signature="2434:2488" ph="DELETE FROM " />
-            <marker date="1502461504653" expanded="true" signature="2753:2791" ph="SELECT * FRO... material" />
-            <marker date="1502461504653" expanded="true" signature="3408:3454" ph="SELECT * FRO... material" />
-            <marker date="1502461504653" expanded="true" signature="4171:4235" ph="SELECT `cate... material" />
-            <marker date="1502461504653" expanded="true" signature="4439:4525" ph="SELECT `auto... TABLES" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Classes/Question.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
           <folding>
-            <element signature="e#433#475#0#PHP" expanded="false" />
-            <element signature="e#1499#1621#0#PHP" expanded="false" />
-            <element signature="e#1687#1774#0#PHP" expanded="false" />
-            <element signature="e#1784#1903#0#PHP" expanded="false" />
-            <element signature="e#1937#2010#0#PHP" expanded="false" />
-            <element signature="e#4037#4106#0#PHP" expanded="false" />
-            <marker date="1502875269863" expanded="true" signature="2074:2113" ph="SELECT * FRO... question" />
-            <marker date="1502875269863" expanded="true" signature="2347:2462" ph="INSERT INTO `question`... " />
-            <marker date="1502875269863" expanded="true" signature="2586:2707" ph="UPDATE `ques... " />
-            <marker date="1502875269863" expanded="true" signature="2913:2962" ph="DELETE FROM " />
-            <marker date="1502875269863" expanded="true" signature="3039:3405" ph="..." />
-            <marker date="1502875269863" expanded="true" signature="3215:3254" ph="SELECT * FRO... questions" />
-            <marker date="1502875269863" expanded="true" signature="3215:3255" ph="SELECT * FRO... questions" />
-            <marker date="1502875269863" expanded="true" signature="3690:3737" ph="SELECT * FRO... questions" />
-            <marker date="1502875269863" expanded="true" signature="3690:3738" ph="SELECT * FRO... questions" />
-            <marker date="1502875269863" expanded="true" signature="4187:4274" ph="SELECT `auto... TABLES" />
+            <element signature="e#461#503#0#PHP" expanded="false" />
+            <element signature="e#2061#2100#0#PHP" expanded="false" />
+            <element signature="e#2106#2228#0#PHP" expanded="false" />
+            <element signature="e#2294#2381#0#PHP" expanded="false" />
+            <element signature="e#2391#2510#0#PHP" expanded="false" />
+            <element signature="e#2544#2617#0#PHP" expanded="false" />
+            <element signature="e#3616#3663#0#PHP" expanded="false" />
+            <element signature="e#4660#4729#0#PHP" expanded="false" />
+            <marker date="1502982627610" expanded="true" signature="2681:2720" ph="SELECT * FRO... question" />
+            <marker date="1502982627610" expanded="true" signature="2954:3069" ph="INSERT INTO `question`... " />
+            <marker date="1502982627610" expanded="true" signature="3193:3314" ph="UPDATE `ques... " />
+            <marker date="1502982627610" expanded="true" signature="3520:3569" ph="DELETE FROM " />
+            <marker date="1502982627610" expanded="true" signature="3838:3877" ph="SELECT * FRO... questions" />
+            <marker date="1502982627610" expanded="true" signature="4313:4360" ph="SELECT * FRO... questions" />
+            <marker date="1502982627610" expanded="true" signature="4810:4897" ph="SELECT `auto... TABLES" />
           </folding>
         </state>
       </provider>
@@ -509,13 +514,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Template/index-rtl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/index-rtl.html" />
     <entry file="file://$PROJECT_DIR$/Template/index.tpl.php.html" />
     <entry file="file://$PROJECT_DIR$/Template/index.html" />
     <entry file="file://$PROJECT_DIR$/Template/bootstrap-grid.html">
@@ -546,13 +545,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Libs/font-awesome/css/font-awesome.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="3" column="758" lean-forward="false" selection-start-line="3" selection-start-column="758" selection-end-line="3" selection-end-column="758" />
         </state>
       </provider>
     </entry>
@@ -646,36 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Classes/Material.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="114" column="20" lean-forward="false" selection-start-line="114" selection-start-column="20" selection-end-line="114" selection-end-column="20" />
-          <folding>
-            <element signature="e#288#398#0#PHP" expanded="false" />
-            <element signature="e#543#585#0#PHP" expanded="false" />
-            <element signature="n#getId#0;n#Material#0;n#!!top" expanded="false" />
-            <element signature="e#1245#1367#0#PHP" expanded="false" />
-            <element signature="e#1418#1558#0#PHP" expanded="false" />
-            <element signature="e#1592#1665#0#PHP" expanded="false" />
-            <element signature="e#3173#3317#0#PHP" expanded="false" />
-            <element signature="e#3954#4068#0#PHP" expanded="false" />
-            <element signature="e#4289#4358#0#PHP" expanded="false" />
-            <marker date="1502461504653" expanded="true" signature="1813:1851" ph="SELECT * FRO... material" />
-            <marker date="1502461504653" expanded="true" signature="1961:2091" ph="INSERT INTO `material`... " />
-            <marker date="1502461504653" expanded="true" signature="2138:2202" ph="UPDATE `mate... " />
-            <marker date="1502461504653" expanded="true" signature="2138:2273" ph="UPDATE `mate... " />
-            <marker date="1502461504653" expanded="true" signature="2138:2274" ph="UPDATE `mate... " />
-            <marker date="1502461504653" expanded="true" signature="2434:2481" ph="DELETE FROM " />
-            <marker date="1502461504653" expanded="true" signature="2434:2482" ph="DELETE FROM " />
-            <marker date="1502461504653" expanded="true" signature="2434:2488" ph="DELETE FROM " />
-            <marker date="1502461504653" expanded="true" signature="2753:2791" ph="SELECT * FRO... material" />
-            <marker date="1502461504653" expanded="true" signature="3408:3454" ph="SELECT * FRO... material" />
-            <marker date="1502461504653" expanded="true" signature="4171:4235" ph="SELECT `cate... material" />
-            <marker date="1502461504653" expanded="true" signature="4439:4525" ph="SELECT `auto... TABLES" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Include/Ajax-api.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1156">
@@ -692,66 +654,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Classes/DBA.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="41" column="39" lean-forward="true" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
-          <folding>
-            <element signature="e#134#206#0#PHP" expanded="false" />
-            <element signature="e#287#373#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Classes/Question.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="121" column="0" lean-forward="true" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
-          <folding>
-            <element signature="e#433#475#0#PHP" expanded="false" />
-            <element signature="e#1499#1621#0#PHP" expanded="false" />
-            <element signature="e#1687#1774#0#PHP" expanded="false" />
-            <element signature="e#1784#1903#0#PHP" expanded="false" />
-            <element signature="e#1937#2010#0#PHP" expanded="false" />
-            <element signature="e#4037#4106#0#PHP" expanded="false" />
-            <marker date="1502875269863" expanded="true" signature="2074:2113" ph="SELECT * FRO... question" />
-            <marker date="1502875269863" expanded="true" signature="2347:2462" ph="INSERT INTO `question`... " />
-            <marker date="1502875269863" expanded="true" signature="2586:2707" ph="UPDATE `ques... " />
-            <marker date="1502875269863" expanded="true" signature="2913:2962" ph="DELETE FROM " />
-            <marker date="1502875269863" expanded="true" signature="3039:3405" ph="..." />
-            <marker date="1502875269863" expanded="true" signature="3215:3254" ph="SELECT * FRO... questions" />
-            <marker date="1502875269863" expanded="true" signature="3215:3255" ph="SELECT * FRO... questions" />
-            <marker date="1502875269863" expanded="true" signature="3690:3737" ph="SELECT * FRO... questions" />
-            <marker date="1502875269863" expanded="true" signature="3690:3738" ph="SELECT * FRO... questions" />
-            <marker date="1502875269863" expanded="true" signature="4187:4274" ph="SELECT `auto... TABLES" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Libs/js/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7104">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Libs/js/materials.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="264" column="22" lean-forward="false" selection-start-line="264" selection-start-column="13" selection-end-line="264" selection-end-column="22" />
-          <folding>
-            <element signature="n#!!block;n#refreshCategoriesInteractions#0" expanded="false" />
-            <element signature="n#!!block;n#updateMatDisplay#0" expanded="false" />
-            <element signature="n#!!block;n#createInput#0" expanded="false" />
-            <element signature="n#!!block;n#createSpan#0" expanded="false" />
-            <element signature="n#!!block;n#validate#0" expanded="false" />
-            <element signature="n#!!block;n#addMaterial#0" expanded="false" />
-            <element signature="n#!!block;n#displayCategories#0" expanded="false" />
-            <element signature="e#7641#8132#0" expanded="false" />
-            <marker date="1502459348027" expanded="true" signature="6209:6222" ph="..." />
           </folding>
         </state>
       </provider>
@@ -780,44 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Template/questions.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="38" column="46" lean-forward="false" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
-          <folding>
-            <marker date="1502892597712" expanded="true" signature="2472:2485" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Libs/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Template/materials.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="61" column="46" lean-forward="false" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
-          <folding>
-            <marker date="1502892597664" expanded="true" signature="3760:3763" ph="..." />
-            <marker date="1502892597664" expanded="true" signature="3760:4352" ph="..." />
-            <marker date="1502892597664" expanded="true" signature="4068:4081" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Include/Questions.inc.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -834,67 +704,219 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Classes/Surgery.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="212" column="10" lean-forward="true" selection-start-line="212" selection-start-column="10" selection-end-line="212" selection-end-column="10" />
-          <folding>
-            <element signature="e#380#410#0#PHP" expanded="false" />
-            <element signature="e#4071#4186#0#PHP" expanded="false" />
-            <element signature="n#getAllByCustomer#0;n#Surgery#0;n#!!top" expanded="false" />
-            <marker date="1502895743735" expanded="true" signature="4284:4328" ph="SELECT * FRO... surgery" />
-            <marker date="1502895743735" expanded="true" signature="4284:4329" ph="SELECT * FRO... surgery" />
-            <marker date="1502895743735" expanded="true" signature="4284:4342" ph="SELECT * FRO... surgery" />
-            <marker date="1502895743735" expanded="true" signature="4949:5032" ph="SELECT `idMa... material_liaison" />
-            <marker date="1502895743735" expanded="true" signature="4949:5048" ph="SELECT `idMa... material_liaison" />
-            <marker date="1502895743735" expanded="true" signature="4949:5306" ph="SELECT `idMa... material_liaison" />
-            <marker date="1502895743735" expanded="true" signature="5347:5430" ph="SELECT `ques... questions_liaison" />
-            <marker date="1502895743735" expanded="true" signature="5347:5431" ph="SELECT `ques... questions_liaison" />
-            <marker date="1502895743735" expanded="true" signature="5347:5444" ph="SELECT `ques... questions_liaison" />
-            <marker date="1502895743735" expanded="true" signature="5763:5826" ph="SELECT `idPa... patient_liaison" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Libs/js/questions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="99" column="19" lean-forward="true" selection-start-line="75" selection-start-column="8" selection-end-line="99" selection-end-column="19" />
+        <state relative-caret-position="34">
+          <caret line="2" column="4" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="8" selection-end-column="96" />
           <folding>
+            <element signature="n#!!block;n#updateQuestionsInteraction#0" expanded="false" />
             <element signature="n#!!block;n#addQuestion#0" expanded="false" />
             <marker date="1502875431061" expanded="true" signature="4443:4456" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Include/Surgeries.inc.php">
+    <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        <state relative-caret-position="153">
+          <caret line="9" column="64" lean-forward="false" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Template/surgeries.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="16" column="24" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="21" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Surgeries.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="16" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Libs/font-awesome/css/font-awesome.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="3" column="758" lean-forward="false" selection-start-line="3" selection-start-column="758" selection-end-line="3" selection-end-column="758" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Libs/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="1" lean-forward="true" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/questions.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="55" column="38" lean-forward="false" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="180" />
           <folding>
-            <element signature="e#1863#2908#0#PHP" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1502898433819" expanded="true" signature="2564:2577" ph="..." />
+            <marker date="1502959066488" expanded="true" signature="2470:2483" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Classes/DBA.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="47" column="9" lean-forward="true" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
+          <folding>
+            <element signature="e#134#206#0#PHP" expanded="false" />
+            <element signature="e#287#373#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Classes/Surgery.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="45" column="20" lean-forward="false" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+          <folding>
+            <element signature="e#3371#3403#0#PHP" expanded="false" />
+            <element signature="e#4184#4299#0#PHP" expanded="false" />
+            <marker date="1502967255026" expanded="true" signature="4401:4408" ph="SELECT * FRO... surgery" />
+            <marker date="1502967255026" expanded="true" signature="4401:4449" ph="SELECT `id` surgery" />
+            <marker date="1502967255026" expanded="true" signature="4401:4450" ph="SELECT `id` surgery" />
+            <marker date="1502967255026" expanded="true" signature="4401:4462" ph="SELECT * FRO... surgery" />
+            <marker date="1502967255026" expanded="true" signature="4921:4958" ph="SELECT * FRO... surgery" />
+            <marker date="1502967255026" expanded="true" signature="5470:5553" ph="SELECT `idMa... material_liaison" />
+            <marker date="1502967255026" expanded="true" signature="5840:5924" ph="SELECT `idQu... questions_liaison" />
+            <marker date="1502967255026" expanded="true" signature="6228:6291" ph="SELECT `idPa... patient_liaison" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Classes/Question.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="108" column="10" lean-forward="true" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="10" />
+          <folding>
+            <element signature="e#461#503#0#PHP" expanded="false" />
+            <element signature="e#2061#2100#0#PHP" expanded="false" />
+            <element signature="e#2106#2228#0#PHP" expanded="false" />
+            <element signature="e#2294#2381#0#PHP" expanded="false" />
+            <element signature="e#2391#2510#0#PHP" expanded="false" />
+            <element signature="e#2544#2617#0#PHP" expanded="false" />
+            <element signature="e#3616#3663#0#PHP" expanded="false" />
+            <element signature="e#4660#4729#0#PHP" expanded="false" />
+            <marker date="1502982627610" expanded="true" signature="2681:2720" ph="SELECT * FRO... question" />
+            <marker date="1502982627610" expanded="true" signature="2954:3069" ph="INSERT INTO `question`... " />
+            <marker date="1502982627610" expanded="true" signature="3193:3314" ph="UPDATE `ques... " />
+            <marker date="1502982627610" expanded="true" signature="3520:3569" ph="DELETE FROM " />
+            <marker date="1502982627610" expanded="true" signature="3838:3877" ph="SELECT * FRO... questions" />
+            <marker date="1502982627610" expanded="true" signature="4313:4360" ph="SELECT * FRO... questions" />
+            <marker date="1502982627610" expanded="true" signature="4810:4897" ph="SELECT `auto... TABLES" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/materials.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="38" column="34" lean-forward="false" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+          <folding>
+            <marker date="1502892597664" expanded="true" signature="3760:3763" ph="..." />
+            <marker date="1502892597664" expanded="true" signature="3760:4352" ph="..." />
+            <marker date="1502892597664" expanded="true" signature="4068:4081" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Libs/js/materials.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="820">
+          <caret line="232" column="14" lean-forward="true" selection-start-line="232" selection-start-column="14" selection-end-line="232" selection-end-column="14" />
+          <folding>
+            <element signature="n#!!block;n#refreshCategoriesInteractions#0" expanded="false" />
+            <element signature="n#!!block;n#updateMatDisplay#0" expanded="false" />
+            <element signature="n#!!block;n#createSpan#0" expanded="false" />
+            <element signature="n#!!block;n#validate#0" expanded="false" />
+            <element signature="n#!!block;n#addMaterial#0" expanded="false" />
+            <element signature="e#7641#8132#0" expanded="false" />
+            <marker date="1502459348027" expanded="true" signature="6209:6222" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Libs/js/surgeries.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="91" lean-forward="false" selection-start-line="12" selection-start-column="91" selection-end-line="12" selection-end-column="91" />
+        <state relative-caret-position="221">
+          <caret line="13" column="1" lean-forward="false" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
           <folding>
-            <marker date="1502898856743" expanded="true" signature="1078:1091" ph="..." />
-            <marker date="1502898856743" expanded="false" signature="2115:2360" ph="{&quot;method&quot;: 'POST'...}" />
+            <marker date="1502982892211" expanded="false" signature="2114:2358" ph="{&quot;method&quot;: 'POST'...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Classes/Material.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="88" column="10" lean-forward="true" selection-start-line="88" selection-start-column="10" selection-end-line="88" selection-end-column="10" />
+          <folding>
+            <element signature="e#316#426#0#PHP" expanded="false" />
+            <element signature="e#571#613#0#PHP" expanded="false" />
+            <element signature="n#getId#0;n#Material#0;n#!!top" expanded="false" />
+            <element signature="e#1818#1857#0#PHP" expanded="false" />
+            <element signature="e#1863#1985#0#PHP" expanded="false" />
+            <element signature="e#2036#2176#0#PHP" expanded="false" />
+            <element signature="e#2210#2283#0#PHP" expanded="false" />
+            <element signature="e#3146#3193#0#PHP" expanded="false" />
+            <element signature="e#3791#3935#0#PHP" expanded="false" />
+            <element signature="n#getAllByCustomer#0;n#Material#0;n#!!top" expanded="false" />
+            <element signature="e#4572#4686#0#PHP" expanded="false" />
+            <element signature="e#4907#4976#0#PHP" expanded="false" />
+            <marker date="1502960838297" expanded="true" signature="2431:2469" ph="SELECT * FRO... material" />
+            <marker date="1502960838297" expanded="true" signature="2579:2709" ph="INSERT INTO `material`... " />
+            <marker date="1502960838297" expanded="true" signature="2756:2820" ph="UPDATE `mate... " />
+            <marker date="1502960838297" expanded="true" signature="2756:2891" ph="UPDATE `mate... " />
+            <marker date="1502960838297" expanded="true" signature="2756:2892" ph="UPDATE `mate... " />
+            <marker date="1502960838297" expanded="true" signature="3052:3099" ph="DELETE FROM " />
+            <marker date="1502960838297" expanded="true" signature="3052:3100" ph="DELETE FROM " />
+            <marker date="1502960838297" expanded="true" signature="3052:3106" ph="DELETE FROM " />
+            <marker date="1502960838297" expanded="true" signature="3371:3409" ph="SELECT * FRO... material" />
+            <marker date="1502960838297" expanded="true" signature="4026:4072" ph="SELECT * FRO... material" />
+            <marker date="1502960838297" expanded="true" signature="4789:4853" ph="SELECT `cate... material" />
+            <marker date="1502960838297" expanded="true" signature="5057:5143" ph="SELECT `auto... TABLES" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Surgery.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/surgery.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="121" column="62" lean-forward="false" selection-start-line="121" selection-start-column="62" selection-end-line="121" selection-end-column="62" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#5;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1502984869196" expanded="true" signature="8737:8995" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Libs/js/surgery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
