@@ -58,11 +58,6 @@
                                     <th>Action</th>
                                     </thead>
                                     <tbody id="materials-list">
-                                    <tr data-id=1>
-                                        <td><span class="material-category">cat</span></td>
-                                        <td><span class="material-name">mat1</td>
-                                        <td><button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button></td>
-                                    </tr>
                                     <tr data-option="1">
                                         <td class="material-category">
                                             <select class="form-control">
@@ -92,25 +87,22 @@
                             <div class="panel-body" style="display: none">
                                 <table class="table table-hover">
                                     <thead>
+                                    <th>Identifiant</th>
                                     <th>Question</th>
                                     <th>Réponse</th>
                                     <th>Action</th>
                                     </thead>
                                     <tbody id="questions-list">
-                                    <tr data-id=1>
-                                        <td><span class="question-name">lgo</span></td>
-                                        <td><input class="question-answer form-control" placeholder="Réponse personnalisée" value="oui souvent"></td>
-                                        <td><button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button></td>
-                                    <tr>
                                     <tr data-option="1">
                                         <td>
-                                            <select class="form-control">
+                                            <select class="form-control question-name">
                                                 <option value="cat1">Cat1</option>
                                                 <option value="cat1">Cat1</option>
                                                 <option value="cat1">Cat1</option>
                                             </select>
                                         </td>
-                                        <td><input class="form-control"></td>
+                                        <td><span class="question-question">blah</span></td>
+                                        <td><span class="question-answer">blah</span></td>
                                         <td><button class="btn btn-sm btn-success faa-parent animated-hover validate"><i class="fa fa-plus faa-pulse"></i></button></td>
                                     </tr>
                                     </tbody>

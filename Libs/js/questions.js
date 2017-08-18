@@ -4,6 +4,10 @@ function createInput(id)
     var html ='<input class="form-control question-name" value="' + spanName + '">';
     jQuery('#questions-list').find('tr[data-id=' + id + '] .question-name').replaceWith(html);
 
+    var spanQuestion = jQuery('#questions-list').find('tr[data-id=' + id + '] .question-question').text();
+    var html ='<input class="form-control question-question" value="' + spanQuestion + '">';
+    jQuery('#questions-list').find('tr[data-id=' + id + '] .question-question').replaceWith(html);
+
     var spanAnswer = jQuery('#questions-list').find('tr[data-id=' + id + '] .question-answer').text();
     html ='<input class="form-control question-answer" value="' + spanAnswer + '">';
     jQuery('#questions-list').find('tr[data-id=' + id + '] .question-answer').replaceWith(html);
@@ -16,6 +20,9 @@ function createSpan(id)
     var html = '<span class="question-name">' + inputName + '</span>';
     jQuery('#questions-list').find('tr[data-id=' + id + '] .question-name').replaceWith(html);
 
+    var inputQuestion = jQuery('#questions-list').find('tr[data-id=' + id + '] .question-question').val();
+    var html = '<span class="question-question">' + inputQuestion + '</span>';
+    jQuery('#questions-list').find('tr[data-id=' + id + '] .question-question').replaceWith(html);
 
     var inputAnswer = jQuery('#questions-list').find('tr[data-id=' + id + '] .question-answer').val();
     html = '<span class="question-answer">' + inputAnswer + '</span>';
@@ -26,7 +33,8 @@ function createSpan(id)
 function validate(id)
 {
     var tr = jQuery('#questions-list tr[data-id=' + id + ']');
-    var sendData = {'id':jQuery(tr).attr('data-id'), 'name':jQuery(tr).find('.question-name').val(), 'answer':jQuery(tr).find('.question-answer').val()};
+    var sendData = {'id':jQuery(tr).attr('data-id'), 'name':jQuery(tr).find('.question-name').val(), 'question':jQuery(tr).find('.question-question').val(), 'answer':jQuery(tr).find('.question-answer').val()};
+    console.log(sendData);
 
     jQuery.ajax({
         method: 'POST',
@@ -121,6 +129,7 @@ function addQuestion()
                 var id = data[1];
                 var html = '<tr data-id = ' + id + '>' +
                     '<td><span class="question-name"></span></td>' +
+                    '<td><span class="question-question"></span></td>' +
                     '<td><span class="question-answer"></span></td>' +
                     '<td>' +
                         '<button class="btn btn-sm btn-primary faa-parent animated-hover modify"><i class="fa fa-wrench faa-wrench"></i></button>' +

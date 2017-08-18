@@ -268,13 +268,21 @@ class Surgery extends DBA implements JsonSerializable
         }
         $new_surgery->setMaterials($mat_array);
 
-        $questions = self::query("SELECT `idQuestion` FROM `questions_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $new_surgery->id")->fetch_all(MYSQLI_ASSOC);
-        $questions_array = array();
-        foreach ($questions as $question)
+        $questionsLinks = self::query("SELECT `idQuestion`, `answer` FROM `questions_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $new_surgery->id")->fetch_all(MYSQLI_ASSOC);
+        $questionsArray = array();
+
+        foreach ($questionsLinks as $questionLink)
         {
-            array_push($questions_array, (int) $question['idQuestion']);
+            $id = $questionLink['idQuestion'];
+            $question = self::query("SELECT `name`, `answer` FROM `questions` WHERE `id` = $id")->fetch_array(MYSQLI_ASSOC);
+            array_push($questionsArray, array(
+                'id' => (int) $id,
+                'questionName' => $question['name'],
+                'defaultAnswer' => $question['answer'],
+                'answer' => $questionLink['answer'],
+            ));
         }
-        $new_surgery->setResponses($questions_array);
+        $new_surgery->setResponses($questionsArray);
 
         $patients = self::query("SELECT `idPatient` FROM `patient_liaison` WHERE `idSurgery` = 1")->fetch_all(MYSQLI_ASSOC);
         $patients_array = array();

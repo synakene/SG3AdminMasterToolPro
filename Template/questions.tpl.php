@@ -40,8 +40,9 @@
                         <h3>Liste des matériels :</h3><br>
                         <table class="table table-hover">
                             <thead>
+                            <th>Identifiant</th>
                             <th>Question</th>
-                            <th>Réponse</th>
+                            <th>Réponse pas défaut</th>
                             <th>Action</th>
                             </thead>
                             <tbody id="questions-list">
@@ -50,6 +51,7 @@
                             {
                                 echo '<tr data-id=' . $question->getId() . '>';
                                 echo '<td><span class="question-name">' . $question->getName() . '</span></td>';
+                                echo '<td><span class="question-question">' . $question->getQuestion() . '</span></td>';
                                 echo '<td><span class="question-answer">' . $question->getAnswer() . '</span></td>';
                                 echo '<td>';
                                 echo '<button class="btn btn-sm btn-primary faa-parent animated-hover modify"><i class="fa fa-wrench faa-wrench"></i></button>';

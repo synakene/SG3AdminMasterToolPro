@@ -60,13 +60,12 @@ function saveData($table = '', $data = array())
 
             if ($question === false)
             {
-                $question = new Question($data['id'], $_SESSION['id'], $data['name'], $data['answer']);
+                $question = new Question($data['id'], $_SESSION['id'], $data['name'], $data['question'], $data['answer']);
 
                 if ($question->save())
                 {
                     return array(true, 'Question créée');
                 }
-
                 return array(0, 'Données non valides, sauvegarde impossible de la nouvelle question');
             }
             $question->setName($data['name']);

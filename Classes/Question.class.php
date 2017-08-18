@@ -11,13 +11,15 @@ class Question extends DBA implements JsonSerializable
     private $id;
     private $idCustomer;
     private $name;
+    private $question;
     private $answer;
 
-    public function __construct($id = 0, $idCustomer = 0, $name = '', $answer = '')
+    public function __construct($id = 0, $idCustomer = 0, $name = '', $question = '', $answer = '')
     {
         $this->id = $id;
         $this->idCustomer = $idCustomer;
         $this->name = $name;
+        $this->question = $question;
         $this->answer = $answer;
     }
 
@@ -72,6 +74,22 @@ class Question extends DBA implements JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    /**
+     * @param string $question
+     */
+    public function setQuestion($question)
+    {
+        $this->question = $question;
+    }
+
+    /**
      * @return mixed
      */
     public function getAnswer()
@@ -105,6 +123,7 @@ class Question extends DBA implements JsonSerializable
             'id' => $this->id,
             'idCustomer' => $this->idCustomer,
             'name' => $this->name,
+            'question' => $this->question,
             'answer' => $this->answer,
         ];
     }
@@ -126,7 +145,7 @@ class Question extends DBA implements JsonSerializable
             return false;
         }
 
-        if ($this->idCustomer === 0|| $this->name === '' || $this->answer === '')
+        if ($this->idCustomer === 0 || $this->name === '' || $this->answer === '')
         {
             return false;
         }
@@ -143,15 +162,16 @@ class Question extends DBA implements JsonSerializable
         $query = self::query("SELECT * FROM `questions` WHERE `id` = $this->id");
 
         $name = str_replace("'", "\'", $this->name);
+        $question = str_replace("'", "\'", $this->question);
         $answer = str_replace("'", "\'", $this->answer);
 
         if ($query->num_rows === 0 && $this->checkValidity(false))
         {
-            return self::query("INSERT INTO `questions` (`id`, `idCustomer`, `name`, `answer`) VALUES (NULL, $this->idCustomer, '$name', '$answer');");
+            return self::query("INSERT INTO `questions` (`id`, `idCustomer`, `name`, `question`, `answer`) VALUES (NULL, $this->idCustomer, '$name', '$question', '$answer');");
         }
         else if ($query->num_rows === 1 && $this->checkValidity())
         {
-            return self::query("UPDATE `questions` SET `idCustomer` = $this->idCustomer, `name` = '$name', `answer` = '$answer' WHERE `questions`.`id` = $this->id;");
+            return self::query("UPDATE `questions` SET `idCustomer` = $this->idCustomer, `name` = '$name', `question` = '$question', `answer` = '$answer' WHERE `questions`.`id` = $this->id;");
         }
         else
         {
@@ -187,7 +207,7 @@ class Question extends DBA implements JsonSerializable
             return false;
         }
 
-        return new Question($question['id'], $question['idCustomer'], $question['name'], $question['answer']);
+        return new Question($question['id'], $question['idCustomer'], $question['name'], $question['question'], $question['answer']);
     }
 
     /**
@@ -202,7 +222,7 @@ class Question extends DBA implements JsonSerializable
 
         foreach ($query as $question)
         {
-            array_push($questions, new Question($question['id'], $question['idCustomer'], $question['name'], $question['answer']));
+            array_push($questions, new Question($question['id'], $question['idCustomer'], $question['name'], $question['question'], $question['answer']));
         }
 
         return $questions;
