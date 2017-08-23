@@ -50,10 +50,10 @@ function saveData($table = '', $data = array())
 
             if ($material->save() === false)
             {
-                return array(0, 'Données non valides, sauvegarde impossible');
+                return array(0, 'Données non valides, sauvegarde impossible.');
             }
 
-            return array(true, 'Matériel sauvegardé');
+            return array(true, 'Matériel sauvegardé.');
 
         case 'question':
             $question = Question::getById($data['id']);
@@ -64,18 +64,60 @@ function saveData($table = '', $data = array())
 
                 if ($question->save())
                 {
-                    return array(true, 'Question créée');
+                    return array(true, 'Question créée.');
                 }
-                return array(0, 'Données non valides, sauvegarde impossible de la nouvelle question');
+                return array(0, 'Données non valides, sauvegarde impossible de la nouvelle question.');
             }
             $question->setName($data['name']);
+            $question->setQuestion($data['question']);
             $question->setAnswer($data['answer']);
 
             if ($question->save() === false)
             {
-                return array(0, 'Données non valides, sauvegarde impossible');
+                return array(0, 'Données non valides, sauvegarde impossible.');
             }
-            return array(true, 'Question sauvegardée');
+            return array(true, 'Question sauvegardée.');
+
+        case 'surgery':
+            $surgery = Surgery::getById($data['id']);
+            $new = false;
+
+            if ($surgery === false) {
+                $new = true;
+                $surgery = new Surgery();
+            }
+
+            $surgery->setId($data['id']);
+            $surgery->setIdCustomer($_SESSION['id']);
+            $surgery->setEmergency($data['emergency'] === 'true' ? true : false);
+            $surgery->setCompatibles($data['compatibles']);
+            $surgery->setMaterials($data['materials']);
+            $surgery->setName($data['name']);
+            $surgery->setResponses($data['responses']);
+            $surgery->setStory($data['story']);
+
+            if ($surgery->save())
+            {
+                if ($new === true)
+                {
+                    return array(true, 'Chirurgie créée.');
+                }
+                else
+                {
+                    return array(true, 'Chirurgie mise à jour.');
+                }
+            }
+            else
+            {
+                if ($new === true)
+                {
+                    return array(0, 'Création de la chirurgie impossible. Données incorrectes.');
+                }
+                else
+                {
+                    return array(0, 'Mise à jour de la chirurgie impossible. Données incorrectes.');
+                }
+            }
 
         default :
             return array(0, 'Type de donnée non reconnue, veuillez contactez votre webmaster');

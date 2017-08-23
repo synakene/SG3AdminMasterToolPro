@@ -14,6 +14,8 @@ class Question extends DBA implements JsonSerializable
     private $question;
     private $answer;
 
+    public $jsonCutomer = false;
+
     public function __construct($id = 0, $idCustomer = 0, $name = '', $question = '', $answer = '')
     {
         $this->id = $id;
@@ -119,13 +121,16 @@ class Question extends DBA implements JsonSerializable
      */
     function jsonSerialize()
     {
-        return [
+        $json = [
             'id' => $this->id,
-            'idCustomer' => $this->idCustomer,
             'name' => $this->name,
             'question' => $this->question,
             'answer' => $this->answer,
         ];
+
+        $this->jsonCutomer === true ? $json['idCustomer'] = $this->idCustomer : null;
+
+        return $json;
     }
 
     //</editor-fold>
@@ -215,14 +220,21 @@ class Question extends DBA implements JsonSerializable
      * @param int $idCustomer
      * @return mixed
      */
-    public static function getAllByCustomer($idCustomer = 0)
+    public static function getAllByCustomer($idCustomer = 0, $indexId = false)
     {
         $query = self::query("SELECT * FROM `questions` WHERE `idCustomer` = $idCustomer")->fetch_all(MYSQLI_ASSOC);
         $questions = array();
 
         foreach ($query as $question)
         {
-            array_push($questions, new Question($question['id'], $question['idCustomer'], $question['name'], $question['question'], $question['answer']));
+            if ($indexId)
+            {
+                $questions[$question['id']] = new Question($question['id'], $question['idCustomer'], $question['name'], $question['question'], $question['answer']);
+            }
+            else
+            {
+                array_push($questions, new Question($question['id'], $question['idCustomer'], $question['name'], $question['question'], $question['answer']));
+            }
         }
 
         return $questions;

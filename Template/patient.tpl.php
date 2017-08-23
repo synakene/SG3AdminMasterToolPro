@@ -12,16 +12,16 @@
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"><?php echo $surgery->getName(); ?></h1>
+                    <h1 class="page-header"><?php echo $patient->getFirstname() . $patient->getLastname(); ?></h1>
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-flag"></i>  <a href="/accueil">Accueil</a>
                         </li>
                         <li>
-                            <i class="fa fa-scissors"></i> <a href="/chirurgies">Chirurgies</a>
+                            <i class="fa fa-scissors"></i> <a href="/patients">Patients</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-pencil"></i> <?php echo $surgery->getName(); ?>
+                            <i class="fa fa-pencil"></i> <?php echo $patient->getFirstname() . $patient->getLastname(); ?>
                         </li>
                     </ol>
                 </div>
@@ -34,19 +34,40 @@
                         <div class="col-xs-12 space-under"><button type="button" class="btn btn-primary btn-lg pull-right save" style="margin-right: -15px;"><i class="fa fa-floppy-o"></i> Enregistrer</button></div>
 
                         <div class="form-group input-group">
-                            <span class="input-group-addon"><i class="fa fa-file-o"></i></span>
-                            <input class="form-control surgery-name" placeholder="Nom de la chirurgie" value="<?php echo $surgery->getName(); ?>">
+                            <span class="input-group-addon">Prénom</span>
+                            <input class="form-control patient-firstname" placeholder="Prénom du patient" value="<?php echo $patient->getFirstname(); ?>">
                         </div>
 
                         <div class="form-group input-group">
-                            <span class="input-group-addon"><i class="fa fa-comment-o"></i></span>
-                            <textarea class="form-control surgery-story" placeholder="Histoire de la chirurgie"><?php echo $surgery->getStory(); ?></textarea>
+                            <span class="input-group-addon">Nom</span>
+                            <input class="form-control patient-lastname" placeholder="Nom de famille du patient" value="<?php echo $patient->getLastname(); ?>">
                         </div>
 
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" <?php if ($surgery->getEmergency() === true) { echo 'checked'; } ?>>Urgence
-                            </label>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Sexe</span>
+                            <select class="form-control patient-sex">
+                                <option value="0">Homme</option>
+                                <option value="1">Femme</option>
+                                <option value="2">Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Age</span>
+                            <input type="number" class="form-control patient-age" placeholder="Age du patient" value="<?php echo $patient->getAge(); ?>">
+                            <span class="input-group-addon">ans</span>
+                        </div>
+
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Taille</i></span>
+                            <input type="number" class="form-control patient-height" placeholder="Taille du patient en cm" value="<?php echo $patient->getHeight(); ?>">
+                            <span class="input-group-addon">cm</i></span>
+                        </div>
+
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Poids</span>
+                            <input type="number" class="form-control patient-weight" placeholder="Poids du patient en kg" value="<?php echo $patient->getWeight(); ?>">
+                            <span class="input-group-addon">kg</span>
                         </div>
 
                         <div class="panel panel-primary">
@@ -154,10 +175,10 @@
 <?php include("Modules/footer.mod.php"); ?>
 
 <script>
-    var surgery = <?php echo json_encode($surgery, JSON_UNESCAPED_UNICODE); ?>;
+    var patient = <?php echo json_encode($patient, JSON_UNESCAPED_UNICODE); ?>;
     var materials = <?php echo json_encode($materials, JSON_UNESCAPED_UNICODE); ?>;
     var questions = <?php echo json_encode($questions, JSON_UNESCAPED_UNICODE); ?>;
-    var patients = <?php echo json_encode($patients, JSON_UNESCAPED_UNICODE); ?>;
+    var surgeries = <?php echo json_encode($surgeries, JSON_UNESCAPED_UNICODE); ?>;
 </script>
 
-<script type="text/javascript" src="/Libs/js/surgery.js"></script>
+<script type="text/javascript" src="/Libs/js/patient.js"></script>

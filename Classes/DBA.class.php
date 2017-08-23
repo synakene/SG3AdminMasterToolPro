@@ -49,4 +49,9 @@ class DBA
         return $valid;*/
         return self::$dba->query($query);
     }
+
+    public static function mquery($query)
+    {
+        return self::$dba->multi_query($query);
+    }
 }

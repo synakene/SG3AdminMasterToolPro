@@ -8,6 +8,7 @@ RewriteRule ^materiel$ /include/Materials.inc.php
 RewriteRule ^questions$ /include/Questions.inc.php
 
 RewriteRule ^chirurgies/([0-9]+)$ /include/Surgery.inc.php?id=$1
+RewriteRule ^patients/([0-9]+)$ /include/Patient.inc.php?id=$1
 
 RewriteRule ^login$ /template/login.tpl.php
 RewriteRule ^disconnect$ /include/disconnect.php

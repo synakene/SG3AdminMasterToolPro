@@ -9,9 +9,23 @@
 include('Initializer.php');
 
 $surgeries = Surgery::getAllByCustomer($_SESSION['id']);
-$surgeriesJson = json_encode($surgeries, JSON_UNESCAPED_UNICODE);
+$materials = Material::getAllByCustomer($_SESSION['id'], true);
+$patients = Patient::getAllByCustomer($_SESSION['id'], true);
 
-$materials = Material::getAllByCustomer($_SESSION['id']);
-$materialsJson = json_encode($materials, JSON_UNESCAPED_UNICODE);
+// Easy access to materials and questions name for display
+$patientsNames = [];
+$materialsNames = [];
+foreach ($surgeries as $surgery)
+{
+    foreach ($surgery->getMaterials() as $materialId)
+    {
+        $materialsNames[$materialId] = $materials[$materialId]->getName();
+    }
+
+    foreach ($surgery->getCompatibles() as $patientId)
+    {
+        $patientsNames[$patientId] = $patients[$patientId]->getFirstname() . ' ' . $patients[$patientId]->getLastname();
+    }
+}
 
 include ($_SERVER['DOCUMENT_ROOT'] . "/Template/Surgeries.tpl.php");

@@ -12,6 +12,8 @@ class Material extends DBA implements JsonSerializable
     private $name;
     private $category;
 
+    public $jsonCustomer = false;
+
     public function __construct($id = 0, $idCustomer = 0, $name = '', $category = '')
     {
         if ($id === 0 || $idCustomer === 0|| $name === '' || $category === '')
@@ -81,12 +83,15 @@ class Material extends DBA implements JsonSerializable
      */
     public function jsonSerialize()
     {
-        return [
+        $json = [
             'id' => $this->id,
-            'idCustomer' => $this->idCustomer,
             'name' => $this->name,
             'category' => $this->category,
         ];
+
+        $this->jsonCustomer === true ? $json['idCustomer'] = $this->idCustomer : null;
+
+        return $json;
     }
 
     //</editor-fold>
@@ -175,7 +180,7 @@ class Material extends DBA implements JsonSerializable
      * @param int $id
      * @return array|bool
      */
-    public static function getAllByCustomer($id = 0)
+    public static function getAllByCustomer($id = 0, $idIndexes = false)
     {
         $result = self::query('SELECT * FROM `material` WHERE `idCustomer` = ' . $id)->fetch_all(MYSQLI_ASSOC);
 
@@ -191,7 +196,7 @@ class Material extends DBA implements JsonSerializable
             $new_material = new Material(intval($line['id']), intval(($line['idCustomer'])), $line['name'], $line['category']);
             if ($new_material->getId() !== null)
             {
-                array_push($materials, $new_material);
+                $idIndexes === true ? $materials[$new_material->getId()] = $new_material : array_push($materials, $new_material);
             }
         }
 

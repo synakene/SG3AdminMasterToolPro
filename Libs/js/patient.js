@@ -9,7 +9,7 @@ function updateCategory()
         var id = parseInt(jQuery(this).val());
 
         // If good category AND material not already added
-        if (jQuery(this).attr('data-category') === category && surgery['materials'].indexOf(parseInt(id)) === -1)
+        if (jQuery(this).attr('data-category') === category && patient['materials'].indexOf(parseInt(id)) === -1)
         {
             if (firstMat === '')
             {
@@ -39,26 +39,21 @@ function updateCategory()
 
 function initMaterialData()
 {
-    // Make index of array same as id for better handling
-    var mat_with_index = [];
-
     // Init dropdown values
     var htmlCategoryDropdown = '';
     var categoriesUsed = [];
     var htmlNameDropdown = '<option data-category="" value="-1">Pas de matériel disponible</option>';
 
-    materials.forEach(function(material){
-        htmlNameDropdown += '<option data-category="' + material['category'] + '" value="' + material['id'] + '">' + material['name'] + '</option>';
-        if (categoriesUsed.indexOf(material['category']) === -1)
+    for (var materialId in materials)
+    {
+        htmlNameDropdown += '<option data-category="' + materials[materialId]['category'] + '" value="' + materials[materialId]['id'] + '">' + materials[materialId]['name'] + '</option>';
+        if (categoriesUsed.indexOf(materials[materialId]['category']) === -1)
         {
-            categoriesUsed.push(material['category']);
-            htmlCategoryDropdown += '<option value="' + material['category'] + '">' + material['category'] + '</option>';
+            categoriesUsed.push(materials[materialId]['category']);
+            htmlCategoryDropdown += '<option value="' + materials[materialId]['category'] + '">' + materials[materialId]['category'] + '</option>';
         }
 
-        mat_with_index[material['id']] = material;
-    });
-
-    materials = mat_with_index;
+    }
 
     jQuery('#materials-list').find('tr[data-option] .material-category select').html(htmlCategoryDropdown);
     jQuery('#materials-list').find('tr[data-option] .material-name select').html(htmlNameDropdown);
@@ -72,9 +67,9 @@ function addMaterial(id)
 {
     var html =
         '<tr data-id=' + id + '>\n' +
-            '<td><span class="material-category">' + materials[id]['category'] + '</span></td>\n' +
-            '<td><span class="material-name">' + materials[id]['name'] + '</td>\n' +
-            '<td><button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button></td>\n' +
+        '<td><span class="material-category">' + materials[id]['category'] + '</span></td>\n' +
+        '<td><span class="material-name">' + materials[id]['name'] + '</td>\n' +
+        '<td><button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button></td>\n' +
         '<tr>';
 
     // Insert new row
@@ -83,27 +78,27 @@ function addMaterial(id)
 
     // Add delete listener
     jQuery('#materials-list tr[data-id=' + id + '] button.delete').on('click', function(){
-        surgery['materials'].splice(surgery['materials'].indexOf(id), 1);
+        patient['materials'].splice(patient['materials'].indexOf(id), 1);
         jQuery(this).closest('tr[data-id]').remove();
         updateCategory();
     })
 }
 
-
+console.log(materials)
 
 // Material data initialization
 initMaterialData();
-surgery['materials'].forEach(function(material){
+patient['materials'].forEach(function(material){
     addMaterial(material);
 });
 
 // Add material button
 jQuery('#materials-list tr[data-option] button.validate').on('click', function(){
     var id = parseInt(jQuery('#materials-list').find('tr[data-option] .material-name select').val());
-    if (id !== -1 && surgery['materials'].indexOf(id) === -1)
+    if (id !== -1 && patient['materials'].indexOf(id) === -1)
     {
         addMaterial(id);
-        surgery['materials'].push(id);
+        patient['materials'].push(id);
         updateCategory();
     }
 });
@@ -112,9 +107,9 @@ jQuery('#materials-list tr[data-option] button.validate').on('click', function()
 
 //<editor-fold desc="Questions handling">
 
-
 function addAnswer(id)
 {
+    console.log(id);
     if (questions[id] === undefined)
     {
         console.log('question inconnu');
@@ -123,10 +118,10 @@ function addAnswer(id)
 
     var html =
         '<tr data-id=' + id + '>\n' +
-            '<td><span class="question-name">' + questions[id]['name'] + '</span></td>\n' +
-            '<td><span class="question-question">' + questions[id]['question'] + '</span></td>\n' +
-            '<td><input class="question-answer form-control" placeholder="' + questions[id]['answer'] + '"></td>\n' +
-            '<td><button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button></td>\n' +
+        '<td><span class="question-name">' + questions[id]['name'] + '</span></td>\n' +
+        '<td><span class="question-question">' + questions[id]['question'] + '</span></td>\n' +
+        '<td><input class="question-answer form-control" placeholder="' + questions[id]['answer'] + '"></td>\n' +
+        '<td><button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button></td>\n' +
         '<tr>';
 
     // Insert new row
@@ -135,7 +130,7 @@ function addAnswer(id)
 
     // Add delete listener
     jQuery('#questions-list tr[data-id=' + id + '] button.delete').on('click', function(){
-        surgery['responses'].splice(surgery['materials'].indexOf(id), 1);
+        patient['responses'].splice(patient['materials'].indexOf(id), 1);
         jQuery(this).closest('tr[data-id]').remove();
         showHideQuestions();
     })
@@ -148,7 +143,7 @@ function showHideQuestions()
     var firstId = -1;
 
     // Get active questions to hide doubles
-    surgery['responses'].forEach(function(question){
+    patient['responses'].forEach(function(question){
         activeQuestions.push(question['id'])
     });
 
@@ -199,20 +194,16 @@ function updateQuestionHelper()
 
 function initQuestionsData()
 {
-    // Make index of array same as id for better handling
-    var questions_with_index = [];
-
     // Init dropdown values
     var htmlQuestionsDropdown = '';
 
-    questions.forEach(function(question){
-        htmlQuestionsDropdown += '<option value="' + question['id'] + '">' + question['name'] + '</option>';
-        questions_with_index[question['id']] = question;
-    });
+    for (var question in questions)
+    {
+        htmlQuestionsDropdown += '<option value="' + questions[question]['id'] + '">' + questions[question]['name'] + '</option>';
+    }
 
     htmlQuestionsDropdown += '<option value="-1">Pas de questions disponible</option>';
 
-    questions = questions_with_index;
 
     jQuery('#questions-list').find('tr[data-option] select.question-name').html(htmlQuestionsDropdown);
 
@@ -223,7 +214,7 @@ function initQuestionsData()
 
 // Data init
 initQuestionsData();
-surgery['responses'].forEach(function(question){
+patient['responses'].forEach(function(question){
     addAnswer(question['id']);
     jQuery('#questions-list tr[data-id=' + question['id'] + '] input.question-answer').val(question['answer'])
 });
@@ -236,13 +227,13 @@ jQuery('#questions-list tr[data-option] button.validate').on('click', function()
     if (id != undefined && id !== -1)
     {
         addAnswer(id);
-        surgery['responses'].push({'id': id, 'name': questions[id]['questionName'], 'question': questions[id]['question'], 'answer': ''});
+        patient['responses'].push({'id': id, 'name': questions[id]['questionName'], 'question': questions[id]['question'], 'answer': ''});
         showHideQuestions();
     }
 });
 
 //</editor-fold>
-
+/*
 //<editor-fold desc="Patients handling">
 
 function showHidePatients()
@@ -253,7 +244,7 @@ function showHidePatients()
     jQuery('#patients-list').find('tr[data-option] select.patient-name option').each(function(){
         var id = parseInt(jQuery(this).val());
 
-        if (id !== -1 && surgery['compatibles'].indexOf(id) === -1)
+        if (id !== -1 && patient['compatibles'].indexOf(id) === -1)
         {
             if (firstId === -1)
             {
@@ -275,8 +266,8 @@ function addPatient(id)
 {
     var html =
         '<tr data-id=' + id + '>' +
-            '<td><span class="patient-name">' + patients[id]['firstname'] + ' ' + patients[id]['lastname'] + '</span></td>' +
-            '<td><button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button></td>' +
+        '<td><span class="patient-name">' + patients[id]['firstname'] + ' ' + patients[id]['lastname'] + '</span></td>' +
+        '<td><button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button></td>' +
         '<tr>';
 
     // Insert new row
@@ -284,7 +275,7 @@ function addPatient(id)
 
     // Add delete listener
     jQuery('#patients-list tr[data-id=' + id + '] button.delete').on('click', function(){
-        surgery['compatibles'].splice(surgery['compatibles'].indexOf(id), 1);
+        patient['compatibles'].splice(patient['compatibles'].indexOf(id), 1);
         jQuery(this).closest('tr[data-id]').remove();
         showHidePatients();
     });
@@ -314,7 +305,7 @@ function initPatientsData()
 
 // Data init
 initPatientsData();
-surgery['compatibles'].forEach(function(patient){
+patient['compatibles'].forEach(function(patient){
     addPatient(patient);
 });
 showHidePatients();
@@ -327,13 +318,13 @@ jQuery('#patients-list tr[data-option] button.validate').on('click', function(){
     if (id != undefined && id !== -1)
     {
         addPatient(id);
-        surgery['compatibles'].push(id);
+        patient['compatibles'].push(id);
         showHidePatients();
     }
 });
 
 //</editor-fold>
-
+*/
 jQuery('.hideable').each(function(){this.style.cursor = 'pointer'});
 jQuery('.hideable').on('click', function(){
     jQuery(this).closest('.panel').find('.panel-body').slideToggle()
@@ -341,13 +332,13 @@ jQuery('.hideable').on('click', function(){
 
 jQuery('button.save').on('click', function(){
     // Take updated answer values
-    surgery['responses'].forEach(function(element){
+    patient['responses'].forEach(function(element){
         element['answer'] = jQuery('#questions-list tr[data-id=' + element['id'] + '] .question-answer').val()
     });
 
-    surgery['name'] = jQuery('.surgery-name').val();
-    surgery['story'] = jQuery('.surgery-story').val();
-    surgery['emergency'] = jQuery('.checkbox input[type=checkbox]').prop('checked');
+    patient['name'] = jQuery('.patient-name').val();
+    patient['story'] = jQuery('.patient-story').val();
+    patient['emergency'] = jQuery('.checkbox input[type=checkbox]').prop('checked');
 
     // Prevent from click bashing
     jQuery('button.save').addClass('disabled');
@@ -356,13 +347,13 @@ jQuery('button.save').on('click', function(){
 
     // Prepare data to send
     var sendData = {
-        'id': surgery['id'],
-        'emergency': surgery['emergency'],
-        'compatibles': surgery['compatibles'],
-        'materials': surgery['materials'],
-        'responses': surgery['responses'],
-        'name': surgery['name'],
-        'story': surgery['story']
+        'id': patient['id'],
+        'emergency': patient['emergency'],
+        'compatibles': patient['compatibles'],
+        'materials': patient['materials'],
+        'responses': patient['responses'],
+        'name': patient['name'],
+        'story': patient['story']
     };
     console.log(sendData)
 
@@ -371,7 +362,7 @@ jQuery('button.save').on('click', function(){
         url: '/include/ajax-api.php',
         data: {
             action: "saveData",
-            type: "surgery",
+            type: "patient",
             data: sendData
         }
     })

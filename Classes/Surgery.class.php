@@ -17,10 +17,7 @@ class Surgery extends DBA implements JsonSerializable
     private $emergency;
     private $story;
 
-    public function __construct()
-    {
-
-    }
+    public $jsonCustomer = false;
 
     //<editor-fold desc="GetSets">
 
@@ -75,9 +72,23 @@ class Surgery extends DBA implements JsonSerializable
     /**
      * @return mixed
      */
-    public function getMaterials()
+    public function getMaterials($asString = false)
     {
-        return $this->materials;
+        if ($asString === true)
+        {
+            $string = '';
+            foreach ($this->materials as $material)
+            {
+                if (isset($material['name']) === false) { continue; }
+                $string !== '' ? $string .= ', ' : null;
+                $string += $material['name'];
+            }
+            return $string;
+        }
+        else
+        {
+            return $this->materials;
+        }
     }
 
     /**
@@ -85,7 +96,7 @@ class Surgery extends DBA implements JsonSerializable
      */
     public function setMaterials($materials)
     {
-        /*if (!is_array($materials))
+        if (!is_array($materials))
         {
             $materials = str_replace(' ', '', $materials);
             $materials = explode(',', $materials);
@@ -96,29 +107,17 @@ class Surgery extends DBA implements JsonSerializable
         foreach ($materials as $material)
         {
             array_push($this->materials, intval($material));
-        }*/
+        }
 
-        $this->materials = $materials;
+        //$this->materials = $materials;
     }
 
     /**
      * @return mixed
      */
-    public function getResponses($asString = false)
+    public function getResponses()
     {
-        if ($asString)
-        {
-            $str = '';
-            foreach ($this->responses as $response)
-            {
-                $str += $response . ' ';
-            }
-            return $str;
-        }
-        else
-        {
-            return $this->responses;
-        }
+        return $this->responses;
     }
 
     /**
@@ -203,9 +202,8 @@ class Surgery extends DBA implements JsonSerializable
      */
     function jsonSerialize()
     {
-        return [
+        $json = [
             'id' => $this->id,
-            'idCustomer' => $this->idCustomer,
             'name' => $this->name,
             'materials' => $this->materials,
             'responses' => $this->responses,
@@ -213,6 +211,221 @@ class Surgery extends DBA implements JsonSerializable
             'emergency' => $this->emergency,
             'story' => $this->story,
         ];
+
+        $this->jsonCustomer === true ? $json['idCustomer'] = $this->idCustomer : null;
+
+        return $json;
+    }
+
+    //</editor-fold>
+
+    //<editor-fold desc="Database writers">
+
+    public function checkValidity($checkId = true)
+    {
+        if ($checkId === true && $this->id === 0)
+        {
+            return false;
+        }
+
+        if ($this->idCustomer === 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function save()
+    {
+        $query = self::query("SELECT * FROM `surgery` WHERE `id` = $this->id");
+
+        $name = str_replace("'", "\'", $this->name);
+        $story = str_replace("'", "\'", $this->story);
+        $customer = intval($_SESSION['id']);
+        $emergency = $this->emergency === true ? '1' : '0';
+
+        if ($query->num_rows === 0 && $this->checkValidity(false))
+        {
+            $win = self::query("INSERT INTO `surgery` (`id`, `idCustomer`, `name`, `emergency`, `story`) VALUES (NULL, $customer, '$name', $emergency, '$story');");
+        }
+        else if ($query->num_rows === 1 && $this->checkValidity())
+        {
+            $win = self::query("UPDATE `surgery` SET `name` = '$name', `emergency` = $emergency, `story` = '$story' WHERE `surgery`.`id` = $this->id");
+        }
+        else
+        {
+            return false;
+        }
+
+        $sql = '';
+
+        //<editor-fold desc="Materials saving">
+
+        // TODO dégommer id customer de la dba pour materiel_liaison
+        $materials = self::query("SELECT * FROM `material_liaison` WHERE `idCustomer` = $customer && `spawnedBy` = 0 && `idSpawner` = $this->id")->fetch_all(MYSQLI_ASSOC);
+        $materialsInDBA = array();
+
+        foreach ($materials as $material)
+        {
+            array_push($materialsInDBA, intval($material['idMaterial']));
+        }
+
+        // Add materials non existent in dba
+        $sqlMaterials = '';
+        foreach ($this->materials as $matToSave)
+        {
+            if (in_array($matToSave, $materialsInDBA) === false)
+            {
+                if ($sqlMaterials !== '')
+                {
+                    $sqlMaterials .= ',';
+                }
+
+                $sqlMaterials .= "(NULL, $customer, $matToSave, 0, $this->id)";
+            }
+        }
+        if ($sqlMaterials !== '')
+        {
+            $sql .= "INSERT INTO `material_liaison` (`id`, `idCustomer`, `idMaterial`, `spawnedBy`, `idSpawner`) VALUES $sqlMaterials;\n";
+        }
+
+        // Delete materials non existant in new surgery
+        $sqlMaterials = '';
+        foreach ($materialsInDBA as $matToDelete)
+        {
+            if (in_array($matToDelete, $this->materials) === false)
+            {
+                if ($sqlMaterials !== '')
+                {
+                    $sqlMaterials .= ' || ';
+                }
+                $sqlMaterials .= "`idMaterial` = $matToDelete";
+            }
+        }
+        if ($sqlMaterials !== '')
+        {
+            $sqlMaterials = '(' . $sqlMaterials . ') &&';
+            $sql .= "DELETE FROM `material_liaison` WHERE $sqlMaterials `idCustomer` = 1 && `spawnedBy` = 0 && `idSpawner` = $this->id;\n";
+        }
+
+        //</editor-fold>
+
+        //<editor-fold desc="Questions saving">
+
+        $questions = self::query("SELECT * FROM `questions_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $this->id")->fetch_all(MYSQLI_ASSOC);
+
+        $questionsInDBA = array();
+        foreach ($questions as $question)
+        {
+            array_push($questionsInDBA, intval($question['idQuestion']));
+        }
+
+        $questionsToSave = array();
+        $responsesWithIndex = array();
+        foreach ($this->responses as $response)
+        {
+            $responsesWithIndex[intval($response['id'])] = $response;
+            array_push($questionsToSave, intval($response['id']));
+        }
+
+        // Add questions non existent in dba or update them
+        $sqlQuestions = '';
+        foreach ($questionsToSave as $questionToSave)
+        {
+            $answer = str_replace("'", "\'", $responsesWithIndex[$questionToSave]['answer']);
+
+            if (in_array($questionToSave, $questionsInDBA))
+            {
+                $sql .= "UPDATE `questions_liaison` SET `answer` = '$answer' WHERE `idQuestion` = $questionToSave && `spawnedBy` = 0;\n";
+            }
+            else
+            {
+                if ($sqlQuestions !== '')
+                {
+                    $sqlQuestions .= ',';
+                }
+
+                $sqlQuestions .= "(NULL, $questionToSave, '$answer', 0, $this->id)";
+            }
+        }
+
+        if ($sqlQuestions !== '')
+        {
+            $sql .= "INSERT INTO `questions_liaison` (`id`, `idQuestion`, `answer`, `spawnedBy`, `idSpawner`) VALUES $sqlQuestions;\n";
+        }
+
+        // Delete questions non existent in new surgery
+        $sqlQuestions = '';
+        foreach ($questionsInDBA as $questionToDelete)
+        {
+            if (in_array($questionToDelete, $questionsToSave) === false)
+            {
+                if ($sqlQuestions !== '')
+                {
+                    $sqlQuestions .= ' || ';
+                }
+                $sqlQuestions .= "`idQuestion` = $questionToDelete";
+            }
+        }
+        if ($sqlQuestions !== '')
+        {
+            $sqlQuestions = '(' . $sqlQuestions . ') &&';
+            $sql .= "DELETE FROM `questions_liaison` WHERE  $sqlQuestions `spawnedBy` = 0 && `idSpawner` = $this->id;";
+        }
+
+        //</editor-fold>
+
+        //<editor-fold desc="Patients saving">
+
+            $patients = self::query("SELECT * FROM `patient_liaison` WHERE `idSurgery` = $this->id")->fetch_all(MYSQLI_ASSOC);
+            $patientsInDBA = array();
+
+            foreach ($patients as $patient)
+            {
+                array_push($patientsInDBA, intval($patient['idPatient']));
+            }
+
+            // Add patient non existent in dba
+            $sqlPatients = '';
+            foreach ($this->compatibles as $patientToSave)
+            {
+                if (in_array($patientToSave, $patientsInDBA) === false)
+                {
+                    if ($sqlPatients !== '')
+                    {
+                        $sqlPatients .= ',';
+                    }
+
+                    $sqlPatients .= "(NULL, $patientToSave, $this->id)";
+                }
+            }
+            if ($sqlPatients !== '')
+            {
+                $sql .= "INSERT INTO `patient_liaison` (`id`, `idPatient`, `idSurgery`) VALUES $sqlPatients;\n";
+            }
+
+            // Delete patient non existant in new surgery
+            $sqlPatients = '';
+            foreach ($patientsInDBA as $patientToDelete)
+            {
+                if (in_array($patientToDelete, $this->compatibles) === false)
+                {
+                    if ($sqlPatients !== '')
+                    {
+                        $sqlPatients .= ' || ';
+                    }
+                    $sqlPatients .= "`idPatient` = $patientToDelete";
+                }
+            }
+            if ($sqlPatients !== '')
+            {
+                $sql .= "DELETE FROM `patient_liaison` WHERE `idSurgery` = $this->id && ($sqlPatients);\n";
+            }
+
+            //</editor-fold>
+
+        return self::mquery($sql) && $win;
     }
 
     //</editor-fold>
@@ -220,28 +433,36 @@ class Surgery extends DBA implements JsonSerializable
     //<editor-fold desc="Static database fetchers">
 
     /**
-     * Get all surgeries with a defined customer id
+     * Get all patients with a defined customer id
      * @param $customerID
      * @return array|bool
      */
-    public static function getAllByCustomer($customerID = 0)
+    public static function getAllByCustomer($customerID = 0, $indexId = false)
     {
-        $surgeries = self::query("SELECT `id` FROM `surgery` WHERE `idCustomer` = $customerID")->fetch_all(MYSQLI_ASSOC);
+        $patients = self::query("SELECT `id` FROM `surgery` WHERE `idCustomer` = $customerID")->fetch_all(MYSQLI_ASSOC);
 
-        if ($surgeries === false)
+        if ($patients === false)
         {
             return false;
         }
 
-        $surgeries_with_infos = array();
+        $patientsWithInfos = array();
 
-        foreach ($surgeries as $surgery)
+        foreach ($patients as $patient)
         {
-            $new_surgery = self::getById($surgery['id']);
-            array_push($surgeries_with_infos, $new_surgery);
+            $newPatient = self::getById($patient['id']);
+
+            if ($indexId === true)
+            {
+                $patientsWithInfos[$newPatient->getId()] = $newPatient;
+            }
+            else
+            {
+                array_push($patientsWithInfos, $newPatient);
+            }
         }
 
-        return $surgeries_with_infos;
+        return $patientsWithInfos;
     }
 
     public static function getById($id = 0)
@@ -260,7 +481,7 @@ class Surgery extends DBA implements JsonSerializable
         $new_surgery->setEmergency($surgery['emergency'] === '1' ? true : false);
         $new_surgery->setStory($surgery['story']);
 
-        $materials = self::query("SELECT `idMaterial` FROM `material_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $new_surgery->id")->fetch_all(MYSQLI_ASSOC);
+        $materials = self::query("SELECT `idMaterial` FROM `material_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $id")->fetch_all(MYSQLI_ASSOC);
         $mat_array = array();
         foreach ($materials as $material)
         {
@@ -268,15 +489,15 @@ class Surgery extends DBA implements JsonSerializable
         }
         $new_surgery->setMaterials($mat_array);
 
-        $questionsLinks = self::query("SELECT `idQuestion`, `answer` FROM `questions_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $new_surgery->id")->fetch_all(MYSQLI_ASSOC);
+        $questionsLinks = self::query("SELECT `idQuestion`, `answer` FROM `questions_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $id")->fetch_all(MYSQLI_ASSOC);
         $questionsArray = array();
 
         foreach ($questionsLinks as $questionLink)
         {
-            $id = $questionLink['idQuestion'];
-            $question = self::query("SELECT `name`, `answer` FROM `questions` WHERE `id` = $id")->fetch_array(MYSQLI_ASSOC);
+            $questionId = $questionLink['idQuestion'];
+            $question = self::query("SELECT `name`, `answer` FROM `questions` WHERE `id` = $questionId")->fetch_array(MYSQLI_ASSOC);
             array_push($questionsArray, array(
-                'id' => (int) $id,
+                'id' => (int) $questionId,
                 'questionName' => $question['name'],
                 'defaultAnswer' => $question['answer'],
                 'answer' => $questionLink['answer'],
@@ -284,7 +505,7 @@ class Surgery extends DBA implements JsonSerializable
         }
         $new_surgery->setResponses($questionsArray);
 
-        $patients = self::query("SELECT `idPatient` FROM `patient_liaison` WHERE `idSurgery` = 1")->fetch_all(MYSQLI_ASSOC);
+        $patients = self::query("SELECT `idPatient` FROM `patient_liaison` WHERE `idSurgery` = $id")->fetch_all(MYSQLI_ASSOC);
         $patients_array = array();
         foreach ($patients as $patient)
         {

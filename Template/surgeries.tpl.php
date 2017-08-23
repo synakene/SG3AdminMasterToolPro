@@ -44,8 +44,37 @@
                             <th>Questions</th>
                             <th>Patients</th>
                             <th>Urgence</th>
+                            <th style="width: 95px; display: flex;">Actions</th>
                             </thead>
-                            <tbody id="surgeries-list"></tbody>
+                            <tbody id="surgeries-list">
+                            <?php foreach ($surgeries as $surgery)
+                            {
+                                echo '<tr data-id=' . $surgery->getId() . '>';
+                                    echo '<td>' . $surgery->getName() . '</td>';
+                                    echo '<td>' . $surgery->getStory() . '</td>';
+
+                                    echo '<td>';
+                                    foreach ($surgery->getMaterials() as $material) { echo '<span class="btn btn-default">' . $materialsNames[$material] . '</span>'; }
+                                    echo '</td>';
+
+                                    echo '<td>';
+                                    foreach ($surgery->getResponses() as $question) { echo '<span class="btn btn-default">' . $question['questionName'] . '</span>'; }
+                                    echo '</td>';
+
+                                    echo '<td>';
+                                    foreach ($surgery->getCompatibles() as $patient) { echo '<span class="btn btn-default">' . $patientsNames[$patient] . '</span>'; }
+                                    echo '</td>';
+                                    echo '<td><input type="checkbox" disabled ' . ($surgery->getEmergency() === true ? 'checked' : '') . '></td>';
+
+                                    echo '<td>';
+                                    echo '<a href="/chirurgies/' . $surgery->getId() . '"><button class="btn btn-sm btn-primary faa-parent animated-hover modify"><i class="fa fa-fw fa-wrench faa-wrench"></i></button></a> ';
+                                    echo '<button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-fw fa-times faa-flash"></i></button>';
+                                    echo '</td>';
+                                echo '<tr>';
+
+                            }
+                            ?>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -64,10 +93,3 @@
 </div>
 
 <?php include("Modules/footer.mod.php"); ?>
-
-<script>
-    var surgeries = <?php echo $surgeriesJson; ?>;
-    var materials = <?php echo $materialsJson; ?>;
-</script>
-
-<script type="text/javascript" src="/Libs/js/surgeries.js"></script>
