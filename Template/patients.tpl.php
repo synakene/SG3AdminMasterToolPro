@@ -28,7 +28,7 @@
 
                     <!-- Button(s) -->
                     <div class="col-xs-12 space-under">
-                        <button type="button" class="btn btn-lg btn-primary button-add">Ajouter un patient</button>
+                        <a href="/creer-patient"><button type="button" class="btn btn-lg btn-primary button-add">Ajouter un patient</button></a>
                     </div>
 
                     <!-- Material list -->
@@ -55,7 +55,19 @@
                                     echo '<td>' . $patient->getFirstname() . '</td>';
                                     echo '<td>' . $patient->getLastname() . '</td>';
 
-                                    echo '<td><i class="fa ' . ($patient->getSex() === '1' ? 'fa-female' : 'fa-male') . '"></i></td>';
+                                    if ($patient->getSex() === 0)
+                                    {
+                                        $sexIcon = 'fa-mars';
+                                    }
+                                    else if ($patient->getSex() === 1)
+                                    {
+                                        $sexIcon = 'fa-venus';
+                                    }
+                                    else
+                                    {
+                                        $sexIcon = 'fa-genderless';
+                                    }
+                                    echo '<td><i class="fa ' . $sexIcon . '"></i></td>';
 
                                     echo '<td>' . $patient->getAge() . ' ans</td>';
                                     echo '<td>' . $patient->getHeight() . ' cm</td>';
@@ -87,7 +99,7 @@
 
                     <!-- Button(s) -->
                     <div class="col-xs-12">
-                        <button type="button" class="btn btn-lg btn-primary button-add">Ajouter un patient</button>
+                        <a href="/creer-patient"><button type="button" class="btn btn-lg btn-primary button-add">Ajouter un patient</button></a>
                     </div>
                 </div>
 
@@ -98,3 +110,5 @@
     </div>
 
 <?php include("Modules/footer.mod.php"); ?>
+
+<script type="text/javascript" src="/Libs/js/patients.js"></script>

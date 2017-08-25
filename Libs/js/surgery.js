@@ -339,7 +339,8 @@ jQuery('.hideable').on('click', function(){
     jQuery(this).closest('.panel').find('.panel-body').slideToggle()
 });
 
-jQuery('button.save').on('click', function(){
+function save()
+{
     // Take updated answer values
     surgery['responses'].forEach(function(element){
         element['answer'] = jQuery('#questions-list tr[data-id=' + element['id'] + '] .question-answer').val()
@@ -349,10 +350,13 @@ jQuery('button.save').on('click', function(){
     surgery['story'] = jQuery('.surgery-story').val();
     surgery['emergency'] = jQuery('.checkbox input[type=checkbox]').prop('checked');
 
+    btn = jQuery('button.save');
+
     // Prevent from click bashing
-    jQuery('button.save').addClass('disabled');
-    jQuery('button.save i').removeClass('fa-floppy-o');
-    jQuery('button.save i').addClass('fa-cog faa-spin animated');
+    jQuery(btn).off();
+    jQuery(btn).addClass('disabled');
+    jQuery(btn).find('i').removeClass('fa-floppy-o');
+    jQuery(btn).find('i').addClass('fa-cog faa-spin animated');
 
     // Prepare data to send
     var sendData = {
@@ -364,7 +368,6 @@ jQuery('button.save').on('click', function(){
         'name': surgery['name'],
         'story': surgery['story']
     };
-    console.log(sendData)
 
     jQuery.ajax({
         method: 'POST',
@@ -376,9 +379,12 @@ jQuery('button.save').on('click', function(){
         }
     })
         .done(function(data){
-            jQuery('button.save').removeClass('disabled');
-            jQuery('button.save i').removeClass('fa-cog faa-spin animated');
-            jQuery('button.save i').addClass('fa-floppy-o');
+            jQuery(btn).on('click', function(){
+                save();
+            });
+            jQuery(btn).removeClass('disabled');
+            jQuery(btn).find('i').removeClass('fa-cog faa-spin animated');
+            jQuery(btn).find('i').addClass('fa-floppy-o');
 
             data = data.split('<br>');
             if (data[0] === '1')
@@ -390,4 +396,8 @@ jQuery('button.save').on('click', function(){
                 notify('danger', data[1]);
             }
         });
+}
+
+jQuery('button.save').on('click', function(){
+    save()
 });

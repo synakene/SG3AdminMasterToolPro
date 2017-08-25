@@ -84,8 +84,6 @@ function addMaterial(id)
     })
 }
 
-console.log(materials)
-
 // Material data initialization
 initMaterialData();
 patient['materials'].forEach(function(material){
@@ -109,10 +107,8 @@ jQuery('#materials-list tr[data-option] button.validate').on('click', function()
 
 function addAnswer(id)
 {
-    console.log(id);
     if (questions[id] === undefined)
     {
-        console.log('question inconnu');
         return false;
     }
 
@@ -233,18 +229,18 @@ jQuery('#questions-list tr[data-option] button.validate').on('click', function()
 });
 
 //</editor-fold>
-/*
-//<editor-fold desc="Patients handling">
 
-function showHidePatients()
+//<editor-fold desc="Surgeries handling">
+
+function showHideSurgeries()
 {
     var firstId = -1;
 
     // Hide and show options
-    jQuery('#patients-list').find('tr[data-option] select.patient-name option').each(function(){
+    jQuery('#surgeries-list').find('tr[data-option] select.surgery-name option').each(function(){
         var id = parseInt(jQuery(this).val());
 
-        if (id !== -1 && patient['compatibles'].indexOf(id) === -1)
+        if (id !== -1 && patient['surgeries'].indexOf(id) === -1)
         {
             if (firstId === -1)
             {
@@ -259,88 +255,92 @@ function showHidePatients()
         }
     });
 
-    jQuery('#patients-list').find('tr[data-option] select.patient-name').val(firstId);
+    jQuery('#surgeries-list').find('tr[data-option] select.surgery-name').val(firstId);
 }
 
-function addPatient(id)
+function addSurgery(id)
 {
     var html =
         '<tr data-id=' + id + '>' +
-        '<td><span class="patient-name">' + patients[id]['firstname'] + ' ' + patients[id]['lastname'] + '</span></td>' +
+        '<td><span class="surgery-name">' + surgeries[id]['name'] + '</span></td>' +
         '<td><button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button></td>' +
         '<tr>';
 
     // Insert new row
-    jQuery('#patients-list tr[data-option]').before(html);
+    jQuery('#surgeries-list tr[data-option]').before(html);
 
     // Add delete listener
-    jQuery('#patients-list tr[data-id=' + id + '] button.delete').on('click', function(){
-        patient['compatibles'].splice(patient['compatibles'].indexOf(id), 1);
+    jQuery('#surgeries-list tr[data-id=' + id + '] button.delete').on('click', function(){
+        patient['surgeries'].splice(patient['surgeries'].indexOf(id), 1);
         jQuery(this).closest('tr[data-id]').remove();
-        showHidePatients();
+        showHideSurgeries();
     });
 }
 
 
-function initPatientsData()
+function initSurgeriesData()
 {
     // Make index of array same as id for better handling
-    var patientsWithIndex = [];
+    var surgeriesWithIndex = [];
 
     // Init dropdown values
-    var htmlPatientsDropdown = '';
+    var htmlSurgeriesDropdown = '';
 
-    patients.forEach(function(patient){
-        htmlPatientsDropdown += '<option value="' + patient['id'] + '">' + patient['firstname'] + ' ' + patient['lastname'] + '</option>';
-        patientsWithIndex[patient['id']] = patient;
-    });
+    for (var surgeryId in surgeries)
+    {
+        htmlSurgeriesDropdown += '<option value="' + surgeries[surgeryId]['id'] + '">' + surgeries[surgeryId]['name'] + '</option>';
+    }
 
-    htmlPatientsDropdown += '<option value="-1">Pas de patient disponible</option>';
+    htmlSurgeriesDropdown += '<option value="-1">Pas de chirurgie disponible</option>';
 
-    patients = patientsWithIndex;
-
-    jQuery('#patients-list').find('tr[data-option] select.patient-name').html(htmlPatientsDropdown);
+    jQuery('#surgeries-list').find('tr[data-option] select.surgery-name').html(htmlSurgeriesDropdown);
 }
 
 
 // Data init
-initPatientsData();
-patient['compatibles'].forEach(function(patient){
-    addPatient(patient);
+initSurgeriesData();
+patient['surgeries'].forEach(function(patient){
+    addSurgery(patient);
 });
-showHidePatients();
+showHideSurgeries();
+jQuery('.patient-sex').val(patient['sex']);
 
 
 // Add button interaction
-jQuery('#patients-list tr[data-option] button.validate').on('click', function(){
-    var id = parseInt(jQuery('#patients-list').find('tr[data-option] select.patient-name').val());
+jQuery('#surgeries-list tr[data-option] button.validate').on('click', function(){
+    var id = parseInt(jQuery('#surgeries-list').find('tr[data-option] select.surgery-name').val());
 
     if (id != undefined && id !== -1)
     {
-        addPatient(id);
-        patient['compatibles'].push(id);
-        showHidePatients();
+        addSurgery(id);
+        patient['surgeries'].push(id);
+        showHideSurgeries();
     }
 });
 
 //</editor-fold>
-*/
+
 jQuery('.hideable').each(function(){this.style.cursor = 'pointer'});
 jQuery('.hideable').on('click', function(){
     jQuery(this).closest('.panel').find('.panel-body').slideToggle()
 });
 
-jQuery('button.save').on('click', function(){
+function save()
+{
     // Take updated answer values
     patient['responses'].forEach(function(element){
         element['answer'] = jQuery('#questions-list tr[data-id=' + element['id'] + '] .question-answer').val()
     });
 
-    patient['name'] = jQuery('.patient-name').val();
-    patient['story'] = jQuery('.patient-story').val();
-    patient['emergency'] = jQuery('.checkbox input[type=checkbox]').prop('checked');
+    patient['firstname'] = jQuery('.patient-firstname').val();
+    patient['lastname'] = jQuery('.patient-lastname').val();
+    patient['sex'] = jQuery('.patient-sex').val();
+    patient['age'] = jQuery('.patient-age').val();
+    patient['height'] = jQuery('.patient-height').val();
+    patient['weight'] = jQuery('.patient-weight').val();
 
     // Prevent from click bashing
+    jQuery('button.save').off();
     jQuery('button.save').addClass('disabled');
     jQuery('button.save i').removeClass('fa-floppy-o');
     jQuery('button.save i').addClass('fa-cog faa-spin animated');
@@ -348,14 +348,16 @@ jQuery('button.save').on('click', function(){
     // Prepare data to send
     var sendData = {
         'id': patient['id'],
-        'emergency': patient['emergency'],
-        'compatibles': patient['compatibles'],
+        'surgeries': patient['surgeries'],
         'materials': patient['materials'],
         'responses': patient['responses'],
-        'name': patient['name'],
-        'story': patient['story']
+        'firstname': patient['firstname'],
+        'lastname': patient['lastname'],
+        'sex': patient['sex'],
+        'age': patient['age'],
+        'height': patient['height'],
+        'weight': patient['weight']
     };
-    console.log(sendData)
 
     jQuery.ajax({
         method: 'POST',
@@ -367,9 +369,15 @@ jQuery('button.save').on('click', function(){
         }
     })
         .done(function(data){
+            jQuery('button.save').on('click', function(){
+                save();
+            });
             jQuery('button.save').removeClass('disabled');
             jQuery('button.save i').removeClass('fa-cog faa-spin animated');
             jQuery('button.save i').addClass('fa-floppy-o');
+
+            jQuery('h1.page-header').text(patient['firstname'] + ' ' + patient['lastname']);
+            jQuery('ol.breadcrumb .active span').text(patient['firstname'] + ' ' + patient['lastname'])
 
             data = data.split('<br>');
             if (data[0] === '1')
@@ -381,4 +389,8 @@ jQuery('button.save').on('click', function(){
                 notify('danger', data[1]);
             }
         });
+}
+
+jQuery('button.save').on('click', function(){
+    save();
 });

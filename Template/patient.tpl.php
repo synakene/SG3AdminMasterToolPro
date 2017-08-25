@@ -12,7 +12,7 @@
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"><?php echo $patient->getFirstname() . $patient->getLastname(); ?></h1>
+                    <h1 class="page-header"><?php echo $patient->getFirstname() . ' ' . $patient->getLastname(); ?></h1>
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-flag"></i>  <a href="/accueil">Accueil</a>
@@ -21,7 +21,7 @@
                             <i class="fa fa-scissors"></i> <a href="/patients">Patients</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-pencil"></i> <?php echo $patient->getFirstname() . $patient->getLastname(); ?>
+                            <i class="fa fa-pencil"></i> <span><?php echo $patient->getFirstname() . ' ' . $patient->getLastname(); ?></span>
                         </li>
                     </ol>
                 </div>
@@ -136,18 +136,18 @@
 
                         <div class="panel panel-primary">
                             <div class="panel-heading hideable">
-                                <i class="fa fa-user"></i> Patients
+                                <i class="fa fa-scissors"></i> Chirurgies
                             </div>
                             <div class="panel-body" style="display: none">
                                 <table class="table table-hover">
                                     <thead>
-                                    <th>Patient</th>
-                                    <th>Action</th>
+                                        <th>Chirurgie</th>
+                                        <th>Action</th>
                                     </thead>
-                                    <tbody id="patients-list">
+                                    <tbody id="surgeries-list">
                                     <tr data-option="1">
                                         <td>
-                                            <select class="patient-name form-control">
+                                            <select class="surgery-name form-control">
                                                 <option value="cat1">Cat1</option>
                                                 <option value="cat1">Cat1</option>
                                                 <option value="cat1">Cat1</option>

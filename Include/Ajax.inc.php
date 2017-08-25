@@ -90,10 +90,13 @@ function saveData($table = '', $data = array())
             $surgery->setId($data['id']);
             $surgery->setIdCustomer($_SESSION['id']);
             $surgery->setEmergency($data['emergency'] === 'true' ? true : false);
+            if (isset($data['compatibles']) === false) { $data['compatibles'] = []; };
             $surgery->setCompatibles($data['compatibles']);
+            if (isset($data['materials']) === false) { $data['materials'] = []; };
             $surgery->setMaterials($data['materials']);
-            $surgery->setName($data['name']);
+            if (isset($data['responses']) === false) { $data['responses'] = []; };
             $surgery->setResponses($data['responses']);
+            $surgery->setName($data['name']);
             $surgery->setStory($data['story']);
 
             if ($surgery->save())
@@ -116,6 +119,57 @@ function saveData($table = '', $data = array())
                 else
                 {
                     return array(0, 'Mise à jour de la chirurgie impossible. Données incorrectes.');
+                }
+            }
+
+        case 'patient':
+            $patient = Patient::getById($data['id']);
+            $new = false;
+
+            if ($patient === false) {
+                $new = true;
+                $patient = new Patient();
+            }
+
+            $patient->setId($data['id']);
+            $patient->setIdCustomer($_SESSION['id']);
+
+            isset($data['surgeries']) ? null : $data['surgeries'] = [];
+            $patient->setSurgeries($data['surgeries']);
+
+            isset($data['materials']) ? null : $data['materials'] = [];
+            $patient->setMaterials($data['materials']);
+
+            isset($data['responses']) ? null : $data['responses'] = [];
+            $patient->setResponses($data['responses']);
+
+            $patient->setFirstname($data['firstname']);
+            $patient->setLastname($data['lastname']);
+            $patient->setSex($data['sex']);
+            $patient->setAge($data['age']);
+            $patient->setHeight($data['height']);
+            $patient->setWeight($data['weight']);
+
+            if ($patient->save())
+            {
+                if ($new === true)
+                {
+                    return array(true, 'Patient créé.');
+                }
+                else
+                {
+                    return array(true, 'Patient mis à jour.');
+                }
+            }
+            else
+            {
+                if ($new === true)
+                {
+                    return array(0, 'Création du patient impossible. Données incorrectes.');
+                }
+                else
+                {
+                    return array(0, 'Mise à jour du patient impossible. Données incorrectes.');
                 }
             }
 
@@ -166,6 +220,7 @@ function deleteData($table = '', $id = 0)
         case 'material':
             $dummy = new Material($id, 1, ' ', ' ');
             $win = $dummy->destroy();
+
             if ($win === true)
             {
                 $message = 'Matériel supprimé.';
@@ -179,6 +234,7 @@ function deleteData($table = '', $id = 0)
         case 'question':
             $dummy = new Question($id, 1, '', '');
             $win = $dummy->destroy();
+
             if ($win === true)
             {
                 $message = 'Question supprimée.';
@@ -186,6 +242,21 @@ function deleteData($table = '', $id = 0)
             else
             {
                 $message = 'Impossible de supprimer la question. Veuillez contacter le webmaster.';
+            }
+            break;
+
+        case 'patient':
+            $patient = new Patient();
+            $patient->setId($id);
+            $win = $patient->destroy();
+
+            if ($win === true)
+            {
+                $message = 'Patient supprimé';
+            }
+            else
+            {
+                $message = 'Impossible de supprimer le patient. Veuillez contacter le webmaster.';
             }
             break;
     }

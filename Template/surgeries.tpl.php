@@ -93,3 +93,5 @@
 </div>
 
 <?php include("Modules/footer.mod.php"); ?>
+
+<script type="text/javascript" src="/Libs/js/surgeries.js"></script>
