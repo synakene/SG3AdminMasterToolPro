@@ -1,0 +1,75 @@
+{
+	"patients": [
+
+		{
+			"id": 1,
+			"nom": "Barreau",
+			"prenom": "Nathalie",
+			"sexe": "Femme",
+			"age": 25,
+			"taille": 171,
+			"poid": 70,
+			"materiels": [ 0, 1, 41, 42, 24, 29, 3, 4, 7, 8, 36, 9, 21, 57, 58 ],
+			"reponses": [],
+			"spec": []
+		},
+
+		{
+			"id": 2,
+			"nom": "Durand",
+			"prenom": "Jean",
+			"sexe": "Homme",
+			"age": 76,
+			"taille": 176,
+			"poid": 80,
+			"materiels": [ 2, 4, 33, 48, 8, 50, 52, 53, 21, 57 ],
+			"reponses": [
+				{ "jeunTabac": "Oui, je n'ai pas fumé depuis une semaine.}" }
+			],
+			"spec": [ "tabac", "BPCO" ]
+		},
+
+		{
+			"id": 3,
+			"nom": "Garcia",
+			"prenom": "Emmanuel",
+			"sexe": "Homme",
+			"age": 35,
+			"taille": 175,
+			"poid": 120,
+			"materiels": [ 28, 29, 4, 48, 8, 49, 55, 19, 21, 56, 57 ],
+			"reponses": [],
+			"spec": [ "diabetique", "obesite" ]
+		},
+
+		{
+			"id": 4,
+			"nom": "Morel",
+			"prenom": "Marie",
+			"sexe": "Femme",
+			"age": 68,
+			"taille": 176,
+			"poid": 72,
+			"materiels": [ 2, 4, 45, 46, 47, 8, 9, 53, 54, 21, 57 ],
+			"reponses": [
+				{ "traitementCardio": "Arrêt/ poursuite traitement cardio ? Relai ? (A REDIGER)}" }
+			],
+			"spec": [ "angor", "stent", "metHaut" ]
+		},
+
+		{
+			"id": 5,
+			"nom": "Monet",
+			"prenom": "François",
+			"sexe": "Homme",
+			"age": 35,
+			"taille": 180,
+			"poid": 78,
+			"materiels": [ 2, 8 ],
+			"reponses": [
+				{ "asthme": "Ca doit faire environ six mois.}" }
+			],
+			"spec": []
+		}
+	]
+}

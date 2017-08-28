@@ -14,7 +14,7 @@ class Question extends DBA implements JsonSerializable
     private $question;
     private $answer;
 
-    public $jsonCutomer = false;
+    public $jsonCustomer = false;
 
     public function __construct($id = 0, $idCustomer = 0, $name = '', $question = '', $answer = '')
     {
@@ -128,7 +128,7 @@ class Question extends DBA implements JsonSerializable
             'answer' => $this->answer,
         ];
 
-        $this->jsonCutomer === true ? $json['idCustomer'] = $this->idCustomer : null;
+        $this->jsonCustomer === true ? $json['idCustomer'] = $this->idCustomer : null;
 
         return $json;
     }
@@ -239,6 +239,26 @@ class Question extends DBA implements JsonSerializable
 
         return $questions;
     }
+
+    /*public static function getAllCustomsByCustomer($idCustomer, $indexId = false)
+    {
+        $query = self::query("SELECT * FROM `questions_liaison` WHERE `idCustomer` = $idCustomer")->fetch_all(MYSQLI_ASSOC);
+        $questions = array();
+
+        foreach ($query as $question)
+        {
+            if ($indexId)
+            {
+                $questions[$question['id']] = new Question($question['id'], $question['idCustomer'], $question['name'], $question['question'], $question['answer']);
+            }
+            else
+            {
+                array_push($questions, new Question($question['id'], $question['idCustomer'], $question['name'], $question['question'], $question['answer']));
+            }
+        }
+
+        return $questions;
+    }*/
 
     /**
      * Get next id used by id sequence

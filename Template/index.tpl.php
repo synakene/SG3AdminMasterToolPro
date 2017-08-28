@@ -101,7 +101,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
+                                    <i class="fa fa-question fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">13</div>
@@ -125,7 +125,11 @@
             <div class="row">
                 <div class="well">
                     <h3>Génerer les fichiers de données du jeu</h3>
-                    <button class="btn btn-primary btn-lg"><i class="fa fa-flask" aria-hidden="true"></i> Générer</button>
+                    <a href="/Include/GenerateJSON.php?type=materials"><button class="btn btn-primary btn-lg"><i class="fa fa-flask"></i> Matériel</button></a>
+                    <a href="/Include/GenerateJSON.php?type=questions"><button class="btn btn-primary btn-lg"><i class="fa fa-flask"></i> Question</button></a>
+                    <a href="/Include/GenerateJSON.php?type=surgeries"><button class="btn btn-primary btn-lg"><i class="fa fa-flask"></i> Chirurgies</button></a>
+                    <a href="/Include/GenerateJSON.php?type=patients"><button class="btn btn-primary btn-lg"><i class="fa fa-flask"></i> Patients</button></a>
+                    <a href="/Include/GenerateJSON.php?type=all"><button class="btn btn-primary btn-lg"><i class="fa fa-flask"></i> Tout</button></a>
                 </div>
             </div>
 

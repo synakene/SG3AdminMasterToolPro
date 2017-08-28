@@ -1,0 +1,62 @@
+{
+	"chirurgies": [
+
+		{
+			"id": 1,
+			"nom": "Césarienne en urgence",
+			"materiels": [ 27, 39, 1, 23, 40, 42, 3, 44, 48, 36, 18, 58 ],
+			"reponses": [],
+			"compatibles": [ 1 ],
+			"spec": [ "urgence" ],
+			"histoire": "histoire 1"
+		},
+
+		{
+			"id": 2,
+			"nom": "Cysto-prostatectomie voie haute",
+			"materiels": [ 26, 27, 39, 1, 23, 42, 44, 45, 46, 48, 36, 17, 18, 58, 60 ],
+			"reponses": [
+				{ "lombaire": "Non ça va, je suis bien installé.}" }
+			],
+			"compatibles": [ 2, 3, 5 ],
+			"spec": [],
+			"histoire": "histoire 2"
+		},
+
+		{
+			"id": 3,
+			"nom": "Ligamentoplastie épaule gauche sous AG + BIS",
+			"materiels": [ 23, 30, 31, 35 ],
+			"reponses": [
+				{ "cote": "Coté gauche." },
+				{ "rgo": "Non.}" },
+				{ "accordALR": "Oui." }
+			],
+			"compatibles": [ 3, 1, 2, 4, 5 ],
+			"spec": [],
+			"histoire": "histoire 3"
+		},
+
+		{
+			"id": 4,
+			"nom": "PTH droite, décubitus latéral gauche",
+			"materiels": [ 27, 41, 23, 42, 1, 44, 45, 46, 48, 36, 17, 58 ],
+			"reponses": [],
+			"compatibles": [ 4, 1, 2, 3, 5 ],
+			"spec": [],
+			"histoire": "histoire 4"
+		},
+
+		{
+			"id": 5,
+			"nom": "Thyroïdectomie totale",
+			"materiels": [ 65, 22, 39, 1, 23, 42, 44, 45, 46, 51, 13, 14, 20 ],
+			"reponses": [
+				{ "betatine": "Non.}" }
+			],
+			"compatibles": [ 5, 1, 2, 3, 4 ],
+			"spec": [],
+			"histoire": "histoire 5"
+		}
+	]
+}

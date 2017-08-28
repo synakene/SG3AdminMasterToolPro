@@ -70,11 +70,12 @@ class Surgery extends DBA implements JsonSerializable
     }
 
     /**
+     * @param string $mode
      * @return mixed
      */
-    public function getMaterials($asString = false)
+    public function getMaterials($mode = '')
     {
-        if ($asString === true)
+        if ($mode === 'string')
         {
             $string = '';
             foreach ($this->materials as $material)
@@ -115,7 +116,7 @@ class Surgery extends DBA implements JsonSerializable
     /**
      * @return mixed
      */
-    public function getResponses()
+    public function getResponses($mode = '')
     {
         return $this->responses;
     }
@@ -144,7 +145,7 @@ class Surgery extends DBA implements JsonSerializable
     /**
      * @return mixed
      */
-    public function getCompatibles()
+    public function getCompatibles($mode = '')
     {
         return $this->compatibles;
     }

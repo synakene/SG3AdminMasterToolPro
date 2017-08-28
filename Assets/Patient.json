@@ -1,0 +1,36 @@
+{
+	"chirurgies": [
+
+		{
+			"id": 2 ,
+			"nom": "Lopezzzzzzzzzz",
+			"prenom": "Frederic",
+			"sexe": "Homme",
+			"age": 36,
+			"taille": 176,
+			"poid": 96,
+			"materiels": [ 6, 4, 13 ],
+			"reponses": [
+				{"asthme": "Oui toutes les heures" },
+				{"tabac": "Non je prend une cartouche par jour" }
+			],
+			"spec": [],
+		},
+
+		{
+			"id": 3 ,
+			"nom": "Bareau",
+			"prenom": "Nathalie",
+			"sexe": "Femme",
+			"age": 27,
+			"taille": 164,
+			"poid": 64,
+			"materiels": [ 4, 6 ],
+			"reponses": [
+				{"asthme": "Oui toutes les heures" },
+				{"tabac": "Non je prend une cartouche par jour" }
+			],
+			"spec": [],
+		}
+	]
+}

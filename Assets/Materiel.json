@@ -1,0 +1,40 @@
+{
+	"materials": [
+
+		{
+			"id": "4" ,
+			"materiel": "mat4",
+			"cat": "test" 
+		},
+
+		{
+			"id": "6" ,
+			"materiel": "mat6",
+			"cat": "cat6" 
+		},
+
+		{
+			"id": "7" ,
+			"materiel": "mat3",
+			"cat": "cat5" 
+		},
+
+		{
+			"id": "13" ,
+			"materiel": "test ultime",
+			"cat": "test" 
+		},
+
+		{
+			"id": "14" ,
+			"materiel": "test ultime premium",
+			"cat": "catégorie" 
+		},
+
+		{
+			"id": "15" ,
+			"materiel": "le materiel ultiiime",
+			"cat": "test" 
+		}
+	]
+}
