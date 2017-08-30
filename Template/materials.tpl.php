@@ -78,7 +78,7 @@
                                         echo '<td><span class="material-category">' . $material->getCategory() . '</span></td>';
                                         echo '<td>';
                                             echo '<button class="btn btn-sm btn-primary faa-parent animated-hover modify"><i class="fa fa-wrench faa-wrench"></i></button>';
-                                            echo '<button class="btn btn-sm btn-success faa-parent animated-hover validate" style="display: none"><i class="fa fa-check faa-pulse"></i></button> ';
+                                            echo '<button class="btn btn-sm btn-success faa-parent animated-hover validate" style="display: none"><i class="fa fa-check faa-pulse"></i></button>';
                                             echo '<button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button>';
                                         echo '</td>';
                                     echo '<tr>';

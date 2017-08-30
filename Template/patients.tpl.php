@@ -74,23 +74,22 @@
                                     echo '<td>' . $patient->getWeight() . ' kg</td>';
 
                                     echo '<td>';
-                                    foreach ($patient->getMaterials() as $material) { echo '<a href="/materiel"><span class="btn btn-default">' . $materials[$material]->getName() . '</span></a>'; }
+                                    foreach ($patient->getMaterials() as $material) { echo '<span class="btn btn-default">' . $materials[$material]->getName() . '</span>'; }
                                     echo '</td>';
 
                                     echo '<td>';
-                                    foreach ($patient->getResponses() as $question) { echo '<a href="/questions"><span class="btn btn-default">' . $question['questionName'] . '</span></a>'; }
+                                    foreach ($patient->getResponses() as $question) { echo '<span class="btn btn-default">' . $question['questionName'] . '</span>'; }
                                     echo '</td>';
 
                                     echo '<td>';
-                                    foreach ($patient->getSurgeries() as $surgery) { echo '<a href="/chirurgies/' . $surgery . '"><span class="btn btn-default">' . $surgeries[$surgery]->getName() . '</span></a>'; }
+                                    foreach ($patient->getSurgeries() as $surgery) { echo '<span class="btn btn-default">' . $surgeries[$surgery]->getName() . '</span>'; }
                                     echo '</td>';
 
                                     echo '<td>';
-                                    echo '<a href="/patients/' . $patient->getId() . '"><button class="btn btn-sm btn-primary faa-parent animated-hover modify"><i class="fa fa-wrench faa-wrench"></i></button></a> ';
-                                    echo '<button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button>';
+                                    echo '<a href="/patients/' . $patient->getId() . '"><button class="btn btn-sm btn-primary faa-parent animated-hover modify"><i class="fa fa-fw fa-wrench faa-wrench"></i></button></a> ';
+                                    echo '<button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-fw fa-times faa-flash"></i></button>';
                                     echo '</td>';
                                     echo '<tr>';
-                                    // TODO betters buttons
                                 }
                                 ?>
                                 </tbody>

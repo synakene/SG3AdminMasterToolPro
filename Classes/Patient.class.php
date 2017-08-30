@@ -479,7 +479,7 @@ class Patient extends DBA implements jsonSerializable
         }
 
         //</editor-fold>
-
+var_dump($sql);
         if ($sql === '')
         {
             return $win;
