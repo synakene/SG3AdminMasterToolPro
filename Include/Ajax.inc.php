@@ -207,6 +207,7 @@ function getData($table = '', $id = 0, $columns = '')
 
 function deleteData($table = '', $id = 0)
 {
+    $id = intval($id);
     if ($table == '' || $id == 0)
     {
         return array(0, 'Erreur d\'envoi des données, veuillez contacter le webmaster.');
@@ -257,6 +258,21 @@ function deleteData($table = '', $id = 0)
             else
             {
                 $message = 'Impossible de supprimer le patient. Veuillez contacter le webmaster.';
+            }
+            break;
+
+        case 'surgery';
+            $surgery = new Surgery();
+            $surgery->setId($id);
+            $win = $surgery->destroy();
+
+            if ($win === true)
+            {
+                $message = 'Chirurgie supprimée';
+            }
+            else
+            {
+                $message = 'Impossible de supprimer la chirurgie. Veuillez contacter le webmaster.';
             }
             break;
     }
