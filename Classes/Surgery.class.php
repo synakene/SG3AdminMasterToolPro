@@ -517,5 +517,15 @@ class Surgery extends DBA implements JsonSerializable
         return $new_surgery;
     }
 
+    /**
+     * Get number of surgeries set by a customer
+     * @param int $idCustomer
+     * @return int
+     */
+    public static function getNumRowsByCustomer($idCustomer = 0)
+    {
+        return intval(self::query("SELECT COUNT(`id`) FROM `surgery` WHERE `idCustomer` = $idCustomer")->fetch_array()[0]);
+    }
+
     //</editor-fold>
 }

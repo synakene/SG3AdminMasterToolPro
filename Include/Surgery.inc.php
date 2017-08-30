@@ -7,6 +7,7 @@
  */
 
 include('Initializer.php');
+$_MENU_ = 'surgeries';
 
 $surgery = Surgery::getById($_GET['id']);
 

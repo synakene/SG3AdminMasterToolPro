@@ -11,10 +11,10 @@
 			"poid": 96,
 			"materiels": [ 6, 4, 13 ],
 			"reponses": [
-				{"asthme": "Oui toutes les heures" },
-				{"tabac": "Non je prend une cartouche par jour" }
+				{"tabac": "la cartouche" },
+				{"asthme": "oui asthme lala" }
 			],
-			"spec": [],
+			"spec": []
 		},
 
 		{
@@ -27,10 +27,10 @@
 			"poid": 64,
 			"materiels": [ 4, 6 ],
 			"reponses": [
-				{"asthme": "Oui toutes les heures" },
-				{"tabac": "Non je prend une cartouche par jour" }
+				{"asthme": "oui asthme lala" },
+				{"tabac": "la cartouche" }
 			],
-			"spec": [],
+			"spec": []
 		}
 	]
 }

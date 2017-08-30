@@ -50,6 +50,12 @@ class DBA
         return self::$dba->query($query);
     }
 
+    /**
+     * Used for all connections to database
+     * Used for for multiples queries at once
+     * @param $query
+     * @return mixed
+     */
     public static function mquery($query)
     {
         return self::$dba->multi_query($query);

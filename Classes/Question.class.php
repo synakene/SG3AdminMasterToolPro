@@ -240,26 +240,6 @@ class Question extends DBA implements JsonSerializable
         return $questions;
     }
 
-    /*public static function getAllCustomsByCustomer($idCustomer, $indexId = false)
-    {
-        $query = self::query("SELECT * FROM `questions_liaison` WHERE `idCustomer` = $idCustomer")->fetch_all(MYSQLI_ASSOC);
-        $questions = array();
-
-        foreach ($query as $question)
-        {
-            if ($indexId)
-            {
-                $questions[$question['id']] = new Question($question['id'], $question['idCustomer'], $question['name'], $question['question'], $question['answer']);
-            }
-            else
-            {
-                array_push($questions, new Question($question['id'], $question['idCustomer'], $question['name'], $question['question'], $question['answer']));
-            }
-        }
-
-        return $questions;
-    }*/
-
     /**
      * Get next id used by id sequence
      * @return int
@@ -267,6 +247,16 @@ class Question extends DBA implements JsonSerializable
     public static function getNextId()
     {
         return intval(self::query('SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = \'questions\'')->fetch_all(MYSQLI_ASSOC)[0]['auto_increment']);
+    }
+
+    /**
+     * Get number of questions set by a customer
+     * @param int $idCustomer
+     * @return int
+     */
+    public static function getNumRowsByCustomer($idCustomer = 0)
+    {
+        return intval(self::query("SELECT COUNT(`id`) FROM `questions` WHERE `idCustomer` = $idCustomer")->fetch_array()[0]);
     }
 
     //</editor-fold>

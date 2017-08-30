@@ -33,19 +33,19 @@
             <li class="active">
                 <a href="#" onclick="slider()"><i class="fa fa-fw fa-arrow-left"></i> Cacher le menu</a>
             </li>
-            <li class="active">
+            <li <?php if ($_MENU_ === 'index') { echo 'class="active"'; } ?>>
                 <a href="/accueil"><i class="fa fa-fw fa-flag"></i> Accueil</a>
             </li>
-            <li>
+            <li <?php if ($_MENU_ === 'surgeries') { echo 'class="active"'; } ?>>
                 <a href="/chirurgies"><i class="fa fa-fw fa-scissors"></i> Chirurgies</a>
             </li>
-            <li>
+            <li <?php if ($_MENU_ === 'patients') { echo 'class="active"'; } ?>>
                 <a href="/patients"><i class="fa fa-fw fa-user"></i> Patients</a>
             </li>
-            <li>
+            <li <?php if ($_MENU_ === 'materials') { echo 'class="active"'; } ?>>
                 <a href="/materiel"><i class="fa fa-fw fa-wrench"></i> Materiel</a>
             </li>
-            <li>
+            <li <?php if ($_MENU_ === 'questions') { echo 'class="active"'; } ?>>
                 <a href="/questions"><i class="fa fa-fw fa-question"></i> Questions</a>
             </li>
         </ul>
@@ -60,13 +60,11 @@ function slider()
     {
         document.getElementById("SideNav").style.display = "inline";
         document.getElementById("wrapper").style.paddingLeft = "225px";
-        document.getElementById("toggle-menu").text = "Cacher le menu";
     }
     else
     {
         document.getElementById("SideNav").style.display = "none";
         document.getElementById("wrapper").style.paddingLeft = "0px";
-        document.getElementById("toggle-menu").text = "Afficher le menu";
     }
 }
 </script>

@@ -118,7 +118,7 @@ function addAnswer(id)
         '<td><span class="question-question">' + questions[id]['question'] + '</span></td>\n' +
         '<td><input class="question-answer form-control" placeholder="' + questions[id]['answer'] + '"></td>\n' +
         '<td><button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button></td>\n' +
-        '<tr>';
+        '</tr>';
 
     // Insert new row
     jQuery('#questions-list tr[data-option]').before(html);
@@ -126,7 +126,15 @@ function addAnswer(id)
 
     // Add delete listener
     jQuery('#questions-list tr[data-id=' + id + '] button.delete').on('click', function(){
-        patient['responses'].splice(patient['materials'].indexOf(id), 1);
+        var i = 0;
+        patient['responses'].forEach(function(response){
+            if (response['id'] === id)
+            {
+                patient['responses'].splice(i, 1);
+                return;
+            }
+            ++i;
+        });
         jQuery(this).closest('tr[data-id]').remove();
         showHideQuestions();
     })
@@ -223,7 +231,7 @@ jQuery('#questions-list tr[data-option] button.validate').on('click', function()
     if (id != undefined && id !== -1)
     {
         addAnswer(id);
-        patient['responses'].push({'id': id, 'name': questions[id]['questionName'], 'question': questions[id]['question'], 'answer': ''});
+        patient['responses'].push({'id': id, 'answer': ''});
         showHideQuestions();
     }
 });

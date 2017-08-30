@@ -8,7 +8,20 @@
 
 include 'Initializer.php';
 
-if ($_GET['type'] === 'materials' || $_GET['type'] === 'all')
+$zip = new ZipArchive();
+$fileName = "configuration.zip";
+
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/Assets/" . $fileName) === true)
+{
+    unlink($_SERVER['DOCUMENT_ROOT'] . "/Assets/" . $fileName);
+}
+
+if ($zip->open($_SERVER['DOCUMENT_ROOT'] . "/Assets/" . $fileName, ZipArchive::CREATE) === false)
+{
+    die('0');
+}
+
+if ($_POST['materials'] === 'true')
 {
     $materials = Material::getAllByCustomer($_SESSION['id'], true);
     $length = sizeof($materials);
@@ -30,9 +43,10 @@ if ($_GET['type'] === 'materials' || $_GET['type'] === 'all')
     }
     $json .= "\t]\n}";
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/Assets/Materiel.json', $json);
+    $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/Assets/Materiel.json', 'Materiel.json');
 }
 
-if ($_GET['type'] === 'questions' || $_GET['type'] === 'all')
+if ($_POST['questions'] === 'true')
 {
     $questions = Question::getAllByCustomer($_SESSION['id'], true);
     $length = sizeof($questions);
@@ -55,9 +69,10 @@ if ($_GET['type'] === 'questions' || $_GET['type'] === 'all')
     }
     $json .= "\t]\n}";
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/Assets/Question.json', $json);
+    $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/Assets/Question.json', 'Question.json');
 }
 
-if ($_GET['type'] === 'surgeries' || $_GET['type'] === 'all')
+if ($_POST['surgeries'] === 'true')
 {
     $surgeries = Surgery::getAllByCustomer($_SESSION['id'], true);
     $length = sizeof($surgeries);
@@ -132,15 +147,16 @@ if ($_GET['type'] === 'surgeries' || $_GET['type'] === 'all')
         $json .= "\t\t\t\"reponses\": $surgeryResponsesJson,\n";
         $json .= "\t\t\t\"compatibles\": $patientsJson,\n";
         $json .= "\t\t\t\"spec\": $spec,\n";
-        $json .= "\t\t\t\"histoire\": \"$story\",\n";
+        $json .= "\t\t\t\"histoire\": \"$story\"\n";
         $json .= "\t\t}" . ($i === $length ? "\n" : ",\n\n");
         ++$i;
     }
     $json .= "\t]\n}";
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/Assets/Chirurgie.json', $json);
+    $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/Assets/Chirurgie.json', 'Chirurgie.json');
 }
 
-if ($_GET['type'] === 'patients' || $_GET['type'] === 'all')
+if ($_POST['patients'] === 'true')
 {
     $patients = Patient::getAllByCustomer($_SESSION['id'], true);
     $length = sizeof($patients);
@@ -225,4 +241,8 @@ if ($_GET['type'] === 'patients' || $_GET['type'] === 'all')
     // TODO meme réponses pour tout les patients, normal ?
     $json .= "\t]\n}";
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/Assets/Patient.json', $json);
+    $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/Assets/Patient.json', 'Patient.json');
 }
+
+$zip->close();
+die('1');

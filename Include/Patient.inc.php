@@ -8,6 +8,7 @@
 
 include('Initializer.php');
 
+
 $patient = Patient::getById($_GET['id']);
 
 if ($patient === false || (int) $patient->getIdCustomer() !== (int) $_SESSION['id'])

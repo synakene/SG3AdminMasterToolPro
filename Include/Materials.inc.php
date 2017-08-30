@@ -7,6 +7,7 @@
  */
 
 include('Initializer.php');
+$_MENU_ = 'materials';
 
 $materials = Material::getAllByCustomer(1);
 

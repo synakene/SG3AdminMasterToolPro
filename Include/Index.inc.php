@@ -8,4 +8,9 @@
 
 include('Initializer.php');
 
+$numSurgeries = Surgery::getNumRowsByCustomer($_SESSION['id']);
+$numPatients = Patient::getNumRowsByCustomer($_SESSION['id']);
+$numQuestions = Question::getNumRowsByCustomer($_SESSION['id']);
+$numMaterials = Material::getNumRowsByCustomer($_SESSION['id']);
+
 include ($_SERVER['DOCUMENT_ROOT'] . "/Template/Index.tpl.php");

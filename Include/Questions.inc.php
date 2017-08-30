@@ -7,6 +7,7 @@
  */
 
 include('Initializer.php');
+$_MENU_ = 'questions';
 
 $questions = Question::getAllByCustomer($_SESSION['id']);
 

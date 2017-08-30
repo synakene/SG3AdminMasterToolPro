@@ -223,5 +223,15 @@ class Material extends DBA implements JsonSerializable
         return intval(self::query('SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = \'material\'')->fetch_all(MYSQLI_ASSOC)[0]['auto_increment']);
     }
 
+    /**
+     * Get number of materials set by a customer
+     * @param int $idCustomer
+     * @return int
+     */
+    public static function getNumRowsByCustomer($idCustomer = 0)
+    {
+        return intval(self::query("SELECT COUNT(`id`) FROM `material` WHERE `idCustomer` = $idCustomer")->fetch_array()[0]);
+    }
+
     //</editor-fold>
 }

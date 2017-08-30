@@ -7,6 +7,7 @@
  */
 
 include('Initializer.php');
+$_MENU_ = 'surgeries';
 
 $surgeries = Surgery::getAllByCustomer($_SESSION['id']);
 $materials = Material::getAllByCustomer($_SESSION['id'], true);

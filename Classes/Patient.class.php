@@ -361,7 +361,7 @@ class Patient extends DBA implements jsonSerializable
         if ($sqlMaterials !== '')
         {
             $sqlMaterials = '(' . $sqlMaterials . ') &&';
-            $sql .= "DELETE FROM `material_liaison` WHERE $sqlMaterials `idCustomer` = 1 && `spawnedBy` = 1 && `idSpawner` = $this->id;\n";
+            $sql .= "DELETE FROM `material_liaison` WHERE $sqlMaterials `idCustomer` = $customerId && `spawnedBy` = 1 && `idSpawner` = $this->id;\n";
         }
 
         //</editor-fold>
@@ -392,7 +392,7 @@ class Patient extends DBA implements jsonSerializable
 
             if (in_array($questionToSave, $questionsInDBA))
             {
-                $sql .= "UPDATE `questions_liaison` SET `answer` = '$answer' WHERE `idQuestion` = $questionToSave && `spawnedBy` = 1;\n";
+                $sql .= "UPDATE `questions_liaison` SET `answer` = '$answer' WHERE `idQuestion` = $questionToSave && `spawnedBy` = 1 && `idSpawner` = $this->id;\n";
             }
             else
             {
@@ -479,7 +479,7 @@ class Patient extends DBA implements jsonSerializable
         }
 
         //</editor-fold>
-
+var_dump($sql);
         if ($sql === '')
         {
             return $win;
@@ -610,6 +610,16 @@ class Patient extends DBA implements jsonSerializable
     public static function getNextId()
     {
         return intval(self::query('SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = \'patient\'')->fetch_all(MYSQLI_ASSOC)[0]['auto_increment']);
+    }
+
+    /**
+     * Get number of patients set by a customer
+     * @param int $idCustomer
+     * @return int
+     */
+    public static function getNumRowsByCustomer($idCustomer = 0)
+    {
+        return intval(self::query("SELECT COUNT(`id`) FROM `patient` WHERE `idCustomer` = $idCustomer")->fetch_array()[0]);
     }
 
     //</editor-fold>
