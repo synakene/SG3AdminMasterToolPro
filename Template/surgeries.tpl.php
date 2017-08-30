@@ -29,7 +29,6 @@
                 <!-- Button(s) -->
                 <div class="col-xs-12 space-under">
                     <button type="button" class="btn btn-lg btn-primary button-add">Ajouter une chirurgie</button>
-                    <button type="button" class="btn btn-lg btn-success button-save-all">Tout sauvegarder</button>
                 </div>
 
                 <!-- Material list -->
@@ -54,21 +53,21 @@
                                     echo '<td>' . $surgery->getStory() . '</td>';
 
                                     echo '<td>';
-                                    foreach ($surgery->getMaterials() as $material) { echo '<span class="btn btn-default">' . $materialsNames[$material] . '</span>'; }
+                                    foreach ($surgery->getMaterials() as $material) { echo '<a href="/materiel"><span class="btn btn-default">' . $materials[$material]->getName() . '</span></a>'; }
                                     echo '</td>';
 
                                     echo '<td>';
-                                    foreach ($surgery->getResponses() as $question) { echo '<span class="btn btn-default">' . $question['questionName'] . '</span>'; }
+                                    foreach ($surgery->getResponses() as $question) { echo '<a href="/questions"><span class="btn btn-default">' . $question['questionName'] . '</span></a>'; }
                                     echo '</td>';
 
                                     echo '<td>';
-                                    foreach ($surgery->getCompatibles() as $patient) { echo '<span class="btn btn-default">' . $patientsNames[$patient] . '</span>'; }
+                                    foreach ($surgery->getCompatibles() as $patient) { echo '<a href="/patients/' . $patient . '"><span class="btn btn-default">' . $patients[$patient]->getFirstname() . ' ' . $patients[$patient]->getLastname() . '</span></a>'; }
                                     echo '</td>';
                                     echo '<td><input type="checkbox" disabled ' . ($surgery->getEmergency() === true ? 'checked' : '') . '></td>';
 
                                     echo '<td>';
-                                    echo '<a href="/chirurgies/' . $surgery->getId() . '"><button class="btn btn-sm btn-primary faa-parent animated-hover modify"><i class="fa fa-fw fa-wrench faa-wrench"></i></button></a> ';
-                                    echo '<button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-fw fa-times faa-flash"></i></button>';
+                                    echo '<a href="/chirurgies/' . $surgery->getId() . '"><button class="btn btn-sm btn-primary faa-parent animated-hover modify"><i class="fa fa-wrench faa-wrench"></i></button></a> ';
+                                    echo '<button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button>';
                                     echo '</td>';
                                 echo '<tr>';
 
@@ -82,7 +81,6 @@
                 <!-- Button(s) -->
                 <div class="col-xs-12">
                     <button type="button" class="btn btn-lg btn-primary button-add">Ajouter une chirurgie</button>
-                    <button type="button" class="btn btn-lg btn-success button-save-all">Tout sauvegarder</button>
                 </div>
             </div>
 

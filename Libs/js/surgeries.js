@@ -29,7 +29,7 @@ function deleteSurgery(id)
             else
             {
                 jQuery(closestTr).find('button.delete').on('click', function(){
-                    deletePatient(id);
+                    deleteSurgery(id);
                 });
                 jQuery(closestTr).find('button').removeClass('disabled');
                 jQuery(closestTr).find('button.delete').addClass('animated-hover');

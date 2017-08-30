@@ -429,6 +429,26 @@ class Surgery extends DBA implements JsonSerializable
         return self::mquery($sql) && $win;
     }
 
+    /**
+     * Destroy surgery on the database
+     * @return mixed
+     */
+    public function destroy()
+    {
+        if (self::query("DELETE FROM `surgery` WHERE `surgery`.`id` = $this->id") === true)
+        {
+            $sql = "DELETE FROM `material_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $this->id;\n";
+            $sql .= "DELETE FROM `questions_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $this->id;\n";
+            $sql .= "DELETE FROM `patient_liaison` WHERE `idSurgery` = $this->id;\n";
+
+            return self::mquery($sql);
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     //</editor-fold>
 
     //<editor-fold desc="Static database fetchers">
