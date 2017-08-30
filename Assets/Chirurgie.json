@@ -1,0 +1,39 @@
+{
+	"chirurgies": [
+
+		{
+			"id": 1 ,
+			"nom": "Césarienne en urgence",
+			"materiels": [ 13, 15, 14, 4 ],
+			"reponses": [
+				{"asthme": "Oui oui asthme lulz" }
+			],
+			"compatibles": [ 3 ],
+			"spec": [ "urgence" ],
+			"histoire": "blabla césarienne"
+		},
+
+		{
+			"id": 2 ,
+			"nom": "Chirurgie 2",
+			"materiels": [ 13, 7 ],
+			"reponses": [
+				{"lgo": "Oui LGO newnewnew" },
+				{"tabac": "Blabla tabac maj2" }
+			],
+			"compatibles": [ 3 ],
+			"spec": [],
+			"histoire": "story 2"
+		},
+
+		{
+			"id": 3 ,
+			"nom": "name2",
+			"materiels": [ ],
+			"reponses": [],
+			"compatibles": [ ],
+			"spec": [],
+			"histoire": "hjgkjghkjghkgh"
+		}
+	]
+}

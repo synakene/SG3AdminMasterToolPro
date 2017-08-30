@@ -1,0 +1,22 @@
+{
+	"questions": [
+
+		{
+			"id": "asthme" ,
+			"question": "Souffrez vous de crise d'asthme ?",
+			"reponse": "Non, je n'ai pas de crise d'asthme" 
+		},
+
+		{
+			"id": "tabac" ,
+			"question": "Etes vous à jeun du tabac ?",
+			"reponse": "Je ne fume pas." 
+		},
+
+		{
+			"id": "lgo" ,
+			"question": "Avez-vous des lgo ?",
+			"reponse": "Non je n'ai pas de lgo." 
+		}
+	]
+}
