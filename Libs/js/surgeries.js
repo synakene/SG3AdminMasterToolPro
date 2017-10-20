@@ -44,3 +44,11 @@ function deleteSurgery(id)
 jQuery('button.delete').on('click', function(){
     deleteSurgery(jQuery(this).closest('tr').attr('data-id'));
 });
+
+jQuery(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({
+        animated: 'fade',
+        placement: 'left',
+        html: true
+    });
+});

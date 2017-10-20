@@ -15,7 +15,7 @@ include('Initializer.php');
  * @return array
  * @internal param string $type
  */
-function saveData($table = '', $data = array())
+function saveData($table = '', $data = array()) // TODO : gérer les id faux
 {
     if ($table === '' || !is_array($data))
     {
@@ -149,6 +149,7 @@ function saveData($table = '', $data = array())
             $patient->setAge($data['age']);
             $patient->setHeight($data['height']);
             $patient->setWeight($data['weight']);
+            $patient->setAvatar($data['avatar']);
 
             if ($patient->save())
             {

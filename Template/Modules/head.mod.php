@@ -18,11 +18,14 @@
     <link href="/Libs/css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="/Libs/css/plugins/morris.css" rel="stylesheet">
+    <!--<link href="/Libs/css/plugins/morris.css" rel="stylesheet">-->
 
     <!-- Custom Fonts -->
     <link href="/Libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="/Libs/font-awesome/css/font-awesome-animation.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Datatables -->
+    <link rel="stylesheet" type="text/css" href="/Libs/datatables/datatables.min.css"/>
 
     <!-- Noob Custom CSS -->
     <link href="/Libs/css/custom.css" rel="stylesheet" type="text/css">

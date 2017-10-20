@@ -39,7 +39,7 @@ jQuery('#generator-well button').on('click', function(){
             {
                 var link = document.createElement("a");
                 link.download = 'configuration.zip';
-                link.href = '/Assets/configuration.zip';
+                link.href = '/Assets/Jsons/configuration.zip';
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);

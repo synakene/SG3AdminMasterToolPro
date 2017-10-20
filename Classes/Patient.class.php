@@ -16,16 +16,12 @@ class Patient extends DBA implements jsonSerializable
     private $age;
     private $height;
     private $weight;
+    private $avatar;
     private $materials;
     private $surgeries;
     private $responses;
 
     public $jsonCustomer = false;
-
-    public function __construct()
-    {
-
-    }
 
     //<editor-fold desc="GetSet">
 
@@ -160,6 +156,22 @@ class Patient extends DBA implements jsonSerializable
     /**
      * @return mixed
      */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @param string $avatar
+     */
+    public function setAvatar($avatar = '')
+    {
+        $this->avatar = $avatar;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getWeight()
     {
         return $this->weight;
@@ -248,6 +260,7 @@ class Patient extends DBA implements jsonSerializable
             'age' => $this->age,
             'height' => $this->height,
             'weight' => $this->weight,
+            'avatar' => $this->avatar,
             'materials' => $this->materials,
             'surgeries' => $this->surgeries,
             'responses' => $this->responses,
@@ -281,6 +294,11 @@ class Patient extends DBA implements jsonSerializable
             return false;
         }
 
+        if ($this->idCustomer != $_SESSION['id'])
+        {
+            return false;
+        }
+
         return true;
     }
 
@@ -302,14 +320,14 @@ class Patient extends DBA implements jsonSerializable
         {
             if ($dummy === true)
             {
-                return self::query("INSERT INTO `patient` (`id`, `idCustomer`, `lastname`, `firstname`, `sex`, `age`, `height`, `weight`) VALUES (NULL, $customerId, '', '', 0, NULL, NULL, NULL);");
+                return self::query("INSERT INTO `patient` (`id`, `idCustomer`, `lastname`, `firstname`, `sex`, `age`, `height`, `weight`, `avatar`) VALUES (NULL, $customerId, '', '', 0, NULL, NULL, NULL, 1 );");
             }
 
-            $win = self::query("INSERT INTO `patient` (`id`, `idCustomer`, `lastname`, `firstname`, `sex`, `age`, `height`, `weight`) VALUES (NULL, '$customerId', '$lastname', '$firstname', '$this->sex', '$this->age', '$this->height', '$this->weight');");
+            $win = self::query("INSERT INTO `patient` (`id`, `idCustomer`, `lastname`, `firstname`, `sex`, `age`, `height`, `weight`, `avatar`) VALUES (NULL, '$customerId', '$lastname', '$firstname', '$this->sex', '$this->age', '$this->height', '$this->weight', $this->avatar);");
         }
         else if ($query->num_rows === 1 && $this->checkValidity())
         {
-            $win = self::query("UPDATE `patient` SET `lastname` = '$this->lastname', `firstname` = '$this->firstname', `sex` = $this->sex, `age` = $this->age, `height` = $this->height, `weight` = $this->weight WHERE `patient`.`id` = $this->id");
+            $win = self::query("UPDATE `patient` SET `lastname` = '$this->lastname', `firstname` = '$this->firstname', `sex` = $this->sex, `age` = $this->age, `height` = $this->height, `weight` = $this->weight, `avatar` = $this->avatar WHERE `patient`.`id` = $this->id");
         }
         else
         {
@@ -510,6 +528,25 @@ class Patient extends DBA implements jsonSerializable
         }
     }
 
+    /**
+     * Save or update avatar
+     * @param int $id
+     * @param string $name
+     * @param int $pack
+     * @return mixed
+     */
+    public static function saveAvatar($id = 0, $name = '', $pack = 0)
+    {
+        if (self::query("SELECT `id` FROM `avatars` WHERE `id` = $id")->field_count === 1)
+        {
+            return self::query("UPDATE `avatars` SET `name` = '$name', `pack` = $pack WHERE `avatars`.`id` = $id");
+        }
+        else
+        {
+            return self::query("INSERT INTO `avatars` (`id`, `name`, `pack`) VALUES (NULL, '$name', '$pack')");
+        }
+    }
+
     //</editor-fold>
 
 
@@ -539,6 +576,7 @@ class Patient extends DBA implements jsonSerializable
         $patient->setAge($query['age']);
         $patient->setHeight($query['height']);
         $patient->setWeight($query['weight']);
+        $patient->setAvatar($query['avatar']);
 
         $materials = self::query("SELECT `idMaterial` FROM `material_liaison` WHERE `spawnedBy` = 1 && `idSpawner` = $id")->fetch_all(MYSQLI_ASSOC);
         $mat_array = array();
@@ -620,6 +658,16 @@ class Patient extends DBA implements jsonSerializable
     public static function getNumRowsByCustomer($idCustomer = 0)
     {
         return intval(self::query("SELECT COUNT(`id`) FROM `patient` WHERE `idCustomer` = $idCustomer")->fetch_array()[0]);
+    }
+
+    /**
+     * Return names of avatars ordered by patients
+     * @param int $idCustomer
+     * @return mixed
+     */
+    public  static function getAvatarsByCustomer($idCustomer = 0)
+    {
+        return self::query("SELECT a.`id`, a.`name` FROM `avatars` a JOIN `patient` p ON a.`id` = p.`avatar` WHERE p.`idCustomer` = $idCustomer")->fetch_all(MYSQLI_ASSOC);
     }
 
     //</editor-fold>

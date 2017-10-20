@@ -355,7 +355,8 @@ function save()
     });
 
     surgery['name'] = jQuery('.surgery-name').val();
-    surgery['story'] = jQuery('.surgery-story').val();
+    //surgery['story'] = jQuery('.surgery-story').val();
+    surgery['story'] = "deprecated";
     surgery['emergency'] = jQuery('.checkbox input[type=checkbox]').prop('checked');
 
     btn = jQuery('button.save');

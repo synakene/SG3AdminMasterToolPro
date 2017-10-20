@@ -328,6 +328,8 @@ jQuery('#surgeries-list tr[data-option] button.validate').on('click', function()
 
 //</editor-fold>
 
+jQuery('.patient-avatar').val(patient['avatar']);
+
 jQuery('.hideable').each(function(){this.style.cursor = 'pointer'});
 jQuery('.hideable').on('click', function(){
     jQuery(this).closest('.panel').find('.panel-body').slideToggle()
@@ -346,6 +348,7 @@ function save()
     patient['age'] = jQuery('.patient-age').val();
     patient['height'] = jQuery('.patient-height').val();
     patient['weight'] = jQuery('.patient-weight').val();
+    var avatar = jQuery('.patient-avatar').val();
 
     // Prevent from click bashing
     jQuery('button.save').off();
@@ -364,8 +367,10 @@ function save()
         'sex': patient['sex'],
         'age': patient['age'],
         'height': patient['height'],
-        'weight': patient['weight']
+        'weight': patient['weight'],
+        'avatar': avatar
     };
+    console.log(sendData);
 
     jQuery.ajax({
         method: 'POST',

@@ -9,9 +9,9 @@
 include('Initializer.php');
 $_MENU_ = 'materials';
 
-$materials = Material::getAllByCustomer(1);
+$materials = Material::getAllByCustomer($_SESSION['id']);
 
-$fetchedCategories = Material::getCategoriesByCustomer(1);
+$fetchedCategories = Material::getCategoriesByCustomer($_SESSION['id']);
 
 $categories = '[';
 foreach ($fetchedCategories as $category)
@@ -20,4 +20,4 @@ foreach ($fetchedCategories as $category)
 }
 $categories .= ']';
 
-include ($_SERVER['DOCUMENT_ROOT'] . "/Template/Materials.tpl.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/Template/materials.tpl.php");

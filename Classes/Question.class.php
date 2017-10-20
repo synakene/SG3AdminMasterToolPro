@@ -155,6 +155,11 @@ class Question extends DBA implements JsonSerializable
             return false;
         }
 
+        if ($this->idCustomer != $_SESSION['id'])
+        {
+            return false;
+        }
+
         return true;
     }
 

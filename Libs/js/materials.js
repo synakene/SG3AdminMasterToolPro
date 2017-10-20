@@ -234,7 +234,7 @@ displayCategories();
 refreshCategoriesInteractions();
 jQuery('#category-slider-main').on('click', function(){jQuery('#category-slider-wrapper').slideToggle('fast')});
 jQuery('#category-slider-wrapper').slideToggle(0);
-$('#add-category button').on('click', function(){
+jQuery('#add-category button').on('click', function(){
     var category = $('#add-category input').val();
     if(category == '')
     {

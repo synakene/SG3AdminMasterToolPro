@@ -7,7 +7,6 @@
  */
 
 include('Ajax.inc.php');
-//var_dump($_POST);
 
 if ($_POST['action'] === 'saveData')
 {
@@ -72,5 +71,25 @@ else if ($_POST['action'] === 'deleteData')
         echo -1 . '<br>';
         echo $result[1];
     }
+    die;
+}
+else if ($_POST['action'] === 'updateAvatar')
+{
+    if (Patient::saveAvatar($_POST['data']['id'], $_POST['data']['name'], $_POST['data']['pack']) === true)
+    {
+        echo 1 . '<br>';
+        echo 'Avatar sauvegardé';
+    }
+    else
+        {
+        echo 0 . '<br>';
+        echo 'Avatar non sauvegardé, valeur(s) invalide(s)';
+    }
+    die;
+}
+else
+{
+    echo false . '<br>';
+    echo 'Commande inconnue, veuillez contacter le webmaster';
     die;
 }

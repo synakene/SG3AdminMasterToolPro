@@ -18,7 +18,7 @@
                             <i class="fa fa-flag"></i>  <a href="/accueil">Accueil</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-wrench"></i> Chirurgies
+                            <i class="fa fa-scissors"></i> Chirurgies
                         </li>
                     </ol>
                 </div>
@@ -28,13 +28,13 @@
 
                 <!-- Button(s) -->
                 <div class="col-xs-12 space-under">
-                    <button type="button" class="btn btn-lg btn-primary button-add">Ajouter une chirurgie</button>
+                    <a href="/creer-chirurgie"><button type="button" class="btn btn-lg btn-primary button-add">Ajouter une chirurgie</button></a>
                 </div>
 
                 <!-- Material list -->
                 <div class="col-xs-12">
                     <div class="well list-well">
-                        <h3>Liste des matériels :</h3><br>
+                        <h3>Liste des chirurgies :</h3><br>
                         <table class="table table-hover">
                             <thead>
                             <th>Nom</th>
@@ -50,7 +50,7 @@
                             {
                                 echo '<tr data-id=' . $surgery->getId() . '>';
                                     echo '<td>' . $surgery->getName() . '</td>';
-                                    echo '<td>' . $surgery->getStory() . '</td>';
+                                    //echo '<td>' . $surgery->getStory() . '</td>';
 
                                     echo '<td>';
                                     foreach ($surgery->getMaterials() as $material) { echo '<a href="/materiel"><span class="btn btn-default">' . $materials[$material]->getName() . '</span></a>'; }
@@ -66,11 +66,10 @@
                                     echo '<td><input type="checkbox" disabled ' . ($surgery->getEmergency() === true ? 'checked' : '') . '></td>';
 
                                     echo '<td>';
-                                    echo '<a href="/chirurgies/' . $surgery->getId() . '"><button class="btn btn-sm btn-primary faa-parent animated-hover modify"><i class="fa fa-wrench faa-wrench"></i></button></a> ';
-                                    echo '<button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button>';
+                                    echo '<a href="/chirurgies/' . $surgery->getId() . '"><button data-toggle="tooltip" data-original-title="Modifier" class="btn btn-sm btn-primary faa-parent animated-hover modify"><i class="fa fa-wrench faa-wrench"></i></button></a> ';
+                                    echo '<button data-toggle="tooltip" data-original-title="Supprimer" class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button>';
                                     echo '</td>';
                                 echo '<tr>';
-
                             }
                             ?>
                             </tbody>
@@ -79,8 +78,8 @@
                 </div>
 
                 <!-- Button(s) -->
-                <div class="col-xs-12">
-                    <button type="button" class="btn btn-lg btn-primary button-add">Ajouter une chirurgie</button>
+                <div class="col-xs-12 space-under">
+                    <a href="/creer-chirurgie"><button type="button" class="btn btn-lg btn-primary button-add">Ajouter une chirurgie</button></a>
                 </div>
             </div>
 

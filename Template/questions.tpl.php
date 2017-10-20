@@ -37,12 +37,12 @@
                 <!-- Material list -->
                 <div class="col-xs-12">
                     <div class="well list-well">
-                        <h3>Liste des matériels :</h3><br>
+                        <h3>Liste des questions :</h3><br>
                         <table class="table table-hover">
                             <thead>
                             <th>Identifiant</th>
                             <th>Question</th>
-                            <th>Réponse pas défaut</th>
+                            <th>Réponse par défaut</th>
                             <th>Action</th>
                             </thead>
                             <tbody id="questions-list">

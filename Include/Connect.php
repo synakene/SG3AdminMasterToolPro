@@ -13,7 +13,17 @@ DBA::setDba();
 
 session_start();
 
-//$hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+// Admin connection
+//var_dump(isset($_GET['id']));var_dump((Customer::isAdmin($_SESSION['id'])));die;
+if (isset($_GET['id']) && Customer::isAdmin($_SESSION['id']))
+{
+    $credentials = Customer::getCredentialsById($_GET['id']);
+    $_SESSION['mail'] = $credentials['mail'];
+    $_SESSION['id'] = $_GET['id'];
+    header('Location:/accueil');
+    die;
+}
+
 $pass = $_POST['password'];
 $query = Customer::getByMail($_POST['email']);
 
@@ -26,9 +36,7 @@ if ($query === false)
 else if (password_verify($pass, $query[0]['password']))
 {
     $_SESSION['mail'] = $query[0]['mail'];
-    $_SESSION['password'] = $query[0]['password'];
     $_SESSION['id'] = $query[0]['id'];
-    $_SESSION['admin'] = $query[0]['admin'];
 
     header('Location:/accueil');
 }

@@ -210,7 +210,7 @@ class Surgery extends DBA implements JsonSerializable
             'responses' => $this->responses,
             'compatibles' => $this->compatibles,
             'emergency' => $this->emergency,
-            'story' => $this->story,
+            //'story' => $this->story,
         ];
 
         $this->jsonCustomer === true ? $json['idCustomer'] = $this->idCustomer : null;
@@ -230,6 +230,11 @@ class Surgery extends DBA implements JsonSerializable
         }
 
         if ($this->idCustomer === 0)
+        {
+            return false;
+        }
+
+        if ($this->idCustomer != $_SESSION['id'])
         {
             return false;
         }
@@ -535,6 +540,15 @@ class Surgery extends DBA implements JsonSerializable
         $new_surgery->setCompatibles($patients_array);
 
         return $new_surgery;
+    }
+
+    /**
+     * Get next id used by id sequence
+     * @return int
+     */
+    public static function getNextId()
+    {
+        return intval(self::query('SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = \'surgery\'')->fetch_all(MYSQLI_ASSOC)[0]['auto_increment']);
     }
 
     /**

@@ -1,4 +1,4 @@
-<div id="slider-button" onclick="slider()">
+<div  class="hidden-xs hidden-sm" id="slider-button" onclick="slider()">
     <i class="fa fa-3x fa-arrow-right faa-passing animated-hover"></i>
 </div>
 
@@ -21,7 +21,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $name ?><b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
-                    <a href="/disconnect"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                    <a href="/disconnect"><i class="fa fa-fw fa-power-off"></i> Déconnexion</a>
                 </li>
             </ul>
         </li>
@@ -48,6 +48,14 @@
             <li <?php if ($_MENU_ === 'questions') { echo 'class="active"'; } ?>>
                 <a href="/questions"><i class="fa fa-fw fa-question"></i> Questions</a>
             </li>
+            <li <?php if ($_MENU_ === 'avatars') { echo 'class="active"'; } ?>>
+                <a href="/avatars"><i class="fa fa-fw fa-smile-o"></i> Avatars</a>
+            </li>
+            <?php if (Customer::isAdmin($_SESSION['id'])){ ?>
+            <li <?php if ($_MENU_ === 'utilisateurs') { echo 'class="active"'; } ?>>
+                <a href="/utilisateurs"><i class="fa fa-fw fa-users"></i> Utilisateurs</a>
+            </li>
+            <?php } ?>
         </ul>
     </div>
     <!-- /.navbar-collapse -->

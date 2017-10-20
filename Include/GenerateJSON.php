@@ -11,12 +11,12 @@ include 'Initializer.php';
 $zip = new ZipArchive();
 $fileName = "configuration.zip";
 
-if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/Assets/" . $fileName) === true)
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/Assets/Jsons/" . $fileName) === true)
 {
-    unlink($_SERVER['DOCUMENT_ROOT'] . "/Assets/" . $fileName);
+    unlink($_SERVER['DOCUMENT_ROOT'] . "/Assets/Jsons/" . $fileName);
 }
 
-if ($zip->open($_SERVER['DOCUMENT_ROOT'] . "/Assets/" . $fileName, ZipArchive::CREATE) === false)
+if ($zip->open($_SERVER['DOCUMENT_ROOT'] . "/Assets/Jsons/" . $fileName, ZipArchive::CREATE) === false)
 {
     die('0');
 }
@@ -42,8 +42,8 @@ if ($_POST['materials'] === 'true')
         ++$i;
     }
     $json .= "\t]\n}";
-    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/Assets/Materiel.json', $json);
-    $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/Assets/Materiel.json', 'Materiel.json');
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/Assets/Jsons/Materiel.json', $json);
+    $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/Assets/Jsons/Materiel.json', 'Materiel.json');
 }
 
 if ($_POST['questions'] === 'true')
@@ -68,8 +68,8 @@ if ($_POST['questions'] === 'true')
         ++$i;
     }
     $json .= "\t]\n}";
-    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/Assets/Question.json', $json);
-    $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/Assets/Question.json', 'Question.json');
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/Assets/Jsons/Question.json', $json);
+    $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/Assets/Jsons/Question.json', 'Question.json');
 }
 
 if ($_POST['surgeries'] === 'true')
@@ -152,8 +152,8 @@ if ($_POST['surgeries'] === 'true')
         ++$i;
     }
     $json .= "\t]\n}";
-    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/Assets/Chirurgie.json', $json);
-    $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/Assets/Chirurgie.json', 'Chirurgie.json');
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/Assets/Jsons/Chirurgie.json', $json);
+    $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/Assets/Jsons/Chirurgie.json', 'Chirurgie.json');
 }
 
 if ($_POST['patients'] === 'true')
@@ -240,8 +240,8 @@ if ($_POST['patients'] === 'true')
     }
     // TODO meme réponses pour tout les patients, normal ?
     $json .= "\t]\n}";
-    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/Assets/Patient.json', $json);
-    $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/Assets/Patient.json', 'Patient.json');
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/Assets/Jsons/Patient.json', $json);
+    $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/Assets/Jsons/Patient.json', 'Patient.json');
 }
 
 $zip->close();

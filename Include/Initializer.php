@@ -24,7 +24,7 @@ if (!isset($_SESSION))
 
 DBA::setDba();
 
-if (isset($_SESSION['mail']) === false)
+if (isset($_SESSION['mail']) === false || isset($_SESSION['id']) === false)
 {
     header('Location:/login');
 }

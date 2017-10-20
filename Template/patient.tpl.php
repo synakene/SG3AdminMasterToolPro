@@ -18,7 +18,7 @@
                             <i class="fa fa-flag"></i>  <a href="/accueil">Accueil</a>
                         </li>
                         <li>
-                            <i class="fa fa-scissors"></i> <a href="/patients">Patients</a>
+                            <i class="fa fa-user"></i> <a href="/patients">Patients</a>
                         </li>
                         <li class="active">
                             <i class="fa fa-pencil"></i> <span><?php echo $patient->getFirstname() . ' ' . $patient->getLastname(); ?></span>
@@ -68,6 +68,20 @@
                             <span class="input-group-addon">Poids</span>
                             <input type="number" class="form-control patient-weight" placeholder="Poids du patient en kg" value="<?php echo $patient->getWeight(); ?>">
                             <span class="input-group-addon">kg</span>
+                        </div>
+
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Avatar</span>
+                            <select class="form-control patient-avatar">
+                                <?php
+                                    foreach ($avatars as $avatar)
+                                    {
+                                        $id = $avatar['id'];
+                                        $name = $avatar['name'];
+                                        echo "<option value =\"$id\">$name</option>";
+                                    }
+                                ?>
+                            </select>
                         </div>
 
                         <div class="panel panel-primary">
@@ -179,6 +193,7 @@
     var materials = <?php echo json_encode($materials, JSON_UNESCAPED_UNICODE); ?>;
     var questions = <?php echo json_encode($questions, JSON_UNESCAPED_UNICODE); ?>;
     var surgeries = <?php echo json_encode($surgeries, JSON_UNESCAPED_UNICODE); ?>;
+    var avatars = <?php echo json_encode($avatars, JSON_UNESCAPED_UNICODE); ?>;
 </script>
 
 <script type="text/javascript" src="/Libs/js/patient.js"></script>

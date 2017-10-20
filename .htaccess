@@ -1,16 +1,26 @@
-
 RewriteEngine On
 
 RewriteRule ^accueil$ /include/Index.inc.php
+
 RewriteRule ^chirurgies$ /include/Surgeries.inc.php
+RewriteRule ^chirurgies/([0-9]+)$ /include/Surgery.inc.php?id=$1
+
 RewriteRule ^patients$ /include/Patients.inc.php
+RewriteRule ^patients/([0-9]+)$ /include/Patient.inc.php?id=$1
+
 RewriteRule ^materiel$ /include/Materials.inc.php
 RewriteRule ^questions$ /include/Questions.inc.php
 
-RewriteRule ^chirurgies/([0-9]+)$ /include/Surgery.inc.php?id=$1
-RewriteRule ^patients/([0-9]+)$ /include/Patient.inc.php?id=$1
+RewriteRule ^avatars$ /include/Avatars.inc.php
+RewriteRule ^avatars/([0-9]+)$ /include/avatars.inc.php?id=$1
+
+RewriteRule ^utilisateurs$ /include/users.inc.php
+RewriteRule ^utilisateur/([0-9]+)$ /include/users.inc.php?id=$1
 
 RewriteRule ^creer-patient$ /include/CreatePatient.php
+RewriteRule ^creer-chirurgie$ /include/CreateSurgery.php
 
 RewriteRule ^login$ /template/login.tpl.php
+RewriteRule ^login/([0-9]+)$ /include/connect.php?id=$1
+
 RewriteRule ^disconnect$ /include/disconnect.php

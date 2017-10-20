@@ -20,9 +20,4 @@ $materials = Material::getAllByCustomer($_SESSION['id']);
 $questions = Question::getAllByCustomer($_SESSION['id']);
 $patients = Patient::getAllByCustomer($_SESSION['id']);
 
-/*var_dump($materials);
-var_dump($questions);
-var_dump($patients);
-var_dump($surgery);die;*/
-
 include ($_SERVER['DOCUMENT_ROOT'] . "/Template/Surgery.tpl.php");

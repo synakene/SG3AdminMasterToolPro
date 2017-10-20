@@ -34,14 +34,14 @@
                         <div class="col-xs-12 space-under"><button type="button" class="btn btn-primary btn-lg pull-right save" style="margin-right: -15px;"><i class="fa fa-floppy-o"></i> Enregistrer</button></div>
 
                         <div class="form-group input-group">
-                            <span class="input-group-addon"><i class="fa fa-file-o"></i></span>
+                            <span class="input-group-addon">Nom</span>
                             <input class="form-control surgery-name" placeholder="Nom de la chirurgie" value="<?php echo $surgery->getName(); ?>">
                         </div>
 
-                        <div class="form-group input-group">
+                        <!--<div class="form-group input-group">
                             <span class="input-group-addon"><i class="fa fa-comment-o"></i></span>
                             <textarea class="form-control surgery-story" placeholder="Histoire de la chirurgie"><?php echo $surgery->getStory(); ?></textarea>
-                        </div>
+                        </div>-->
 
                         <div class="checkbox">
                             <label>

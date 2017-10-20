@@ -7,7 +7,7 @@
  */
 
 include('Initializer.php');
-
+$_MENU_ = 'patients';
 
 $patient = Patient::getById($_GET['id']);
 
@@ -19,5 +19,6 @@ if ($patient === false || (int) $patient->getIdCustomer() !== (int) $_SESSION['i
 $materials = Material::getAllByCustomer($_SESSION['id'], true);
 $questions = Question::getAllByCustomer($_SESSION['id'], true);
 $surgeries = Surgery::getAllByCustomer($_SESSION['id'], true);
+$avatars = Customer::getAvatars($_SESSION['id']);
 
 include ($_SERVER['DOCUMENT_ROOT'] . "/Template/Patient.tpl.php");
