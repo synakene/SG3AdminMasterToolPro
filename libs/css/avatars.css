@@ -1,0 +1,7 @@
+.avatar {
+    min-height: 350px;
+}
+
+.avatar img {
+    max-height:270px;
+}

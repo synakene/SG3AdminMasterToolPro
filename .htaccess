@@ -1,26 +1,26 @@
 RewriteEngine On
 
-RewriteRule ^accueil$ /include/Index.inc.php
+RewriteRule ^accueil$ /include/index.inc.php [L]
 
-RewriteRule ^chirurgies$ /include/Surgeries.inc.php
-RewriteRule ^chirurgies/([0-9]+)$ /include/Surgery.inc.php?id=$1
+RewriteRule ^chirurgies$ /include/surgeries.inc.php [L]
+RewriteRule ^chirurgies/([0-9]+)$ /include/surgery.inc.php?id=$1 [L]
 
-RewriteRule ^patients$ /include/Patients.inc.php
-RewriteRule ^patients/([0-9]+)$ /include/Patient.inc.php?id=$1
+RewriteRule ^patients$ /include/patients.inc.php [L]
+RewriteRule ^patients/([0-9]+)$ /include/patient.inc.php?id=$1 [L]
 
-RewriteRule ^materiel$ /include/Materials.inc.php
-RewriteRule ^questions$ /include/Questions.inc.php
+RewriteRule ^materiel$ /include/materials.inc.php [L]
+RewriteRule ^questions$ /include/questions.inc.php [L]
 
-RewriteRule ^avatars$ /include/Avatars.inc.php
-RewriteRule ^avatars/([0-9]+)$ /include/avatars.inc.php?id=$1
+RewriteRule ^avatars$ /include/avatars.inc.php [L]
+RewriteRule ^avatars/([0-9]+)$ /include/avatars.inc.php?id=$1 [L]
 
-RewriteRule ^utilisateurs$ /include/users.inc.php
-RewriteRule ^utilisateur/([0-9]+)$ /include/users.inc.php?id=$1
+RewriteRule ^utilisateurs$ /include/users.inc.php [L]
+RewriteRule ^utilisateur/([0-9]+)$ /include/user.inc.php?id=$1 [L]
 
-RewriteRule ^creer-patient$ /include/CreatePatient.php
-RewriteRule ^creer-chirurgie$ /include/CreateSurgery.php
+RewriteRule ^creer-patient$ /include/createpatient.php [L]
+RewriteRule ^creer-chirurgie$ /include/createsurgery.php [L]
 
-RewriteRule ^login$ /template/login.tpl.php
-RewriteRule ^login/([0-9]+)$ /include/connect.php?id=$1
+RewriteRule ^login$ /template/login.tpl.php [L]
+RewriteRule ^login/([0-9]+)$ /include/connect.php?id=$1 [L]
 
-RewriteRule ^disconnect$ /include/disconnect.php
+RewriteRule ^disconnect$ /include/disconnect.php [L]

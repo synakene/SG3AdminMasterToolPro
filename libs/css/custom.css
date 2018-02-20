@@ -1,0 +1,61 @@
+textarea
+{
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.space-under
+{
+    margin-bottom: 20px;
+}
+
+.space-right
+{
+    margin-right: 20px;
+}
+
+.table-hover > tbody > tr:hover
+{
+    background-color: #D2D2D2;
+}
+
+.list-well
+{
+    overflow-x: scroll;
+}
+
+#notifications
+{
+    top: 60px;
+    right: 10px;
+    left : 10px;
+    position: fixed;
+    z-index: 3;
+}
+
+#slider-button
+{
+    position: fixed;
+    left: 0px;
+    background: black;
+    color: white;
+    z-index: 3;
+}
+
+.slider .btn
+{
+    bottom: 3px;
+    top: 3px;
+}
+
+.list-group .btn
+{
+    position: absolute;
+    right: 10px;
+}
+
+#category-slider-wrapper button
+{
+    top: 0px;
+    left: 0px;
+}
