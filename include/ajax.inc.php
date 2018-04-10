@@ -39,16 +39,24 @@ function saveData($table = '', $data = array()) // TODO : gérer les id faux
         return array(0, 'Erreur d\'envoi des données, veuillez contacter le webmaster.');
     }
 
-    if (intval($data['id']) === 0)
+    /*if (intval($data['id']) === 0 && data['id'] !== 'new')
     {
         return array(0, 'ID invalide, veuillez contacter le webmaster.');
-    }
+    }*/
 
     switch ($table)
     {
         case 'material':
-
-            $material = Material::getById(intval($data['id']));
+            if ($data['id'] === 'new')
+            {
+                $data['id'] = Material::getNextId();
+                $material = false;
+            }
+            else
+            {
+                $material = Material::getById(intval($data['id']));
+            }
+            
             if ($material === false)
             {
                 $material = new Material($data['id'], $_SESSION['id'], $data['name'], $data['category']);
@@ -56,7 +64,7 @@ function saveData($table = '', $data = array()) // TODO : gérer les id faux
 
                 if ($win === true)
                 {
-                    return array(true, 'Materiel crée');
+                    return array(true, 'Materiel crée', $material->getId());
                 }
 
                 return array(0, 'Données non valides, sauvegarde impossible du nouveau matériel');
@@ -70,10 +78,18 @@ function saveData($table = '', $data = array()) // TODO : gérer les id faux
                 return array(0, 'Données non valides, sauvegarde impossible.');
             }
 
-            return array(true, 'Matériel sauvegardé.');
+            return array(true, 'Matériel sauvegardé.', $material->getId());
 
         case 'question':
-            $question = Question::getById($data['id']);
+            if ($data['id'] === 'new')
+            {
+                $data['id'] = Question::getNextId();
+                $question = false;
+            }
+            else
+            {
+                $question = Question::getById($data['id']);
+            }
 
             if ($question === false)
             {
@@ -81,7 +97,7 @@ function saveData($table = '', $data = array()) // TODO : gérer les id faux
 
                 if ($question->save())
                 {
-                    return array(true, 'Question créée.');
+                    return array(true, 'Question créée.', $question->getId());
                 }
                 return array(0, 'Données non valides, sauvegarde impossible de la nouvelle question.');
             }

@@ -51,4 +51,13 @@ jQuery(document).ready(function(){
         placement: 'left',
         html: true
     });
+
+    $(document).ready( function () {
+        $('table.table').dataTable({
+            "language": {"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"},
+            columnDefs: [
+                { targets: 'no-sort', orderable: false },
+            ]
+        });
+    });
 });

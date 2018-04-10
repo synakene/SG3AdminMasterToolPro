@@ -38,16 +38,11 @@
                             <input class="form-control surgery-name" placeholder="Nom de la chirurgie" value="<?php echo $surgery->getName(); ?>">
                         </div>
 
-                        <!--<div class="form-group input-group">
-                            <span class="input-group-addon"><i class="fa fa-comment-o"></i></span>
-                            <textarea class="form-control surgery-story" placeholder="Histoire de la chirurgie"><?php echo $surgery->getStory(); ?></textarea>
-                        </div>-->
-
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" <?php if ($surgery->getEmergency() === true) { echo 'checked'; } ?>>Urgence
-                            </label>
-                        </div>
+                        <label class="switch">
+                            <p>Urgence</p>
+                            <input type="checkbox" <?php if ($surgery->getEmergency() === true) { echo 'checked'; } ?>>
+                            <span class="slider round"></span>
+                        </label><br/>
 
                         <div class="panel panel-primary">
                             <div class="panel-heading hideable">

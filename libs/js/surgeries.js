@@ -1,7 +1,7 @@
 function deleteSurgery(id)
 {
     // TODO mettre des anti-spammer PARTOUUUUT
-    var closestTr = jQuery('tr[data-id=' + id + ']');
+    var closestTr = jQuery('td[data-id=' + id + ']').closest('tr');
 
     // Anti bashing
     jQuery(closestTr).find('button.delete').off();
@@ -25,6 +25,7 @@ function deleteSurgery(id)
             {
                 notify('success', data[1]);
                 jQuery(closestTr).closest('tr').remove();
+
             }
             else
             {
@@ -42,7 +43,8 @@ function deleteSurgery(id)
 }
 
 jQuery('button.delete').on('click', function(){
-    deleteSurgery(jQuery(this).closest('tr').attr('data-id'));
+    let id = parseInt(jQuery(this).closest('tr').find('td')[0].innerText);
+    deleteSurgery(id);
 });
 
 jQuery(document).ready(function(){
@@ -50,5 +52,15 @@ jQuery(document).ready(function(){
         animated: 'fade',
         placement: 'left',
         html: true
+    });
+
+    $(document).ready( function () {
+        $('table.table').dataTable({
+            "language": {"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"},
+            columnDefs: [
+                /*{"targets": [0], "visible": false, "searchable": false}*/
+                { targets: 'no-sort', orderable: false }
+            ],
+        });
     });
 });

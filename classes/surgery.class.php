@@ -245,7 +245,6 @@ class Surgery extends DBA implements JsonSerializable
     public function save()
     {
         $query = self::query("SELECT * FROM `surgery` WHERE `id` = $this->id");
-
         $name = str_replace("'", "\'", $this->name);
         $story = str_replace("'", "\'", $this->story);
         $customer = $this->idCustomer;
@@ -257,7 +256,8 @@ class Surgery extends DBA implements JsonSerializable
         }
         else if ($query->num_rows === 1 && $this->checkValidity())
         {
-            $win = self::query("UPDATE `surgery` SET `name` = '$name', `emergency` = $emergency, `story` = '$story' WHERE `surgery`.`id` = $this->id");
+            $sql = "UPDATE `surgery` SET `name` = '$name', `emergency` = $emergency, `story` = '$story' WHERE `surgery`.`id` = $this->id";
+            $win = self::query($sql);
         }
         else
         {
@@ -436,7 +436,13 @@ class Surgery extends DBA implements JsonSerializable
 
             //</editor-fold>
 
-        return self::mquery($sql) && $win;
+        $win2 = true;
+        if ($sql != '')
+        {
+            $win = self::mquery($sql);
+        }
+
+        return $win && $win2;
     }
 
     /**

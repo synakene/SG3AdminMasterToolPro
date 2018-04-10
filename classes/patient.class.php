@@ -717,10 +717,22 @@ class Patient extends DBA implements jsonSerializable
      * @param int $idCustomer
      * @return mixed
      */
-    public  static function getAvatarsByCustomer($idCustomer = 0)
+    public  static function getAvatarsByCustomer($idCustomer = 0, $indexId = false)
     {
         $sql = "SELECT a.`id`, a.`name` FROM `avatars` a JOIN `patient` p ON a.`id` = p.`avatar` WHERE p.`idCustomer` = $idCustomer";
-        return self::query($sql)->fetch_all(MYSQLI_ASSOC);
+        $data = self::query($sql)->fetch_all(MYSQLI_ASSOC);
+
+        if ($indexId)
+        {
+            $avatars = array();
+            foreach ($data as $avatar)
+            {
+                $avatars[$avatar['id']] = $avatar;
+            }
+            return $avatars;
+        }
+
+        return $data;
     }
 
     //</editor-fold>

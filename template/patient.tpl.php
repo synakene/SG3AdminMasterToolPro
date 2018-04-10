@@ -174,6 +174,53 @@
                             </div>
                         </div>
 
+                        <div class="panel panel-primary">
+                            <div class="panel-heading hideable">
+                                <i class="fa fa-address-book-o"></i> Dossier d'anesthésie
+                            </div>
+                            <div class="panel-body" style="display: none">
+                                <h3>Evaluation pré-anesthésique</h3>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                    <p>Consultation</p>
+                                </label><br/>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                    <p>Patient déjà hospitalisé</p>
+                                </label><br/>
+
+                                <div class="form-group">
+                                    <label for="comment"><h3>Antécédents et histoire de la maladie :</h3></label>
+                                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                                </div>
+
+                                <h3>Allergies</h3>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                    <p>Antibiotique</p>
+                                </label><br/>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                    <p>Latex</p>
+                                </label><br/>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                    <p>Autre : </p>
+                                </label>
+                                <input class="form-control">
+
+                                <div class="form-group">
+                                    <label for="comment"><h3>Traitements :</h3></label>
+                                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
 <!--                        <div class="form-group">-->
 <!--                            <label>Histoire du patient</label>-->
 <!--                            <textarea class="form-control patient-story" rows="3">--><?php //echo $patient->getStory(); ?><!--</textarea>-->

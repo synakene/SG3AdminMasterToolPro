@@ -57,21 +57,41 @@
                     <button type="button" class="btn btn-lg btn-success button-save-all">Tout sauvegarder</button>
                 </div>
 
+                <!-- Add form -->
+                <div class="col-xs-12">
+                    <form action="" method="" class="well">
+                        <div style="text-align: right; margin-bottom: 19px;">
+                            <button type="button" class="btn btn-sm btn-danger faa-parent animated-hover"><i class="fa fa-times faa-flash"></i></button>
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Catégorie</span>
+                            <select class="form-control"></select>
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Matériel</span>
+                            <input type="text" class="form-control">
+                        </div>
+                        <input type="submit" class="form-control" value="Ajouter le matériel">
+                    </form>
+                </div>
+
+
                 <!-- Material list -->
                 <div class="col-xs-12">
-                    <div class="well list-well">
+                    <div class="well list-well loading-parent">
                         <h3>Liste des matériels :</h3><br>
+                        <div class="loading"><i class="fa fa-cog faa-spin animated"></i></div>
                         <table class="table table-hover">
                             <thead>
                                 <th>Nom</th>
                                 <th>Catégorie</th>
-                                <th>Action</th>
+                                <th class="no-sort">Action</th>
                             </thead>
                             <tbody id="materials-list">
                                 <?php
                                 foreach ($materials as $material)
                                 {
-                                    echo '<tr data-id=' . $material->getId() . ' data-category="'. $material->getCategory() .'" tabindex=0>';
+                                    echo '<tr data-id=' . $material->getId() . ' data-category="'. $material->getCategory() .'">';
                                     /*echo '<td><span data-id=' . $material->getId() . '>' . $material->getName() . '</span></td>';
                                     echo '<td><span data-id=' . $material->getId() . '>' . $material->getCategory() . '</span></td>';*/
                                         echo '<td><span class="material-name">' . $material->getName() . '</span></td>';
@@ -81,7 +101,7 @@
                                             echo '<button class="btn btn-sm btn-success faa-parent animated-hover validate" style="display: none"><i class="fa fa-check faa-pulse"></i></button>';
                                             echo '&nbsp;<button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button>';
                                         echo '</td>';
-                                    echo '<tr>';
+                                    echo '</tr>';
                                 }
                                 ?>
                             </tbody>

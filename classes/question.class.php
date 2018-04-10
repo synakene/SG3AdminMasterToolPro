@@ -220,7 +220,7 @@ class Question extends DBA implements JsonSerializable
      */
     public static function getById($id = 0)
     {
-        $question = self::query("SELECT * FROM `questions` WHERE `id` = $id")->fetch_array(MYSQLI_ASSOC);
+        $question = self::query("SELECT * FROM `questions` WHERE `id` = '$id'")->fetch_array(MYSQLI_ASSOC);
 
         if (is_null($question))
         {

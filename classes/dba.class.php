@@ -58,12 +58,13 @@ class DBA
      */
     public static function mquery($query)
     {
-        $query = self::$dba->multi_query($query);
+        $win = self::$dba->multi_query($query);
         while (self::$dba->more_results())
         {
             self::$dba->next_result();
         }
-        return $query;
+
+        return $win;
     }
 
     public static function startTransaction()

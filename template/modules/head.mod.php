@@ -24,6 +24,9 @@
     <!-- Morris Charts CSS -->
     <!--<link href="/Libs/css/plugins/morris.css" rel="stylesheet">-->
 
+    <!--CSS Switch-->
+    <link href="/libs/css/switch.css" rel="stylesheet"/>
+
     <!-- Custom Fonts -->
     <link href="/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="/libs/font-awesome/css/font-awesome-animation.min.css" rel="stylesheet" type="text/css">

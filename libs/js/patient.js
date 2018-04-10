@@ -27,13 +27,13 @@ function updateCategory()
     // No material available
     if (firstMat === '')
     {
-        jQuery("#materials-list tr[data-option] button.validate").addClass('disabled');
+        jQuery("#materials-list tr[data-option] button.validateMaterial").addClass('disabled');
         jQuery(jQuery('#materials-list').find('tr[data-option] .material-name option')[0]).show()
         jQuery('#materials-list').find('tr[data-option] .material-name select').val('-1');
     }
     else
     {
-        jQuery("#materials-list tr[data-option] button.validate").removeClass('disabled');
+        jQuery("#materials-list tr[data-option] button.validateMaterial").removeClass('disabled');
     }
 }
 
@@ -91,7 +91,7 @@ patient['materials'].forEach(function(material){
 });
 
 // Add material button
-jQuery('#materials-list tr[data-option] button.validate').on('click', function(){
+jQuery('#materials-list tr[data-option] button.validateMaterial').on('click', function(){
     var id = parseInt(jQuery('#materials-list').find('tr[data-option] .material-name select').val());
     if (id !== -1 && patient['materials'].indexOf(id) === -1)
     {
@@ -225,7 +225,7 @@ patient['responses'].forEach(function(question){
 showHideQuestions();
 
 // Add button interaction
-jQuery('#questions-list tr[data-option] button.validate').on('click', function(){
+jQuery('#questions-list tr[data-option] button.validateMaterial').on('click', function(){
     var id = parseInt(jQuery('#questions-list').find('tr[data-option] select.question-name').val());
 
     if (id != undefined && id !== -1)
@@ -315,7 +315,7 @@ jQuery('.patient-sex').val(patient['sex']);
 
 
 // Add button interaction
-jQuery('#surgeries-list tr[data-option] button.validate').on('click', function(){
+jQuery('#surgeries-list tr[data-option] button.validateMaterial').on('click', function(){
     var id = parseInt(jQuery('#surgeries-list').find('tr[data-option] select.surgery-name').val());
 
     if (id != undefined && id !== -1)

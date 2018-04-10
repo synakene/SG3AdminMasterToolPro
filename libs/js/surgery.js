@@ -27,13 +27,13 @@ function updateCategory()
     // No material available
     if (firstMat === '')
     {
-        jQuery("#materials-list tr[data-option] button.validate").addClass('disabled');
+        jQuery("#materials-list tr[data-option] button.validateMaterial").addClass('disabled');
         jQuery(jQuery('#materials-list').find('tr[data-option] .material-name option')[0]).show()
         jQuery('#materials-list').find('tr[data-option] .material-name select').val('-1');
     }
     else
     {
-        jQuery("#materials-list tr[data-option] button.validate").removeClass('disabled');
+        jQuery("#materials-list tr[data-option] button.validateMaterial").removeClass('disabled');
     }
 }
 
@@ -98,7 +98,7 @@ surgery['materials'].forEach(function(material){
 });
 
 // Add material button
-jQuery('#materials-list tr[data-option] button.validate').on('click', function(){
+jQuery('#materials-list tr[data-option] button.validateMaterial').on('click', function(){
     var id = parseInt(jQuery('#materials-list').find('tr[data-option] .material-name select').val());
     if (id !== -1 && surgery['materials'].indexOf(id) === -1)
     {
@@ -238,7 +238,7 @@ surgery['responses'].forEach(function(question){
 showHideQuestions();
 
 // Add button interaction
-jQuery('#questions-list tr[data-option] button.validate').on('click', function(){
+jQuery('#questions-list tr[data-option] button.validateMaterial').on('click', function(){
     var id = parseInt(jQuery('#questions-list').find('tr[data-option] select.question-name').val());
 
     if (id != undefined && id !== -1)
@@ -329,7 +329,7 @@ showHidePatients();
 
 
 // Add button interaction
-jQuery('#patients-list tr[data-option] button.validate').on('click', function(){
+jQuery('#patients-list tr[data-option] button.validateMaterial').on('click', function(){
     var id = parseInt(jQuery('#patients-list').find('tr[data-option] select.patient-name').val());
 
     if (id != undefined && id !== -1)
@@ -357,7 +357,7 @@ function save()
     surgery['name'] = jQuery('.surgery-name').val();
     //surgery['story'] = jQuery('.surgery-story').val();
     surgery['story'] = "deprecated";
-    surgery['emergency'] = jQuery('.checkbox input[type=checkbox]').prop('checked');
+    surgery['emergency'] = jQuery('label.switch input')[0].checked;
 
     btn = jQuery('button.save');
 

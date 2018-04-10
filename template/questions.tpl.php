@@ -34,16 +34,39 @@
                     <button type="button" class="btn btn-lg btn-success button-save-all">Tout sauvegarder</button>
                 </div>
 
-                <!-- Material list -->
+                <!-- Add form -->
                 <div class="col-xs-12">
-                    <div class="well list-well">
+                    <form action="" method="" class="well">
+                        <div style="text-align: right; margin-bottom: 19px;">
+                            <button type="button" class="btn btn-sm btn-danger faa-parent animated-hover"><i class="fa fa-times faa-flash"></i></button>
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Identifiant</span>
+                            <input type="text" class="form-control id">
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Question</span>
+                            <input type="text" class="form-control question">
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Réponse par défaut</span>
+                            <input type="text" class="form-control response">
+                        </div>
+                        <input type="submit" class="form-control" value="Ajouter la question">
+                    </form>
+                </div>
+
+                <!-- Questions list -->
+                <div class="col-xs-12">
+                    <div class="well list-well loading-parent">
                         <h3>Liste des questions :</h3><br>
+                        <div class="loading"><i class="fa fa-cog faa-spin animated"></i></div>
                         <table class="table table-hover">
                             <thead>
                             <th>Identifiant</th>
                             <th>Question</th>
                             <th>Réponse par défaut</th>
-                            <th>Action</th>
+                            <th class="no-sort">Action</th>
                             </thead>
                             <tbody id="questions-list">
                             <?php
@@ -58,7 +81,7 @@
                                 echo '<button class="btn btn-sm btn-success faa-parent animated-hover validate" style="display: none"><i class="fa fa-check faa-pulse"></i></button> ';
                                 echo '<button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button>';
                                 echo '</td>';
-                                echo '<tr>';
+                                echo '</tr>';
                             }
                             ?>
                             </tbody>

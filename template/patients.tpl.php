@@ -37,18 +37,19 @@
                         <h3>Liste des patients :</h3><br>
                         <table class="table table-hover">
                             <thead>
-                            <th>Prénom</th>
-                            <th>Nom</th>
-                            <th>Sexe</th>
-                            <th>Age</th>
-                            <th>Taille</th>
-                            <th>Poids</th>
-                            <th>Avatar</th>
-                            <th>Matériel</th>
-                            <th>Questions</th>
-                            <th>Chirurgies</th>
-<!--                            <th>Histoire</th>-->
-                            <th style="width: 95px; display: flex;">Actions</th>
+                            <tr>
+                                <th>Prénom</th>
+                                <th>Nom</th>
+                                <th>Sexe</th>
+                                <th>Age</th>
+                                <th>Taille</th>
+                                <th>Poids</th>
+                                <th>Avatar</th>
+                                <th class="no-sort">Matériel</th>
+                                <th class="no-sort">Questions</th>
+                                <th class="no-sort">Chirurgies</th>
+                                <th class="no-sort" style="width: 95px; display: flex;">Actions</th>
+                            </tr>
                             </thead>
                             <tbody id="patients-list">
                             <?php
@@ -71,12 +72,12 @@
                                 {
                                     $sexIcon = 'fa-genderless';
                                 }
-                                echo '<td><i class="fa ' . $sexIcon . '"></i></td>';
+                                echo '<td><span class="hidden">' . $patient->getSex() . '</span><i class="fa ' . $sexIcon . '"></i></td>';
 
                                 echo '<td>' . $patient->getAge() . ' ans</td>';
                                 echo '<td>' . $patient->getHeight() . ' cm</td>';
                                 echo '<td>' . $patient->getWeight() . ' kg</td>';
-                                echo '<td><a href="/avatars/' . $avatars[$i]['id'] . '"><span class="btn btn-default" data-toggle="tooltip" data-original-title="<img src=\'/assets/avatars/' . $avatars[$i]['id'] . '.PNG\' style=\'width: 200px;\'/>">' . $avatars[$i]['name'] . '</span></a></td>';
+                                echo '<td><a href="/avatars/' . $avatars[$patient->getAvatar()]['id'] . '"><span class="btn btn-default" data-toggle="tooltip" data-original-title="<img src=\'/assets/avatars/' . $avatars[$patient->getAvatar()]['id'] . '.PNG\' style=\'width: 200px;\'/>">' . $avatars[$patient->getAvatar()]['name'] . '</span></a></td>';
 
                                 echo '<td>';
                                 foreach ($patient->getMaterials() as $material) { echo '<a href="/materiel"><span class="btn btn-default">' . $materials[$material]->getName() . '</span></a>'; }
@@ -90,15 +91,12 @@
                                 foreach ($patient->getSurgeries() as $surgery) { echo '<a href="/chirurgies/' . $surgery . '"><span class="btn btn-default">' . $surgeries[$surgery]->getName() . '</span></a>'; }
                                 echo '</td>';
 
-//                                echo '<td>' . $patient->getStory() . '</td>';
-
                                 echo '<td>';
                                 echo '<a href="/patients/' . $patient->getId() . '"><button data-toggle="tooltip" data-original-title="Modifier" class="btn btn-sm btn-primary faa-parent animated-hover modify"><i class="fa fa-wrench faa-wrench"></i></button></a> ';
                                 echo '<button data-toggle="tooltip" data-original-title="Supprimer" class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button>';
                                 echo '</td>';
 
-                                echo '<tr>';
-                                ++$i;
+                                echo '</tr>';
                             }
                             ?>
                             </tbody>

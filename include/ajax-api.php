@@ -7,10 +7,9 @@
  */
 
 include('ajax.inc.php');
-header('Content-Type: text/html');
+//header('Content-Type: text/html');
 
 // Uncomment to preview html in network view, thx web browsers debuggers...
-//2018
 //http_response_code(500);
 
 if (!isset($_SESSION['mail']) || $_SESSION['mail'] == '' || !isset($_SESSION['id']) || $_SESSION['id'] == '')
@@ -20,6 +19,7 @@ if (!isset($_SESSION['mail']) || $_SESSION['mail'] == '' || !isset($_SESSION['id
     die;
 }
 
+// Caller identification
 $ajax_caller = Customer::getById($_SESSION['id']);
 if ($ajax_caller == false)
 {
@@ -37,14 +37,13 @@ if (isset($_POST['data']))
 
 if ($_POST['action'] === 'saveData')
 {
-    // TODO check les data : injections
-    // TODO check le login : securité
     $data = $_POST['data'];
 
     $result = saveData($_POST['type'], $data);
 
     echo $result[0] . '<br>';
     echo $result[1];
+    if (isset($result[2])) echo '<br>' . $result[2];
     die;
 }
 else if ($_POST['action'] === 'getData')
