@@ -285,7 +285,7 @@ class Patient extends DBA implements jsonSerializable
             'height' => $this->height,
             'weight' => $this->weight,
             'avatar' => $this->avatar,
-            'story' => $this->story,
+            //'story' => $this->story,
             'materials' => $this->materials,
             'surgeries' => $this->surgeries,
             'responses' => $this->responses,
@@ -357,14 +357,14 @@ class Patient extends DBA implements jsonSerializable
         {
             if ($dummy === true)
             {
-                return self::query("INSERT INTO `patient` (`id`, `idCustomer`, `lastname`, `firstname`, `sex`, `age`, `height`, `weight`, `avatar`, `story`) VALUES (NULL, $customerId, '', '', 0, NULL, NULL, NULL, 1 , '');");
+                return self::query("INSERT INTO `patient` (`id`, `idCustomer`, `lastname`, `firstname`, `sex`, `age`, `height`, `weight`, `avatar`) VALUES (NULL, $customerId, '', '', 0, NULL, NULL, NULL, 1);");
             }
 
-            $win = self::query("INSERT INTO `patient` (`id`, `idCustomer`, `lastname`, `firstname`, `sex`, `age`, `height`, `weight`, `avatar`, `story`) VALUES (NULL, '$customerId', '$lastname', '$firstname', '$this->sex', '$this->age', '$this->height', '$this->weight', $this->avatar, '$this->story');");
+            $win = self::query("INSERT INTO `patient` (`id`, `idCustomer`, `lastname`, `firstname`, `sex`, `age`, `height`, `weight`, `avatar`) VALUES (NULL, '$customerId', '$lastname', '$firstname', '$this->sex', '$this->age', '$this->height', '$this->weight', $this->avatar);");
         }
         else if ($rows === 1 && $this->checkValidity())
         {
-            $win = self::query("UPDATE `patient` SET `lastname` = '$this->lastname', `firstname` = '$this->firstname', `sex` = $this->sex, `age` = $this->age, `height` = $this->height, `weight` = $this->weight, `avatar` = $this->avatar, `story` = '$this->story' WHERE `patient`.`id` = $this->id");
+            $win = self::query("UPDATE `patient` SET `lastname` = '$this->lastname', `firstname` = '$this->firstname', `sex` = $this->sex, `age` = $this->age, `height` = $this->height, `weight` = $this->weight, `avatar` = $this->avatar WHERE `patient`.`id` = $this->id");
         }
         else
         {
@@ -628,7 +628,7 @@ class Patient extends DBA implements jsonSerializable
         $patient->setHeight($query['height']);
         $patient->setWeight($query['weight']);
         $patient->setAvatar($query['avatar']);
-        $patient->setStory(($query['story']));
+        //$patient->setStory(($query['story']));
 
         $materials = self::query("SELECT `idMaterial` FROM `material_liaison` WHERE `spawnedBy` = 1 && `idSpawner` = $id")->fetch_all(MYSQLI_ASSOC);
         $mat_array = array();

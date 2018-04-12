@@ -17,7 +17,7 @@ function escapeInjections($data)
             $data[$index] = escapeInjections($data_element);
         }
     }
-    else if (is_string($data))
+    else if (is_string($data) == true)
     {
         $data = DBA::getDba()->real_escape_string($data);
     }
