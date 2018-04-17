@@ -186,7 +186,7 @@ else if ($_POST['action'] == 'changeapi' && $admin)
 }
 else if ($_POST['action'] === 'importJson')
 {
-    $result = importJsons($_POST['idCustomer'], $_POST['streamingAssets']);
+    $result = importJsons($_POST['idCustomer'], $_POST['jsons']);
     echo ($result['win'] . '<br>' . $result['message']);
 }
 else

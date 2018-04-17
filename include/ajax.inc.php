@@ -440,7 +440,7 @@ function importJsons($customerId, $jsons)
 
         $patient->setAge($patJson['age']);
         $patient->setHeight($patJson['taille']);
-        $patient->setWeight($patJson['poid']);
+        $patient->setWeight($patJson['poids']);
         $patient->setAvatar($patJson['avatar']);
 
         if (isset($patJson['materiels']))
@@ -561,7 +561,7 @@ function importJsons($customerId, $jsons)
 
     //DBA::cancelTransaction();
     DBA::finishTransaction();
-    $responses['win'] = '1';
+    $result['win'] = '1';
     $result['message'] = "Jsons importés avec succès !";
     return $result;
 }
