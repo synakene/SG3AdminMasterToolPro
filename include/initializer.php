@@ -24,7 +24,7 @@ if (!isset($_SESSION))
 
 DBA::setDba();
 
-if (isset($_SESSION['mail']) === false || isset($_SESSION['id']) === false)
+if (isset($_SESSION['mail']) === false || isset($_SESSION['id']) === false || Customer::getById($_SESSION['id']) === false)
 {
     header('Location:/login');
 }
@@ -34,3 +34,6 @@ $name = $_SESSION['mail'];
 $id = $_SESSION['id'];
 $admin = DBA::getDba()->query("SELECT `admin` FROM `customer` WHERE `id` = $id")->fetch_array(MYSQLI_ASSOC)['admin'];
 $_SESSION['admin'] = ($admin === '1' ? true : false);
+
+$_MENU_ = 'index';
+$_TITLE_ = 'Accueil';

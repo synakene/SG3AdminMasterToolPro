@@ -8,6 +8,7 @@
 
 include('initializer.php');
 $_MENU_ = 'avatars';
+$_TITLE = 'Avatars';
 
 $avatars = Customer::getAvatars($_SESSION['id'], false);
 

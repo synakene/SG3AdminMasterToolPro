@@ -19,6 +19,17 @@ class Customer extends DBA
     private $numQuestions;
     private $numMaterials;
 
+    public function __construct($dummy = false)
+    {
+        if ($dummy)
+        {
+            $this->setId(0);
+            $this->setMail("");
+            $this->setApiKey("");
+            $this->setAdmin(false);
+        }
+    }
+
     //<editor-fold desc="Getsetter">
 
     /**
@@ -326,6 +337,112 @@ class Customer extends DBA
     public function SaveApiKey()
     {
         return self::query("UPDATE `customer` SET `apikey` = '" . $this->getApiKey() . "'WHERE `customer`.`id` = " . $this->getId());
+    }
+
+    public function Save()
+    {
+        if ($this->getId() === 0)
+        {
+            $sql = "INSERT INTO `sgtools`.`customer` (`mail`, `apikey`, `password`, `admin`) VALUES ('$this->mail', '$this->apiKey', 'invalid', '0');";
+            $win = self::query($sql);
+            if ($win)
+            {
+                $sql = 'SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = \'customer\'';
+                $this->id = intval(self::query($sql)->fetch_all(MYSQLI_ASSOC)[0]['auto_increment']) - 1;
+            }
+            return $win;
+        }
+        else
+        {
+            $sql = "UPDATE `sgtools`.`customer` SET `mail`='$this->mail', `apikey`='$this->apiKey', `password`='$this->password', `admin`='$this->admin' WHERE `id`=$this->id;";
+            return self::query($sql);
+        }
+    }
+
+    /**
+     * @return bool
+     */
+    public function Delete()
+    {
+        self::query("RESET QUERY CACHE");
+
+        self::startTransaction();
+        $finalSQL = '';
+
+        $sql = "SELECT `id` FROM `material` WHERE `idCustomer` = $this->id";
+        $ids = self::query($sql)->fetch_all(MYSQLI_ASSOC);
+        foreach ($ids as $id)
+        {
+            $id = $id['id'];
+            $finalSQL .= "DELETE FROM `material_liaison` WHERE `idMaterial`=$id;";
+        }
+
+        /*$finalSQL = "DELETE FROM material_liaison
+            WHERE idMaterial IN
+            (
+                SELECT id
+                FROM material
+                WHERE idCustomer = $this->id
+            );";
+
+        $finalSQL .= "DELETE FROM questions_liaison
+            WHERE idQuestion IN
+            (
+                SELECT id
+                FROM questions
+                WHERE idCustomer = $this->id
+            );";
+
+        $finalSQL .= "DELETE FROM patient_liaison
+            WHERE idPatient IN
+            (
+                SELECT id
+                FROM patient
+                WHERE idCustomer = $this->id
+            )
+            OR id IN
+            (
+                SELECT id
+                FROM surgery
+                WHERE idCustomer = $this->id
+            );";*/
+
+        $finalSQL .= "DELETE FROM `questions_liaison` WHERE `idCustomer`=$this->id;";
+        $finalSQL .= "DELETE FROM `patient_liaison` WHERE `idCustomer`=$this->id;";
+        $finalSQL .= "DELETE FROM `material_liaison` WHERE `idCustomer`=$this->id;";
+        $finalSQL .= "DELETE FROM `customerpacks` WHERE `idCustomer`=$this->id;";
+
+        $finalSQL .= "DELETE FROM `customer` WHERE `id`=$this->id;";
+        $finalSQL .= "DELETE FROM `customerpacks` WHERE `idCustomer`=$this->id;";
+        $finalSQL .= "DELETE FROM `material` WHERE `idCustomer`=$this->id;";
+        $finalSQL .= "DELETE FROM `patient` WHERE `idCustomer`=$this->id;";
+        $finalSQL .= "DELETE FROM `questions` WHERE `idCustomer`=$this->id;";
+        $finalSQL .= "DELETE FROM `surgery` WHERE `idCustomer`=$this->id;";
+
+        $win = self::mquery($finalSQL);
+
+        /*$mSql = explode(';', $finalSQL);
+        var_dump($mSql);die;
+        $win = true;
+        foreach ($mSql as $query)
+        {
+            $win = self::query($query);
+            if (!$win)
+            {
+                var_dump($query);die;
+            }
+        }*/
+
+        if ($win)
+        {
+            self::finishTransaction();
+            return true;
+        }
+        else
+        {
+            self::cancelTransaction();
+            return false;
+        }
     }
 
     //</editor-fold>

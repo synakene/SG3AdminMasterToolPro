@@ -9,6 +9,7 @@
 include('initializer.php');
 $_MENU_ = 'patients';
 
+/** @var Patient $patient */
 $patient = Patient::getById($_GET['id']);
 
 if ($patient === false || (int) $patient->getIdCustomer() !== (int) $_SESSION['id'])
@@ -16,9 +17,11 @@ if ($patient === false || (int) $patient->getIdCustomer() !== (int) $_SESSION['i
     header("Location:/accueil");
 }
 
+$_TITLE_ = $patient->getFirstname() . ' ' . $patient->getLastname();
+
 $materials = Material::getAllByCustomer($_SESSION['id'], true);
 $questions = Question::getAllByCustomer($_SESSION['id'], true);
 $surgeries = Surgery::getAllByCustomer($_SESSION['id'], true);
 $avatars = Customer::getAvatars($_SESSION['id']);
-
+//var_dump($patient);die;
 include($_SERVER['DOCUMENT_ROOT'] . "/template/patient.tpl.php");

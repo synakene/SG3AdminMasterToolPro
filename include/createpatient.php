@@ -8,19 +8,14 @@
 
 include 'initializer.php';
 
-$patient = new Patient();
+$patient = new Patient(true);
 
 $patient->setId(Patient::getNextId());
 $patient->setIdCustomer($_SESSION['id']);
-/*$patient->setLastname('Doe');
-$patient->setFirstname('John');
-$patient->setSex(0);
-$patient->setAge(33);*/
 
 $patient->setMaterials([]);
 $patient->setResponses([]);
 $patient->setSurgeries([]);
 
-$patient->save(true);
-
+$win = $patient->save(true);
 header('Location:/patients/' . $patient->getId());

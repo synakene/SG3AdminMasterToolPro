@@ -308,4 +308,62 @@ jQuery(document).ready( function () {
         importJson();
     });
 
+    jQuery('label[for=file-surgeries]').on('drop', function(e){
+        e.preventDefault();
+        jQuery('#file-surgeries')[0].files = e.originalEvent.dataTransfer.files;
+    });
+
+    jQuery('label[for=file-patients]').on('drop', function(e){
+        e.preventDefault();
+        jQuery('#file-patients')[0].files = e.originalEvent.dataTransfer.files;
+    });
+
+    jQuery('label[for=file-materials]').on('drop', function(e){
+        e.preventDefault();
+        jQuery('#file-materials')[0].files = e.originalEvent.dataTransfer.files;
+    });
+
+    jQuery('label[for=file-questions]').on('drop', function(e){
+        e.preventDefault();
+        jQuery('#file-questions')[0].files = e.originalEvent.dataTransfer.files;
+    });
+
+    jQuery('#delete-user').on('click', function(e){
+        //e.preventDefault();
+        validate = confirm('Êtes-vous certain de vouloir supprimer cet utilisateur ?\nCela supprimera également toutes les chirurgies, patients, matériel et questions crées pas cet utilisateur')
+        console.log(validate);
+        if (!validate)
+        {
+            console.log('nop');
+            e.preventDefault();
+        }
+        console.log(e);
+    });
+
+    jQuery('#generate-json').on('click', function(){
+        let id = jQuery(this).attr('data-id');
+
+        jQuery.ajax({
+            method: 'POST',
+            url: '/include/generatejson.php',
+            data: {
+                materials: true,
+                questions: true,
+                patients: true,
+                surgeries: true,
+                id: id
+            }
+        })
+            .done(function(data){
+                if (data == '1')
+                {
+                    var link = document.createElement("a");
+                    link.download = 'configuration.zip';
+                    link.href = '/assets/configuration.zip';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            });
+    });
 } );

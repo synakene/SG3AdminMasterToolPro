@@ -2,6 +2,6 @@
     width: 100%;
 }
 
-/*#actions {*/
-    /*margin: 0 15px;*/
-/*}*/
+div#actions div {
+    margin: 10px 0;
+}

@@ -177,7 +177,8 @@ class Question extends DBA implements JsonSerializable
 
         if ($query->num_rows === 0 && $this->checkValidity(false))
         {
-            return self::query("INSERT INTO `questions` (`id`, `idCustomer`, `name`, `question`, `answer`) VALUES (NULL, $this->idCustomer, '$name', '$question', '$answer');");
+            return self::query("INSERT INTO `questions` (`id`, `idCustomer`, `name`, `question`, `answer`)
+              VALUES (NULL, $this->idCustomer, '$name', '$question', '$answer');");
         }
         else if ($query->num_rows === 1 && $this->checkValidity())
         {
@@ -261,7 +262,7 @@ class Question extends DBA implements JsonSerializable
      */
     public static function getNextId()
     {
-        return intval(self::query('SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = \'questions\'')->fetch_all(MYSQLI_ASSOC)[0]['auto_increment']);
+        return intval(self::query('SELECT `auto_increment` FROM INFORMATION_SCHEMA.TABLES WHERE table_name = \'questions\' AND `table_schema` = \'sgtools\'')->fetch_all(MYSQLI_ASSOC)[0]['auto_increment']);
     }
 
     /**

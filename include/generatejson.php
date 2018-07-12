@@ -11,6 +11,13 @@ include 'initializer.php';
 $zip = new ZipArchive();
 $fileName = "configuration.zip";
 
+$userId = $_POST['id'];
+
+if ($userId != $_SESSION['id'] && !$_SESSION['admin'])
+{
+    die('0');
+}
+
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/assets/" . $fileName) === true)
 {
     unlink($_SERVER['DOCUMENT_ROOT'] . "/assets/" . $fileName);
@@ -23,7 +30,7 @@ if (!$zip->open($_SERVER['DOCUMENT_ROOT'] . "/assets/" . $fileName, ZipArchive::
 
 if ($_POST['materials'] === 'true')
 {
-    $materials = Material::getAllByCustomer($_SESSION['id'], true);
+    $materials = Material::getAllByCustomer($userId, true);
     $length = sizeof($materials);
     $i = 1;
 
@@ -48,7 +55,7 @@ if ($_POST['materials'] === 'true')
 
 if ($_POST['questions'] === 'true')
 {
-    $questions = Question::getAllByCustomer($_SESSION['id'], true);
+    $questions = Question::getAllByCustomer($userId, true);
     $length = sizeof($questions);
     $i = 1;
 
@@ -74,7 +81,7 @@ if ($_POST['questions'] === 'true')
 
 if ($_POST['surgeries'] === 'true')
 {
-    $surgeries = Surgery::getAllByCustomer($_SESSION['id'], true);
+    $surgeries = Surgery::getAllByCustomer($userId, true);
     $length = sizeof($surgeries);
     $i = 1;
 
@@ -137,8 +144,13 @@ if ($_POST['surgeries'] === 'true')
         $patientsJson .= " ]";
 
         $spec = $surgery->getEmergency() === true ? '[ "urgence" ]' : '[]';
-        $story = $surgery->getStory();
-
+        $story = json_encode($surgery->getStory());
+        $consultation = $surgery->getConsultation() ? 'true' : 'false';
+        $emergency = $surgery->getEmergency() ? 'true' : 'false';
+        $marProposition = $surgery->getMarProposition();
+        $marPropositionText = $surgery->getMarPropositionText();
+        $preAnestheticVisit = str_replace('\n', '\\n', $surgery->getPreAnestheticVisit());
+        $lastEval = $surgery->getLastEval();
 
         $json .= "\t\t{\n";
         $json .= "\t\t\t\"id\": $id ,\n";
@@ -147,7 +159,13 @@ if ($_POST['surgeries'] === 'true')
         $json .= "\t\t\t\"reponses\": $surgeryResponsesJson,\n";
         $json .= "\t\t\t\"compatibles\": $patientsJson,\n";
         $json .= "\t\t\t\"spec\": $spec,\n";
-        $json .= "\t\t\t\"histoire\": \"$story\"\n";
+        $json .= "\t\t\t\"histoire\": $story,\n";
+        $json .= "\t\t\t\"consultation\": $consultation,\n";
+        $json .= "\t\t\t\"urgence\": $emergency,\n";
+        $json .= "\t\t\t\"marProposition\": $marProposition,\n";
+        $json .= "\t\t\t\"marPropositionText\": \"$marPropositionText\",\n";
+        $json .= "\t\t\t\"preAnestheticVisit\": \"$preAnestheticVisit\",\n";
+        $json .= "\t\t\t\"lastEval\": $lastEval\n";
         $json .= "\t\t}" . ($i === $length ? "\n" : ",\n\n");
         ++$i;
     }
@@ -158,7 +176,7 @@ if ($_POST['surgeries'] === 'true')
 
 if ($_POST['patients'] === 'true')
 {
-    $patients = Patient::getAllByCustomer($_SESSION['id'], true);
+    $patients = Patient::getAllByCustomer($userId, true);
     $length = sizeof($patients);
     $i = 1;
 
@@ -188,7 +206,7 @@ if ($_POST['patients'] === 'true')
         $height = $patient->getHeight();
         $weight = $patient->getWeight();
         $avatar = $patient->getAvatar();
-        $story = $patient->getStory();
+        $story = json_encode($patient->getStory());
 
         $matsIds = $patient->getMaterials();
         $patientMaterials = "[";
@@ -226,6 +244,56 @@ if ($_POST['patients'] === 'true')
 
         $spec = "[]";
         $avatar = $patient->getAvatar();
+        $treatments = json_encode($patient->getTreatments());
+
+        $allergiesJson = $patient->getAllergies();
+        $allergies = "[";
+        foreach (json_decode($allergiesJson) as $allergy => $value)
+        {
+            if ($value)
+                $allergies .= '"' . $allergy . '", ';
+        }
+        if ($allergies !== "[")
+            $allergies = substr($allergies, 0, strlen($allergies) - 2);
+
+        $allergies .= "]";
+
+        $ta = $patient->getTa();
+        $fc = $patient->getFc();
+        $dentalCondition = $patient->getDentalCondition();
+        $dentalRiskNotice = $patient->getDentalRiskNotice() ? 'true' : 'false';
+        $mallanpati = $patient->getMallanpati();
+        $thyroidMentalDistance = $patient->getThyroidMentalDistance();
+        $mouthOpening = $patient->getMouthOpening();
+        $difficultIntubation = $patient->getDifficultIntubation() ? 'true' : 'false';
+        $difficultVentilation = $patient->getDifficultVentilation() ? 'true' : 'false';
+        $asa = $patient->getAsa();
+
+        $preAnesthesicExaminationsJson = $patient->getPreAnestheticExaminations();
+        $preAnesthesicExaminations = "[";
+        foreach (json_decode($preAnesthesicExaminationsJson) as $examination => $value)
+        {
+            if ($value)
+                $preAnesthesicExaminations .= '"' . $examination . '", ';
+        }
+        if ($preAnesthesicExaminations != "[")
+            $preAnesthesicExaminations = substr($preAnesthesicExaminations, 0, -2);
+
+        $preAnesthesicExaminations .= "]";
+
+        $marProposition = $patient->getMarProposition();
+        $expectedHospitalisation = "Conventionnelle";
+        if ($patient->getExpectedHospitalisation() === 1)
+            $expectedHospitalisation = "Ambulatoire";
+        else if ($patient->getExpectedHospitalisation() === 2)
+            $expectedHospitalisation = "réa//SSIPO";
+
+        $transfusionStrategy = json_encode($patient->getTransfusionStrategy());
+        $preAnestheticVisit = json_encode($patient->getPreAnestheticVisit());
+        //$premedication = json_encode($patient->getPremedication());
+        $premedication = $patient->getPremedication();
+        /*var_dump($premedication);
+        var_dump($patient->getPremedication());*/
 
         $json .= "\t\t{\n";
         $json .= "\t\t\t\"id\": $id ,\n";
@@ -236,11 +304,28 @@ if ($_POST['patients'] === 'true')
         $json .= "\t\t\t\"taille\": $height,\n";
         $json .= "\t\t\t\"poids\": $weight,\n";
         $json .= "\t\t\t\"avatar\": $avatar,\n";
-        $json .= "\t\t\t\"story\": \"$story\",\n";
+        $json .= "\t\t\t\"story\": $story,\n";
         $json .= "\t\t\t\"materiels\": $patientMaterials,\n";
         $json .= "\t\t\t\"reponses\": $patientResponsesJson,\n";
         $json .= "\t\t\t\"spec\": $spec,\n";
-        $json .= "\t\t\t\"avatar\": $avatar\n";
+        $json .= "\t\t\t\"treatments\": $treatments,\n";
+        $json .= "\t\t\t\"allergies\": $allergies,\n";
+        $json .= "\t\t\t\"ta\": \"$ta\",\n";
+        $json .= "\t\t\t\"fc\": $fc,\n";
+        $json .= "\t\t\t\"dentalCondition\": \"$dentalCondition\",\n";
+        $json .= "\t\t\t\"dentalRiskNotice\": $dentalRiskNotice,\n";
+        $json .= "\t\t\t\"mallanpati\": $mallanpati,\n";
+        $json .= "\t\t\t\"thyroidMentalDistance\": $thyroidMentalDistance,\n";
+        $json .= "\t\t\t\"mouthOpening\": $mouthOpening,\n";
+        $json .= "\t\t\t\"difficultIntubation\": $difficultIntubation,\n";
+        $json .= "\t\t\t\"difficultVentilation\": $difficultVentilation,\n";
+        $json .= "\t\t\t\"asa\": $asa,\n";
+        $json .= "\t\t\t\"preAnestheticExaminations\": $preAnesthesicExaminations,\n";
+        $json .= "\t\t\t\"marProposition\": \"$marProposition\",\n";
+        $json .= "\t\t\t\"expectedHospitalisation\": \"$expectedHospitalisation\",\n";
+        $json .= "\t\t\t\"transfusionStrategy\": $transfusionStrategy,\n";
+        $json .= "\t\t\t\"preAnestheticVisit\": $preAnestheticVisit,\n";
+        $json .= "\t\t\t\"premedication\": $premedication\n";
         $json .= "\t\t}" . ($i === $length ? "\n" : ",\n\n");
         ++$i;
     }
@@ -255,7 +340,7 @@ $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/assets/streamingAssets/sg3.txt', 'sg
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/assets/streamingAssets/sg4.txt', 'https://synabank.synakene.fr/api/v1/sg4/data');
 $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/assets/streamingAssets/sg4.txt', 'sg4.txt');
 
-$user = Customer::getById($_SESSION['id']);
+$user = Customer::getById($userId);
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/assets/streamingAssets/key.txt', $user->getApiKey());
 $zip->addFile($_SERVER['DOCUMENT_ROOT'] . '/assets/streamingAssets/key.txt', 'key.txt');
 

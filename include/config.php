@@ -15,5 +15,3 @@ define("_DBA_HOST_", 'localhost');
 define("_DBA_NAME_", 'sgtools');
 define("_DBA_USERNAME_", 'userSGTools');
 define("_DBA_PASSWORD_", '7aI0mbtiBRgolLHM');
-
-$_MENU_ = 'index';

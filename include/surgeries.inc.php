@@ -8,6 +8,7 @@
 
 include('initializer.php');
 $_MENU_ = 'surgeries';
+$_TITLE_ = 'Chirurgies';
 
 $surgeries = Surgery::getAllByCustomer($_SESSION['id']);
 $materials = Material::getAllByCustomer($_SESSION['id'], true);

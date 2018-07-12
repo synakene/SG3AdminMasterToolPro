@@ -8,327 +8,456 @@
       <Visible>1</Visible>
     </schema>
     <schema id="4" parent="1" name="banques"/>
-    <schema id="5" parent="1" name="ilias"/>
-    <schema id="6" parent="1" name="ilias2"/>
-    <schema id="7" parent="1" name="ilias3"/>
-    <schema id="8" parent="1" name="ilias444"/>
-    <schema id="9" parent="1" name="ilias5"/>
-    <schema id="10" parent="1" name="ilias527"/>
-    <schema id="11" parent="1" name="intranet"/>
-    <schema id="12" parent="1" name="kanboard"/>
-    <schema id="13" parent="1" name="mysql"/>
-    <schema id="14" parent="1" name="performance_schema"/>
-    <schema id="15" parent="1" name="wordpress1"/>
-    <schema id="16" parent="1" name="wordpress_wkt"/>
-    <table id="17" parent="3" name="avatars"/>
-    <table id="18" parent="3" name="customer"/>
-    <table id="19" parent="3" name="customerpacks"/>
-    <table id="20" parent="3" name="material"/>
-    <table id="21" parent="3" name="material_liaison"/>
-    <table id="22" parent="3" name="patient"/>
-    <table id="23" parent="3" name="patient_liaison"/>
-    <table id="24" parent="3" name="questions"/>
-    <table id="25" parent="3" name="questions_liaison"/>
-    <table id="26" parent="3" name="surgery"/>
-    <column id="27" parent="17" name="id">
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <table id="7" parent="3" name="avatars"/>
+    <table id="8" parent="3" name="customer"/>
+    <table id="9" parent="3" name="customerpacks"/>
+    <table id="10" parent="3" name="material"/>
+    <table id="11" parent="3" name="material_liaison"/>
+    <table id="12" parent="3" name="patient"/>
+    <table id="13" parent="3" name="patient_liaison"/>
+    <table id="14" parent="3" name="questions"/>
+    <table id="15" parent="3" name="questions_liaison"/>
+    <table id="16" parent="3" name="surgery"/>
+    <column id="17" parent="7" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="28" parent="17" name="name">
+    <column id="18" parent="7" name="name">
       <Position>2</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="29" parent="17" name="pack">
+    <column id="19" parent="7" name="pack">
       <Position>3</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="30" parent="17" name="PRIMARY">
+    <key id="20" parent="7" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="31" parent="18" name="id">
+    <column id="21" parent="8" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="32" parent="18" name="mail">
+    <column id="22" parent="8" name="mail">
       <Position>2</Position>
       <DataType>varchar(256)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="33" parent="18" name="password">
+    <column id="23" parent="8" name="apikey">
       <Position>3</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="8" name="password">
+      <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="34" parent="18" name="apikey">
-      <Position>4</Position>
-      <DataType>varchar(50)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="35" parent="18" name="admin">
+    <column id="25" parent="8" name="admin">
       <Position>5</Position>
       <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="36" parent="18" name="PRIMARY">
+    <key id="26" parent="8" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="37" parent="19" name="id">
+    <column id="27" parent="9" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="38" parent="19" name="idCustomer">
+    <column id="28" parent="9" name="idCustomer">
       <Position>2</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="39" parent="19" name="idPack">
+    <column id="29" parent="9" name="idPack">
       <Position>3</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="40" parent="19" name="PRIMARY">
+    <key id="30" parent="9" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="41" parent="20" name="id">
+    <column id="31" parent="10" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="42" parent="20" name="idCustomer">
+    <column id="32" parent="10" name="idCustomer">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="43" parent="20" name="name">
+    <column id="33" parent="10" name="name">
       <Position>3</Position>
       <DataType>varchar(160)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="44" parent="20" name="category">
+    <column id="34" parent="10" name="category">
       <Position>4</Position>
       <DataType>varchar(60)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="45" parent="20" name="PRIMARY">
+    <key id="35" parent="10" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="46" parent="21" name="id">
+    <column id="36" parent="11" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="47" parent="21" name="idCustomer">
+    <column id="37" parent="11" name="idCustomer">
       <Position>2</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="48" parent="21" name="idMaterial">
+    <column id="38" parent="11" name="idMaterial">
       <Position>3</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="49" parent="21" name="spawnedBy">
+    <column id="39" parent="11" name="spawnedBy">
       <Position>4</Position>
       <Comment>0=&gt;surgery, 1=&gt;patient</Comment>
       <DataType>tinyint(3) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="50" parent="21" name="idSpawner">
+    <column id="40" parent="11" name="idSpawner">
       <Position>5</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="51" parent="21" name="PRIMARY">
+    <key id="41" parent="11" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="52" parent="22" name="id">
+    <column id="42" parent="12" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="53" parent="22" name="idCustomer">
+    <column id="43" parent="12" name="idCustomer">
       <Position>2</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="54" parent="22" name="lastname">
+    <column id="44" parent="12" name="lastname">
       <Position>3</Position>
       <DataType>varchar(25)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="55" parent="22" name="firstname">
+    <column id="45" parent="12" name="firstname">
       <Position>4</Position>
       <DataType>varchar(25)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="56" parent="22" name="sex">
+    <column id="46" parent="12" name="sex">
       <Position>5</Position>
       <Comment>0 = homme 1 = femme</Comment>
       <DataType>tinyint(3) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="57" parent="22" name="age">
+    <column id="47" parent="12" name="age">
       <Position>6</Position>
       <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="58" parent="22" name="height">
+    <column id="48" parent="12" name="height">
       <Position>7</Position>
       <DataType>smallint(4) unsigned|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="59" parent="22" name="weight">
+    <column id="49" parent="12" name="weight">
       <Position>8</Position>
       <DataType>smallint(4) unsigned|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="60" parent="22" name="avatar">
+    <column id="50" parent="12" name="avatar">
       <Position>9</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="61" parent="22" name="story">
+    <column id="51" parent="12" name="story">
       <Position>10</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="62" parent="22" name="idClient">
+    <column id="52" parent="12" name="treatments">
+      <Position>11</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="12" name="allergies">
+      <Position>12</Position>
+      <Comment>json format</Comment>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="12" name="ta">
+      <Position>13</Position>
+      <Comment>int/int</Comment>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="12" name="fc">
+      <Position>14</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="12" name="dentalCondition">
+      <Position>15</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="12" name="dentalRiskNotice">
+      <Position>16</Position>
+      <Comment>0 : oui, 1 : non</Comment>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="12" name="mallanpati">
+      <Position>17</Position>
+      <Comment>1 à 4</Comment>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="59" parent="12" name="thyroidMentalDistance">
+      <Position>18</Position>
+      <Comment>0 : &lt; 65mm, 1 : &gt;=65mm</Comment>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="12" name="mouthOpening">
+      <Position>19</Position>
+      <Comment>0 : &lt; 35mm, 1 : &gt;=35mm</Comment>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="12" name="difficultIntubation">
+      <Position>20</Position>
+      <Comment>0 : oui, 1 : non</Comment>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="62" parent="12" name="difficultVentilation">
+      <Position>21</Position>
+      <Comment>0 : oui, 1 : non</Comment>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="63" parent="12" name="asa">
+      <Position>22</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="12" name="preAnestheticExaminations">
+      <Position>23</Position>
+      <Comment>json</Comment>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="12" name="marProposition">
+      <Position>24</Position>
+      <Comment>0 : rien, 1 : ag, 2 : alr, 3 : ag+alr</Comment>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="12" name="expectedHospitalisation">
+      <Position>25</Position>
+      <Comment>0 : conventionnelle, 1 : ambulatoire, 2 : réa/SSIPO</Comment>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="67" parent="12" name="transfusionStrategy">
+      <Position>26</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="68" parent="12" name="preAnestheticVisit">
+      <Position>27</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="12" name="premedication">
+      <Position>28</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="70" parent="12" name="idClient">
       <ColNames>idCustomer</ColNames>
     </index>
-    <key id="63" parent="22" name="PRIMARY">
+    <key id="71" parent="12" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="64" parent="23" name="id">
+    <column id="72" parent="13" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="65" parent="23" name="idPatient">
+    <column id="73" parent="13" name="idPatient">
       <Position>2</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="66" parent="23" name="idSurgery">
+    <column id="74" parent="13" name="idCustomer">
       <Position>3</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="67" parent="23" name="PRIMARY">
+    <column id="75" parent="13" name="idSurgery">
+      <Position>4</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="76" parent="13" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="68" parent="24" name="id">
+    <column id="77" parent="14" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="69" parent="24" name="idCustomer">
+    <column id="78" parent="14" name="idCustomer">
       <Position>2</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="70" parent="24" name="name">
+    <column id="79" parent="14" name="name">
       <Position>3</Position>
       <DataType>varchar(60)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="71" parent="24" name="question">
+    <column id="80" parent="14" name="question">
       <Position>4</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="72" parent="24" name="answer">
+    <column id="81" parent="14" name="answer">
       <Position>5</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="73" parent="24" name="PRIMARY">
+    <key id="82" parent="14" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="74" parent="25" name="id">
+    <column id="83" parent="15" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="75" parent="25" name="idQuestion">
+    <column id="84" parent="15" name="idQuestion">
       <Position>2</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="76" parent="25" name="answer">
+    <column id="85" parent="15" name="answer">
       <Position>3</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="77" parent="25" name="spawnedBy">
+    <column id="86" parent="15" name="idCustomer">
       <Position>4</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="87" parent="15" name="spawnedBy">
+      <Position>5</Position>
       <Comment>0=&gt;surgery, 1=&gt;patient</Comment>
       <DataType>tinyint(3) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="78" parent="25" name="idSpawner">
-      <Position>5</Position>
+    <column id="88" parent="15" name="idSpawner">
+      <Position>6</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="79" parent="25" name="PRIMARY">
+    <key id="89" parent="15" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="80" parent="26" name="id">
+    <column id="90" parent="16" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="81" parent="26" name="idCustomer">
+    <column id="91" parent="16" name="idCustomer">
       <Position>2</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="82" parent="26" name="name">
+    <column id="92" parent="16" name="name">
       <Position>3</Position>
       <DataType>varchar(150)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="83" parent="26" name="emergency">
+    <column id="93" parent="16" name="consultation">
       <Position>4</Position>
-      <DataType>tinyint(1)|0</DataType>
+      <DataType>tinyint(1) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="84" parent="26" name="story">
+    <column id="94" parent="16" name="emergency">
       <Position>5</Position>
+      <DataType>tinyint(1) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="95" parent="16" name="story">
+      <Position>6</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="85" parent="26" name="PRIMARY">
+    <column id="96" parent="16" name="marProposition">
+      <Position>7</Position>
+      <DataType>tinyint(2) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="97" parent="16" name="marPropositionText">
+      <Position>8</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="98" parent="16" name="preAnestheticVisit">
+      <Position>9</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="99" parent="16" name="lastEval">
+      <Position>10</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="100" parent="16" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

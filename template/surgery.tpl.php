@@ -38,11 +38,11 @@
                             <input class="form-control surgery-name" placeholder="Nom de la chirurgie" value="<?php echo $surgery->getName(); ?>">
                         </div>
 
-                        <label class="switch">
-                            <p>Urgence</p>
-                            <input type="checkbox" <?php if ($surgery->getEmergency() === true) { echo 'checked'; } ?>>
-                            <span class="slider round"></span>
-                        </label><br/>
+<!--                        <label class="switch">-->
+<!--                            <p>Urgence</p>-->
+<!--                            <input type="checkbox" --><?php //if ($surgery->getEmergency() === true) { echo 'checked'; } ?><!-->
+<!--                            <span class="slider round"></span>-->
+<!--                        </label><br/>-->
 
                         <div class="panel panel-primary">
                             <div class="panel-heading hideable">
@@ -131,6 +131,36 @@
                                     </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading hideable">
+                                <i class="fa fa-address-book-o"></i> Dossier d'anésthésie
+                            </div>
+                            <div class="panel-body" style="display: none">
+                                <h3>Évaluation pré-anesthésique</h3>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Date</span>
+                                    <input type="number" class="form-control surgery-last-eval" placeholder="Dernière évaluation" value="<?php echo $surgery->getLastEval(); ?>">
+                                    <span class="input-group-addon">jours avant</span>
+                                </div>
+                                <div><label>Consultation <input class="surgery-consultation" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if($surgery->getConsultation()) echo 'checked' ;?>></label></div>
+                                <div><label>Urgence <input class="surgery-emergency" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if($surgery->getEmergency()) echo 'checked' ;?>></label></div>
+
+                                <h3>Antécédents et histoire de la maladie</h3>
+                                <textarea class="form-control surgery-story"><?php echo $surgery->getStory(); ?></textarea><br/>
+
+                                <h3>Proposition MAR</h3>
+                                <div><label>AG <input class="surgery-mar-ag" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if($surgery->getMarProposition() == 1 || $surgery->getMarProposition() == 3) echo 'checked' ;?>></label></div>
+                                <div><label>ALR <input class="surgery-mar-bis" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if($surgery->getMarProposition() == 2 || $surgery->getMarProposition() == 3) echo 'checked' ;?>></label></div><br/>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Détails</span>
+                                    <input type="text" class="form-control surgery-mar-proposition-text" value="<?php echo $surgery->getMarPropositionText(); ?>">
+                                </div>
+
+                                <h3>Visite pré-anesthésique</h3>
+                                <textarea class="form-control surgery-pre-anesthetic-visit"><?php echo $surgery->getPreAnestheticVisit(); ?></textarea><br/>
                             </div>
                         </div>
 

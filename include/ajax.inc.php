@@ -122,7 +122,6 @@ function saveData($table = '', $data = array()) // TODO : gérer les id faux
 
             $surgery->setId($data['id']);
             $surgery->setIdCustomer($_SESSION['id']);
-            $surgery->setEmergency($data['emergency'] === 'true' ? true : false);
             if (isset($data['compatibles']) === false) { $data['compatibles'] = []; };
             $surgery->setCompatibles($data['compatibles']);
             if (isset($data['materials']) === false) { $data['materials'] = []; };
@@ -130,7 +129,13 @@ function saveData($table = '', $data = array()) // TODO : gérer les id faux
             if (isset($data['responses']) === false) { $data['responses'] = []; };
             $surgery->setResponses($data['responses']);
             $surgery->setName($data['name']);
+            $surgery->setLastEval(intval($data['surgery']['lastEval']));
+            $surgery->setConsultation(($data['surgery']['consultation'] === 'true'));
+            $surgery->setEmergency($data['emergency'] === 'true');
             $surgery->setStory($data['story']);
+            $surgery->setMarProposition(intval($data['surgery']['marProposition']));
+            $surgery->setMarPropositionText($data['surgery']['marPropositionText']);
+            $surgery->setPreAnestheticVisit($data['surgery']['preAnestheticVisit']);
 
             if ($surgery->save())
             {
@@ -183,7 +188,25 @@ function saveData($table = '', $data = array()) // TODO : gérer les id faux
             $patient->setHeight($data['height']);
             $patient->setWeight($data['weight']);
             $patient->setAvatar($data['avatar']);
-            //$patient->setStory($data['story']);
+            $patient->setStory($data['story']);
+            $patient->setTreatments($data['patient']['treatments']);
+            $patient->setAllergies($data['patient']['allergies']);
+            $patient->setTa($data['patient']['ta']);
+            $patient->setFc($data['patient']['fc']);
+            $patient->setDentalCondition($data['patient']['dentalCondition']);
+            $patient->setDentalRiskNotice($data['patient']['dentalRiskNotice']);
+            $patient->setMallanpati($data['patient']['mallanpati']);
+            $patient->setThyroidMentalDistance($data['patient']['thyroidMentalDistance']);
+            $patient->setMouthOpening($data['patient']['mouthOpening']);
+            $patient->setDifficultIntubation($data['patient']['difficultIntubation']);
+            $patient->setDifficultVentilation($data['patient']['difficultVentilation']);
+            $patient->setAsa($data['patient']['asa']);
+            $patient->setPreAnestheticExaminations($data['patient']['preAnestheticExaminations']);
+            $patient->setMarProposition($data['patient']['marProposition']);
+            $patient->setExpectedHospitalisation($data['patient']['expectedHospitalisation']);
+            $patient->setTransfusionStrategy($data['patient']['transfusionStrategy']);
+            $patient->setPreAnestheticVisit($data['patient']['preAnestheticVisit']);
+            $patient->setPremedication(json_encode($data['patient']['premedication']));
 
             if ($patient->save())
             {
@@ -417,6 +440,7 @@ function importJsons($customerId, $jsons)
             return $result;
         }
     }
+
     //endregion
 
     //region Patients Creating
@@ -424,7 +448,8 @@ function importJsons($customerId, $jsons)
     $id = Patient::getNextId();
     foreach ($jsons['patients']['patients'] as $patJson)
     {
-        $patient = new Patient();
+        /** @var Patient $patient */
+        $patient = new Patient(true);
         $patient->setId($id++);
         $patient->setIdCustomer($customerId);
         $patient->setLastname($patJson['nom']);
@@ -442,6 +467,43 @@ function importJsons($customerId, $jsons)
         $patient->setHeight($patJson['taille']);
         $patient->setWeight($patJson['poids']);
         $patient->setAvatar($patJson['avatar']);
+        $patient->setStory($patJson['story']);
+        if (isset($patJson['treatments']))
+            $patient->setTreatments($patJson['treatments']);
+        if(isset($patJson['allergies']))
+            $patient->setAllergies(json_encode($patJson['allergies']));
+        if(isset($patJson['ta']))
+            $patient->setTa($patJson['ta']);
+        if (isset($patJson['fc']))
+            $patient->setFc($patJson['fc']);
+        if (isset($patJson['dentalCondition']))
+            $patient->setDentalCondition($patJson['dentalCondition']);
+        if (isset($patJson['dentalRiskNotice']))
+            $patient->setDentalRiskNotice($patJson['dentalRiskNotice']);
+        if (isset($patJson['mallanpati']))
+            $patient->setMallanpati($patJson['mallanpati']);
+        if (isset($patJson['thyroidMentalDistance']))
+            $patient->setThyroidMentalDistance($patJson['thyroidMentalDistance']);
+        if (isset($patJson['mouthOpening']))
+            $patient->setMouthOpening($patJson['mouthOpening']);
+        if (isset($patJson['difficultIntubation']))
+            $patient->setDifficultIntubation($patJson['difficultIntubation']);
+        if (isset($patJson['difficultVentilation']))
+            $patient->setDifficultVentilation($patJson['difficultVentilation']);
+        if (isset($patJson['asa']))
+            $patient->setAsa($patJson['asa']);
+        if(isset($patJson['preAnestheticExaminations']))
+            $patient->setPreAnestheticExaminations(json_encode($patJson['preAnestheticExaminations']));
+        if(isset($patJson['marProposition']))
+            $patient->setMarProposition($patJson['marProposition']);
+        if(isset($patJson['expectedHospitalisation']))
+            $patient->setExpectedHospitalisation($patJson['expectedHospitalisation']);
+        if(isset($patJson['transfusionStrategy']))
+            $patient->setTransfusionStrategy($patJson['transfusionStrategy']);
+        if(isset($patJson['preAnestheticVisit']))
+            $patient->setPreAnestheticVisit($patJson['preAnestheticVisit']);
+        if(isset($patJson['premedication']))
+            $patient->setPremedication(json_encode($patJson['premedication']));
 
         if (isset($patJson['materiels']))
         {
@@ -454,6 +516,10 @@ function importJsons($customerId, $jsons)
                 }
             }
             $patient->setMaterials($materialsIds);
+        }
+        else
+        {
+            $patient->setMaterials([]);
         }
 
         if (isset($patJson['reponses']))
@@ -474,6 +540,10 @@ function importJsons($customerId, $jsons)
             }
             $patient->setResponses($responses);
         }
+        else
+        {
+            $patient->setResponses([]);
+        }
 
         if ($patient->save())
         {
@@ -493,7 +563,7 @@ function importJsons($customerId, $jsons)
     $id = Surgery::getNextId();
     foreach ($jsons['surgeries']['chirurgies'] as $chirJson)
     {
-        $surgery = new Surgery();
+        $surgery = new Surgery(true);
         $surgery->setId($id++);
         $surgery->setIdCustomer($customerId);
         $surgery->setName($chirJson['nom']);
@@ -509,6 +579,10 @@ function importJsons($customerId, $jsons)
                 }
             }
             $surgery->setMaterials($materialsIds);
+        }
+        else
+        {
+            $surgery->setMaterials([]);
         }
 
         if (isset($chirJson['reponses']))
@@ -529,6 +603,10 @@ function importJsons($customerId, $jsons)
             }
             $surgery->setResponses($responses);
         }
+        else
+        {
+            $surgery->setResponses([]);
+        }
 
 
         if (isset($chirJson['compatibles']))
@@ -543,8 +621,26 @@ function importJsons($customerId, $jsons)
             }
             $surgery->setCompatibles($chirPatients);
         }
+        else
+        {
+            $surgery->setCompatibles([]);
+        }
 
-        $surgery->setStory($chirJson['histoire']);
+        if(isset($chirJson['histoire']))
+            $surgery->setStory($chirJson['histoire']);
+        if(isset($chirJson['consultation']))
+            $surgery->setConsultation($chirJson['consultation'] === 'true');
+        if(isset($chirJson['urgence']))
+            $surgery->setEmergency($chirJson['urgence'] === 'true');
+
+        if(isset($chirJson['marProposition']))
+            $surgery->setMarProposition($chirJson['marProposition']);
+        if(isset($chirJson['marPropositionText']))
+            $surgery->setMarPropositionText($chirJson['marPropositionText']);
+        if(isset($chirJson['preAnestheticVisit']))
+            $surgery->setPreAnestheticVisit($chirJson['preAnestheticVisit']);
+        if(isset($chirJson['lastEval']))
+            $surgery->setLastEval($chirJson['lastEval']);
 
         if ($surgery->save())
         {

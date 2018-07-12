@@ -8,6 +8,7 @@
 
 include('initializer.php');
 $_MENU_ = 'utilisateurs';
+$_TITLE_ = 'Utilisateurs';
 
 if (Customer::isAdmin($_SESSION['id']) !== true)
 {

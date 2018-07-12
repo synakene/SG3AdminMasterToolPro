@@ -1,5 +1,6 @@
 jQuery('#generator-well button').on('click', function(){
-    var type = jQuery(this).attr('data-json');
+    let type = jQuery(this).attr('data-json');
+    let id = jQuery(this).attr('data-id');
     console.log(type);
 
     var materials = false;
@@ -31,7 +32,8 @@ jQuery('#generator-well button').on('click', function(){
             materials: materials,
             questions: questions,
             patients: patients,
-            surgeries: surgeries
+            surgeries: surgeries,
+            id: id
         }
     })
         .done(function(data){

@@ -77,7 +77,10 @@
                                 echo '<td>' . $patient->getAge() . ' ans</td>';
                                 echo '<td>' . $patient->getHeight() . ' cm</td>';
                                 echo '<td>' . $patient->getWeight() . ' kg</td>';
-                                echo '<td><a href="/avatars/' . $avatars[$patient->getAvatar()]['id'] . '"><span class="btn btn-default" data-toggle="tooltip" data-original-title="<img src=\'/assets/avatars/' . $avatars[$patient->getAvatar()]['id'] . '.PNG\' style=\'width: 200px;\'/>">' . $avatars[$patient->getAvatar()]['name'] . '</span></a></td>';
+                                if ($patient->getAvatar() == 0)
+                                    echo '<td><span class="btn btn-default">Non défini</span></td>';
+                                else
+                                    echo '<td><a href="/avatars/' . $avatars[$patient->getAvatar()]['id'] . '"><span class="btn btn-default" data-toggle="tooltip" data-original-title="<img src=\'/assets/avatars/' . $avatars[$patient->getAvatar()]['id'] . '.PNG\' style=\'width: 200px;\'/>">' . $avatars[$patient->getAvatar()]['name'] . '</span></a></td>';
 
                                 echo '<td>';
                                 foreach ($patient->getMaterials() as $material) { echo '<a href="/materiel"><span class="btn btn-default">' . $materials[$material]->getName() . '</span></a>'; }

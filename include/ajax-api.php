@@ -155,7 +155,7 @@ else if ($_POST['action'] === 'changemail')
 }
 else if ($_POST['action'] === 'changepass')
 {
-    if ($_SESSION['mail'] != $_POST['data']['mail'] && !$_SESSION['admin'])
+    if ($_SESSION['id'] != $_POST['data']['idCustomer'] && !$_SESSION['admin'])
     {
         echo "0<br>Mot de passe non modifié. Erreur d'authentification. Contactez votre webmaster.";
     }

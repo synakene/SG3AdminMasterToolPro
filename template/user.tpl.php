@@ -23,7 +23,7 @@
                             <i class="fa fa-users"></i> <a href="/utilisateurs">Utilisateurs</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-pencil"></i> <a href="/utilisateurs"><?php $user->getMail(); ?></a>
+                            <i class="fa fa-pencil"></i> <span><?php echo $user->getMail(); ?></span>
                         </li>
                     </ol>
                 </div>
@@ -117,11 +117,23 @@
                 </div>
 
                 <br/>
-                <h2 id="actions">Actions</h2>
-                <div>
-                    <a href="/login/<?php echo $user->getId(); ?>">
-                        <button class="col-xs-12 col-sm-6 col-md-3 btn btn-primary"><i class="fa fa-user"></i> Se connecter</button>
-                    </a>
+                <h2>Actions</h2>
+                <div id="actions" class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a href="/login/<?php echo $user->getId(); ?>">
+                            <button class="col-xs-12 btn btn-primary"><i class="fa fa-user"></i> Se connecter</button>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a id="delete-user" href="/supprimer-utilisateur/<?php echo $user->getId(); ?>">
+                            <button class="col-xs-12 btn btn-danger"><i class="fa fa-times"></i> Supprimer le compte</button>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <button id="generate-json" class="col-xs-12 btn btn-success faa-parent animated-hover" data-id="<?php echo $user->getId(); ?>">
+                            <i class="fa fa-flask faa-shake"></i> Générer les fichiers
+                        </button>
+                    </div>
                 </div>
             </div>
 

@@ -31,7 +31,7 @@
                     <a href="/creer-chirurgie"><button type="button" class="btn btn-lg btn-primary button-add">Ajouter une chirurgie</button></a>
                 </div>
 
-                <!-- Material list -->
+                <!-- Surgeries list -->
                 <div class="col-xs-12">
                     <div class="well list-well">
                         <h3>Liste des chirurgies :</h3><br>

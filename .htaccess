@@ -19,6 +19,9 @@ RewriteRule ^utilisateur/([0-9]+)$ /include/user.inc.php?id=$1 [L]
 
 RewriteRule ^creer-patient$ /include/createpatient.php [L]
 RewriteRule ^creer-chirurgie$ /include/createsurgery.php [L]
+RewriteRule ^creer-user /include/createUser.php [L]
+
+RewriteRule ^supprimer-utilisateur/([0-9]+)$ /include/deleteUser.php?id=$1 [L]
 
 RewriteRule ^login$ /template/login.tpl.php [L]
 RewriteRule ^login/([0-9]+)$ /include/connect.php?id=$1 [L]

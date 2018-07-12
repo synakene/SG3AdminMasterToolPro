@@ -9,12 +9,15 @@
 include('initializer.php');
 $_MENU_ = 'surgeries';
 
+/** @var Surgery $surgery */
 $surgery = Surgery::getById($_GET['id']);
 
 if ($surgery === false || $surgery->getIdCustomer() !== (int) $_SESSION['id'])
 {
     header("Location:/accueil");
 }
+
+$_TITLE_ = $surgery->getName();
 
 $materials = Material::getAllByCustomer($_SESSION['id']);
 $questions = Question::getAllByCustomer($_SESSION['id']);

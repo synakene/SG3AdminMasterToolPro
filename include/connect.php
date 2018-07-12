@@ -36,8 +36,12 @@ else if (password_verify($pass, $query[0]['password']))
 {
     $_SESSION['mail'] = $query[0]['mail'];
     $_SESSION['id'] = $query[0]['id'];
+    $admin = $_SESSION['admin'] = Customer::isAdmin($_SESSION['id']);
 
-    header('Location:/accueil');
+    if ($admin)
+        header('Location:/utilisateurs');
+    else
+        header('Location:/accueil');
 }
 else
 {

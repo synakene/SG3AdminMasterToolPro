@@ -14,7 +14,15 @@ if ($_SESSION['id'] != $_GET['id'] && Customer::isAdmin($_SESSION['id']) !== tru
     header('Location:/accueil');
 }
 
+/** @var Customer $user */
 $user = Customer::getById($_GET['id']);
+
+if (!$user)
+{
+    header('Location:/utilisateurs');
+}
 $packs = Customer::getAllPacks();
+
+$_TITLE_ = $user->getMail();
 
 include($_SERVER['DOCUMENT_ROOT'] . "/template/user.tpl.php");

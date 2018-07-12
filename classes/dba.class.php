@@ -56,9 +56,14 @@ class DBA
      * @param $query
      * @return mixed
      */
-    public static function mquery($query)
+    public static function mquery($query, $debug = true)
     {
-        $win = self::$dba->multi_query($query);
+        $win = self::$dba->multi_query($query . self::$dba->error . " in " . $query . '<br>');
+        if (!$win)
+        {
+            echo ("MQuery error : " . self::$dba->error . ' in ' . $query . '<br>');
+            xdebug_print_function_stack();
+        }
         while (self::$dba->more_results())
         {
             self::$dba->next_result();

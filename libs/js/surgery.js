@@ -355,13 +355,20 @@ function save()
     });
 
     surgery['name'] = jQuery('.surgery-name').val();
-    //surgery['story'] = jQuery('.surgery-story').val();
-    surgery['story'] = "deprecated";
-    surgery['emergency'] = jQuery('label.switch input')[0].checked;
+    surgery['lastEval'] = jQuery('input.surgery-last-eval').val();
+    surgery['emergency'] = jQuery('input.surgery-emergency:checked').length === 1;
+    surgery['consultation'] = jQuery('input.surgery-emergency:checked').length === 1;
+    surgery['story'] = jQuery('textarea.surgery-story').val();
+    surgery['preAnestheticVisit'] = jQuery('textarea.surgery-pre-anesthetic-visit').val();
+    surgery['marPropositionText'] = jQuery('input.surgery-mar-proposition-text').val();
 
-    btn = jQuery('button.save');
+    var mar = 0;
+    mar += jQuery('input.surgery-mar-ag:checked').length === 1 ? 1 : 0;
+    mar += jQuery('input.surgery-mar-bis:checked').length === 1 ? 2 : 0;
+    surgery.marProposition = mar;
 
     // Prevent from click bashing
+    btn = jQuery('button.save');
     jQuery(btn).off();
     jQuery(btn).addClass('disabled');
     jQuery(btn).find('i').removeClass('fa-floppy-o');
@@ -375,7 +382,8 @@ function save()
         'materials': surgery['materials'],
         'responses': surgery['responses'],
         'name': surgery['name'],
-        'story': surgery['story']
+        'story': surgery['story'],
+        'surgery': surgery
     };
 
     jQuery.ajax({
@@ -409,4 +417,11 @@ function save()
 
 jQuery('button.save').on('click', function(){
     save()
+});
+
+jQuery(window).bind('keydown', function(event) {
+    if ((event.ctrlKey || event.metaKey) && event.which === 83) {
+        event.preventDefault();
+        save();
+    }
 });

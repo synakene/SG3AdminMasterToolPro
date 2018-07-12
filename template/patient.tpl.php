@@ -179,52 +179,99 @@
                                 <i class="fa fa-address-book-o"></i> Dossier d'anesthésie
                             </div>
                             <div class="panel-body" style="display: none">
-                                <h3>Evaluation pré-anesthésique</h3>
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <span class="slider round"></span>
-                                    <p>Consultation</p>
-                                </label><br/>
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <span class="slider round"></span>
-                                    <p>Patient déjà hospitalisé</p>
-                                </label><br/>
+                                <h3>Antécédents et histoire de la maladie</h3>
+                                <textarea class="form-control patient-story"><?php echo $patient->getStory(); ?></textarea><br>
 
-                                <div class="form-group">
-                                    <label for="comment"><h3>Antécédents et histoire de la maladie :</h3></label>
-                                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                                <h3>Traitements</h3>
+                                <textarea class="form-control patient-treatments"><?php echo $patient->getTreatments(); ?></textarea><br>
+
+                                <h3>Allergie</h3> <!-- TODO complete with js -->
+                                <div><label>Antibiotique <input class="patient-allergies-antib" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
+                                <div><label>Latex <input class="patient-allergies-latex" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Autre</span>
+                                    <input type="text" class="form-control patient-allergies-other" placeholder="Non connue">
                                 </div>
 
-                                <h3>Allergies</h3>
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <span class="slider round"></span>
-                                    <p>Antibiotique</p>
-                                </label><br/>
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <span class="slider round"></span>
-                                    <p>Latex</p>
-                                </label><br/>
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <span class="slider round"></span>
-                                    <p>Autre : </p>
-                                </label>
-                                <input class="form-control">
+                                <h3>Examens Complémentaires</h3><br/>
 
-                                <div class="form-group">
-                                    <label for="comment"><h3>Traitements :</h3></label>
-                                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                                <h3>Examen clinique</h3>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">TA</span>
+                                    <input type="text" class="form-control patient-ta" placeholder="valeur1/valeur2" value="<?php echo $patient->getTa(); ?>">
                                 </div>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">FC</span>
+                                    <input type="number" class="form-control patient-tc" value="<?php echo $patient->getFc(); ?>">
+                                </div><br/>
+
+                                <h3>Voies aériennes supérieures</h3>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">État dentaire</span>
+                                    <input type="text" class="form-control patient-dentalCondition" placeholder="RAI" value="<?php echo $patient->getDentalCondition(); ?>">
+                                </div>
+                                <div><label>Information risque dentaire <input class="patient-dentalRiskNotice" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if ($patient->getDentalRiskNotice()) echo 'checked'; ?>></label></div>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Score de mallanpati</span>
+                                    <select class="form-control patient-mallanpati">
+                                        <option value="1" <?php if($patient->getMallanpati() == 1) echo 'selected="selected"'; ?>>I</option>
+                                        <option value="2" <?php if($patient->getMallanpati() == 2) echo 'selected="selected"'; ?>>II</option>
+                                        <option value="3" <?php if($patient->getMallanpati() == 3) echo 'selected="selected"'; ?>>III</option>
+                                        <option value="4" <?php if($patient->getMallanpati() == 4) echo 'selected="selected"'; ?>>IV</option>
+                                    </select>
+                                </div>
+                                <div><label>Distance thyro-mentale <input class="patient-thyroid-mental-distance" type="checkbox" data-toggle="toggle" data-on="<65mm" data-off="≥65mm" data-width="100" data-offstyle="primary" <?php if($patient->getThyroidMentalDistance() < 65) echo 'checked'; ?>></label></div>
+                                <div><label>Ouverture de bouche <input class="patient-mouth-opening" type="checkbox" data-toggle="toggle" data-on="<35mm" data-off="≥35mm" data-width="100" data-offstyle="primary" <?php if($patient->getMouthOpening() < 35) echo 'checked';?>></label></div>
+                                <div><label>Intubation difficile prévisible <input class="patient-difficult-intubation" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if ($patient->getDifficultIntubation()) echo 'checked' ;?>></label></div>
+                                <div><label>Ventilation difficile au masque prévisible <input class="patient-difficult-ventilation" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if ($patient->getDifficultVentilation()) echo 'checked' ;?>></label></div>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">ASA</span>
+                                    <input type="number" class="form-control patient-asa" placeholder="RAI" value="<?php echo $patient->getAsa() ;?>">
+                                </div>
+
+                                <h3>Examens pré-anésthésiques</h3>
+                                <div><label>Groupe 1 <input class="patient-examinations-groupe1" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
+                                <div><label>Groupe 2 <input class="patient-examinations-groupe2" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
+                                <div><label>Phénotype <input class="patient-examinations-phenotype" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
+                                <div><label>RAI <input class="patient-examinations-rai" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
+                                <div><label>Cross NF <input class="patient-examinations-cross-nf" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
+                                <div><label>TP <input class="patient-examinations-tp" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
+                                <div><label>TCA <input class="patient-examinations-tca" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
+                                <div><label>Iono <input class="patient-examinations-iono" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
+                                <div><label>Radiothorax <input class="patient-examinations-radiothorax" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
+                                <div><label>ECG <input class="patient-examinations-ecg" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Autre</span>
+                                    <input type="text" class="form-control patient-examinations-other" placeholder="Séparer par des virgules">
+                                </div>
+
+                                <h3>Proposition MAR</h3>
+                                <div><label>AG <input class="patient-mar-ag" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if($patient->getMarProposition() == 1 || $patient->getMarProposition() == 3) echo 'checked' ;?>></label></div>
+                                <div><label>BIS <input class="patient-mar-bis" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if($patient->getMarProposition() == 2 || $patient->getMarProposition() == 3) echo 'checked' ;?>></label></div><br/>
+
+                                <h3>Hospitalisation prévue</h3>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Hospitalisation</span>
+                                    <select class="form-control patient-hospitalisation">
+                                        <option value="0" <?php if($patient->getExpectedHospitalisation() == 0) echo 'selected="selected"' ;?>>Conventionnelle</option>
+                                        <option value="1" <?php if($patient->getExpectedHospitalisation() == 1) echo 'selected="selected"' ;?>>Ambulatoire</option>
+                                        <option value="2" <?php if($patient->getExpectedHospitalisation() == 2) echo 'selected="selected"' ;?>>Réa//SSIPO</option>
+                                    </select>
+                                </div>
+
+                                <h3>Stratégie transfusionnelle</h3>
+                                <textarea class="form-control patient-transfusion-strategy"><?php echo $patient->getTransfusionStrategy(); ?></textarea><br/>
+
+                                <h3>Visite pré-anesthésique</h3>
+                                <textarea class="form-control patient-pre-anesthetic-visit"><?php echo $patient->getPreAnestheticVisit(); ?></textarea><br/>
+
+                                <h3>Prémédication</h3>
+                                <h4>La veille</h4>
+                                <textarea class="form-control patient-premedication-eve"></textarea><br/>
+                                <h4>Le matin</h4>
+                                <textarea class="form-control patient-premedication-morning"></textarea><br/>
                             </div>
                         </div>
-
-<!--                        <div class="form-group">-->
-<!--                            <label>Histoire du patient</label>-->
-<!--                            <textarea class="form-control patient-story" rows="3">--><?php //echo $patient->getStory(); ?><!--</textarea>-->
-<!--                        </div>-->
 
                         <button type="button" class="btn btn-primary btn-lg pull-right save"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
 
@@ -240,12 +287,15 @@
 
 <?php include("modules/footer.mod.php"); ?>
 
-<script>
+<script type="text/javascript">
     var patient = <?php echo json_encode($patient, JSON_UNESCAPED_UNICODE); ?>;
     var materials = <?php echo json_encode($materials, JSON_UNESCAPED_UNICODE); ?>;
     var questions = <?php echo json_encode($questions, JSON_UNESCAPED_UNICODE); ?>;
     var surgeries = <?php echo json_encode($surgeries, JSON_UNESCAPED_UNICODE); ?>;
     var avatars = <?php echo json_encode($avatars, JSON_UNESCAPED_UNICODE); ?>;
+
+    var allergies = <?php echo $patient->getAllergies(); ?>;
+    var examinations = <?php echo $patient->getPreAnestheticExaminations(); ?>;
 </script>
 
 <script type="text/javascript" src="/libs/js/patient.js"></script>

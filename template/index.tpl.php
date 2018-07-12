@@ -125,11 +125,7 @@
             <div class="row">
                 <div class="well" id="generator-well">
                     <h3>Générer les fichiers de données du jeu</h3>
-<!--                    <button class="btn btn-primary btn-lg" data-json="materials"><i class="fa fa-wrench"></i> Matériel</button>-->
-<!--                    <button class="btn btn-primary btn-lg" data-json="questions"><i class="fa fa-question"></i> Question</button>-->
-<!--                    <button class="btn btn-primary btn-lg" data-json="surgeries"><i class="fa fa-scissors"></i> Chirurgies</button>-->
-<!--                    <button class="btn btn-primary btn-lg" data-json="patients"><i class="fa fa-user"></i> Patients</button>-->
-                    <button class="btn btn-primary btn-lg center-block faa-parent animated-hover" data-json="all"><i class="fa fa-flask faa-shake"></i> Générer les fichiers <i class="fa fa-flask faa-shake"></i></button>
+                    <button class="btn btn-primary btn-lg center-block faa-parent animated-hover" data-json="all" data-id="<?php echo $_SESSION['id']; ?>"><i class="fa fa-flask faa-shake"></i> Générer les fichiers <i class="fa fa-flask faa-shake"></i></button>
                 </div>
             </div>
 

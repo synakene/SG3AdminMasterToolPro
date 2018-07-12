@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SG Tools</title>
+    <title>SG Tools - <?php echo $_TITLE_; ?></title>
 
     <!-- favicon -->
     <!--<link rel="icon" href="/libs/favicon.png">-->
@@ -25,7 +25,8 @@
     <!--<link href="/Libs/css/plugins/morris.css" rel="stylesheet">-->
 
     <!--CSS Switch-->
-    <link href="/libs/css/switch.css" rel="stylesheet"/>
+<!--    <link href="/libs/css/switch.css" rel="stylesheet"/>-->
+    <link href="/libs/switch/css/bootstrap-toggle.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

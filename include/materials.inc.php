@@ -8,6 +8,7 @@
 
 include('initializer.php');
 $_MENU_ = 'materials';
+$_TITLE_ = 'Matériel';
 
 $materials = Material::getAllByCustomer($_SESSION['id']);
 

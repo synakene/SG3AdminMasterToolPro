@@ -17,7 +17,27 @@ class Patient extends DBA implements jsonSerializable
     private $height;
     private $weight;
     private $avatar;
+
     private $story;
+    private $treatments;
+    private $allergies;
+    private $ta;
+    private $fc;
+    private $dentalCondition;
+    private $dentalRiskNotice;
+    private $mallanpati;
+    private $thyroidMentalDistance;
+    private $mouthOpening;
+    private $difficultIntubation;
+    private $difficultVentilation;
+    private $asa;
+    private $preAnestheticExaminations;
+    private $marProposition;
+    private $expectedHospitalisation;
+    private $transfusionStrategy;
+    private $preAnestheticVisit;
+    private $premedication;
+
     private $materials;
     private $surgeries;
     private $responses;
@@ -166,7 +186,7 @@ class Patient extends DBA implements jsonSerializable
     }
 
     /**
-     * @param string $avatar
+     * @param int|string $avatar
      */
     public function setAvatar($avatar = 0)
     {
@@ -262,8 +282,329 @@ class Patient extends DBA implements jsonSerializable
         $this->responses = $responses;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getTreatments()
+    {
+        return $this->treatments;
+    }
+
+    /**
+     * @param mixed $treatments
+     */
+    public function setTreatments($treatments)
+    {
+        $this->treatments = $treatments;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAllergies()
+    {
+        return $this->allergies;
+    }
+
+    /**
+     * @param mixed $allergies
+     */
+    public function setAllergies($allergies)
+    {
+        $this->allergies = $allergies;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTa()
+    {
+        return $this->ta;
+    }
+
+    /**
+     * @param mixed $ta
+     */
+    public function setTa($ta)
+    {
+        $this->ta = $ta;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFc()
+    {
+        return $this->fc;
+    }
+
+    /**
+     * @param mixed $fc
+     */
+    public function setFc($fc)
+    {
+        $this->fc = $fc;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDentalCondition()
+    {
+        return $this->dentalCondition;
+    }
+
+    /**
+     * @param mixed $dentalCondition
+     */
+    public function setDentalCondition($dentalCondition)
+    {
+        $this->dentalCondition = $dentalCondition;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDentalRiskNotice()
+    {
+        return $this->dentalRiskNotice;
+    }
+
+    /**
+     * @param mixed $dentalRiskNotice
+     */
+    public function setDentalRiskNotice($dentalRiskNotice)
+    {
+        $this->dentalRiskNotice = $dentalRiskNotice;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMallanpati()
+    {
+        return $this->mallanpati;
+    }
+
+    /**
+     * @param mixed $mallanpati
+     */
+    public function setMallanpati($mallanpati)
+    {
+        $this->mallanpati = $mallanpati;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getThyroidMentalDistance()
+    {
+        return $this->thyroidMentalDistance;
+    }
+
+    /**
+     * @param mixed $thyroidMentalDistance
+     */
+    public function setThyroidMentalDistance($thyroidMentalDistance)
+    {
+        $this->thyroidMentalDistance = $thyroidMentalDistance;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMouthOpening()
+    {
+        return $this->mouthOpening;
+    }
+
+    /**
+     * @param mixed $mouthOpening
+     */
+    public function setMouthOpening($mouthOpening)
+    {
+        $this->mouthOpening = $mouthOpening;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDifficultIntubation()
+    {
+        return $this->difficultIntubation;
+    }
+
+    /**
+     * @param mixed $difficultIntubation
+     */
+    public function setDifficultIntubation($difficultIntubation)
+    {
+        $this->difficultIntubation = $difficultIntubation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDifficultVentilation()
+    {
+        return $this->difficultVentilation;
+    }
+
+    /**
+     * @param mixed $difficultVentilation
+     */
+    public function setDifficultVentilation($difficultVentilation)
+    {
+        $this->difficultVentilation = $difficultVentilation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAsa()
+    {
+        return $this->asa;
+    }
+
+    /**
+     * @param mixed $asa
+     */
+    public function setAsa($asa)
+    {
+        $this->asa = $asa;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPreAnestheticExaminations()
+    {
+        return $this->preAnestheticExaminations;
+    }
+
+    /**
+     * @param mixed $preAnestheticExaminations
+     */
+    public function setPreAnestheticExaminations($preAnestheticExaminations)
+    {
+        $this->preAnestheticExaminations = $preAnestheticExaminations;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMarProposition()
+    {
+        return $this->marProposition;
+    }
+
+    /**
+     * @param mixed $marProposition
+     */
+    public function setMarProposition($marProposition)
+    {
+        $this->marProposition = $marProposition;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExpectedHospitalisation()
+    {
+        return $this->expectedHospitalisation;
+    }
+
+    /**
+     * @param mixed $expectedHospitalisation
+     */
+    public function setExpectedHospitalisation($expectedHospitalisation)
+    {
+        $this->expectedHospitalisation = $expectedHospitalisation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTransfusionStrategy()
+    {
+        return $this->transfusionStrategy;
+    }
+
+    /**
+     * @param mixed $transfusionStrategy
+     */
+    public function setTransfusionStrategy($transfusionStrategy)
+    {
+        $this->transfusionStrategy = $transfusionStrategy;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPreAnestheticVisit()
+    {
+        return $this->preAnestheticVisit;
+    }
+
+    /**
+     * @param mixed $preAnestheticVisit
+     */
+    public function setPreAnestheticVisit($preAnestheticVisit)
+    {
+        $this->preAnestheticVisit = $preAnestheticVisit;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPremedication()
+    {
+        return $this->premedication;
+    }
+
+    /**
+     * @param mixed $premedication
+     */
+    public function setPremedication($premedication)
+    {
+        $this->premedication = $premedication;
+    }
+
     //</editor-fold>
 
+    public function __construct($dummy = false)
+    {
+        if ($dummy === true)
+        {
+            $this->idCustomer = 0;
+            $this->lastname = '';
+            $this->firstname = '';
+            $this->sex = 0;
+            $this->age = 0;
+            $this->height = 0;
+            $this->weight = 0;
+            $this->avatar = 0;
+            $this->story = '';
+            $this->treatments = '';
+            $this->allergies = '{}';
+            $this->ta = '0/0';
+            $this->fc = 0;
+            $this->dentalCondition = '';
+            $this->dentalRiskNotice = false;
+            $this->mallanpati = 1;
+            $this->thyroidMentalDistance = 0;
+            $this->mouthOpening = 0;
+            $this->difficultIntubation = false;
+            $this->difficultVentilation = false;
+            $this->asa = 1;
+            $this->preAnestheticExaminations = '{}';
+            $this->marProposition = 0;
+            $this->expectedHospitalisation = 0;
+            $this->transfusionStrategy = '';
+            $this->preAnestheticVisit = '';
+            $this->premedication = '{"eve":[], "morning":[]}';
+        }
+    }
 
     //<editor-fold desc="Utilities">
 
@@ -285,10 +626,28 @@ class Patient extends DBA implements jsonSerializable
             'height' => $this->height,
             'weight' => $this->weight,
             'avatar' => $this->avatar,
-            //'story' => $this->story,
             'materials' => $this->materials,
             'surgeries' => $this->surgeries,
             'responses' => $this->responses,
+            'story' => $this->getStory(),
+            'treatments' => $this->getTreatments(),
+            'allergies' => $this->getAllergies(),
+            'ta' => $this->getTa(),
+            'fc' => $this->getFc(),
+            'dentalCondition' => $this->getDentalCondition(),
+            'dentalRiskNotice' => $this->getDentalRiskNotice(),
+            'mallanpati' => $this->getMallanpati(),
+            'thyroidMentalDistance' => $this->getThyroidMentalDistance(),
+            'mouthOpening' => $this->getMouthOpening(),
+            'difficultIntubation' => $this->getDifficultIntubation(),
+            'difficultVentilation' => $this->getDifficultVentilation(),
+            'asa' => $this->getAsa(),
+            'preAnestheticExaminations' => $this->getPreAnestheticExaminations(),
+            'marProposition' => $this->getMarProposition(),
+            'expectedHospitalisation' => $this->getExpectedHospitalisation(),
+            'transfusionStrategy' => $this->getTransfusionStrategy(),
+            'preAnestheticVisit' => $this->getPreAnestheticVisit(),
+            'premedication' => $this->getPremedication(),
         ];
 
         $this->jsonCustomer === true ? $json['idCustomer'] = $this->idCustomer : null;
@@ -304,6 +663,7 @@ class Patient extends DBA implements jsonSerializable
     /**
      * Check validy for database writing.
      * Always use this function before writing !
+     * @param bool $checkId
      * @return bool
      */
     public function checkValidity($checkId = true)
@@ -345,31 +705,92 @@ class Patient extends DBA implements jsonSerializable
             return false;
         }
 
-        $lastname = $this->lastname;
-        $firstname = $this->firstname;
-        $this->story == null ? "" : $this->story;
+        $id = $this->getId();
+        $idCustomer = $this->getIdCustomer();
+        $lastname = $this->getLastname();
+        $firstname = $this->getFirstname();
+        $sex = $this->getSex();
+        $age = $this->getAge();
+        $height = $this->getHeight();
+        $weight = $this->getWeight();
+        $avatar = $this->getAvatar();
+        $story = $this->getStory();
+        $treatments = $this->getTreatments();
+        $allergies = $this->getAllergies();
+        $ta = $this->getTa();
+        $fc = $this->getFc();
+        $dentalCondition = $this->getDentalCondition();
+        $dentalRiskNotice = filter_var($this->getDentalRiskNotice(), FILTER_VALIDATE_BOOLEAN) ? '1' : '0';
+        $mallanpati = $this->getMallanpati();
+        $thyroidMentalDistance = $this->getThyroidMentalDistance();
+        $mouthOpening = $this->getMouthOpening();
+        $difficultIntubation = filter_var($this->getDifficultIntubation(), FILTER_VALIDATE_BOOLEAN) ? '1' : '0';
+        $difficultVentilation = filter_var($this->getDifficultVentilation(), FILTER_VALIDATE_BOOLEAN) ? '1' : '0';
+        $asa = $this->getAsa();
+        $preAnestheticExaminations = $this->getPreAnestheticExaminations();
+        $marProposition = $this->getMarProposition();
 
-        $customerId = $this->idCustomer;
-        $sql = '';
-
-
-        if ($rows === 0 && $this->checkValidity(false))
+        $expectedHospitalisation = $this->getExpectedHospitalisation();
+        if (is_string($expectedHospitalisation))
         {
-            if ($dummy === true)
-            {
-                return self::query("INSERT INTO `patient` (`id`, `idCustomer`, `lastname`, `firstname`, `sex`, `age`, `height`, `weight`, `avatar`) VALUES (NULL, $customerId, '', '', 0, NULL, NULL, NULL, 1);");
-            }
+            if (strtolower($expectedHospitalisation) == "réa/ssipo")
+                $expectedHospitalisation = 2;
+            else if (strtolower($expectedHospitalisation) == "ambulatoire")
+                $expectedHospitalisation = 1;
+            else
+                $expectedHospitalisation = 0;
+        }
 
-            $win = self::query("INSERT INTO `patient` (`id`, `idCustomer`, `lastname`, `firstname`, `sex`, `age`, `height`, `weight`, `avatar`) VALUES (NULL, '$customerId', '$lastname', '$firstname', '$this->sex', '$this->age', '$this->height', '$this->weight', $this->avatar);");
-        }
-        else if ($rows === 1 && $this->checkValidity())
+        $transfusionStrategy = $this->getTransfusionStrategy();
+        $preAnestheticVisit = $this->getPreAnestheticVisit();
+        $premedication = $this->getPremedication();
+
+        if ($rows === 0 && $this->checkValidity(false)) // new patient
         {
-            $win = self::query("UPDATE `patient` SET `lastname` = '$this->lastname', `firstname` = '$this->firstname', `sex` = $this->sex, `age` = $this->age, `height` = $this->height, `weight` = $this->weight, `avatar` = $this->avatar WHERE `patient`.`id` = $this->id");
+            $sql = "INSERT INTO `sgtools`.`patient` (`idCustomer`, `lastname`, `firstname`, `sex`, `age`, `height`, `weight`, `avatar`, `story`, `treatments`, `allergies`, `ta`, `fc`, `dentalCondition`, `dentalRiskNotice`, `mallanpati`, `thyroidMentalDistance`, `mouthOpening`, `difficultIntubation`, `difficultVentilation`, `asa`, `preAnestheticExaminations`, `marProposition`, `expectedHospitalisation`, `transfusionStrategy`, `preAnestheticVisit`, `premedication`) VALUES (" .
+            "'$idCustomer', '$lastname', '$firstname', $sex, $age, $height, $weight, $avatar, '$story', '$treatments', '$allergies', '$ta', $fc, '$dentalCondition', $dentalRiskNotice, '$mallanpati', '$thyroidMentalDistance', '$mouthOpening', '$difficultIntubation', '$difficultVentilation', $asa, '$preAnestheticExaminations', $marProposition, $expectedHospitalisation, '$transfusionStrategy', '$preAnestheticVisit', '$premedication');";
+            $win = self::query($sql);
         }
-        else
+        else if ($rows === 1 && $this->checkValidity()) // update existing patient
+        {
+            $sql = "UPDATE `sgtools`.`patient` SET".
+                " `idCustomer`='$idCustomer', ".
+                "`lastname`='$lastname', ".
+                "`firstname`='$firstname', ".
+                "`sex`='$sex', ".
+                "`age`='$age', ".
+                "`height`='$height', ".
+                "`weight`='$weight', ".
+                "`avatar`='$avatar', ".
+                "`story`='$story', ".
+                "`treatments`='$treatments', ".
+                "`allergies`='$allergies', ".
+                "`ta`='$ta', ".
+                "`fc`='$fc', ".
+                "`dentalCondition`='$dentalCondition', ".
+                "`dentalRiskNotice`='$dentalRiskNotice', ".
+                "`mallanpati`='$mallanpati', ".
+                "`thyroidMentalDistance`='$thyroidMentalDistance', ".
+                "`mouthOpening`='$mouthOpening', ".
+                "`difficultIntubation`='$difficultIntubation', ".
+                "`difficultVentilation`='$difficultVentilation', ".
+                "`asa`='$asa', ".
+                "`preAnestheticExaminations`='$preAnestheticExaminations', ".
+                "`marProposition`='$marProposition', ".
+                "`expectedHospitalisation`='$expectedHospitalisation', ".
+                "`transfusionStrategy`='$transfusionStrategy', ".
+                "`preAnestheticVisit`='$preAnestheticVisit', ".
+                "`premedication`='$premedication' ".
+                "WHERE `id`=$id;";
+
+            $win = self::query($sql);
+        }
+        else // patient not found and/or not valid
         {
             return false;
         }
+
+        $sql = '';
 
         //<editor-fold desc="Materials saving">
 
@@ -392,7 +813,7 @@ class Patient extends DBA implements jsonSerializable
                     $sqlMaterials .= ',';
                 }
 
-                $sqlMaterials .= "(NULL, $customerId, $matToSave, 1, $this->id)";
+                $sqlMaterials .= "(NULL, $idCustomer, $matToSave, 1, $this->id)";
             }
         }
         if ($sqlMaterials !== '')
@@ -457,13 +878,13 @@ class Patient extends DBA implements jsonSerializable
                     $sqlQuestions .= ',';
                 }
 
-                $sqlQuestions .= "(NULL, $questionToSave, '$answer', 1, $this->id)";
+                $sqlQuestions .= "(NULL, $questionToSave, '$answer', $this->idCustomer, 1, $this->id)";
             }
         }
 
         if ($sqlQuestions !== '')
         {
-            $sql .= "INSERT INTO `questions_liaison` (`id`, `idQuestion`, `answer`, `spawnedBy`, `idSpawner`) VALUES $sqlQuestions;\n";
+            $sql .= "INSERT INTO `questions_liaison` (`id`, `idQuestion`, `answer`, `idCustomer`, `spawnedBy`, `idSpawner`) VALUES $sqlQuestions;\n";
         }
 
         // Delete questions non existent in new surgery
@@ -520,12 +941,12 @@ class Patient extends DBA implements jsonSerializable
                     $sqlSurgeries .= ',';
                 }
 
-                $sqlSurgeries .= "(NULL, $this->id, $surgeryToSave)";
+                $sqlSurgeries .= "(NULL, $this->id, $this->idCustomer, $surgeryToSave)";
             }
         }
         if ($sqlSurgeries !== '')
         {
-            $sql .= "INSERT INTO `patient_liaison` (`id`, `idPatient`, `idSurgery`) VALUES $sqlSurgeries;\n";
+            $sql .= "INSERT INTO `patient_liaison` (`id`, `idPatient`, `idCustomer`, `idSurgery`) VALUES $sqlSurgeries;\n";
         }
 
         // Delete surgeries non existant in new patient
@@ -628,7 +1049,26 @@ class Patient extends DBA implements jsonSerializable
         $patient->setHeight($query['height']);
         $patient->setWeight($query['weight']);
         $patient->setAvatar($query['avatar']);
-        //$patient->setStory(($query['story']));
+
+        $patient->setStory($query['story']);
+        $patient->setTreatments($query['treatments']);
+        $patient->setAllergies($query['allergies']);
+        $patient->setTa($query['ta']);
+        $patient->setFc($query['fc']);
+        $patient->setDentalCondition($query['dentalCondition']);
+        $patient->setDentalRiskNotice($query['dentalRiskNotice'] == '1' ? true : false);
+        $patient->setMallanpati($query['mallanpati']);
+        $patient->setThyroidMentalDistance($query['thyroidMentalDistance']);
+        $patient->setMouthOpening($query['mouthOpening']);
+        $patient->setDifficultIntubation($query['difficultIntubation'] == '1' ? true : false);
+        $patient->setDifficultVentilation($query['difficultVentilation'] == '1' ? true : false);
+        $patient->setAsa($query['asa']);
+        $patient->setPreAnestheticExaminations($query['preAnestheticExaminations']);
+        $patient->setMarProposition($query['marProposition']);
+        $patient->setExpectedHospitalisation($query['expectedHospitalisation']);
+        $patient->setTransfusionStrategy($query['transfusionStrategy']);
+        $patient->setPreAnestheticVisit($query['preAnestheticVisit']);
+        $patient->setPremedication($query['premedication']);
 
         $materials = self::query("SELECT `idMaterial` FROM `material_liaison` WHERE `spawnedBy` = 1 && `idSpawner` = $id")->fetch_all(MYSQLI_ASSOC);
         $mat_array = array();

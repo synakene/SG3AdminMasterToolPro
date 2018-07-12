@@ -14,10 +14,33 @@ class Surgery extends DBA implements JsonSerializable
     private $materials;
     private $responses;
     private $compatibles;
+    private $consultation;
     private $emergency;
     private $story;
+    private $marProposition;
+    private $marPropositionText;
+    private $preAnestheticVisit;
+    private $lastEval;
 
     public $jsonCustomer = false;
+
+    public function __construct($dummy = false)
+    {
+        if (!$dummy)
+            return;
+
+        $this->name = '';
+        $this->materials = [];
+        $this->responses = [];
+        $this->compatibles = [];
+        $this->consultation = false;
+        $this->emergency = false;
+        $this->story = '';
+        $this->marProposition = 0;
+        $this->marPropositionText = '';
+        $this->preAnestheticVisit = '';
+        $this->lastEval = 0;
+    }
 
     //<editor-fold desc="GetSets">
 
@@ -190,6 +213,86 @@ class Surgery extends DBA implements JsonSerializable
         $this->story = $story;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getConsultation()
+    {
+        return $this->consultation;
+    }
+
+    /**
+     * @param mixed $consultation
+     */
+    public function setConsultation($consultation)
+    {
+        $this->consultation = $consultation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMarProposition()
+    {
+        return $this->marProposition;
+    }
+
+    /**
+     * @param mixed $marProposition
+     */
+    public function setMarProposition($marProposition)
+    {
+        $this->marProposition = $marProposition;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMarPropositionText()
+    {
+        return $this->marPropositionText;
+    }
+
+    /**
+     * @param string $marPropositionText
+     */
+    public function setMarPropositionText($marPropositionText)
+    {
+        $this->marPropositionText = $marPropositionText;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPreAnestheticVisit()
+    {
+        return $this->preAnestheticVisit;
+    }
+
+    /**
+     * @param mixed $preAnestheticVisit
+     */
+    public function setPreAnestheticVisit($preAnestheticVisit)
+    {
+        $this->preAnestheticVisit = $preAnestheticVisit;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastEval()
+    {
+        return $this->lastEval;
+    }
+
+    /**
+     * @param mixed $lastEval
+     */
+    public function setLastEval($lastEval)
+    {
+        $this->lastEval = $lastEval;
+    }
+
     //</editor-fold>
 
     //<editor-fold desc="Utilities">
@@ -209,8 +312,13 @@ class Surgery extends DBA implements JsonSerializable
             'materials' => $this->materials,
             'responses' => $this->responses,
             'compatibles' => $this->compatibles,
+            'consultation' => $this->consultation,
             'emergency' => $this->emergency,
-            //'story' => $this->story,
+            'story' => $this->story,
+            'marProposition' => $this->marProposition,
+            'marPropositionText' => $this->marPropositionText,
+            'preAnestheticVisit' => $this->preAnestheticVisit,
+            'lastEval' => $this->lastEval
         ];
 
         $this->jsonCustomer === true ? $json['idCustomer'] = $this->idCustomer : null;
@@ -248,15 +356,22 @@ class Surgery extends DBA implements JsonSerializable
         $name = str_replace("'", "\'", $this->name);
         $story = str_replace("'", "\'", $this->story);
         $customer = $this->idCustomer;
+        $consultation = $this->consultation === true ? '1' : '0';
         $emergency = $this->emergency === true ? '1' : '0';
+        $marProposition = strval($this->marProposition);
+        $marPropositionText = $this->marPropositionText;
+        $preAnestheticVisit = $this->getPreAnestheticVisit();
+        $lastEval = strval($this->getLastEval());
 
         if ($query->num_rows === 0 && $this->checkValidity(false))
         {
-            $win = self::query("INSERT INTO `surgery` (`id`, `idCustomer`, `name`, `emergency`, `story`) VALUES (NULL, $customer, '$name', $emergency, '$story');");
+            $sql = "INSERT INTO `sgtools`.`surgery` (`idCustomer`, `name`, `consultation`, `emergency`, `story`, `marProposition`, `marPropositionText`, `preAnestheticVisit`, `lastEval`) VALUES
+              ('$customer', '$name', '$consultation', '$emergency', '$story', '$marProposition', '$marPropositionText', '$preAnestheticVisit', '$lastEval');";
+            $win = self::query($sql);
         }
         else if ($query->num_rows === 1 && $this->checkValidity())
         {
-            $sql = "UPDATE `surgery` SET `name` = '$name', `emergency` = $emergency, `story` = '$story' WHERE `surgery`.`id` = $this->id";
+            $sql = "UPDATE `sgtools`.`surgery` SET `name`='$name', `consultation`='$consultation', `emergency`='$emergency', `story`='$story', `marProposition`='$marProposition', `marPropositionText`='$marPropositionText', `preAnestheticVisit`='$preAnestheticVisit', `lastEval`=$lastEval WHERE `id`=$this->id;";
             $win = self::query($sql);
         }
         else
@@ -268,7 +383,6 @@ class Surgery extends DBA implements JsonSerializable
 
         //<editor-fold desc="Materials saving">
 
-        // TODO dégommer id customer de la dba pour materiel_liaison
         $materials = self::query("SELECT * FROM `material_liaison` WHERE `idCustomer` = $customer && `spawnedBy` = 0 && `idSpawner` = $this->id")->fetch_all(MYSQLI_ASSOC);
         $materialsInDBA = array();
 
@@ -357,13 +471,13 @@ class Surgery extends DBA implements JsonSerializable
                     $sqlQuestions .= ',';
                 }
 
-                $sqlQuestions .= "(NULL, $questionToSave, '$answer', 0, $this->id)";
+                $sqlQuestions .= "(NULL, $questionToSave, '$answer', $customer, 0, $this->id)";
             }
         }
 
         if ($sqlQuestions !== '')
         {
-            $sql .= "INSERT INTO `questions_liaison` (`id`, `idQuestion`, `answer`, `spawnedBy`, `idSpawner`) VALUES $sqlQuestions;\n";
+            $sql .= "INSERT INTO `questions_liaison` (`id`, `idQuestion`, `answer`, `idCustomer`, `spawnedBy`, `idSpawner`) VALUES $sqlQuestions;\n";
         }
 
         // Delete questions non existent in new surgery
@@ -408,12 +522,12 @@ class Surgery extends DBA implements JsonSerializable
                         $sqlPatients .= ',';
                     }
 
-                    $sqlPatients .= "(NULL, $patientToSave, $this->id)";
+                    $sqlPatients .= "(NULL, $patientToSave, $customer, $this->id)";
                 }
             }
             if ($sqlPatients !== '')
             {
-                $sql .= "INSERT INTO `patient_liaison` (`id`, `idPatient`, `idSurgery`) VALUES $sqlPatients;\n";
+                $sql .= "INSERT INTO `patient_liaison` (`id`, `idPatient`, `idCustomer`, `idSurgery`) VALUES $sqlPatients;\n";
             }
 
             // Delete patient non existant in new surgery
@@ -516,7 +630,12 @@ class Surgery extends DBA implements JsonSerializable
         $new_surgery->setIdCustomer(intval($surgery['idCustomer']));
         $new_surgery->setName($surgery['name']);
         $new_surgery->setEmergency($surgery['emergency'] === '1' ? true : false);
+        $new_surgery->setConsultation($surgery['consultation']);
         $new_surgery->setStory($surgery['story']);
+        $new_surgery->setMarProposition($surgery['marProposition']);
+        $new_surgery->setMarPropositionText($surgery['marPropositionText']);
+        $new_surgery->setPreAnestheticVisit($surgery['preAnestheticVisit']);
+        $new_surgery->setLastEval($surgery['lastEval']);
 
         $materials = self::query("SELECT `idMaterial` FROM `material_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $id")->fetch_all(MYSQLI_ASSOC);
         $mat_array = array();
