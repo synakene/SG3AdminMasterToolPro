@@ -9,7 +9,7 @@ function updateCategory()
         var id = parseInt(jQuery(this).val());
 
         // If good category AND material not already added
-        if (jQuery(this).attr('data-category') === category && surgery['materials'].indexOf(parseInt(id)) === -1)
+        if ((jQuery(this).attr('data-category') === category || (category === '0' && id !== -1)) && surgery['materials'].indexOf(parseInt(id)) === -1)
         {
             if (firstMat === '')
             {
@@ -43,7 +43,7 @@ function initMaterialData()
     var mat_with_index = [];
 
     // Init dropdown values
-    var htmlCategoryDropdown = '';
+    var htmlCategoryDropdown = '<option value="0">Tous</option>';
     var categoriesUsed = [];
     var htmlNameDropdown = '<option data-category="" value="-1">Pas de matériel disponible</option>';
 
@@ -96,10 +96,11 @@ initMaterialData();
 surgery['materials'].forEach(function(material){
     addMaterial(material);
 });
-
+console.log("hi");
 // Add material button
-jQuery('#materials-list tr[data-option] button.validateMaterial').on('click', function(){
+jQuery('#materials-list tr[data-option] button.validate').on('click', function(){
     var id = parseInt(jQuery('#materials-list').find('tr[data-option] .material-name select').val());
+    console.log("adding " + id + "listener");
     if (id !== -1 && surgery['materials'].indexOf(id) === -1)
     {
         addMaterial(id);

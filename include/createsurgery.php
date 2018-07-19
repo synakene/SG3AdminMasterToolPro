@@ -8,7 +8,7 @@
 
 include 'initializer.php';
 
-$surgery = new Surgery();
+$surgery = new Surgery(true);
 
 $surgery->setId(Surgery::getNextId());
 $surgery->setIdCustomer($_SESSION['id']);

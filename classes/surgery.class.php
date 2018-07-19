@@ -366,7 +366,7 @@ class Surgery extends DBA implements JsonSerializable
         if ($query->num_rows === 0 && $this->checkValidity(false))
         {
             $sql = "INSERT INTO `sgtools`.`surgery` (`idCustomer`, `name`, `consultation`, `emergency`, `story`, `marProposition`, `marPropositionText`, `preAnestheticVisit`, `lastEval`) VALUES
-              ('$customer', '$name', '$consultation', '$emergency', '$story', '$marProposition', '$marPropositionText', '$preAnestheticVisit', '$lastEval');";
+              ('$customer', '$name', '$consultation', '$emergency', '$story', $marProposition, '$marPropositionText', '$preAnestheticVisit', $lastEval);";
             $win = self::query($sql);
         }
         else if ($query->num_rows === 1 && $this->checkValidity())
@@ -426,7 +426,7 @@ class Surgery extends DBA implements JsonSerializable
         if ($sqlMaterials !== '')
         {
             $sqlMaterials = '(' . $sqlMaterials . ') &&';
-            $sql .= "DELETE FROM `material_liaison` WHERE $sqlMaterials `idCustomer` = 1 && `spawnedBy` = 0 && `idSpawner` = $this->id;\n";
+            $sql .= "DELETE FROM `material_liaison` WHERE $sqlMaterials `idCustomer` = $this->idCustomer && `spawnedBy` = 0 && `idSpawner` = $this->id;\n";
         }
 
         //</editor-fold>
@@ -553,7 +553,7 @@ class Surgery extends DBA implements JsonSerializable
         $win2 = true;
         if ($sql != '')
         {
-            $win = self::mquery($sql);
+            $win2 = self::mquery($sql);
         }
 
         return $win && $win2;
@@ -616,7 +616,7 @@ class Surgery extends DBA implements JsonSerializable
         return $patientsWithInfos;
     }
 
-    public static function getById($id = 0)
+    public static function getById($id = 0, $sortMatName = false)
     {
         $surgery = self::query("SELECT * FROM `surgery` WHERE `id` = $id")->fetch_array(MYSQLI_ASSOC);
 
@@ -637,7 +637,13 @@ class Surgery extends DBA implements JsonSerializable
         $new_surgery->setPreAnestheticVisit($surgery['preAnestheticVisit']);
         $new_surgery->setLastEval($surgery['lastEval']);
 
-        $materials = self::query("SELECT `idMaterial` FROM `material_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $id")->fetch_all(MYSQLI_ASSOC);
+
+        if ($sortMatName)
+            $sql = "SELECT ml.* FROM material_liaison ml JOIN material m ON m.id = ml.idMaterial WHERE ml.idSpawner = $id AND ml.spawnedBy = 0 ORDER BY m.name";
+        else
+            $sql = "SELECT `idMaterial` FROM `material_liaison` WHERE `spawnedBy` = 0 && `idSpawner` = $id";
+
+        $materials = self::query($sql)->fetch_all(MYSQLI_ASSOC);
         $mat_array = array();
         foreach ($materials as $material)
         {

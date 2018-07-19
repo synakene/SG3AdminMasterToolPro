@@ -10,7 +10,7 @@ $(document).ready(function(){
             var id = parseInt(jQuery(this).val());
 
             // If good category AND material not already added
-            if (jQuery(this).attr('data-category') === category && patient['materials'].indexOf(parseInt(id)) === -1)
+            if ((jQuery(this).attr('data-category') === category || (category === '0' && id !== -1)) && patient['materials'].indexOf(parseInt(id)) === -1)
             {
                 if (firstMat === '')
                 {
@@ -41,20 +41,18 @@ $(document).ready(function(){
     function initMaterialData()
     {
         // Init dropdown values
-        var htmlCategoryDropdown = '';
+        var htmlCategoryDropdown = '<option value="0">Tous</option>';
         var categoriesUsed = [];
         var htmlNameDropdown = '<option data-category="" value="-1">Pas de matériel disponible</option>';
 
-        for (var materialId in materials)
-        {
-            htmlNameDropdown += '<option data-category="' + materials[materialId]['category'] + '" value="' + materials[materialId]['id'] + '">' + materials[materialId]['name'] + '</option>';
-            if (categoriesUsed.indexOf(materials[materialId]['category']) === -1)
+        materials.forEach(function(material){
+            htmlNameDropdown += '<option data-category="' + material.category + '" value="' + material.id + '">' + material.name + '</option>';
+            if (categoriesUsed.indexOf(material.category) === -1)
             {
-                categoriesUsed.push(materials[materialId]['category']);
-                htmlCategoryDropdown += '<option value="' + materials[materialId]['category'] + '">' + materials[materialId]['category'] + '</option>';
+                categoriesUsed.push(material.category);
+                htmlCategoryDropdown += '<option value="' + material.category + '">' + material.category + '</option>';
             }
-
-        }
+        });
 
         jQuery('#materials-list').find('tr[data-option] .material-category select').html(htmlCategoryDropdown);
         jQuery('#materials-list').find('tr[data-option] .material-name select').html(htmlNameDropdown);
@@ -66,10 +64,28 @@ $(document).ready(function(){
 
     function addMaterial(id)
     {
-        var html =
+        var material = $.grep(materials, function(mat)
+        {
+            return mat.id == id;
+        })[0];
+
+        if (material === undefined)
+        {
+            console.log("Can't find material " + id);
+            return;
+        }
+
+        /*var html =
             '<tr data-id=' + id + '>\n' +
             '<td><span class="material-category">' + materials[id]['category'] + '</span></td>\n' +
             '<td><span class="material-name">' + materials[id]['name'] + '</td>\n' +
+            '<td><button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button></td>\n' +
+            '<tr>';*/
+
+        var html =
+            '<tr data-id=' + id + '>\n' +
+            '<td><span class="material-category">' + material.category + '</span></td>\n' +
+            '<td><span class="material-name">' + material.name + '</td>\n' +
             '<td><button class="btn btn-sm btn-danger faa-parent animated-hover delete"><i class="fa fa-times faa-flash"></i></button></td>\n' +
             '<tr>';
 

@@ -227,9 +227,13 @@ class Material extends DBA implements JsonSerializable
      * @param int $id
      * @return array|bool
      */
-    public static function getAllByCustomer($id = 0, $idIndexes = false)
+    public static function getAllByCustomer($id = 0, $idIndexes = false, $sortByName = false)
     {
-        $result = self::query('SELECT * FROM `material` WHERE `idCustomer` = ' . $id)->fetch_all(MYSQLI_ASSOC);
+        $sql = 'SELECT * FROM `material` WHERE `idCustomer` = ' . $id;
+        if ($sortByName)
+            $sql .= ' ORDER BY name';
+
+        $result = self::query($sql)->fetch_all(MYSQLI_ASSOC);
 
         if ($result === false)
         {

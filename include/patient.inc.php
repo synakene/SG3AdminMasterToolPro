@@ -10,7 +10,7 @@ include('initializer.php');
 $_MENU_ = 'patients';
 
 /** @var Patient $patient */
-$patient = Patient::getById($_GET['id']);
+$patient = Patient::getById($_GET['id'], true);
 
 if ($patient === false || (int) $patient->getIdCustomer() !== (int) $_SESSION['id'])
 {
@@ -19,7 +19,7 @@ if ($patient === false || (int) $patient->getIdCustomer() !== (int) $_SESSION['i
 
 $_TITLE_ = $patient->getFirstname() . ' ' . $patient->getLastname();
 
-$materials = Material::getAllByCustomer($_SESSION['id'], true);
+$materials = Material::getAllByCustomer($_SESSION['id'], false, true);
 $questions = Question::getAllByCustomer($_SESSION['id'], true);
 $surgeries = Surgery::getAllByCustomer($_SESSION['id'], true);
 $avatars = Customer::getAvatars($_SESSION['id']);

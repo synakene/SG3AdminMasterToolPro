@@ -837,7 +837,7 @@ class Patient extends DBA implements jsonSerializable
         if ($sqlMaterials !== '')
         {
             $sqlMaterials = '(' . $sqlMaterials . ') &&';
-            $sql .= "DELETE FROM `material_liaison` WHERE $sqlMaterials `idCustomer` = $customerId && `spawnedBy` = 1 && `idSpawner` = $this->id;\n";
+            $sql .= "DELETE FROM `material_liaison` WHERE $sqlMaterials `idCustomer` = $this->idCustomer && `spawnedBy` = 1 && `idSpawner` = $this->id;\n";
         }
 
         //</editor-fold>
@@ -1027,11 +1027,13 @@ class Patient extends DBA implements jsonSerializable
     /**
      * Return a question by id
      * @param int $id
+     * @param bool $sortMaterialsByName
      * @return mixed
      */
-    public static function getById($id = 0)
+    public static function getById($id = 0, $sortMaterialsByName = false)
     {
-        $query = self::query("SELECT * FROM `patient` WHERE `id` = $id")->fetch_array(MYSQLI_ASSOC);
+        $sql = "SELECT * FROM `patient` WHERE `id` = $id";
+        $query = self::query($sql)->fetch_array(MYSQLI_ASSOC);
 
         if (sizeof($query) === 0)
         {
@@ -1070,7 +1072,12 @@ class Patient extends DBA implements jsonSerializable
         $patient->setPreAnestheticVisit($query['preAnestheticVisit']);
         $patient->setPremedication($query['premedication']);
 
-        $materials = self::query("SELECT `idMaterial` FROM `material_liaison` WHERE `spawnedBy` = 1 && `idSpawner` = $id")->fetch_all(MYSQLI_ASSOC);
+        if ($sortMaterialsByName)
+            $sql = "SELECT `idMaterial` FROM `material_liaison` ml JOIN material m ON m.id = ml.idMaterial WHERE `spawnedBy` = 1 && `idSpawner` = $id ORDER BY m.name";
+        else
+            $sql = "SELECT `idMaterial` FROM `material_liaison` WHERE `spawnedBy` = 1 && `idSpawner` = $id";
+
+        $materials = self::query($sql)->fetch_all(MYSQLI_ASSOC);
         $mat_array = array();
         foreach ($materials as $material)
         {
