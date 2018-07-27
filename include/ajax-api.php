@@ -24,7 +24,7 @@ $ajax_caller = Customer::getById($_SESSION['id']);
 if ($ajax_caller == false)
 {
     echo 0 . '<br>';
-    echo 'Erreur d\'authentification, veuillez vous reconnecter. Si le problème persiste, contactez votre webmaster.';
+    echo 'Erreur d\'authentification, utilisateur inconnu, veuillez vous reconnecter. Si le problème persiste, contactez votre webmaster.';
     die;
 }
 $admin = $ajax_caller->isAdmin();

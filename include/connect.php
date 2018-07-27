@@ -17,6 +17,12 @@ session_start();
 if (isset($_GET['id']) && isset($_SESSION['id']) && Customer::isAdmin($_SESSION['id']))
 {
     $credentials = Customer::getCredentialsById($_GET['id']);
+
+    if ($credentials['mail'] === '')
+    {
+        header('Location:/utilisateurs');
+        die;
+    }
     $_SESSION['mail'] = $credentials['mail'];
     $_SESSION['id'] = $_GET['id'];
     header('Location:/accueil');
@@ -37,6 +43,8 @@ else if (password_verify($pass, $query[0]['password']))
     $_SESSION['mail'] = $query[0]['mail'];
     $_SESSION['id'] = $query[0]['id'];
     $admin = $_SESSION['admin'] = Customer::isAdmin($_SESSION['id']);
+
+    Customer::UpdateLastLogin($query[0]['id']);
 
     if ($admin)
         header('Location:/utilisateurs');

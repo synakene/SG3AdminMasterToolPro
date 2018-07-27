@@ -193,12 +193,12 @@
                                     <input type="text" class="form-control patient-allergies-other" placeholder="Non connue">
                                 </div>
 
-                                <h3>Examens Complémentaires</h3><br/>
+<!--                                <h3>Examens Complémentaires</h3><br/>-->
 
                                 <h3>Examen clinique</h3>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">TA</span>
-                                    <input type="text" class="form-control patient-ta" placeholder="valeur1/valeur2" value="<?php echo $patient->getTa(); ?>">
+                                    <input type="text" class="form-control patient-ta" placeholder="valeur1/valeur2">
                                 </div>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">FC</span>
@@ -208,7 +208,7 @@
                                 <h3>Voies aériennes supérieures</h3>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">État dentaire</span>
-                                    <input type="text" class="form-control patient-dentalCondition" placeholder="RAI" value="<?php echo $patient->getDentalCondition(); ?>">
+                                    <input type="text" class="form-control patient-dentalCondition" placeholder="RAI">
                                 </div>
                                 <div><label>Information risque dentaire <input class="patient-dentalRiskNotice" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if ($patient->getDentalRiskNotice()) echo 'checked'; ?>></label></div>
                                 <div class="form-group input-group">
@@ -219,7 +219,7 @@
                                         <option value="3" <?php if($patient->getMallanpati() == 3) echo 'selected="selected"'; ?>>III</option>
                                         <option value="4" <?php if($patient->getMallanpati() == 4) echo 'selected="selected"'; ?>>IV</option>
                                     </select>
-                                </div>
+                                </div><br/>
                                 <div><label>Distance thyro-mentale <input class="patient-thyroid-mental-distance" type="checkbox" data-toggle="toggle" data-on="<65mm" data-off="≥65mm" data-width="100" data-offstyle="primary" <?php if($patient->getThyroidMentalDistance() < 65) echo 'checked'; ?>></label></div>
                                 <div><label>Ouverture de bouche <input class="patient-mouth-opening" type="checkbox" data-toggle="toggle" data-on="<35mm" data-off="≥35mm" data-width="100" data-offstyle="primary" <?php if($patient->getMouthOpening() < 35) echo 'checked';?>></label></div>
                                 <div><label>Intubation difficile prévisible <input class="patient-difficult-intubation" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if ($patient->getDifficultIntubation()) echo 'checked' ;?>></label></div>
@@ -228,6 +228,7 @@
                                     <span class="input-group-addon">ASA</span>
                                     <input type="number" class="form-control patient-asa" placeholder="RAI" value="<?php echo $patient->getAsa() ;?>">
                                 </div>
+                                <br/>
 
                                 <h3>Examens pré-anésthésiques</h3>
                                 <div><label>Groupe 1 <input class="patient-examinations-groupe1" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
@@ -244,6 +245,7 @@
                                     <span class="input-group-addon">Autre</span>
                                     <input type="text" class="form-control patient-examinations-other" placeholder="Séparer par des virgules">
                                 </div>
+                                <br/>
 
                                 <h3>Proposition MAR</h3>
                                 <div><label>AG <input class="patient-mar-ag" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if($patient->getMarProposition() == 1 || $patient->getMarProposition() == 3) echo 'checked' ;?>></label></div>
@@ -258,6 +260,7 @@
                                         <option value="2" <?php if($patient->getExpectedHospitalisation() == 2) echo 'selected="selected"' ;?>>Réa//SSIPO</option>
                                     </select>
                                 </div>
+                                <br/>
 
                                 <h3>Stratégie transfusionnelle</h3>
                                 <textarea class="form-control patient-transfusion-strategy"><?php echo $patient->getTransfusionStrategy(); ?></textarea><br/>

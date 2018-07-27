@@ -19,6 +19,8 @@ class Customer extends DBA
     private $numQuestions;
     private $numMaterials;
 
+    private $lastLogin;
+
     public function __construct($dummy = false)
     {
         if ($dummy)
@@ -191,6 +193,23 @@ class Customer extends DBA
     {
         self::$isAdmin = $isAdmin;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getLastLogin()
+    {
+        return $this->lastLogin;
+    }
+
+    /**
+     * @param mixed $lastLogin
+     */
+    public function setLastLogin($lastLogin)
+    {
+        $this->lastLogin = $lastLogin;
+    }
+
     //</editor-fold>
 
     //<editor-fold desc="Static database fetchers">
@@ -224,6 +243,7 @@ class Customer extends DBA
         $customer->setMail($query['mail']);
         $customer->setApiKey($query['apikey']);
         $customer->setAdmin((int) $query['admin']);
+        $customer->setLastLogin($query['lastLogin']);
 
         $packs = self::query("SELECT `idPack` FROM `customerpacks` WHERE `idCustomer` = $id")->fetch_all(MYSQLI_ASSOC);
         $packArray = array();
@@ -343,7 +363,7 @@ class Customer extends DBA
     {
         if ($this->getId() === 0)
         {
-            $sql = "INSERT INTO `sgtools`.`customer` (`mail`, `apikey`, `password`, `admin`) VALUES ('$this->mail', '$this->apiKey', 'invalid', '0');";
+            $sql = "INSERT INTO `sgtools`.`customer` (`mail`, `apikey`, `password`, `admin`, `lastLogin`) VALUES ('$this->mail', '$this->apiKey', 'invalid', '0', '0000-00-00 00:00:00');";
             $win = self::query($sql);
             if ($win)
             {
@@ -364,7 +384,7 @@ class Customer extends DBA
      */
     public function Delete()
     {
-        self::query("RESET QUERY CACHE");
+        //self::query("RESET QUERY CACHE");
 
         self::startTransaction();
         $finalSQL = '';
@@ -443,6 +463,12 @@ class Customer extends DBA
             self::cancelTransaction();
             return false;
         }
+    }
+
+    public static function UpdateLastLogin ($id)
+    {
+        $sql = "UPDATE customer SET lastLogin = NOW() WHERE id = $id";
+        return self::query($sql);
     }
 
     //</editor-fold>

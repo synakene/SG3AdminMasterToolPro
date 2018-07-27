@@ -17,5 +17,5 @@ $patient->setMaterials([]);
 $patient->setResponses([]);
 $patient->setSurgeries([]);
 
-$win = $patient->save(true);
+$win = $patient->save();
 header('Location:/patients/' . $patient->getId());

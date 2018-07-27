@@ -206,7 +206,7 @@ function saveData($table = '', $data = array()) // TODO : gérer les id faux
             $patient->setExpectedHospitalisation($data['patient']['expectedHospitalisation']);
             $patient->setTransfusionStrategy($data['patient']['transfusionStrategy']);
             $patient->setPreAnestheticVisit($data['patient']['preAnestheticVisit']);
-            $patient->setPremedication(json_encode($data['patient']['premedication']));
+            $patient->setPremedication(json_encode($data['patient']['premedication'], JSON_UNESCAPED_UNICODE));
 
             if ($patient->save())
             {
@@ -470,8 +470,22 @@ function importJsons($customerId, $jsons)
         $patient->setStory($patJson['story']);
         if (isset($patJson['treatments']))
             $patient->setTreatments($patJson['treatments']);
+
         if(isset($patJson['allergies']))
-            $patient->setAllergies(json_encode($patJson['allergies']));
+        {
+            $json = '{';
+            foreach ($patJson['allergies'] as $allergy)
+            {
+                $json .= "\"" . escapeInjections($allergy) . "\":true, ";
+            }
+            if ($json !== '{')
+            {
+                $json = substr($json, 0, -2);
+            }
+            $json .= "}";
+            $patient->setAllergies($json);
+        }
+
         if(isset($patJson['ta']))
             $patient->setTa($patJson['ta']);
         if (isset($patJson['fc']))
@@ -492,8 +506,23 @@ function importJsons($customerId, $jsons)
             $patient->setDifficultVentilation($patJson['difficultVentilation']);
         if (isset($patJson['asa']))
             $patient->setAsa($patJson['asa']);
+
         if(isset($patJson['preAnestheticExaminations']))
-            $patient->setPreAnestheticExaminations(json_encode($patJson['preAnestheticExaminations']));
+        {
+            $json = '{';
+            foreach ($patJson['preAnestheticExaminations'] as $allergy)
+            {
+                $json .= "\"" . escapeInjections($allergy) . "\":true, ";
+            }
+            if ($json !== '{')
+            {
+                $json = substr($json, 0, -2);
+            }
+            $json .= "}";
+            $patient->setPreAnestheticExaminations($json);
+            //var_dump($json);
+        }
+
         if(isset($patJson['marProposition']))
             $patient->setMarProposition($patJson['marProposition']);
         if(isset($patJson['expectedHospitalisation']))
@@ -502,8 +531,22 @@ function importJsons($customerId, $jsons)
             $patient->setTransfusionStrategy($patJson['transfusionStrategy']);
         if(isset($patJson['preAnestheticVisit']))
             $patient->setPreAnestheticVisit($patJson['preAnestheticVisit']);
+
         if(isset($patJson['premedication']))
-            $patient->setPremedication(json_encode($patJson['premedication']));
+        {
+            foreach ($patJson['premedication']['eve'] as $index => $premedication)
+            {
+                if ($premedication === '')
+                    unset($patJson['premedication']['eve'][$index]);
+            }
+            foreach ($patJson['premedication']['morning'] as $index => $premedication)
+            {
+                if ($premedication === '')
+                    unset($patJson['premedication']['morning'][$index]);
+            }
+
+            $patient->setPremedication(json_encode($patJson['premedication'], JSON_UNESCAPED_UNICODE));
+        }
 
         if (isset($patJson['materiels']))
         {

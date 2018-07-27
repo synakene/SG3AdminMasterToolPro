@@ -206,7 +206,7 @@ if ($_POST['patients'] === 'true')
         $height = $patient->getHeight();
         $weight = $patient->getWeight();
         $avatar = $patient->getAvatar();
-        $story = json_encode($patient->getStory());
+        $story = json_encode($patient->getStory(), JSON_UNESCAPED_UNICODE);
 
         $matsIds = $patient->getMaterials();
         $patientMaterials = "[";
@@ -244,23 +244,25 @@ if ($_POST['patients'] === 'true')
 
         $spec = "[]";
         $avatar = $patient->getAvatar();
-        $treatments = json_encode($patient->getTreatments());
+        $treatments = json_encode($patient->getTreatments(), JSON_UNESCAPED_UNICODE);
 
         $allergiesJson = $patient->getAllergies();
         $allergies = "[";
         foreach (json_decode($allergiesJson) as $allergy => $value)
         {
             if ($value)
-                $allergies .= '"' . $allergy . '", ';
+                $allergies .= '"' . str_replace('"', '\\"', $allergy) . '", ';
         }
         if ($allergies !== "[")
             $allergies = substr($allergies, 0, strlen($allergies) - 2);
 
         $allergies .= "]";
 
-        $ta = $patient->getTa();
+        //$ta = $patient->getTa();
+        $ta = json_encode($patient->getTa(), JSON_UNESCAPED_UNICODE);
         $fc = $patient->getFc();
-        $dentalCondition = $patient->getDentalCondition();
+        //$dentalCondition = $patient->getDentalCondition();
+        $dentalCondition = json_encode($patient->getDentalCondition(), JSON_UNESCAPED_UNICODE);
         $dentalRiskNotice = $patient->getDentalRiskNotice() ? 'true' : 'false';
         $mallanpati = $patient->getMallanpati();
         $thyroidMentalDistance = $patient->getThyroidMentalDistance();
@@ -270,11 +272,12 @@ if ($_POST['patients'] === 'true')
         $asa = $patient->getAsa();
 
         $preAnesthesicExaminationsJson = $patient->getPreAnestheticExaminations();
+        //var_dump(json_decode($preAnesthesicExaminationsJson));
         $preAnesthesicExaminations = "[";
         foreach (json_decode($preAnesthesicExaminationsJson) as $examination => $value)
         {
             if ($value)
-                $preAnesthesicExaminations .= '"' . $examination . '", ';
+                $preAnesthesicExaminations .= json_encode($examination, JSON_UNESCAPED_UNICODE) . ", ";
         }
         if ($preAnesthesicExaminations != "[")
             $preAnesthesicExaminations = substr($preAnesthesicExaminations, 0, -2);
@@ -288,12 +291,9 @@ if ($_POST['patients'] === 'true')
         else if ($patient->getExpectedHospitalisation() === 2)
             $expectedHospitalisation = "réa//SSIPO";
 
-        $transfusionStrategy = json_encode($patient->getTransfusionStrategy());
-        $preAnestheticVisit = json_encode($patient->getPreAnestheticVisit());
-        //$premedication = json_encode($patient->getPremedication());
+        $transfusionStrategy = json_encode($patient->getTransfusionStrategy(), JSON_UNESCAPED_UNICODE);
+        $preAnestheticVisit = json_encode($patient->getPreAnestheticVisit(), JSON_UNESCAPED_UNICODE);
         $premedication = $patient->getPremedication();
-        /*var_dump($premedication);
-        var_dump($patient->getPremedication());*/
 
         $json .= "\t\t{\n";
         $json .= "\t\t\t\"id\": $id ,\n";
@@ -310,9 +310,11 @@ if ($_POST['patients'] === 'true')
         $json .= "\t\t\t\"spec\": $spec,\n";
         $json .= "\t\t\t\"treatments\": $treatments,\n";
         $json .= "\t\t\t\"allergies\": $allergies,\n";
-        $json .= "\t\t\t\"ta\": \"$ta\",\n";
+        //$json .= "\t\t\t\"ta\": \"$ta\",\n";
+        $json .= "\t\t\t\"ta\": $ta,\n";
         $json .= "\t\t\t\"fc\": $fc,\n";
-        $json .= "\t\t\t\"dentalCondition\": \"$dentalCondition\",\n";
+        //$json .= "\t\t\t\"dentalCondition\": \"$dentalCondition\",\n";
+        $json .= "\t\t\t\"dentalCondition\": $dentalCondition,\n";
         $json .= "\t\t\t\"dentalRiskNotice\": $dentalRiskNotice,\n";
         $json .= "\t\t\t\"mallanpati\": $mallanpati,\n";
         $json .= "\t\t\t\"thyroidMentalDistance\": $thyroidMentalDistance,\n";

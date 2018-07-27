@@ -86,4 +86,21 @@ class DBA
     {
         self::$dba->rollback();
     }
+
+    public static function escapeInjections($data)
+    {
+        if (is_array($data))
+        {
+            foreach ($data as $index => $data_element)
+            {
+                $data[$index] = escapeInjections($data_element);
+            }
+        }
+        else if (is_string($data) == true)
+        {
+            $data = DBA::getDba()->real_escape_string($data);
+        }
+
+        return $data;
+    }
 }

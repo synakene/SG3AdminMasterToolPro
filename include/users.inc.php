@@ -5,7 +5,7 @@
  * Date: 26/09/2017
  * Time: 10:36
  */
-
+//die('hellooo');
 include('initializer.php');
 $_MENU_ = 'utilisateurs';
 $_TITLE_ = 'Utilisateurs';

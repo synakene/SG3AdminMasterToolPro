@@ -37,7 +37,7 @@ jQuery('#generator-well button').on('click', function(){
         }
     })
         .done(function(data){
-            if (data == '1')
+            if (data === '1')
             {
                 var link = document.createElement("a");
                 link.download = 'configuration.zip';

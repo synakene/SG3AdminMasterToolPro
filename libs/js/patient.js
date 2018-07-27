@@ -345,7 +345,9 @@ $(document).ready(function(){
 
     //</editor-fold>
 
-    jQuery('.patient-avatar').val(patient['avatar']);
+    jQuery('.patient-avatar').val(patient.avatar);
+    jQuery('.patient-ta').val(patient.ta);
+    jQuery('.patient-dentalCondition').val(patient.dentalCondition);
 
     jQuery('.hideable').each(function(){this.style.cursor = 'pointer'});
     jQuery('.hideable').on('click', function(){
@@ -492,13 +494,15 @@ $(document).ready(function(){
 
         var text = "";
         patient.premedication.eve.forEach(function(e){
-            text += e + "\n";
+            if (e !== '')
+                text += e + "\n";
         });
         $('.patient-premedication-eve').val(text);
 
         text = "";
         patient.premedication.morning.forEach(function(e){
-            text += e + "\n";
+            if (e !== '')
+                text += e + "\n";
         });
         $('.patient-premedication-morning').val(text);
     }
@@ -529,7 +533,7 @@ $(document).ready(function(){
         patient.treatments = jQuery('textarea.patient-treatments').val();
         patient.allergies = JSON.stringify(allergies);
         patient.ta = jQuery('input.patient-ta').val();
-        patient.tc = jQuery('input.patient-tc').val();
+        patient.fc = jQuery('input.patient-tc').val();
         patient.dentalCondition = jQuery('input.patient-dentalCondition').val();
         patient.dentalRiskNotice = jQuery('input.patient-dentalRiskNotice:checked').length === 1;
         patient.mallanpati = parseInt(jQuery('select.patient-mallanpati').val());
@@ -538,6 +542,8 @@ $(document).ready(function(){
         patient.difficultIntubation = jQuery('input.patient-difficult-intubation:checked').length === 1;
         patient.difficultVentilation = jQuery('input.patient-difficult-ventilation:checked').length === 1;
         patient.asa = parseInt(jQuery('input.patient-asa').val());
+        console.log(examinations);
+        console.log(JSON.stringify(examinations));
         patient.preAnestheticExaminations = JSON.stringify(examinations);
 
         var mar = 0;

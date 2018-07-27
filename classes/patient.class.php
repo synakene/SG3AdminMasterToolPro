@@ -477,7 +477,7 @@ class Patient extends DBA implements jsonSerializable
     /**
      * @return mixed
      */
-    public function getPreAnestheticExaminations()
+    public function getPreAnestheticExaminations($escapeDoubleQuote = false)
     {
         return $this->preAnestheticExaminations;
     }
@@ -691,7 +691,7 @@ class Patient extends DBA implements jsonSerializable
      * Save the object to the database
      * @return boolean
      */
-    public function save($dummy = false)
+    public function save()
     {
         $sql = "SELECT * FROM `patient` WHERE `id` = $this->id";
         $query = self::query($sql);
@@ -728,6 +728,7 @@ class Patient extends DBA implements jsonSerializable
         $difficultVentilation = filter_var($this->getDifficultVentilation(), FILTER_VALIDATE_BOOLEAN) ? '1' : '0';
         $asa = $this->getAsa();
         $preAnestheticExaminations = $this->getPreAnestheticExaminations();
+        ///$preAnestheticExaminations = str_replace('\\"', '\\\\"', $preAnestheticExaminations);
         $marProposition = $this->getMarProposition();
 
         $expectedHospitalisation = $this->getExpectedHospitalisation();
@@ -744,11 +745,13 @@ class Patient extends DBA implements jsonSerializable
         $transfusionStrategy = $this->getTransfusionStrategy();
         $preAnestheticVisit = $this->getPreAnestheticVisit();
         $premedication = $this->getPremedication();
+        //$premedication = str_replace('\\"', '\\\\"', $premedication);
 
         if ($rows === 0 && $this->checkValidity(false)) // new patient
         {
             $sql = "INSERT INTO `sgtools`.`patient` (`idCustomer`, `lastname`, `firstname`, `sex`, `age`, `height`, `weight`, `avatar`, `story`, `treatments`, `allergies`, `ta`, `fc`, `dentalCondition`, `dentalRiskNotice`, `mallanpati`, `thyroidMentalDistance`, `mouthOpening`, `difficultIntubation`, `difficultVentilation`, `asa`, `preAnestheticExaminations`, `marProposition`, `expectedHospitalisation`, `transfusionStrategy`, `preAnestheticVisit`, `premedication`) VALUES (" .
             "'$idCustomer', '$lastname', '$firstname', $sex, $age, $height, $weight, $avatar, '$story', '$treatments', '$allergies', '$ta', $fc, '$dentalCondition', $dentalRiskNotice, '$mallanpati', '$thyroidMentalDistance', '$mouthOpening', '$difficultIntubation', '$difficultVentilation', $asa, '$preAnestheticExaminations', $marProposition, $expectedHospitalisation, '$transfusionStrategy', '$preAnestheticVisit', '$premedication');";
+
             $win = self::query($sql);
         }
         else if ($rows === 1 && $this->checkValidity()) // update existing patient

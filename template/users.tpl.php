@@ -43,6 +43,7 @@
                                 <th>Materiels</th>
                                 <th>Questions</th>
                                 <th>Admin</th>
+                                <th>Dernière connexion</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -68,6 +69,7 @@
                                 echo '<td>' . $user->getNumMaterials() . '</td>';
                                 echo '<td>' . $user->getNumQuestions() . '</td>';
                                 echo '<td>' . $user->getAdmin() . '</td>';
+                                echo '<td>' . $user->getLastLogin() . '</td>';
                                 echo '<td>';
                                 if ($_SESSION['id'] !== $user->getId()) { echo '<a href="login/' . $user->getId() . '"><span class="btn btn-primary" data-toggle="tooltip" data-original-title="Se connecter en tant que cet utilisateur"><i class="fa fa-user"></i></span></a>';}
                                 echo '<a href="/utilisateur/' . $user->getId() . '"<span class="btn btn-warning" data-toggle="tooltip" data-original-title="Modifier l\'utilisateur"><i class="fa fa-wrench"></i></span>';

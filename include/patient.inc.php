@@ -23,5 +23,5 @@ $materials = Material::getAllByCustomer($_SESSION['id'], false, true);
 $questions = Question::getAllByCustomer($_SESSION['id'], true);
 $surgeries = Surgery::getAllByCustomer($_SESSION['id'], true);
 $avatars = Customer::getAvatars($_SESSION['id']);
-//var_dump($patient);die;
+
 include($_SERVER['DOCUMENT_ROOT'] . "/template/patient.tpl.php");
