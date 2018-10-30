@@ -96,7 +96,7 @@ initMaterialData();
 surgery['materials'].forEach(function(material){
     addMaterial(material);
 });
-console.log("hi");
+
 // Add material button
 jQuery('#materials-list tr[data-option] button.validate').on('click', function(){
     var id = parseInt(jQuery('#materials-list').find('tr[data-option] .material-name select').val());
@@ -239,7 +239,7 @@ surgery['responses'].forEach(function(question){
 showHideQuestions();
 
 // Add button interaction
-jQuery('#questions-list tr[data-option] button.validateMaterial').on('click', function(){
+jQuery('#questions-list tr[data-option] button.validate').on('click', function(){
     var id = parseInt(jQuery('#questions-list').find('tr[data-option] select.question-name').val());
 
     if (id != undefined && id !== -1)
@@ -330,7 +330,7 @@ showHidePatients();
 
 
 // Add button interaction
-jQuery('#patients-list tr[data-option] button.validateMaterial').on('click', function(){
+jQuery('#patients-list tr[data-option] button.validate').on('click', function(){
     var id = parseInt(jQuery('#patients-list').find('tr[data-option] select.patient-name').val());
 
     if (id != undefined && id !== -1)

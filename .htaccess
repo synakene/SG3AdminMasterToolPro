@@ -1,5 +1,6 @@
 RewriteEngine On
 
+RewriteRule ^$ /accueil [L]
 RewriteRule ^accueil$ /include/index.inc.php [L]
 
 RewriteRule ^chirurgies$ /include/surgeries.inc.php [L]

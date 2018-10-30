@@ -4,4 +4,7 @@
 
 .avatar img {
     max-height:270px;
+    max-width: 100%;
+    display: block;
+    margin: auto;
 }

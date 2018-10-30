@@ -193,6 +193,8 @@ function saveData($table = '', $data = array()) // TODO : gérer les id faux
             $patient->setAllergies($data['patient']['allergies']);
             $patient->setTa($data['patient']['ta']);
             $patient->setFc($data['patient']['fc']);
+            $patient->setExamExtra($data['patient']['examExtra']);
+
             $patient->setDentalCondition($data['patient']['dentalCondition']);
             $patient->setDentalRiskNotice($data['patient']['dentalRiskNotice']);
             $patient->setMallanpati($data['patient']['mallanpati']);
@@ -207,6 +209,7 @@ function saveData($table = '', $data = array()) // TODO : gérer les id faux
             $patient->setTransfusionStrategy($data['patient']['transfusionStrategy']);
             $patient->setPreAnestheticVisit($data['patient']['preAnestheticVisit']);
             $patient->setPremedication(json_encode($data['patient']['premedication'], JSON_UNESCAPED_UNICODE));
+            $patient->setPremedicationExtra($data['patient']['premedicationExtra']);
 
             if ($patient->save())
             {

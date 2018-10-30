@@ -33,7 +33,7 @@
                 {
                     echo '<div class="well col-xs-12 col-sm-6 col-lg-3 avatar" id="' . $avatar['id'] . '" >';
                         echo '<h4>' . $avatar['name'] . '</h4>';
-                        echo '<img class="col-xs-12" src="/assets/avatars/' . $avatar['id'] . '.PNG" alt="Pas encore d\'image" >';
+                        echo '<img src="/assets/avatars/' . $avatar['id'] . '.PNG" alt="Pas encore d\'image" >';
                         if ($admin)
                         {
                             // TODO rajouter un wrapper pour eviter les retours a la ligne

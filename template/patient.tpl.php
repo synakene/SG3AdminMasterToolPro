@@ -185,15 +185,13 @@
                                 <h3>Traitements</h3>
                                 <textarea class="form-control patient-treatments"><?php echo $patient->getTreatments(); ?></textarea><br>
 
-                                <h3>Allergie</h3> <!-- TODO complete with js -->
+                                <h3>Allergie</h3>
                                 <div><label>Antibiotique <input class="patient-allergies-antib" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
                                 <div><label>Latex <input class="patient-allergies-latex" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">Autre</span>
                                     <input type="text" class="form-control patient-allergies-other" placeholder="Non connue">
                                 </div>
-
-<!--                                <h3>Examens Complémentaires</h3><br/>-->
 
                                 <h3>Examen clinique</h3>
                                 <div class="form-group input-group">
@@ -203,6 +201,10 @@
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">FC</span>
                                     <input type="number" class="form-control patient-tc" value="<?php echo $patient->getFc(); ?>">
+                                </div>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Précisions</span>
+                                    <textarea class="form-control patient-exam-extra"><?php echo $patient->getExamExtra(); ?></textarea>
                                 </div><br/>
 
                                 <h3>Voies aériennes supérieures</h3>
@@ -235,7 +237,8 @@
                                 <div><label>Groupe 2 <input class="patient-examinations-groupe2" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
                                 <div><label>Phénotype <input class="patient-examinations-phenotype" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
                                 <div><label>RAI <input class="patient-examinations-rai" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
-                                <div><label>Cross NF <input class="patient-examinations-cross-nf" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
+                                <div><label>Cross <input class="patient-examinations-cross" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
+                                <div><label>NF <input class="patient-examinations-nf" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
                                 <div><label>TP <input class="patient-examinations-tp" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
                                 <div><label>TCA <input class="patient-examinations-tca" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
                                 <div><label>Iono <input class="patient-examinations-iono" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non"></label></div>
@@ -249,7 +252,7 @@
 
                                 <h3>Proposition MAR</h3>
                                 <div><label>AG <input class="patient-mar-ag" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if($patient->getMarProposition() == 1 || $patient->getMarProposition() == 3) echo 'checked' ;?>></label></div>
-                                <div><label>BIS <input class="patient-mar-bis" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if($patient->getMarProposition() == 2 || $patient->getMarProposition() == 3) echo 'checked' ;?>></label></div><br/>
+                                <div><label>ALR <input class="patient-mar-bis" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if($patient->getMarProposition() == 2 || $patient->getMarProposition() == 3) echo 'checked' ;?>></label></div><br/>
 
                                 <h3>Hospitalisation prévue</h3>
                                 <div class="form-group input-group">
@@ -273,6 +276,8 @@
                                 <textarea class="form-control patient-premedication-eve"></textarea><br/>
                                 <h4>Le matin</h4>
                                 <textarea class="form-control patient-premedication-morning"></textarea><br/>
+                                <h4>Précisions</h4>
+                                <textarea class="form-control patient-premedication-extra"><?php echo $patient->getPremedicationExtra(); ?></textarea><br/>
                             </div>
                         </div>
 

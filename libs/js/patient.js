@@ -260,6 +260,7 @@ $(document).ready(function(){
 
         function showHideSurgeries()
         {
+            console.log('show/hide surgeries');
             var firstId = -1;
 
             // Hide and show options
@@ -382,8 +383,10 @@ $(document).ready(function(){
             examinations['Phénotype'] = true;
         if ($('input.patient-examinations-rai:checked')[0] !== undefined)
             examinations['RAI'] = true;
-        if ($('input.patient-examinations-cross-nf:checked')[0] !== undefined)
-            examinations['Cross NF'] = true;
+        if ($('input.patient-examinations-cross:checked')[0] !== undefined)
+            examinations['Cross'] = true;
+        if ($('input.patient-examinations-nf:checked')[0] !== undefined)
+            examinations['NF'] = true;
         if ($('input.patient-examinations-tp:checked')[0] !== undefined)
             examinations['TP'] = true;
         if ($('input.patient-examinations-tca:checked')[0] !== undefined)
@@ -409,7 +412,6 @@ $(document).ready(function(){
     }
 
     $('#button-test').on('click', function () {
-        console.log('click');
         readJson();
     });
 
@@ -454,8 +456,12 @@ $(document).ready(function(){
                 $('.patient-examinations-rai').bootstrapToggle('on');
                 return;
             }
-            if (index === 'Cross NF' && value === true) {
-                $('.patient-examinations-cross-nf').bootstrapToggle('on');
+            if (index === 'Cross' && value === true) {
+                $('.patient-examinations-cross').bootstrapToggle('on');
+                return;
+            }
+            if (index === 'NF' && value === true) {
+                $('.patient-examinations-nf').bootstrapToggle('on');
                 return;
             }
             if (index === 'TP' && value === true) {
@@ -534,6 +540,8 @@ $(document).ready(function(){
         patient.allergies = JSON.stringify(allergies);
         patient.ta = jQuery('input.patient-ta').val();
         patient.fc = jQuery('input.patient-tc').val();
+        patient.examExtra = jQuery('textarea.patient-exam-extra').val();
+
         patient.dentalCondition = jQuery('input.patient-dentalCondition').val();
         patient.dentalRiskNotice = jQuery('input.patient-dentalRiskNotice:checked').length === 1;
         patient.mallanpati = parseInt(jQuery('select.patient-mallanpati').val());
@@ -542,8 +550,7 @@ $(document).ready(function(){
         patient.difficultIntubation = jQuery('input.patient-difficult-intubation:checked').length === 1;
         patient.difficultVentilation = jQuery('input.patient-difficult-ventilation:checked').length === 1;
         patient.asa = parseInt(jQuery('input.patient-asa').val());
-        console.log(examinations);
-        console.log(JSON.stringify(examinations));
+
         patient.preAnestheticExaminations = JSON.stringify(examinations);
 
         var mar = 0;
@@ -554,12 +561,16 @@ $(document).ready(function(){
         patient.expectedHospitalisation = parseInt(jQuery('select.patient-hospitalisation').val());
         patient.transfusionStrategy = jQuery('textarea.patient-transfusion-strategy').val();
         patient.preAnestheticVisit = jQuery('textarea.patient-pre-anesthetic-visit').val();
-console.log(patient);
+
+        patient.premedicationExtra = jQuery('textarea.patient-premedication-extra').val();
+
         // Prevent from click bashing
         jQuery('button.save').off();
         jQuery('button.save').addClass('disabled');
         jQuery('button.save i').removeClass('fa-floppy-o');
         jQuery('button.save i').addClass('fa-cog faa-spin animated');
+
+        console.log(patient);
 
         // Prepare data to send
         var sendData = {
