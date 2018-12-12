@@ -281,6 +281,11 @@
                             </div>
                         </div>
 
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Feedback</span>
+                            <textarea class="form-control patient-feedback" placeholder="Ceci apparaitra dans les résultats de l'apprenant"><?php echo $patient->getFeedback(); ?></textarea>
+                        </div>
+
                         <button type="button" class="btn btn-primary btn-lg pull-right save"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
 
                     </div>

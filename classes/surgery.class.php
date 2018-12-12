@@ -21,6 +21,7 @@ class Surgery extends DBA implements JsonSerializable
     private $marPropositionText;
     private $preAnestheticVisit;
     private $lastEval;
+    private $feedback;
 
     public $jsonCustomer = false;
 
@@ -149,19 +150,6 @@ class Surgery extends DBA implements JsonSerializable
      */
     public function setResponses($responses)
     {
-        /*if (!is_array($responses))
-        {
-            $responses = str_replace(' ', '', $responses);
-            $responses = explode(',', $responses);
-        }
-
-        $this->responses = array();
-
-        foreach ($responses as $response)
-        {
-            array_push($this->responses, intval($response));
-        }*/
-
         $this->responses = $responses;
     }
 
@@ -293,6 +281,22 @@ class Surgery extends DBA implements JsonSerializable
         $this->lastEval = $lastEval;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getFeedback()
+    {
+        return $this->feedback;
+    }
+
+    /**
+     * @param mixed $feedback
+     */
+    public function setFeedback($feedback)
+    {
+        $this->feedback = $feedback;
+    }
+
     //</editor-fold>
 
     //<editor-fold desc="Utilities">
@@ -318,7 +322,8 @@ class Surgery extends DBA implements JsonSerializable
             'marProposition' => $this->marProposition,
             'marPropositionText' => $this->marPropositionText,
             'preAnestheticVisit' => $this->preAnestheticVisit,
-            'lastEval' => $this->lastEval
+            'lastEval' => $this->lastEval,
+            'feedback' => $this->feedback
         ];
 
         $this->jsonCustomer === true ? $json['idCustomer'] = $this->idCustomer : null;
@@ -362,16 +367,17 @@ class Surgery extends DBA implements JsonSerializable
         $marPropositionText = $this->marPropositionText;
         $preAnestheticVisit = $this->getPreAnestheticVisit();
         $lastEval = strval($this->getLastEval());
+        $feedback = $this->feedback;
 
         if ($query->num_rows === 0 && $this->checkValidity(false))
         {
-            $sql = "INSERT INTO `sgtools`.`surgery` (`idCustomer`, `name`, `consultation`, `emergency`, `story`, `marProposition`, `marPropositionText`, `preAnestheticVisit`, `lastEval`) VALUES
-              ('$customer', '$name', '$consultation', '$emergency', '$story', $marProposition, '$marPropositionText', '$preAnestheticVisit', $lastEval);";
+            $sql = "INSERT INTO `sgtools`.`surgery` (`idCustomer`, `name`, `consultation`, `emergency`, `story`, `marProposition`, `marPropositionText`, `preAnestheticVisit`, `lastEval`, `feedback`) VALUES
+              ('$customer', '$name', '$consultation', '$emergency', '$story', $marProposition, '$marPropositionText', '$preAnestheticVisit', $lastEval, '$feedback');";
             $win = self::query($sql);
         }
         else if ($query->num_rows === 1 && $this->checkValidity())
         {
-            $sql = "UPDATE `sgtools`.`surgery` SET `name`='$name', `consultation`='$consultation', `emergency`='$emergency', `story`='$story', `marProposition`='$marProposition', `marPropositionText`='$marPropositionText', `preAnestheticVisit`='$preAnestheticVisit', `lastEval`=$lastEval WHERE `id`=$this->id;";
+            $sql = "UPDATE `sgtools`.`surgery` SET `name`='$name', `consultation`='$consultation', `emergency`='$emergency', `story`='$story', `marProposition`='$marProposition', `marPropositionText`='$marPropositionText', `preAnestheticVisit`='$preAnestheticVisit', `lastEval`=$lastEval, `feedback`='$feedback' WHERE `id`=$this->id;";
             $win = self::query($sql);
         }
         else
@@ -636,6 +642,7 @@ class Surgery extends DBA implements JsonSerializable
         $new_surgery->setMarPropositionText($surgery['marPropositionText']);
         $new_surgery->setPreAnestheticVisit($surgery['preAnestheticVisit']);
         $new_surgery->setLastEval($surgery['lastEval']);
+        $new_surgery->setFeedback($surgery['feedback']);
 
 
         if ($sortMatName)

@@ -563,6 +563,7 @@ $(document).ready(function(){
         patient.preAnestheticVisit = jQuery('textarea.patient-pre-anesthetic-visit').val();
 
         patient.premedicationExtra = jQuery('textarea.patient-premedication-extra').val();
+        patient.feedback = jQuery('textarea.patient-feedback').val();
 
         // Prevent from click bashing
         jQuery('button.save').off();

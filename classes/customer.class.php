@@ -397,35 +397,6 @@ class Customer extends DBA
             $finalSQL .= "DELETE FROM `material_liaison` WHERE `idMaterial`=$id;";
         }
 
-        /*$finalSQL = "DELETE FROM material_liaison
-            WHERE idMaterial IN
-            (
-                SELECT id
-                FROM material
-                WHERE idCustomer = $this->id
-            );";
-
-        $finalSQL .= "DELETE FROM questions_liaison
-            WHERE idQuestion IN
-            (
-                SELECT id
-                FROM questions
-                WHERE idCustomer = $this->id
-            );";
-
-        $finalSQL .= "DELETE FROM patient_liaison
-            WHERE idPatient IN
-            (
-                SELECT id
-                FROM patient
-                WHERE idCustomer = $this->id
-            )
-            OR id IN
-            (
-                SELECT id
-                FROM surgery
-                WHERE idCustomer = $this->id
-            );";*/
 
         $finalSQL .= "DELETE FROM `questions_liaison` WHERE `idCustomer`=$this->id;";
         $finalSQL .= "DELETE FROM `patient_liaison` WHERE `idCustomer`=$this->id;";
@@ -441,17 +412,6 @@ class Customer extends DBA
 
         $win = self::mquery($finalSQL);
 
-        /*$mSql = explode(';', $finalSQL);
-        var_dump($mSql);die;
-        $win = true;
-        foreach ($mSql as $query)
-        {
-            $win = self::query($query);
-            if (!$win)
-            {
-                var_dump($query);die;
-            }
-        }*/
 
         if ($win)
         {

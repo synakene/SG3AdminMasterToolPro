@@ -42,6 +42,8 @@ class Patient extends DBA implements jsonSerializable
     private $premedication;
     private $premedicationExtra;
 
+    private $feedback;
+
     private $materials;
     private $surgeries;
     private $responses;
@@ -606,6 +608,22 @@ class Patient extends DBA implements jsonSerializable
         $this->premedicationExtra = $premedicationExtra;
     }
 
+    /**
+     * @return string
+     */
+    public function getFeedback()
+    {
+        return $this->feedback;
+    }
+
+    /**
+     * @param string $feedback
+     */
+    public function setFeedback($feedback)
+    {
+        $this->feedback = $feedback;
+    }
+
     //</editor-fold>
 
     public function __construct($dummy = false)
@@ -643,6 +661,8 @@ class Patient extends DBA implements jsonSerializable
 
             $this->premedication = '{"eve":[], "morning":[]}';
             $this->premedicationExtra = '';
+
+            $this->feedback = "";
         }
     }
 
@@ -690,6 +710,7 @@ class Patient extends DBA implements jsonSerializable
             'preAnestheticVisit' => $this->getPreAnestheticVisit(),
             'premedication' => $this->getPremedication(),
             'premedicationExtra' => $this->getPremedicationExtra(),
+            'feedback' => $this->getFeedback(),
         ];
 
         $this->jsonCustomer === true ? $json['idCustomer'] = $this->idCustomer : null;
@@ -790,11 +811,12 @@ class Patient extends DBA implements jsonSerializable
         $preAnestheticVisit = $this->getPreAnestheticVisit();
         $premedication = $this->getPremedication();
         $premedicationExtra = $this->getPremedicationExtra();
+        $feedback = $this->getFeedback();
 
         if ($rows === 0 && $this->checkValidity(false)) // new patient
         {
-            $sql = "INSERT INTO `sgtools`.`patient` (`idCustomer`, `lastname`, `firstname`, `sex`, `age`, `height`, `weight`, `avatar`, `story`, `treatments`, `allergies`, `ta`, `fc`, `dentalCondition`, `dentalRiskNotice`, `mallanpati`, `thyroidMentalDistance`, `mouthOpening`, `difficultIntubation`, `difficultVentilation`, `asa`, `preAnestheticExaminations`, `marProposition`, `expectedHospitalisation`, `transfusionStrategy`, `preAnestheticVisit`, `premedication`, `examExtra`, `premedicationExtra`) VALUES (" .
-            "'$idCustomer', '$lastname', '$firstname', $sex, $age, $height, $weight, $avatar, '$story', '$treatments', '$allergies', '$ta', $fc, '$dentalCondition', $dentalRiskNotice, '$mallanpati', '$thyroidMentalDistance', '$mouthOpening', '$difficultIntubation', '$difficultVentilation', $asa, '$preAnestheticExaminations', $marProposition, $expectedHospitalisation, '$transfusionStrategy', '$preAnestheticVisit', '$premedication', '$examExtra', '$premedicationExtra');";
+            $sql = "INSERT INTO `sgtools`.`patient` (`idCustomer`, `lastname`, `firstname`, `sex`, `age`, `height`, `weight`, `avatar`, `story`, `treatments`, `allergies`, `ta`, `fc`, `dentalCondition`, `dentalRiskNotice`, `mallanpati`, `thyroidMentalDistance`, `mouthOpening`, `difficultIntubation`, `difficultVentilation`, `asa`, `preAnestheticExaminations`, `marProposition`, `expectedHospitalisation`, `transfusionStrategy`, `preAnestheticVisit`, `premedication`, `examExtra`, `premedicationExtra`, `feedback`) VALUES (" .
+            "'$idCustomer', '$lastname', '$firstname', $sex, $age, $height, $weight, $avatar, '$story', '$treatments', '$allergies', '$ta', $fc, '$dentalCondition', $dentalRiskNotice, '$mallanpati', '$thyroidMentalDistance', '$mouthOpening', '$difficultIntubation', '$difficultVentilation', $asa, '$preAnestheticExaminations', $marProposition, $expectedHospitalisation, '$transfusionStrategy', '$preAnestheticVisit', '$premedication', '$examExtra', '$premedicationExtra', '$feedback');";
 
             $win = self::query($sql);
         }
@@ -829,7 +851,8 @@ class Patient extends DBA implements jsonSerializable
                 "`preAnestheticVisit`='$preAnestheticVisit', ".
                 "`premedication`='$premedication', ".
                 "`examExtra`='$examExtra', ".
-                "`premedicationExtra`='$premedicationExtra' ".
+                "`premedicationExtra`='$premedicationExtra', ".
+                "`feedback`='$feedback' ".
                 "WHERE `id`=$id;";
 
             $win = self::query($sql);
@@ -1124,6 +1147,8 @@ class Patient extends DBA implements jsonSerializable
 
         $patient->setPremedication($query['premedication']);
         $patient->setPremedicationExtra($query['premedicationExtra']);
+
+        $patient->setFeedback($query['feedback']);
 
         if ($sortMaterialsByName)
             $sql = "SELECT `idMaterial` FROM `material_liaison` ml JOIN material m ON m.id = ml.idMaterial WHERE `spawnedBy` = 1 && `idSpawner` = $id ORDER BY m.name";

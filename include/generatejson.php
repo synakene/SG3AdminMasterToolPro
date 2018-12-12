@@ -151,6 +151,7 @@ if ($_POST['surgeries'] === 'true')
         $marPropositionText = $surgery->getMarPropositionText();
         $preAnestheticVisit = str_replace('\n', '\\n', $surgery->getPreAnestheticVisit());
         $lastEval = $surgery->getLastEval();
+        $feedback = $surgery->getFeedback();
 
         $json .= "\t\t{\n";
         $json .= "\t\t\t\"id\": $id ,\n";
@@ -165,7 +166,8 @@ if ($_POST['surgeries'] === 'true')
         $json .= "\t\t\t\"marProposition\": $marProposition,\n";
         $json .= "\t\t\t\"marPropositionText\": \"$marPropositionText\",\n";
         $json .= "\t\t\t\"preAnestheticVisit\": \"$preAnestheticVisit\",\n";
-        $json .= "\t\t\t\"lastEval\": $lastEval\n";
+        $json .= "\t\t\t\"lastEval\": $lastEval,\n";
+        $json .= "\t\t\t\"feedback\": \"$feedback\"\n";
         $json .= "\t\t}" . ($i === $length ? "\n" : ",\n\n");
         ++$i;
     }
@@ -296,6 +298,7 @@ if ($_POST['patients'] === 'true')
         $preAnestheticVisit = json_encode($patient->getPreAnestheticVisit(), JSON_UNESCAPED_UNICODE);
         $premedication = $patient->getPremedication();
         $premedicationExtra = $patient->getPremedicationExtra();
+        $feedback = $patient->getFeedback();
 
         $json .= "\t\t{\n";
         $json .= "\t\t\t\"id\": $id ,\n";
@@ -331,7 +334,8 @@ if ($_POST['patients'] === 'true')
         $json .= "\t\t\t\"transfusionStrategy\": $transfusionStrategy,\n";
         $json .= "\t\t\t\"preAnestheticVisit\": $preAnestheticVisit,\n";
         $json .= "\t\t\t\"premedication\": $premedication,\n";
-        $json .= "\t\t\t\"premedicationExtra\": \"$premedicationExtra\"\n";
+        $json .= "\t\t\t\"premedicationExtra\": \"$premedicationExtra\",\n";
+        $json .= "\t\t\t\"feedback\": \"$feedback\"\n";
         $json .= "\t\t}" . ($i === $length ? "\n" : ",\n\n");
         ++$i;
     }

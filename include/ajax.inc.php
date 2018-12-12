@@ -136,6 +136,7 @@ function saveData($table = '', $data = array()) // TODO : gérer les id faux
             $surgery->setMarProposition(intval($data['surgery']['marProposition']));
             $surgery->setMarPropositionText($data['surgery']['marPropositionText']);
             $surgery->setPreAnestheticVisit($data['surgery']['preAnestheticVisit']);
+            $surgery->setFeedback($data['surgery']['feedback']);
 
             if ($surgery->save())
             {
@@ -210,6 +211,7 @@ function saveData($table = '', $data = array()) // TODO : gérer les id faux
             $patient->setPreAnestheticVisit($data['patient']['preAnestheticVisit']);
             $patient->setPremedication(json_encode($data['patient']['premedication'], JSON_UNESCAPED_UNICODE));
             $patient->setPremedicationExtra($data['patient']['premedicationExtra']);
+            $patient->setFeedback($data['patient']['feedback']);
 
             if ($patient->save())
             {

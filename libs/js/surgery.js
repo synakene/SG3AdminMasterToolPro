@@ -357,11 +357,12 @@ function save()
 
     surgery['name'] = jQuery('.surgery-name').val();
     surgery['lastEval'] = jQuery('input.surgery-last-eval').val();
-    surgery['emergency'] = jQuery('input.surgery-emergency:checked').length === 1;
+    surgery['emergency'] = jQuery('input.surgery-emergency:checked').length === 1
     surgery['consultation'] = jQuery('input.surgery-emergency:checked').length === 1;
     surgery['story'] = jQuery('textarea.surgery-story').val();
     surgery['preAnestheticVisit'] = jQuery('textarea.surgery-pre-anesthetic-visit').val();
     surgery['marPropositionText'] = jQuery('input.surgery-mar-proposition-text').val();
+    surgery['feedback'] = jQuery('textarea.surgery-feedback').val();
 
     var mar = 0;
     mar += jQuery('input.surgery-mar-ag:checked').length === 1 ? 1 : 0;

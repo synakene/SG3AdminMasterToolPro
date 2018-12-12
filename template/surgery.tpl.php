@@ -38,11 +38,9 @@
                             <input class="form-control surgery-name" placeholder="Nom de la chirurgie" value="<?php echo $surgery->getName(); ?>">
                         </div>
 
-<!--                        <label class="switch">-->
-<!--                            <p>Urgence</p>-->
-<!--                            <input type="checkbox" --><?php //if ($surgery->getEmergency() === true) { echo 'checked'; } ?><!-->
-<!--                            <span class="slider round"></span>-->
-<!--                        </label><br/>-->
+
+                        <div><label>Consultation <input class="surgery-emergency" type="checkbox" data-toggle="toggle" data-on="Oui" data-off="Non" <?php if($surgery->getConsultation()) echo 'checked' ;?>></label></div>
+
 
                         <div class="panel panel-primary">
                             <div class="panel-heading hideable">
@@ -162,6 +160,11 @@
                                 <h3>Visite pré-anesthésique</h3>
                                 <textarea class="form-control surgery-pre-anesthetic-visit"><?php echo $surgery->getPreAnestheticVisit(); ?></textarea><br/>
                             </div>
+                        </div>
+
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Feedback</span>
+                            <textarea class="form-control surgery-feedback" placeholder="Ceci apparaitra dans les résultats de l'apprenant"><?php echo $surgery->getFeedback(); ?></textarea>
                         </div>
 
                         <button type="button" class="btn btn-primary btn-lg pull-right save"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
