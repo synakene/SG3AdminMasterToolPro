@@ -263,7 +263,7 @@ if ($_POST['patients'] === 'true')
         //$ta = $patient->getTa();
         $ta = json_encode($patient->getTa(), JSON_UNESCAPED_UNICODE);
         $fc = $patient->getFc();
-        $examExtra = $patient->getExamExtra();
+        $examExtra = json_encode($patient->getExamExtra(), JSON_UNESCAPED_UNICODE);
 
         $dentalCondition = json_encode($patient->getDentalCondition(), JSON_UNESCAPED_UNICODE);
         $dentalRiskNotice = $patient->getDentalRiskNotice() ? 'true' : 'false';
@@ -297,8 +297,8 @@ if ($_POST['patients'] === 'true')
         $transfusionStrategy = json_encode($patient->getTransfusionStrategy(), JSON_UNESCAPED_UNICODE);
         $preAnestheticVisit = json_encode($patient->getPreAnestheticVisit(), JSON_UNESCAPED_UNICODE);
         $premedication = $patient->getPremedication();
-        $premedicationExtra = $patient->getPremedicationExtra();
-        $feedback = $patient->getFeedback();
+        $premedicationExtra = json_encode($patient->getPremedicationExtra(), JSON_UNESCAPED_UNICODE);
+        $feedback = json_encode($patient->getFeedback(), JSON_UNESCAPED_UNICODE);
 
         $json .= "\t\t{\n";
         $json .= "\t\t\t\"id\": $id ,\n";
@@ -318,7 +318,7 @@ if ($_POST['patients'] === 'true')
         //$json .= "\t\t\t\"ta\": \"$ta\",\n";
         $json .= "\t\t\t\"ta\": $ta,\n";
         $json .= "\t\t\t\"fc\": $fc,\n";
-        $json .= "\t\t\t\"examExtra\": \"$examExtra\",\n";
+        $json .= "\t\t\t\"examExtra\": $examExtra,\n";
         //$json .= "\t\t\t\"dentalCondition\": \"$dentalCondition\",\n";
         $json .= "\t\t\t\"dentalCondition\": $dentalCondition,\n";
         $json .= "\t\t\t\"dentalRiskNotice\": $dentalRiskNotice,\n";
@@ -334,8 +334,9 @@ if ($_POST['patients'] === 'true')
         $json .= "\t\t\t\"transfusionStrategy\": $transfusionStrategy,\n";
         $json .= "\t\t\t\"preAnestheticVisit\": $preAnestheticVisit,\n";
         $json .= "\t\t\t\"premedication\": $premedication,\n";
-        $json .= "\t\t\t\"premedicationExtra\": \"$premedicationExtra\",\n";
-        $json .= "\t\t\t\"feedback\": \"$feedback\"\n";
+        $json .= "\t\t\t\"premedicationExtra\": $premedicationExtra,\n";
+        $json .= "\t\t\t\"feedback\": $feedback\n";
+
         $json .= "\t\t}" . ($i === $length ? "\n" : ",\n\n");
         ++$i;
     }
